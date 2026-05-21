@@ -15,6 +15,7 @@
 比如你有 100 条数据：
 
 ```tsx
+{/* src/features/orders/components/NormalList.tsx */}
 {items.map(item => (
   <div key={item.id}>{item.name}</div>
 ))}
@@ -63,6 +64,7 @@
 先看一个最普通的 React 列表：
 
 ```tsx
+// src/features/orders/components/NormalList.tsx
 type Item = {
   id: string;
   title: string;
@@ -217,6 +219,7 @@ src/
 先写一个基于 `react-window` 的通用虚拟列表组件。
 
 ```tsx
+// src/shared/virtual-list/AppVirtualList.tsx
 'use client';
 
 import React, { ReactNode, useMemo } from 'react';
@@ -337,6 +340,7 @@ export function AppVirtualList<T>({
 接下来写订单行组件。
 
 ```ts
+// src/features/orders/types.ts
 export type OrderSide = 'long' | 'short';
 export type OrderStatus = 'opening' | 'closed' | 'failed';
 
@@ -356,6 +360,7 @@ export interface Order {
 `OrderRow` 只关心单行展示，不关心虚拟列表、不关心请求、不关心缓存。
 
 ```tsx
+// src/features/orders/components/OrderRow.tsx
 import React from 'react';
 import type { Order } from '../types';
 
@@ -413,6 +418,7 @@ export function OrderRow({ order, onClose, closing }: OrderRowProps) {
 再写订单列表组件：
 
 ```tsx
+// src/features/orders/components/OrderHistoryList.tsx
 import React, { useCallback } from 'react';
 import { AppVirtualList } from '@/shared/virtual-list/AppVirtualList';
 import type { Order } from '../types';
@@ -475,6 +481,7 @@ export function OrderHistoryList({
 请求函数：
 
 ```ts
+// src/features/orders/api.ts
 import type { Order } from './types';
 
 export interface FetchOrdersParams {
@@ -515,6 +522,7 @@ export async function closeOrder(orderId: string) {
 统一 queryKey：
 
 ```ts
+// src/features/orders/queryKeys.ts
 import type { FetchOrdersParams } from './api';
 
 export const orderQueryKeys = {
@@ -527,6 +535,7 @@ export const orderQueryKeys = {
 封装查询配置：
 
 ```ts
+// src/features/orders/queryOptions.ts
 import { queryOptions } from '@tanstack/react-query';
 import { fetchOrders, type FetchOrdersParams } from './api';
 import { orderQueryKeys } from './queryKeys';
@@ -544,6 +553,7 @@ export function ordersQueryOptions(params: FetchOrdersParams) {
 封装 mutation，并在成功后同步缓存：
 
 ```ts
+// src/features/orders/mutations.ts
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { closeOrder } from './api';
 import { orderQueryKeys } from './queryKeys';
@@ -576,6 +586,7 @@ export function useCloseOrderMutation() {
 页面组件负责组合业务流程。
 
 ```tsx
+// src/features/orders/components/OrderHistoryPage.tsx
 'use client';
 
 import React, { useCallback, useState } from 'react';
@@ -679,6 +690,7 @@ export function OrderHistoryPage() {
 先写分页接口：
 
 ```ts
+// src/features/orders/api.ts
 export interface FetchOrderPageParams {
   page: number;
   pageSize: number;
@@ -711,6 +723,7 @@ export async function fetchOrderPage(params: FetchOrderPageParams) {
 然后用 `useInfiniteQuery`：
 
 ```tsx
+// src/features/orders/components/InfiniteOrderHistoryList.tsx
 import React, { useCallback, useMemo } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import { AppVirtualList } from '@/shared/virtual-list/AppVirtualList';
@@ -785,6 +798,7 @@ export function InfiniteOrderHistoryList() {
 不过上面这个版本还不够完整。因为 `AppVirtualList` 目前没有暴露 `onItemsRendered`。可以把它补上：
 
 ```ts
+// src/shared/virtual-list/AppVirtualList.tsx
 import type { ListOnItemsRenderedProps } from 'react-window';
 
 export interface AppVirtualListProps<T> {
@@ -803,6 +817,7 @@ export interface AppVirtualListProps<T> {
 然后传给 `FixedSizeList`：
 
 ```tsx
+// src/shared/virtual-list/AppVirtualList.tsx
 <FixedSizeList
   height={height}
   width="100%"
@@ -829,6 +844,7 @@ export interface AppVirtualListProps<T> {
 如果你的项目已经使用 `react-virtualized`，可以这样写：
 
 ```tsx
+// src/shared/virtual-list/VirtualizedListByReactVirtualized.tsx
 import React, { useCallback } from 'react';
 import { AutoSizer, List, ListRowRenderer } from 'react-virtualized';
 import 'react-virtualized/styles.css';
@@ -910,6 +926,7 @@ export function VirtualizedListByReactVirtualized({
 ### 第一，loading、error、empty 要分开
 
 ```tsx
+// src/features/orders/components/OrderHistoryPage.tsx
 if (query.isPending) {
   return <OrderListSkeleton />;
 }
@@ -928,6 +945,7 @@ if (query.data.list.length === 0) {
 ### 第二，queryKey 必须包含影响结果的参数
 
 ```ts
+// src/features/orders/queryOptions.ts
 queryKey: orderQueryKeys.list({
   keyword,
   status,
@@ -948,6 +966,7 @@ queryKey: orderQueryKeys.list({
 示例：
 
 ```ts
+// src/features/orders/mutations.ts
 onSuccess: () => {
   queryClient.invalidateQueries({
     queryKey: orderQueryKeys.all,
@@ -966,6 +985,7 @@ onSuccess: () => {
 不要这样：
 
 ```tsx
+// src/features/orders/components/OrderHistoryList.tsx
 getKey={(_, index) => index}
 ```
 
@@ -974,6 +994,7 @@ getKey={(_, index) => index}
 正确做法：
 
 ```tsx
+// src/features/orders/components/OrderHistoryList.tsx
 getKey={(order) => order.id}
 ```
 
@@ -986,6 +1007,7 @@ getKey={(order) => order.id}
 错误示例：
 
 ```tsx
+// src/features/orders/components/InfiniteOrderHistoryList.tsx
 renderItem={(item, index) => {
   if (index > data.length - 10) {
     fetchNextPage();
@@ -1001,6 +1023,7 @@ renderItem={(item, index) => {
 虚拟列表必须知道容器高度。如果用 `AutoSizer`，父容器也必须有明确高度：
 
 ```tsx
+// src/features/orders/components/OrderHistoryPage.tsx
 <div style={{ height: 520 }}>
   <AppVirtualList data={data} itemHeight={72} />
 </div>
@@ -1047,6 +1070,7 @@ renderItem={(item, index) => {
 如果项目里还有 SSE 实时推送，可以在收到订单状态变化时更新 React Query 缓存：
 
 ```ts
+// src/features/orders/realtime.ts
 queryClient.setQueryData(
   orderQueryKeys.list(currentParams),
   (oldData: FetchOrdersReply | undefined) => {
