@@ -13,70 +13,69 @@
 - React / Next.js / Web3 前端项目的实践参考。
 - 组件封装、Hook 设计、状态边界设计的案例库。
 
-它不是一个可运行的应用项目，也不包含统一构建脚本。当前仓库的核心资产是根目录下的 Markdown 文档。
+它不是一个可运行的应用项目，也不包含统一构建脚本。当前仓库的核心资产是 `blog/` 目录下按主题分类的 Markdown 文档。
 
 ## 文章目录
 
 ### 计算机基础
 
-- [从 0x00 到 bit、byte、二进制、十六进制：讲清计算机底层表示](./computer-bits-bytes-binary-hex.md)
+- [从 0x00 到 bit、byte、二进制、十六进制：讲清计算机底层表示](./blog/computer-science-basics/computer-bits-bytes-binary-hex.md)
 
 ### React 基础工程化
 
-- [Promise 的理解与应用：从异步结果容器到 async/await 实战](./javascript-promise-understanding.md)
-- [TypeScript Generics 泛型的理解与应用](./typescript-generics-understanding.md)
-- [React 项目目录结构怎么设计：从页面、组件到业务模块拆分](./react-project-directory-structure.md)
-- [React Context 进阶：Provider Pattern 的正确打开方式](./react-context-provider-pattern.md)
-- [深入探讨 React 的核心工作原理](./react-core-working-principles.md)
-- [React Fiber 深度解析：从卡顿到流畅的革命性架构升级](./react-fiber-architecture.md)
-- [React Server Components 是什么：讲清 CSR、Server Components 与 Next.js 客户端/服务端组件](./react-server-components-csr-nextjs.md)
-- [React useEffect 请求封装：从页面请求到可复用 Hook](./react-useeffect-fetch-request-hook.md)
-- [React Hooks 底层原理深度解析：从数组到链表的魔法](./react-hooks-internals-array-linked-list.md)
-- [React useMemo 怎么理解：缓存计算结果和稳定引用的工程化场景](./react-usememo-reference-performance.md)
-- [React useCallback 的理解与应用：不是加速函数，而是稳定函数引用](./react-usecallback-stable-function-reference.md)
-- [React useRef 的理解与应用：跨渲染持久存在的值容器](./react-useref-persistent-box.md)
-- [React 状态持久化不只是 localStorage：从简单计数器到可复用 usePersistedState 封装](./react-persisted-state-localstorage-hook.md)
-- [React 大列表优化落地：从普通 map 到 react-window / react-virtualized 的工程化封装](./react-large-list-virtualization.md)
+- [Promise 的理解与应用：从异步结果容器到 async/await 实战](./blog/react-fundamentals/javascript-promise-understanding.md)
+- [TypeScript Generics 泛型的理解与应用](./blog/react-fundamentals/typescript-generics-understanding.md)
+- [React 项目目录结构怎么设计：从页面、组件到业务模块拆分](./blog/react-fundamentals/react-project-directory-structure.md)
+- [React Context 进阶：Provider Pattern 的正确打开方式](./blog/react-fundamentals/react-context-provider-pattern.md)
+- [深入探讨 React 的核心工作原理](./blog/react-fundamentals/react-core-working-principles.md)
+- [React Fiber 深度解析：从卡顿到流畅的革命性架构升级](./blog/react-fundamentals/react-fiber-architecture.md)
+- [React Server Components 是什么：讲清 CSR、Server Components 与 Next.js 客户端/服务端组件](./blog/react-fundamentals/react-server-components-csr-nextjs.md)
+- [React useEffect 请求封装：从页面请求到可复用 Hook](./blog/react-fundamentals/react-useeffect-fetch-request-hook.md)
+- [React Hooks 底层原理深度解析：从数组到链表的魔法](./blog/react-fundamentals/react-hooks-internals-array-linked-list.md)
+- [React useMemo 怎么理解：缓存计算结果和稳定引用的工程化场景](./blog/react-fundamentals/react-usememo-reference-performance.md)
+- [React useCallback 的理解与应用：不是加速函数，而是稳定函数引用](./blog/react-fundamentals/react-usecallback-stable-function-reference.md)
+- [React useRef 的理解与应用：跨渲染持久存在的值容器](./blog/react-fundamentals/react-useref-persistent-box.md)
+- [React 大列表优化落地：从普通 map 到 react-window / react-virtualized 的工程化封装](./blog/react-fundamentals/react-large-list-virtualization.md)
 
 ### 状态管理
 
-- [Redux Toolkit 项目落地：从 slice、thunk 到可维护的前端状态管理](./redux-toolkit-project-state-management.md)
-- [Zustand 项目落地：从全局状态、Store 拆分到真实业务封装](./zustand-project-state-management.md)
-- [React Query 和 Zustand 状态边界：server state 与 client state 怎么拆](./react-query-zustand-state-boundary.md)
+- [Redux Toolkit 项目落地：从 slice、thunk 到可维护的前端状态管理](./blog/state-management/redux-toolkit-project-state-management.md)
+- [Zustand 项目落地：从全局状态、Store 拆分到真实业务封装](./blog/state-management/zustand-project-state-management.md)
+- [React Query 和 Zustand 状态边界：server state 与 client state 怎么拆](./blog/state-management/react-query-zustand-state-boundary.md)
 
 ### 数据请求与实时通信
 
-- [Next.js 16 Cache Components 完整代码示例：讲清 Suspense、use cache 和 cacheLife](./nextjs-cache-components-suspense-use-cache.md)
-- [TanStack Query 项目落地：从 queryKey、缓存失效到无限分页的工程化封装](./tanstack-query-querykey-cache-infinite.md)
-- [React Query 项目落地：从接口请求到可维护的数据层封装](./react-query-maintainable-data-requests.md)
-- [从零实现 React Query 的 useQuery 钩子：深入理解其核心机制](./react-query-usequery-from-scratch.md)
-- [前端 SSE 实时通信怎么封装：从 EventSource 到业务 Hook](./frontend-sse-realtime-hook.md)
-- [fetch-event-source SSE 实践：从普通请求到可控的实时连接](./frontend-fetch-event-source-sse.md)
+- [Next.js 16 Cache Components 完整代码示例：讲清 Suspense、use cache 和 cacheLife](./blog/data-fetching-realtime/nextjs-cache-components-suspense-use-cache.md)
+- [TanStack Query 项目落地：从 queryKey、缓存失效到无限分页的工程化封装](./blog/data-fetching-realtime/tanstack-query-querykey-cache-infinite.md)
+- [React Query 项目落地：从接口请求到可维护的数据层封装](./blog/data-fetching-realtime/react-query-maintainable-data-requests.md)
+- [从零实现 React Query 的 useQuery 钩子：深入理解其核心机制](./blog/data-fetching-realtime/react-query-usequery-from-scratch.md)
+- [前端 SSE 实时通信怎么封装：从 EventSource 到业务 Hook](./blog/data-fetching-realtime/frontend-sse-realtime-hook.md)
+- [fetch-event-source SSE 实践：从普通请求到可控的实时连接](./blog/data-fetching-realtime/frontend-fetch-event-source-sse.md)
 
 ### 表单与上传
 
-- [在 React 应用中使用 Zod 进行数据验证的全面教程与应用](./react-zod-data-validation.md)
-- [React Hook Form 项目落地：从受控表单、Zod 校验到异步提交错误处理](./react-hook-form-zod-submit-errors.md)
-- [React 多步骤表单工程化落地：从 Zod Schema、React Hook Form 到 Zustand 持久化](./react-multistep-form-zod-rhf-zustand.md)
-- [React 文件上传不只是 input type=file：从状态建模、上传进度到工程化封装](./react-file-upload-state-progress.md)
-- [React 多文件上传怎么做：从 File Input 到并发上传进度的工程化封装](./react-multi-file-upload-progress.md)
+- [在 React 应用中使用 Zod 进行数据验证的全面教程与应用](./blog/forms-uploads/react-zod-data-validation.md)
+- [React Hook Form 项目落地：从受控表单、Zod 校验到异步提交错误处理](./blog/forms-uploads/react-hook-form-zod-submit-errors.md)
+- [React 多步骤表单工程化落地：从 Zod Schema、React Hook Form 到 Zustand 持久化](./blog/forms-uploads/react-multistep-form-zod-rhf-zustand.md)
+- [React 文件上传不只是 input type=file：从状态建模、上传进度到工程化封装](./blog/forms-uploads/react-file-upload-state-progress.md)
+- [React 多文件上传怎么做：从 File Input 到并发上传进度的工程化封装](./blog/forms-uploads/react-multi-file-upload-progress.md)
 
 ### 认证与权限
 
-- [React 认证不只是存 Token：JWT、Access Token、Refresh Token 的工程化落地](./react-jwt-auth-token-refresh.md)
-- [Next.js 认证不只是登录表单：从 Server Action、JWT Cookie 到 Middleware 的工程化落地](./nextjs-server-action-jwt-cookie-auth.md)
-- [Next.js 认证不只是保护页面：从 Middleware、Server Action 到 Data Access Layer 的工程化实践](./nextjs-auth-middleware-server-action-dal.md)
+- [React 认证不只是存 Token：JWT、Access Token、Refresh Token 的工程化落地](./blog/auth-permissions/react-jwt-auth-token-refresh.md)
+- [Next.js 认证不只是登录表单：从 Server Action、JWT Cookie 到 Middleware 的工程化落地](./blog/auth-permissions/nextjs-server-action-jwt-cookie-auth.md)
+- [Next.js 认证不只是保护页面：从 Middleware、Server Action 到 Data Access Layer 的工程化实践](./blog/auth-permissions/nextjs-auth-middleware-server-action-dal.md)
 
 ### Web3 前端
 
-- [Web3 SIWE 钱包登录：从签名认证到业务登录态](./web3-siwe-wallet-login-flow.md)
-- [Reown AppKit + SIWE 项目落地：从钱包连接到后端登录态的完整前端方案](./reown-appkit-siwe-wallet-auth.md)
-- [Web3 充值提现流程：从链上交易到后端状态同步](./web3-deposit-withdrawal-flow.md)
-- [多链支付前端怎么封装：从钱包适配器到统一 usePay 的工程化落地](./multichain-payment-frontend-usepay.md)
+- [Web3 SIWE 钱包登录：从签名认证到业务登录态](./blog/web3-frontend/web3-siwe-wallet-login-flow.md)
+- [Reown AppKit + SIWE 项目落地：从钱包连接到后端登录态的完整前端方案](./blog/web3-frontend/reown-appkit-siwe-wallet-auth.md)
+- [Web3 充值提现流程：从链上交易到后端状态同步](./blog/web3-frontend/web3-deposit-withdrawal-flow.md)
+- [多链支付前端怎么封装：从钱包适配器到统一 usePay 的工程化落地](./blog/web3-frontend/multichain-payment-frontend-usepay.md)
 
 ### 数据可视化
 
-- [D3.js 入门：它不只是画图，更是把数据映射成可视化图形的工具](./d3js-data-visualization-introduction.md)
+- [D3.js 入门：它不只是画图，更是把数据映射成可视化图形的工具](./blog/data-visualization/d3js-data-visualization-introduction.md)
 
 ## 写作风格
 
@@ -105,7 +104,7 @@
 - 文件名使用英文小写和连字符，例如 `react-query-maintainable-data-requests.md`。
 - 每篇文章使用一个一级标题，正文使用二级、三级标题组织结构。
 - 代码示例使用带语言标识的 fenced code block，例如 `ts`、`tsx`、`txt`。
-- 新增文章后同步更新本 README 的文章目录。
+- 新增文章时放入 `blog/` 下对应分类目录，并同步更新本 README 的文章目录。
 - 如果文章属于新主题，可以在目录中新增分类，而不是把所有文章堆在一个列表里。
 
 ## License
