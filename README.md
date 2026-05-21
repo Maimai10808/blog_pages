@@ -17,10 +17,24 @@
 
 ## 文章目录
 
+### 计算机基础
+
+- [从 0x00 到 bit、byte、二进制、十六进制：讲清计算机底层表示](./computer-bits-bytes-binary-hex.md)
+
 ### React 基础工程化
 
+- [Promise 的理解与应用：从异步结果容器到 async/await 实战](./javascript-promise-understanding.md)
+- [TypeScript Generics 泛型的理解与应用](./typescript-generics-understanding.md)
 - [React 项目目录结构怎么设计：从页面、组件到业务模块拆分](./react-project-directory-structure.md)
+- [React Context 进阶：Provider Pattern 的正确打开方式](./react-context-provider-pattern.md)
+- [深入探讨 React 的核心工作原理](./react-core-working-principles.md)
+- [React Fiber 深度解析：从卡顿到流畅的革命性架构升级](./react-fiber-architecture.md)
+- [React Server Components 是什么：讲清 CSR、Server Components 与 Next.js 客户端/服务端组件](./react-server-components-csr-nextjs.md)
 - [React useEffect 请求封装：从页面请求到可复用 Hook](./react-useeffect-fetch-request-hook.md)
+- [React Hooks 底层原理深度解析：从数组到链表的魔法](./react-hooks-internals-array-linked-list.md)
+- [React useMemo 怎么理解：缓存计算结果和稳定引用的工程化场景](./react-usememo-reference-performance.md)
+- [React useCallback 的理解与应用：不是加速函数，而是稳定函数引用](./react-usecallback-stable-function-reference.md)
+- [React useRef 的理解与应用：跨渲染持久存在的值容器](./react-useref-persistent-box.md)
 - [React 状态持久化不只是 localStorage：从简单计数器到可复用 usePersistedState 封装](./react-persisted-state-localstorage-hook.md)
 - [React 大列表优化落地：从普通 map 到 react-window / react-virtualized 的工程化封装](./react-large-list-virtualization.md)
 
@@ -32,12 +46,16 @@
 
 ### 数据请求与实时通信
 
+- [Next.js 16 Cache Components 完整代码示例：讲清 Suspense、use cache 和 cacheLife](./nextjs-cache-components-suspense-use-cache.md)
+- [TanStack Query 项目落地：从 queryKey、缓存失效到无限分页的工程化封装](./tanstack-query-querykey-cache-infinite.md)
 - [React Query 项目落地：从接口请求到可维护的数据层封装](./react-query-maintainable-data-requests.md)
+- [从零实现 React Query 的 useQuery 钩子：深入理解其核心机制](./react-query-usequery-from-scratch.md)
 - [前端 SSE 实时通信怎么封装：从 EventSource 到业务 Hook](./frontend-sse-realtime-hook.md)
 - [fetch-event-source SSE 实践：从普通请求到可控的实时连接](./frontend-fetch-event-source-sse.md)
 
 ### 表单与上传
 
+- [在 React 应用中使用 Zod 进行数据验证的全面教程与应用](./react-zod-data-validation.md)
 - [React Hook Form 项目落地：从受控表单、Zod 校验到异步提交错误处理](./react-hook-form-zod-submit-errors.md)
 - [React 多步骤表单工程化落地：从 Zod Schema、React Hook Form 到 Zustand 持久化](./react-multistep-form-zod-rhf-zustand.md)
 - [React 文件上传不只是 input type=file：从状态建模、上传进度到工程化封装](./react-file-upload-state-progress.md)
