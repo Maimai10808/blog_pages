@@ -69,6 +69,7 @@
 ### Web3 前端
 
 - [Web3 SIWE 钱包登录：从签名认证到业务登录态](./blog/web3-frontend/web3-siwe-wallet-login-flow.md)
+- [Reown AppKit 入门：前端如何快速接入 Web3 钱包连接能力](./blog/web3-frontend/reown-appkit-wallet-connect-introduction.md)
 - [Reown AppKit + SIWE 项目落地：从钱包连接到后端登录态的完整前端方案](./blog/web3-frontend/reown-appkit-siwe-wallet-auth.md)
 - [Web3 充值提现流程：从链上交易到后端状态同步](./blog/web3-frontend/web3-deposit-withdrawal-flow.md)
 - [多链支付前端怎么封装：从钱包适配器到统一 usePay 的工程化落地](./blog/web3-frontend/multichain-payment-frontend-usepay.md)
