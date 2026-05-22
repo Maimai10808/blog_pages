@@ -42,6 +42,7 @@
 - [Redux Toolkit 项目落地：从 slice、thunk 到可维护的前端状态管理](./blog/state-management/redux-toolkit-project-state-management.md)
 - [Zustand 项目落地：从全局状态、Store 拆分到真实业务封装](./blog/state-management/zustand-project-state-management.md)
 - [React Query 和 Zustand 状态边界：server state 与 client state 怎么拆](./blog/state-management/react-query-zustand-state-boundary.md)
+- [React localStorage 不只是 setItem：用 useSyncExternalStore 做一个可订阅的本地状态 Hook](./blog/state-management/react-localstorage-usesyncexternalstore-hook.md)
 
 ### 数据请求与实时通信
 
