@@ -2,9 +2,9 @@
 
 在前端项目里，表格是一个很容易被低估的模块。
 
-最开始我们只是想把一组数据渲染出来：请求接口、拿到数组、`map` 成一行一行的表格。这个阶段写法非常简单，甚至几十行代码就能跑起来。但真实项目里的表格通常不会停留在“展示数据”这一层。
+最开始我们只是想把一组数据渲染出来：请求接口、拿到数组、`map` 成一行一行的表格。这个阶段写法非常简单，甚至几十行代码就能跑起来。
 
-它很快会出现这些需求：
+但真实项目里的表格通常不会停留在“展示数据”这一层。它很快会出现这些需求：
 
 - 接口请求、loading、error、empty 状态。
 - 分页、筛选、排序。
@@ -22,9 +22,9 @@
 
 ---
 
-## 1. 为什么需要这套组合
+## 1. 这套组合分别解决什么问题
 
-先明确这几个工具分别解决什么问题。
+先明确这几个工具分别负责什么。
 
 React Query 负责服务端状态管理。它不是简单替代 `useEffect + fetch`，而是帮我们处理接口请求、缓存、请求去重、重试、失效刷新、分页查询、后台更新等问题。
 
@@ -43,13 +43,176 @@ shadcn/ui
   负责最终 DOM 和样式渲染
 ```
 
-如果把它们混在一个组件里，代码也能跑。但真实项目里最怕的就是这种“能跑但边界不清”的代码。
+真实项目里最怕的不是代码不能跑，而是所有东西都能跑，但边界不清。边界不清的代码，后面加分页、排序、筛选、虚拟滚动时，维护成本会快速上升。
 
 ---
 
-## 2. 最简单的写法是什么
+## 2. 安装依赖和项目准备
 
-比如我们有一个 Web3 activity 列表，最简单可以这样写：
+这套方案适用于普通 React 项目，也适用于 Next.js、Vite 等常见 React 工程。本文示例以单项目为主说明，安装命令也按照普通项目来写。
+
+先安装 TanStack Table：
+
+```bash
+npm install @tanstack/react-table
+```
+
+安装 React Query：
+
+```bash
+npm install @tanstack/react-query
+```
+
+如果需要调试 query cache，可以安装 React Query Devtools：
+
+```bash
+npm install @tanstack/react-query-devtools
+```
+
+如果后续要研究虚拟滚动，再安装 TanStack Virtual：
+
+```bash
+npm install @tanstack/react-virtual
+```
+
+如果使用 shadcn/ui，可以先初始化 shadcn：
+
+```bash
+npx shadcn@latest init
+```
+
+然后安装表格组件：
+
+```bash
+npx shadcn@latest add table
+```
+
+如果后面要做行操作菜单，还可以安装：
+
+```bash
+npx shadcn@latest add button dropdown-menu
+```
+
+安装后，普通 React / Next.js 项目里通常这样导入 shadcn/ui 的 Table 组件：
+
+```ts
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
+```
+
+也就是说，示例里的 UI 组件路径统一使用项目内路径 `@/components/ui/table`。如果你的项目给 shadcn/ui 配了不同 alias，再按自己的工程配置调整。
+
+---
+
+## 3. 先准备一个简单后端
+
+为了更接近真实项目，我们先用 Express 搭一个简单 mock 后端。
+
+目录可以这样放：
+
+```txt
+backend/
+  src/
+    index.ts
+    app.ts
+    routes/
+      index.ts
+    modules/
+      table-demo/
+        table-demo.types.ts
+        table-demo.data.ts
+        table-demo.routes.ts
+```
+
+这里先准备一个最简单的数据源：
+
+```txt
+GET /api/table-demo/people
+```
+
+`people` 数据用来做一个基础表格。这个阶段不追求数据复杂，而是先把前后端链路和前端分层跑通。
+
+后端类型：
+
+```ts
+// backend/src/modules/table-demo/table-demo.types.ts
+export type Person = {
+  id: string
+  firstName: string
+  lastName: string
+  age: number
+  visits: number
+  status: "In Relationship" | "Single" | "Complicated"
+  progress: number
+}
+```
+
+mock 数据：
+
+```ts
+// backend/src/modules/table-demo/table-demo.data.ts
+import type { Person } from "./table-demo.types"
+
+export const people: Person[] = [
+  {
+    id: "person-001",
+    firstName: "tanner",
+    lastName: "linsley",
+    age: 24,
+    visits: 100,
+    status: "In Relationship",
+    progress: 50,
+  },
+  {
+    id: "person-002",
+    firstName: "tandy",
+    lastName: "miller",
+    age: 40,
+    visits: 40,
+    status: "Single",
+    progress: 80,
+  },
+  {
+    id: "person-003",
+    firstName: "joe",
+    lastName: "dirte",
+    age: 45,
+    visits: 20,
+    status: "Complicated",
+    progress: 10,
+  },
+]
+```
+
+路由：
+
+```ts
+// backend/src/modules/table-demo/table-demo.routes.ts
+import { Router } from "express"
+import { people } from "./table-demo.data"
+
+export const tableDemoRoutes = Router()
+
+tableDemoRoutes.get("/people", (_req, res) => {
+  res.json({
+    data: people,
+  })
+})
+```
+
+这个后端非常简单，但已经足够支撑我们前端做数据请求、缓存、表格渲染和状态处理。
+
+---
+
+## 4. 最简单写法的问题
+
+很多人一开始会这样写表格：组件里直接 fetch，然后把数据丢给 TanStack Table。
 
 ```tsx
 "use client"
@@ -62,46 +225,37 @@ import {
   useReactTable,
 } from "@tanstack/react-table"
 
-type Activity = {
+type Person = {
   id: string
-  chain: string
-  protocol: string
-  status: string
-  usdValue: number
+  firstName: string
+  lastName: string
+  age: number
 }
 
-const columnHelper = createColumnHelper<Activity>()
+const columnHelper = createColumnHelper<Person>()
 
 const columns = [
-  columnHelper.accessor("id", {
-    header: "ID",
+  columnHelper.accessor("firstName", {
+    header: "First Name",
     cell: info => info.getValue(),
   }),
-  columnHelper.accessor("chain", {
-    header: "Chain",
+  columnHelper.accessor("lastName", {
+    header: "Last Name",
     cell: info => info.getValue(),
   }),
-  columnHelper.accessor("protocol", {
-    header: "Protocol",
+  columnHelper.accessor("age", {
+    header: "Age",
     cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("status", {
-    header: "Status",
-    cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("usdValue", {
-    header: "USD Value",
-    cell: info => `$${info.getValue()}`,
   }),
 ]
 
-export function ActivityTable() {
-  const [data, setData] = React.useState<Activity[]>([])
+export function PeopleTable() {
+  const [data, setData] = React.useState<Person[]>([])
   const [loading, setLoading] = React.useState(false)
 
   React.useEffect(() => {
     setLoading(true)
-    fetch("http://localhost:4000/api/table-demo/activities")
+    fetch("http://localhost:4000/api/table-demo/people")
       .then(res => res.json())
       .then(result => {
         setData(result.data)
@@ -150,13 +304,11 @@ export function ActivityTable() {
 }
 ```
 
-这段代码确实能跑，但真实项目里很快会失控。
-
-它的问题不是“写得不高级”，而是职责混在了一起：
+这段代码能跑，但问题也很明显：
 
 - 组件里直接拼接口 URL。
 - 请求、loading、error 都写在组件里。
-- query key 没有统一管理。
+- 没有统一 query key。
 - columns 和 UI 渲染混在一起。
 - 表格实例和页面布局混在一起。
 - 后续加分页、排序、筛选时会越来越难改。
@@ -166,148 +318,7 @@ export function ActivityTable() {
 
 ---
 
-## 3. 先准备一个简单后端
-
-为了更接近真实项目，我们先用 Express 搭一个简单 mock 后端。
-
-目录可以这样放：
-
-```txt
-backend/
-  src/
-    index.ts
-    app.ts
-    routes/
-      index.ts
-    modules/
-      table-demo/
-        table-demo.types.ts
-        table-demo.data.ts
-        web3-table-500-dataset.ts
-        table-demo.routes.ts
-```
-
-这里有两个数据源：
-
-```txt
-GET /api/table-demo/people
-GET /api/table-demo/activities
-```
-
-`people` 用来做小表格，`activities` 用来做更真实一点的 Web3 activity 表格。
-
-后端类型：
-
-```ts
-// backend/src/modules/table-demo/table-demo.types.ts
-export type Person = {
-  id: string
-  firstName: string
-  lastName: string
-  age: number
-  visits: number
-  status: "In Relationship" | "Single" | "Complicated"
-  progress: number
-}
-
-export type Web3TableActivity = {
-  id: string
-  requestId: string
-  chain: string
-  protocol: string
-  eventType: string
-  status: "queued" | "processing" | "succeeded" | "failed" | "cancelled"
-  walletAddress: string
-  walletTag: string
-  txHash: string
-  blockNumber: number
-  assetIn: string
-  assetOut: string
-  amountIn: number
-  usdValue: number
-  gasUsd: number
-  slippageBps: number
-  riskLevel: "low" | "medium" | "high" | "critical"
-  riskScore: number
-  region: string
-  teamOwner: string
-  createdAt: string
-  updatedAt: string
-  retryCount: number
-  confirmationCount: number
-  notes: string
-}
-```
-
-`people` mock 数据：
-
-```ts
-// backend/src/modules/table-demo/table-demo.data.ts
-import type { Person } from "./table-demo.types"
-
-export const people: Person[] = [
-  {
-    id: "person-001",
-    firstName: "tanner",
-    lastName: "linsley",
-    age: 24,
-    visits: 100,
-    status: "In Relationship",
-    progress: 50,
-  },
-  {
-    id: "person-002",
-    firstName: "tandy",
-    lastName: "miller",
-    age: 40,
-    visits: 40,
-    status: "Single",
-    progress: 80,
-  },
-  {
-    id: "person-003",
-    firstName: "joe",
-    lastName: "dirte",
-    age: 45,
-    visits: 20,
-    status: "Complicated",
-    progress: 10,
-  },
-]
-```
-
-`activities` 接口：
-
-```ts
-// backend/src/modules/table-demo/table-demo.routes.ts
-import { Router } from "express"
-import { people } from "./table-demo.data"
-import {
-  web3TableActivities,
-  web3TableActivityMeta,
-} from "./web3-table-500-dataset"
-
-export const tableDemoRoutes = Router()
-
-tableDemoRoutes.get("/people", (_req, res) => {
-  res.json({
-    data: people,
-  })
-})
-
-tableDemoRoutes.get("/activities", (_req, res) => {
-  res.json({
-    data: web3TableActivities,
-    meta: web3TableActivityMeta,
-  })
-})
-```
-
-这个阶段先不分页，一次返回全部数据。这样前端先能跑起来。
-
----
-
-## 4. 推荐的前端项目结构
+## 5. 推荐的前端项目结构
 
 前端不要把所有东西都塞进一个 `components/table.tsx`。建议拆成下面这样：
 
@@ -320,16 +331,12 @@ src/
     api-client.ts
   types/
     people.types.ts
-    web3-activities.types.ts
   services/
     people.service.ts
-    web3-activities.service.ts
   queries/
     query-keys/
       people.keys.ts
-      web3-activities.keys.ts
     people.queries.ts
-    web3-activities.queries.ts
   components/
     people-table/
       index.ts
@@ -337,12 +344,6 @@ src/
       people-table.tsx
       people-table-columns.tsx
       people-table-view.tsx
-    web3-activities-table/
-      index.ts
-      web3-activities-table.container.tsx
-      web3-activities-table.tsx
-      web3-activities-table-columns.tsx
-      web3-activities-table-view.tsx
 ```
 
 这个结构的重点不是“文件多”，而是边界清楚。
@@ -351,7 +352,7 @@ src/
 
 - `lib/api-client.ts`：公共请求封装。
 - `types/`：接口类型、业务实体类型。
-- `services/`：具体 API 请求函数，比如 `getPeople`、`getWeb3Activities`。
+- `services/`：具体 API 请求函数，比如 `getPeople`。
 - `queries/query-keys/`：统一管理 query key，避免字符串散落在组件里。
 - `queries/*.queries.ts`：封装 React Query 的 `queryOptions` 和 custom hook。
 - `*.container.tsx`：消费 query，处理 loading、error，把数据传给表格组件。
@@ -361,14 +362,24 @@ src/
 
 这套拆法在项目初期看起来比一个文件复杂，但到了要加分页、排序、筛选、行操作时，优势会非常明显。
 
+你以后维护时可以按这个规则找文件：
+
+- 改接口：services。
+- 改缓存 key：query-keys。
+- 改 query 配置：queries。
+- 改 loading / error：container。
+- 改表格能力：table。
+- 改列：columns。
+- 改 UI 样式：view。
+
 ---
 
-## 5. 请求层：先封装 apiClient
+## 6. 请求层：封装 apiClient
 
 不要在组件里直接写：
 
 ```ts
-fetch("http://localhost:4000/api/table-demo/activities")
+fetch("http://localhost:4000/api/table-demo/people")
 ```
 
 这样后面换 `baseURL`、加 header、处理错误都会散落在各个组件里。
@@ -411,11 +422,16 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:4000
 
 这个封装很简单，但已经把请求入口统一起来了。后续你要加 token、统一错误结构、请求日志，都可以从这里切入。
 
+维护建议：
+
+- 如果要加鉴权 header，改这里。
+- 如果要统一处理 401、403，改这里。
+- 如果要把后端错误格式转换成前端错误格式，也改这里。
+- 不要在每个组件里单独写一套 fetch 错误处理。
+
 ---
 
-## 6. 类型层：不要让组件自己猜数据结构
-
-`people` 类型：
+## 7. 类型层：不要让组件自己猜数据结构
 
 ```ts
 // src/types/people.types.ts
@@ -434,57 +450,19 @@ export type PeopleResponse = {
 }
 ```
 
-Web3 activities 类型：
-
-```ts
-// src/types/web3-activities.types.ts
-export type Web3TableActivity = {
-  id: string
-  requestId: string
-  chain: string
-  protocol: string
-  eventType: string
-  status: "queued" | "processing" | "succeeded" | "failed" | "cancelled"
-  walletAddress: string
-  walletTag: string
-  txHash: string
-  blockNumber: number
-  assetIn: string
-  assetOut: string
-  amountIn: number
-  usdValue: number
-  gasUsd: number
-  slippageBps: number
-  riskLevel: "low" | "medium" | "high" | "critical"
-  riskScore: number
-  region: string
-  teamOwner: string
-  createdAt: string
-  updatedAt: string
-  retryCount: number
-  confirmationCount: number
-  notes: string
-}
-
-export type Web3ActivitiesResponse = {
-  data: Web3TableActivity[]
-  meta: {
-    total: number
-    scenario: string
-    generatedAt: string
-  }
-}
-```
-
 这里的关键是：类型不属于组件，也不属于 query，它属于业务数据本身。
 
 后续表格、详情页、弹窗、筛选器都可以复用这些类型。
 
+维护建议：
+
+- 如果接口字段变了，先改 types。
+- 如果后端响应结构变了，比如多了 meta，也在这里改。
+- 不要让组件里到处写临时类型。
+
 ---
 
-## 7. Service 层：请求函数和组件解耦
-
-`people` 请求：
+## 8. Service 层：请求函数和组件解耦
 
 ```ts
 // src/services/people.service.ts
@@ -496,49 +474,44 @@ export function getPeople() {
 }
 ```
 
-`activities` 请求：
+service 层不关心 React，不关心组件，不关心 TanStack Table。
 
-```ts
-// src/services/web3-activities.service.ts
-import { apiClient } from "@/lib/api-client"
-import type { Web3ActivitiesResponse } from "@/types/web3-activities.types"
+它只负责一件事：调用接口并返回数据。
 
-export function getWeb3Activities() {
-  return apiClient<Web3ActivitiesResponse>("/api/table-demo/activities")
-}
-```
+维护建议：
 
-service 层不关心 React，不关心组件，不关心 TanStack Table。它只负责一件事：调用接口并返回数据。
+- 如果接口路径变了，改 service。
+- 如果接口参数变了，改 service 的函数参数。
+- 如果后续要加分页、筛选、排序，service 接收 params，然后拼 query string。
+- 不要在 UI 组件里拼 URL。
 
 ---
 
-## 8. Query Key：缓存边界必须统一管理
+## 9. Query Key：缓存边界必须统一管理
 
 很多项目 React Query 用得混乱，就是因为 query key 到处硬编码。
 
 比如组件 A 写：
 
 ```ts
-["activities"]
+["people"]
 ```
 
 组件 B 写：
 
 ```ts
-["web3-activities"]
+["person-list"]
 ```
 
 mutation 成功后又写：
 
 ```ts
-invalidateQueries({ queryKey: ["activity-list"] })
+invalidateQueries({ queryKey: ["users"] })
 ```
 
 这些 key 看起来都像一个东西，但 React Query 认为它们完全不同。结果就是缓存不刷新、页面数据不同步、bug 很难查。
 
 所以 query key 必须集中管理。
-
-`people`：
 
 ```ts
 // src/queries/query-keys/people.keys.ts
@@ -548,23 +521,15 @@ export const peopleKeys = {
 }
 ```
 
-`activities`：
+维护建议：
 
-```ts
-// src/queries/query-keys/web3-activities.keys.ts
-export const web3ActivitiesKeys = {
-  all: ["web3-activities"] as const,
-  lists: () => [...web3ActivitiesKeys.all, "list"] as const,
-}
-```
-
-如果后面要分页，query key 还要带上参数。
+- 不要在组件里手写字符串 key。
+- 列表、详情、筛选、分页都应该有清晰的 key 层级。
+- 后续 mutation 成功后 invalidate，也使用这里的 key 工厂。
 
 ---
 
-## 9. Query 层：封装 queryOptions 和 custom hook
-
-`people` query：
+## 10. Query 层：封装 queryOptions 和 custom hook
 
 ```ts
 // src/queries/people.queries.ts
@@ -584,26 +549,6 @@ export function usePeopleQuery() {
 }
 ```
 
-`activities` query：
-
-```ts
-// src/queries/web3-activities.queries.ts
-import { queryOptions, useQuery } from "@tanstack/react-query"
-import { web3ActivitiesKeys } from "@/queries/query-keys/web3-activities.keys"
-import { getWeb3Activities } from "@/services/web3-activities.service"
-
-export function web3ActivitiesQueryOptions() {
-  return queryOptions({
-    queryKey: web3ActivitiesKeys.lists(),
-    queryFn: getWeb3Activities,
-  })
-}
-
-export function useWeb3ActivitiesQuery() {
-  return useQuery(web3ActivitiesQueryOptions())
-}
-```
-
 这里有一个细节：为什么不直接在组件里写 `useQuery`？
 
 因为真实项目里 query 配置经常会复用：
@@ -616,9 +561,16 @@ export function useWeb3ActivitiesQuery() {
 
 把 `queryOptions` 抽出来，比只封装 custom hook 更灵活。
 
+维护建议：
+
+- query 的 `staleTime`、`enabled`、`placeholderData` 等配置放这里。
+- 组件只消费 `usePeopleQuery()`。
+- 如果多个地方要 prefetch，也复用 `peopleQueryOptions()`。
+- 不要在组件里重复写 `queryKey` 和 `queryFn`。
+
 ---
 
-## 10. 全局接入 QueryClientProvider
+## 11. 全局接入 QueryClientProvider
 
 React Query 需要全局 Provider。
 
@@ -685,81 +637,68 @@ export default function RootLayout({
 
 ---
 
-## 11. 表格组件怎么拆
+## 12. People Table：基础表格分层
 
-我们以 Web3 activities 表格为例。
+现在开始写基础表格。
 
-目录如下：
+目录：
 
 ```txt
 components/
-  web3-activities-table/
+  people-table/
     index.ts
-    web3-activities-table.container.tsx
-    web3-activities-table.tsx
-    web3-activities-table-columns.tsx
-    web3-activities-table-view.tsx
+    people-table.container.tsx
+    people-table.tsx
+    people-table-columns.tsx
+    people-table-view.tsx
 ```
 
 这几个文件分别负责不同事情。
 
-`index.ts`：模块出口。
+### index.ts：模块出口
 
 ```ts
-// src/components/web3-activities-table/index.ts
-export { Web3ActivitiesTableContainer } from "./web3-activities-table.container"
+// src/components/people-table/index.ts
+export { PeopleTableContainer } from "./people-table.container"
 ```
 
-这样页面里可以这样引入：
+这样页面里可以写：
 
 ```ts
-import { Web3ActivitiesTableContainer } from "@/components/web3-activities-table"
+import { PeopleTableContainer } from "@/components/people-table"
 ```
 
-而不是引入很长路径。
+而不是写很长的路径。
 
----
-
-## 12. Container：只负责消费 query
+### container：只负责消费 query
 
 ```tsx
-// src/components/web3-activities-table/web3-activities-table.container.tsx
+// src/components/people-table/people-table.container.tsx
 "use client"
 
-import { Web3ActivitiesTable } from "./web3-activities-table"
-import { useWeb3ActivitiesQuery } from "@/queries/web3-activities.queries"
+import { PeopleTable } from "./people-table"
+import { usePeopleQuery } from "@/queries/people.queries"
 
-export function Web3ActivitiesTableContainer() {
-  const activitiesQuery = useWeb3ActivitiesQuery()
+export function PeopleTableContainer() {
+  const peopleQuery = usePeopleQuery()
 
-  if (activitiesQuery.isPending) {
+  if (peopleQuery.isPending) {
     return (
       <div className="rounded-md border p-6 text-sm text-muted-foreground">
-        Loading Web3 activities...
+        Loading people...
       </div>
     )
   }
 
-  if (activitiesQuery.isError) {
+  if (peopleQuery.isError) {
     return (
       <div className="rounded-md border border-destructive/40 p-6 text-sm text-destructive">
-        {activitiesQuery.error.message}
+        {peopleQuery.error.message}
       </div>
     )
   }
 
-  return (
-    <div className="space-y-3">
-      <div className="text-sm text-muted-foreground">
-        Total activities:{" "}
-        <span className="font-medium text-foreground">
-          {activitiesQuery.data.meta.total}
-        </span>
-      </div>
-
-      <Web3ActivitiesTable data={activitiesQuery.data.data} />
-    </div>
-  )
+  return <PeopleTable data={peopleQuery.data.data} />
 }
 ```
 
@@ -767,214 +706,107 @@ export function Web3ActivitiesTableContainer() {
 
 它只做三件事：
 
-1. 调用 `useWeb3ActivitiesQuery`。
+1. 调用 `usePeopleQuery`。
 2. 处理 loading / error。
-3. 成功后把数据传给 `Web3ActivitiesTable`。
+3. 成功后把数据传给 `PeopleTable`。
 
-这是典型的容器组件职责。
+后续如果 loading 样式要换，或者错误展示要统一，就改这个文件。
 
----
-
-## 13. Table：只负责创建 TanStack Table 实例
+### table：只负责创建 TanStack Table 实例
 
 ```tsx
-// src/components/web3-activities-table/web3-activities-table.tsx
+// src/components/people-table/people-table.tsx
 "use client"
 
 import { getCoreRowModel, useReactTable } from "@tanstack/react-table"
-import { web3ActivitiesTableColumns } from "./web3-activities-table-columns"
-import { Web3ActivitiesTableView } from "./web3-activities-table-view"
-import type { Web3TableActivity } from "@/types/web3-activities.types"
+import { peopleTableColumns } from "./people-table-columns"
+import { PeopleTableView } from "./people-table-view"
+import type { Person } from "@/types/people.types"
 
-type Web3ActivitiesTableProps = {
-  data: Web3TableActivity[]
+type PeopleTableProps = {
+  data: Person[]
 }
 
-export function Web3ActivitiesTable({ data }: Web3ActivitiesTableProps) {
+export function PeopleTable({ data }: PeopleTableProps) {
   const table = useReactTable({
     data,
-    columns: web3ActivitiesTableColumns,
+    columns: peopleTableColumns,
     getCoreRowModel: getCoreRowModel(),
   })
 
   return (
-    <Web3ActivitiesTableView
-      table={table}
-      columnCount={web3ActivitiesTableColumns.length}
-    />
+    <PeopleTableView table={table} columnCount={peopleTableColumns.length} />
   )
 }
 ```
 
-这个文件是 TanStack Table 的核心配置层。
+这个文件是 TanStack Table 的配置层。
 
-后面要加：
+后续要加 sorting、pagination、row selection、column visibility，主要都在这里改。
 
-- sorting
-- pagination
-- row selection
-- column visibility
-- column resizing
-- manualPagination
-
-主要都在这里改。
-
----
-
-## 14. Columns：只负责列配置
+### columns：只负责列配置
 
 ```tsx
-// src/components/web3-activities-table/web3-activities-table-columns.tsx
+// src/components/people-table/people-table-columns.tsx
 import { createColumnHelper } from "@tanstack/react-table"
-import type { Web3TableActivity } from "@/types/web3-activities.types"
+import type { Person } from "@/types/people.types"
 
-const columnHelper = createColumnHelper<Web3TableActivity>()
+const columnHelper = createColumnHelper<Person>()
 
-function formatAddress(address: string) {
-  return `${address.slice(0, 6)}...${address.slice(-4)}`
-}
-
-function formatUsd(value: number) {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 2,
-  }).format(value)
-}
-
-function formatNumber(value: number) {
-  return new Intl.NumberFormat("en-US").format(value)
-}
-
-export const web3ActivitiesTableColumns = [
-  columnHelper.accessor("id", {
-    header: "Activity ID",
-    cell: info => <span className="font-mono text-xs">{info.getValue()}</span>,
+export const peopleTableColumns = [
+  columnHelper.accessor("firstName", {
+    header: "First Name",
+    cell: info => info.getValue(),
+  }),
+  columnHelper.accessor("lastName", {
+    header: "Last Name",
+    cell: info => <i>{info.getValue()}</i>,
+  }),
+  columnHelper.accessor("age", {
+    header: "Age",
+    cell: info => info.renderValue(),
+  }),
+  columnHelper.accessor("visits", {
+    header: "Visits",
+    cell: info => info.getValue(),
   }),
   columnHelper.accessor("status", {
     header: "Status",
-    cell: info => (
-      <span className="rounded-full border px-2 py-0.5 text-xs font-medium">
-        {info.getValue()}
-      </span>
-    ),
-  }),
-  columnHelper.accessor("chain", {
-    header: "Chain",
     cell: info => info.getValue(),
   }),
-  columnHelper.accessor("protocol", {
-    header: "Protocol",
+  columnHelper.accessor("progress", {
+    header: "Profile Progress",
     cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("eventType", {
-    header: "Event",
-    cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("walletAddress", {
-    header: "Wallet",
-    cell: info => (
-      <span className="font-mono text-xs">{formatAddress(info.getValue())}</span>
-    ),
-  }),
-  columnHelper.accessor("txHash", {
-    header: "Tx Hash",
-    cell: info => (
-      <span className="font-mono text-xs">{formatAddress(info.getValue())}</span>
-    ),
-  }),
-  columnHelper.accessor("blockNumber", {
-    header: "Block",
-    cell: info => formatNumber(info.getValue()),
-  }),
-  columnHelper.accessor("assetIn", {
-    header: "Asset In",
-    cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("assetOut", {
-    header: "Asset Out",
-    cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("amountIn", {
-    header: "Amount In",
-    cell: info => formatNumber(info.getValue()),
-  }),
-  columnHelper.accessor("usdValue", {
-    header: "USD Value",
-    cell: info => formatUsd(info.getValue()),
-  }),
-  columnHelper.accessor("gasUsd", {
-    header: "Gas",
-    cell: info => formatUsd(info.getValue()),
-  }),
-  columnHelper.accessor("riskLevel", {
-    header: "Risk",
-    cell: info => (
-      <span className="rounded-full border px-2 py-0.5 text-xs font-medium">
-        {info.getValue()}
-      </span>
-    ),
-  }),
-  columnHelper.accessor("region", {
-    header: "Region",
-    cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("teamOwner", {
-    header: "Owner",
-    cell: info => info.getValue(),
-  }),
-  columnHelper.accessor("createdAt", {
-    header: "Created",
-    cell: info => new Date(info.getValue()).toLocaleString(),
   }),
 ]
 ```
 
-如果以后要新增一列、格式化金额、加操作按钮、加状态徽标，主要改这个文件。
+后续如果要新增一列、删除一列、修改 cell 展示、加操作按钮，都改这个文件。
 
-比如新增操作列：
-
-```tsx
-columnHelper.display({
-  id: "actions",
-  header: "Actions",
-  cell: ({ row }) => {
-    const activity = row.original
-
-    return <button onClick={() => console.log(activity.id)}>View</button>
-  },
-})
-```
-
-这就是列配置层的职责。
-
----
-
-## 15. View：只负责 shadcn/ui 渲染
+### view：只负责 shadcn/ui 渲染
 
 ```tsx
-// src/components/web3-activities-table/web3-activities-table-view.tsx
+// src/components/people-table/people-table-view.tsx
 import { flexRender, type Table as TanStackTable } from "@tanstack/react-table"
 import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
-} from "@web3-frontend-labs/ui/components/table"
-import type { Web3TableActivity } from "@/types/web3-activities.types"
+} from "@/components/ui/table"
+import type { Person } from "@/types/people.types"
 
-type Web3ActivitiesTableViewProps = {
-  table: TanStackTable<Web3TableActivity>
+type PeopleTableViewProps = {
+  table: TanStackTable<Person>
   columnCount: number
 }
 
-export function Web3ActivitiesTableView({
+export function PeopleTableView({
   table,
   columnCount,
-}: Web3ActivitiesTableViewProps) {
+}: PeopleTableViewProps) {
   return (
     <div className="overflow-x-auto rounded-md border">
       <Table>
@@ -982,7 +814,7 @@ export function Web3ActivitiesTableView({
           {table.getHeaderGroups().map(headerGroup => (
             <TableRow key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <TableHead key={header.id} className="whitespace-nowrap">
+                <TableHead key={header.id}>
                   {header.isPlaceholder
                     ? null
                     : flexRender(header.column.columnDef.header, header.getContext())}
@@ -996,7 +828,7 @@ export function Web3ActivitiesTableView({
             table.getRowModel().rows.map(row => (
               <TableRow key={row.id} className="hover:bg-muted/50">
                 {row.getVisibleCells().map(cell => (
-                  <TableCell key={cell.id} className="whitespace-nowrap">
+                  <TableCell key={cell.id}>
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}
@@ -1005,44 +837,26 @@ export function Web3ActivitiesTableView({
           ) : (
             <TableRow>
               <TableCell colSpan={columnCount} className="h-24 text-center">
-                No activities found.
+                No results.
               </TableCell>
             </TableRow>
           )}
         </TableBody>
-        <TableFooter>
-          {table.getFooterGroups().map(footerGroup => (
-            <TableRow key={footerGroup.id}>
-              {footerGroup.headers.map(header => (
-                <TableCell key={header.id} className="whitespace-nowrap font-normal">
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(header.column.columnDef.footer, header.getContext())}
-                </TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableFooter>
       </Table>
     </div>
   )
 }
 ```
 
-这个文件不应该知道接口 URL，不应该知道 query key，不应该知道 loading/error。它只拿到 TanStack Table 实例，然后渲染成 shadcn/ui 的表格。
-
-这是 UI 层的边界。
+这个文件不应该知道接口 URL，不应该知道 query key，不应该知道 loading/error。它只拿到 TanStack Table 实例，然后渲染成 shadcn/ui 表格。
 
 ---
 
-## 16. 页面只组合模块
-
-最后页面会变得很干净：
+## 13. 页面只组合模块
 
 ```tsx
 // src/app/page.tsx
 import { PeopleTableContainer } from "@/components/people-table"
-import { Web3ActivitiesTableContainer } from "@/components/web3-activities-table"
 
 export default function Page() {
   return (
@@ -1058,24 +872,14 @@ export default function Page() {
 
       <section className="space-y-4">
         <div>
-          <h2 className="text-xl font-semibold tracking-tight">People Table</h2>
+          <h2 className="text-xl font-semibold tracking-tight">
+            People Table
+          </h2>
           <p className="text-sm text-muted-foreground">
             Small table for basic table structure and query state.
           </p>
         </div>
         <PeopleTableContainer />
-      </section>
-
-      <section className="space-y-4">
-        <div>
-          <h2 className="text-xl font-semibold tracking-tight">
-            Web3 Activities Table
-          </h2>
-          <p className="text-sm text-muted-foreground">
-            Wider activity dataset for testing table rendering and horizontal scrolling.
-          </p>
-        </div>
-        <Web3ActivitiesTableContainer />
       </section>
     </main>
   )
@@ -1088,33 +892,109 @@ export default function Page() {
 
 ---
 
-## 17. 为什么这种拆分更适合维护
+## 14. 当数据变多时怎么办
 
-可以用一句话概括：
+前面的 People Table 更适合作为基础表格示例。它的数据量小、字段少、业务含义简单，重点是验证这套分层是否成立。
 
-```txt
-拿数据：container
-建表格：table
-配列：columns
-画 UI：view
-```
+但真实项目不会只停留在这种小数据集。比如：
 
-这样之后改需求时会非常明确。
+- 订单明细。
+- 用户列表。
+- 交易流水。
+- 资金记录。
+- 审计日志。
+- 监控事件。
+- 消息流。
 
-- 如果要改接口地址，改 service。
-- 如果要改缓存 key，改 query-keys。
-- 如果要改 loading/error，改 container。
-- 如果要加一列，改 columns。
-- 如果要加分页、排序、行选择，改 table。
-- 如果要改表格外观，改 view。
+这些数据通常会更宽、更长，也更接近线上业务压力。
 
-这比一个组件里混着 300 行代码要好维护得多。
+当表格数据变多时，我们要先区分两个问题：
+
+1. 一次请求多少数据？
+2. 一次渲染多少 DOM？
+
+对应的常见方案也有两种：
+
+1. 分页 pagination。
+2. 虚拟滚动 virtual scrolling / virtualization。
+
+它们不是同一个问题的两个名字，而是分别处理两类压力。
 
 ---
 
-## 18. 接下来加入服务端分页
+## 15. 分页和虚拟滚动分别解决什么
 
-当数据量变大时，一次返回全部数据不是好方案。即使现在只有 500 条，也应该练习服务端分页，因为真实业务里通常是几千、几万、几十万条数据。
+分页解决的是数据获取规模。
+
+它关心的是：
+
+- 一次请求多少数据。
+- 网络传输量。
+- 后端查询压力。
+- 前端内存中的数据规模。
+
+虚拟滚动解决的是 DOM 渲染规模。
+
+它关心的是：
+
+- 一次渲染多少 DOM。
+- 首屏渲染压力。
+- 滚动卡顿。
+- 大量 `tr` / `td` 节点造成的浏览器压力。
+
+一句话概括：
+
+```txt
+分页控制数据量。
+虚拟滚动控制 DOM 数量。
+```
+
+两者不是互斥关系，可以单独用，也可以组合使用。
+
+所以后面的两个大数据场景会分别落到这两条路线：
+
+- Web3 Activities Table：用服务端分页控制每次请求和缓存的数据量。
+- Audit Logs Virtual Table：用虚拟滚动控制一次渲染的 DOM 数量。
+
+---
+
+## 16. Web3 Activities Table：服务端分页场景
+
+现在再引入 Web3 Activity 场景。
+
+它比 People Table 更接近真实业务：字段更多，单元格里有状态、地址、金额、区块号、风险等级，也更适合承接服务端分页。
+
+后端类型可以是：
+
+```ts
+export type Web3TableActivity = {
+  id: string
+  requestId: string
+  chain: string
+  protocol: string
+  eventType: string
+  status: "queued" | "processing" | "succeeded" | "failed" | "cancelled"
+  walletAddress: string
+  walletTag: string
+  txHash: string
+  blockNumber: number
+  assetIn: string
+  assetOut: string
+  amountIn: number
+  usdValue: number
+  gasUsd: number
+  slippageBps: number
+  riskLevel: "low" | "medium" | "high" | "critical"
+  riskScore: number
+  region: string
+  teamOwner: string
+  createdAt: string
+  updatedAt: string
+  retryCount: number
+  confirmationCount: number
+  notes: string
+}
+```
 
 目标接口：
 
@@ -1140,9 +1020,7 @@ GET /api/table-demo/activities?page=1&pageSize=20
 
 ---
 
-## 19. 后端支持分页
-
-修改 `/activities`：
+## 17. 后端支持服务端分页
 
 ```ts
 // backend/src/modules/table-demo/table-demo.routes.ts
@@ -1182,7 +1060,7 @@ page: pagination.pageIndex + 1
 
 ---
 
-## 20. 前端类型加入分页参数
+## 18. Web3 Activities 的前端类型和 service
 
 ```ts
 // src/types/web3-activities.types.ts
@@ -1206,11 +1084,7 @@ export type Web3ActivitiesResponse = {
 }
 ```
 
-影响请求结果的参数，要进入类型，也要进入 query key。
-
----
-
-## 21. Service 接收分页参数
+service 接收分页参数：
 
 ```ts
 // src/services/web3-activities.service.ts
@@ -1236,7 +1110,7 @@ service 不负责保存分页状态，它只负责根据参数请求数据。
 
 ---
 
-## 22. Query Key 必须带分页参数
+## 19. Web3 Activities 的 queryKey 必须带分页参数
 
 分页参数会影响返回数据，所以必须放进 query key。
 
@@ -1261,11 +1135,11 @@ web3ActivitiesKeys.list({ page: 2, pageSize: 20 })
 
 是两份不同缓存。
 
-这很重要。如果分页参数不进入 query key，React Query 可能会认为不同页是同一个数据源，导致缓存错乱。
+如果分页参数不进入 query key，React Query 可能会认为不同页是同一个数据源，导致缓存错乱。
 
 ---
 
-## 23. Query Hook 接收分页参数
+## 20. Web3 Activities 的 query hook
 
 ```ts
 // src/queries/web3-activities.queries.ts
@@ -1289,15 +1163,11 @@ export function useWeb3ActivitiesQuery(params: Web3ActivitiesListParams) {
 
 `placeholderData: keepPreviousData` 的作用是：切换页码时，新一页数据还没回来之前，先保留上一页数据，避免表格闪成 loading 空白。
 
-这个体验在分页表格里很重要。
-
 ---
 
-## 24. Container 管理分页状态
+## 21. Web3 Activities Table 管理分页状态
 
-分页状态应该放哪里？
-
-因为分页状态会影响 query，所以它适合放在 container。
+分页状态应该放在 container，因为它会影响 query。
 
 ```tsx
 // src/components/web3-activities-table/web3-activities-table.container.tsx
@@ -1372,7 +1242,7 @@ export function Web3ActivitiesTableContainer() {
 
 ---
 
-## 25. Table 开启 manualPagination
+## 22. Web3 Activities Table 开启 manualPagination
 
 服务端分页时，TanStack Table 不应该自己 slice 数据。因为后端已经只返回当前页了。
 
@@ -1437,9 +1307,7 @@ export function Web3ActivitiesTable({
 
 ---
 
-## 26. View 层添加分页按钮
-
-最后，在 view 层加分页按钮。
+## 23. View 层添加分页按钮
 
 ```tsx
 // src/components/web3-activities-table/web3-activities-table-view.tsx
@@ -1452,7 +1320,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@web3-frontend-labs/ui/components/table"
+} from "@/components/ui/table"
 import type { Web3TableActivity } from "@/types/web3-activities.types"
 
 type Web3ActivitiesTableViewProps = {
@@ -1504,7 +1372,10 @@ export function Web3ActivitiesTableView({
             {table.getFooterGroups().map(footerGroup => (
               <TableRow key={footerGroup.id}>
                 {footerGroup.headers.map(header => (
-                  <TableCell key={header.id} className="whitespace-nowrap font-normal">
+                  <TableCell
+                    key={header.id}
+                    className="whitespace-nowrap font-normal"
+                  >
                     {header.isPlaceholder
                       ? null
                       : flexRender(header.column.columnDef.footer, header.getContext())}
@@ -1565,94 +1436,19 @@ table.getCanNextPage()
 
 ---
 
-## 27. 大数据表格优化：分页和虚拟滚动
+## 24. Audit Logs Virtual Table：虚拟滚动场景
 
-到这里，`People Table` 和 `Web3 Activities Table` 已经把一个可维护表格模块的基础结构跑通了：后端 mock、`apiClient`、service、query key、query options、container、table、columns、view，以及服务端分页。
+服务端分页解决了“一次请求多少数据”的问题。
 
-但前面的数据量还不算大。真实项目里，如果遇到审计日志、交易流水、订单明细、监控事件、消息流这类数据，数据可能有几千条甚至更多。这个时候只靠普通表格渲染，很容易遇到首屏慢、滚动卡顿、浏览器内存压力变大的问题。
+但还有另一种情况：前端已经拿到很多数据，或者业务就是希望用户连续滚动浏览，比如：
 
-大数据表格常见有两种处理方式：
+- 审计日志。
+- 监控事件。
+- 消息流。
+- 交易流水。
+- 系统操作记录。
 
-1. 分页 pagination。
-2. 虚拟滚动 virtual scrolling / virtualization。
-
-它们解决的问题不一样。
-
-分页解决的是：
-
-- 一次请求多少数据。
-- 网络传输量。
-- 后端查询压力。
-- 前端内存中的数据规模。
-
-虚拟滚动解决的是：
-
-- 一次渲染多少 DOM。
-- 首屏渲染压力。
-- 滚动卡顿。
-- 大量 `tr` / `td` 节点造成的浏览器压力。
-
-一句话概括：分页控制“数据量”，虚拟滚动控制“DOM 数量”。两者不是互斥关系，可以单独用，也可以组合使用。
-
----
-
-## 28. 分页解决什么问题
-
-服务端分页适合真实业务里的订单列表、用户列表、交易记录、资金流水、审计日志等。
-
-典型接口是：
-
-```txt
-GET /api/table-demo/activities?page=1&pageSize=20
-```
-
-返回：
-
-```ts
-{
-  data: Web3TableActivity[],
-  meta: {
-    total: 500,
-    page: 1,
-    pageSize: 20,
-    pageCount: 25,
-    hasPreviousPage: false,
-    hasNextPage: true
-  }
-}
-```
-
-前端只拿当前页数据。因为 `page` 和 `pageSize` 会影响接口返回结果，所以 React Query 的 `queryKey` 必须带分页参数：
-
-```ts
-web3ActivitiesKeys.list({
-  page,
-  pageSize,
-})
-```
-
-TanStack Table 使用服务端分页时，核心配置是：
-
-```ts
-manualPagination: true
-rowCount
-state: { pagination }
-onPaginationChange
-```
-
-这里还有一个很容易踩的点：TanStack Table 的 `pageIndex` 是从 0 开始，后端接口常见 `page` 是从 1 开始，所以请求时要转换：
-
-```ts
-page: pagination.pageIndex + 1
-```
-
-分页的价值是让后端和前端都只处理当前需要的那一段数据。它控制的是数据规模，而不是 DOM 数量。如果一页只展示 20 或 50 行，普通表格渲染通常就足够了。
-
----
-
-## 29. 虚拟滚动解决什么问题
-
-如果一次性渲染 5000 行，每行 15 列，那么 DOM 节点数量会非常大：
+这时如果一次性渲染 5000 行，每行 15 列，那么 DOM 节点数量会非常大：
 
 ```txt
 5000 行 × 15 列 = 75000 个单元格
@@ -1671,59 +1467,11 @@ page: pagination.pageIndex + 1
 数据可以有 5000 条，但页面只渲染当前可见区域附近的几十条。
 ```
 
-`@tanstack/react-virtual` 的作用就是把这件事抽象出来：
-
-- 根据滚动容器计算当前可见行。
-- 只渲染 virtual rows。
-- 用总高度撑开滚动区域。
-- 用 `transform` 把可见行移动到正确位置。
-
-也就是说，用户感觉自己在滚动完整的 5000 行数据，但浏览器实际同时存在的 DOM 行数可能只有几十行。
-
 ---
 
-## 30. 新增 Audit Logs Virtual Table 场景
+## 25. 后端新增 audit logs 接口
 
-为了把虚拟滚动放到更真实的业务语境里，可以新增一个 `Audit Logs Virtual Table`。
-
-它模拟的是系统审计日志 / 操作事件流，字段包括：
-
-- `id`
-- `timestamp`
-- `eventType`
-- `severity`
-- `status`
-- `actor`
-- `team`
-- `environment`
-- `region`
-- `resourceType`
-- `resourceId`
-- `requestId`
-- `sessionId`
-- `ipAddress`
-- `method`
-- `path`
-- `httpStatus`
-- `durationMs`
-- `retryCount`
-- `message`
-
-这个场景比普通列表更适合展示虚拟滚动：
-
-- 日志数据量通常很大。
-- 用户经常连续滚动查看。
-- 每行字段较多。
-- 一次性渲染所有 DOM 性能不好。
-- 比普通分页更适合观察滚动性能。
-
-这里要注意，审计日志表不一定要替代前面的 Web3 activities 表。它是另一个更偏性能验证的场景：前面的表格用于讲请求、缓存、分层和分页；审计日志表用于讲大量行渲染时的 DOM 压力。
-
----
-
-## 31. 后端新增 audit logs 接口
-
-后端可以新增一个审计日志数据源：
+这里新增一个审计日志数据源：
 
 ```ts
 import { auditLogEvents, auditLogMeta } from "./audit-log.data"
@@ -1742,7 +1490,7 @@ tableDemoRoutes.get("/audit-logs", (_req, res) => {
 
 ---
 
-## 32. 前端新增 audit logs 分层结构
+## 26. Audit Logs 的前端分层结构
 
 新增审计日志表时，仍然沿用前面的分层方式：
 
@@ -1780,7 +1528,7 @@ src/
 
 ---
 
-## 33. 核心虚拟滚动代码
+## 27. 核心虚拟滚动代码
 
 下面是一个简化版 `AuditLogsTableView`。重点不是完整列配置，而是虚拟滚动的渲染逻辑：
 
@@ -1797,7 +1545,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@web3-frontend-labs/ui/components/table"
+} from "@/components/ui/table"
 import type { AuditLogEvent } from "@/types/audit-logs.types"
 
 type AuditLogsTableViewProps = {
@@ -1908,7 +1656,7 @@ export function AuditLogsTableView({
 
 ---
 
-## 34. 分页和虚拟滚动怎么选择
+## 28. 分页和虚拟滚动怎么选择
 
 前端分页适合数据量小、一次加载无压力、本地 mock、配置类表格这类场景。比如系统配置、枚举字典、少量团队成员列表，直接拿完整数据再本地分页就可以。
 
@@ -1926,7 +1674,7 @@ export function AuditLogsTableView({
 
 ---
 
-## 35. 错误处理、重试和缓存同步
+## 29. 错误处理、重试和缓存同步
 
 真实项目里，表格不是只要成功状态。
 
@@ -2016,58 +1764,7 @@ list: (params: Web3ActivitiesListParams) =>
 
 ---
 
-## 36. 结合真实业务看这套结构
-
-虽然示例用的是 Web3 activities，但这个结构不是 Web3 专属。
-
-它也适合：
-
-- 后台订单列表。
-- 用户管理列表。
-- 内容管理列表。
-- 交易历史。
-- 资金流水。
-- 任务中心。
-- 风控审核列表。
-- 数据看板明细表。
-
-比如一个订单系统，结构可能是：
-
-```txt
-types/orders.types.ts
-services/orders.service.ts
-queries/query-keys/orders.keys.ts
-queries/orders.queries.ts
-components/orders-table/
-```
-
-订单列表的分页、状态筛选、详情弹窗、取消订单、重新支付，都可以按同样思路拆。
-
-组件不应该直接知道：
-
-- 请求 URL。
-- query key。
-- 缓存失效规则。
-- 接口响应结构细节。
-- 服务端分页如何拼参数。
-
-组件应该消费已经封装好的结果：
-
-```ts
-const ordersQuery = useOrdersQuery(params)
-```
-
-表格应该消费普通数据：
-
-```tsx
-<OrdersTable data={ordersQuery.data.data} />
-```
-
-这就是工程化落地里最重要的边界感。
-
----
-
-## 37. 工程化注意事项
+## 30. 工程化注意事项
 
 最后总结几个很容易踩坑的点。
 
@@ -2079,22 +1776,9 @@ const ordersQuery = useOrdersQuery(params)
 
 第四，TanStack Table 的 `data` 和 `columns` 要尽量稳定。columns 最好定义在组件外部或单独文件里，不要每次 render 都重新生成复杂 columns。
 
-第五，服务端分页时要用 `manualPagination`。后端返回当前页数据，前端就不要再做本地 slice。TanStack Table 配置里要有：
-
-```ts
-manualPagination: true
-rowCount
-state: { pagination }
-onPaginationChange
-```
+第五，服务端分页时要用 `manualPagination`。后端返回当前页数据，前端就不要再做本地 slice。
 
 第六，`pageIndex` 和 `page` 不要搞混。TanStack Table 的 `pageIndex` 从 0 开始。后端接口通常 `page` 从 1 开始。
-
-所以请求时要：
-
-```ts
-page: pagination.pageIndex + 1
-```
 
 第七，不要为了炫技一上来就用虚拟滚动。数据少时普通表格更简单；一页只有几十行时，服务端分页 + 普通表格通常已经够用。
 
@@ -2110,14 +1794,14 @@ page: pagination.pageIndex + 1
 
 ---
 
-## 38. 总结
+## 31. 总结
 
 这套方案的核心不是“用了几个流行库”，而是把边界拆清楚。
 
 React Query 负责请求和缓存，TanStack Table 负责表格模型，shadcn/ui 负责 UI 组件。项目代码再按 service、query、container、table、columns、view 分层，后续加分页、排序、筛选、行操作时才不会牵一发动全身。
 
-一个表格从简单展示变成真实业务模块，复杂度一定会上升。我们要做的不是避免复杂度，而是把复杂度放到它应该存在的位置。
+如果只是写 demo，一个文件当然最快。但如果你希望这个 demo 以后还能继续扩展，比如服务端分页、交易状态、风险标记、行操作菜单、虚拟滚动，那么一开始就把数据请求、表格逻辑和 UI 渲染拆开，会让后面的每一步都更稳。
 
-如果只是写 demo，一个文件当然最快。但如果你希望这个 demo 以后还能继续扩展，比如服务端分页、Web3 activity 明细、交易状态、风险标记、行操作菜单、虚拟滚动，那么一开始就把数据请求、表格逻辑和 UI 渲染拆开，会让后面的每一步都更稳。
+当数据量变大时，表格优化要同时考虑数据获取和 DOM 渲染。分页解决数据量，虚拟滚动解决渲染量。前者让接口和缓存更可控，后者让浏览器少渲染无意义的节点。
 
-当数据量变大时，表格优化要同时考虑数据获取和 DOM 渲染。分页解决数据量，虚拟滚动解决渲染量。前者让接口和缓存更可控，后者让浏览器少渲染无意义的节点。把这两个边界分清楚，才能根据真实业务选择合适的表格方案。
+把这两个边界分清楚，才能根据真实业务选择合适的表格方案。
