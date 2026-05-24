@@ -1,0 +1,38 @@
+name: Sync Blog Metadata
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "blog/**"
+      - "scripts/sync-blog.js"
+      - "README.md"
+      - ".github/workflows/sync-blog.yml"
+
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-blog:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Sync blog metadata
+        run: node scripts/sync-blog.js
+
+      - name: Commit generated files
+        uses: stefanzweifel/git-auto-commit-action@v7
+        with:
+          commit_message: "docs: sync blog metadata"
+          file_pattern: README.md blog/README.md blog-feed.json rss.xml
