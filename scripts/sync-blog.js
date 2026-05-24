@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { execSync } = require("child_process");
 
 const OWNER = "Maimai10808";
 const REPO = "blog_pages";
@@ -98,6 +99,22 @@ function getDate(filePath, frontmatter) {
   return stats.mtime.toISOString().slice(0, 10);
 }
 
+function getGitLastUpdatedAt(filePath) {
+  try {
+    const timestamp = execSync(`git log -1 --format=%cI -- "${filePath}"`, {
+      encoding: "utf8",
+    }).trim();
+
+    if (timestamp) {
+      return timestamp;
+    }
+  } catch (error) {
+    console.warn(`Cannot get git updated time for ${filePath}`);
+  }
+
+  return null;
+}
+
 function getCategory(relativePath) {
   return relativePath.split("/")[0] || "uncategorized";
 }
@@ -113,19 +130,34 @@ function collectPosts() {
       const relativePath = path
         .relative(BLOG_DIR, filePath)
         .replace(/\\/g, "/");
+
       const fileName = path.basename(filePath);
       const category = getCategory(relativePath);
+
+      const gitUpdatedAt = getGitLastUpdatedAt(filePath);
+      const date = gitUpdatedAt
+        ? gitUpdatedAt.slice(0, 10)
+        : getDate(filePath, frontmatter);
 
       return {
         title: getTitle(content, fileName, frontmatter),
         description: getDescription(content, frontmatter),
-        date: getDate(filePath, frontmatter),
+        date,
+        updatedAt: gitUpdatedAt || `${date}T00:00:00.000Z`,
         category,
         githubUrl: `${BLOG_GITHUB_BASE_URL}/${relativePath}`,
         path: `blog/${relativePath}`,
       };
     })
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => {
+      const updatedDiff = new Date(b.updatedAt) - new Date(a.updatedAt);
+
+      if (updatedDiff !== 0) {
+        return updatedDiff;
+      }
+
+      return a.title.localeCompare(b.title);
+    });
 }
 
 function updateRootReadme(posts) {
