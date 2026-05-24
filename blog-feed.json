@@ -1,9 +1,36 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-05-24T18:53:39.920Z",
-  "total": 53,
+  "updatedAt": "2026-05-24T19:40:13.818Z",
+  "total": 56,
   "posts": [
+    {
+      "title": "Git 和 GitHub 入门：从版本控制到团队协作，一篇文章讲清楚",
+      "description": "很多人第一次接触 Git，都会觉得它有点绕。",
+      "date": "2026-05-25",
+      "updatedAt": "2026-05-25T03:39:54+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git-github-version-control-introduction.md",
+      "path": "blog/computer-science-basics/git-github-version-control-introduction.md"
+    },
+    {
+      "title": "Linux 终端入门：新手必须掌握的常用命令和基本思路",
+      "description": "很多刚接触 Linux 的人，都会对终端有一点畏惧。",
+      "date": "2026-05-25",
+      "updatedAt": "2026-05-25T03:39:39+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/linux-terminal-basic-commands-introduction.md",
+      "path": "blog/computer-science-basics/linux-terminal-basic-commands-introduction.md"
+    },
+    {
+      "title": "GitHub Actions 入门：从自动测试到自动部署，理解 CI/CD 的基本流程",
+      "description": "很多开发者第一次听到 GitHub Actions，会觉得它离自己有点远。",
+      "date": "2026-05-25",
+      "updatedAt": "2026-05-25T03:39:34+08:00",
+      "category": "deployment-devops",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/deployment-devops/github-actions-ci-cd-introduction.md",
+      "path": "blog/deployment-devops/github-actions-ci-cd-introduction.md"
+    },
     {
       "title": "Docker 入门：为什么容器化是应用部署绕不开的一步",
       "description": "很多开发者第一次接触 Docker，往往是因为项目“在我电脑上明明能跑，到了服务器就不行”。本地开发时，前端、后端、数据库、运行时环境都配置好了，代码也能正常启动。但一旦要部署到另一台机器，就会遇到各种问题：Python 版本不一致、Node 版本不一致、依赖安装失败、数据库没初始化、环境变量没配置、端口冲突……",
