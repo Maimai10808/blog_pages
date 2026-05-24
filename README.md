@@ -30,6 +30,7 @@
 - [深入探讨 React 的核心工作原理](./blog/react-fundamentals/react-core-working-principles.md)
 - [React Fiber 深度解析：从卡顿到流畅的革命性架构升级](./blog/react-fundamentals/react-fiber-architecture.md)
 - [React Server Components 是什么：讲清 CSR、Server Components 与 Next.js 客户端/服务端组件](./blog/react-fundamentals/react-server-components-csr-nextjs.md)
+- [React useState 和 useEffect 入门：为什么这两个 Hook 最容易被用错？](./blog/react-fundamentals/react-usestate-useeffect-beginner-pitfalls.md)
 - [React useEffect 请求封装：从页面请求到可复用 Hook](./blog/react-fundamentals/react-useeffect-fetch-request-hook.md)
 - [React Hooks 底层原理深度解析：从数组到链表的魔法](./blog/react-fundamentals/react-hooks-internals-array-linked-list.md)
 - [React useMemo 怎么理解：缓存计算结果和稳定引用的工程化场景](./blog/react-fundamentals/react-usememo-reference-performance.md)
