@@ -21,15 +21,24 @@
 
 - [从 0x00 到 bit、byte、二进制、十六进制：讲清计算机底层表示](./blog/computer-science-basics/computer-bits-bytes-binary-hex.md)
 
+### AI 工具与工作流
+
+- [OpenClaw 入门：为什么它不只是一个 AI 聊天机器人，而是个人 AI 助手框架？](./blog/ai-tools-workflows/openclaw-personal-ai-assistant-framework-introduction.md)
+
 ### React 基础工程化
 
 - [Promise 的理解与应用：从异步结果容器到 async/await 实战](./blog/react-fundamentals/javascript-promise-understanding.md)
+- [从 JSX 到 TSX：React 开发者必须掌握的 TypeScript 基础](./blog/react-fundamentals/react-jsx-to-tsx-typescript-basics.md)
 - [TypeScript Generics 泛型的理解与应用](./blog/react-fundamentals/typescript-generics-understanding.md)
+- [Type Alias 还是 Interface：TypeScript 类型设计里的工程取舍](./blog/react-fundamentals/typescript-type-alias-vs-interface-engineering-tradeoffs.md)
 - [React 项目目录结构怎么设计：从页面、组件到业务模块拆分](./blog/react-fundamentals/react-project-directory-structure.md)
+- [从能写 React 到写好 React：提升前端工程性的 17 个实践](./blog/react-fundamentals/react-engineering-17-practices.md)
+- [React 复用思维入门：什么时候写组件，什么时候写工具函数，什么时候写自定义 Hook？](./blog/react-fundamentals/react-reuse-components-utils-custom-hooks.md)
 - [React Context 进阶：Provider Pattern 的正确打开方式](./blog/react-fundamentals/react-context-provider-pattern.md)
 - [深入探讨 React 的核心工作原理](./blog/react-fundamentals/react-core-working-principles.md)
 - [React Fiber 深度解析：从卡顿到流畅的革命性架构升级](./blog/react-fundamentals/react-fiber-architecture.md)
 - [React Server Components 是什么：讲清 CSR、Server Components 与 Next.js 客户端/服务端组件](./blog/react-fundamentals/react-server-components-csr-nextjs.md)
+- [Next.js Image 组件入门：为什么一张图片也值得认真优化？](./blog/react-fundamentals/nextjs-image-component-optimization.md)
 - [React useState 和 useEffect 入门：为什么这两个 Hook 最容易被用错？](./blog/react-fundamentals/react-usestate-useeffect-beginner-pitfalls.md)
 - [React useEffect 请求封装：从页面请求到可复用 Hook](./blog/react-fundamentals/react-useeffect-fetch-request-hook.md)
 - [React Hooks 底层原理深度解析：从数组到链表的魔法](./blog/react-fundamentals/react-hooks-internals-array-linked-list.md)
@@ -37,6 +46,8 @@
 - [React useCallback 的理解与应用：不是加速函数，而是稳定函数引用](./blog/react-fundamentals/react-usecallback-stable-function-reference.md)
 - [React useRef 的理解与应用：跨渲染持久存在的值容器](./blog/react-fundamentals/react-useref-persistent-box.md)
 - [React 大列表优化落地：从普通 map 到 react-window / react-virtualized 的工程化封装](./blog/react-fundamentals/react-large-list-virtualization.md)
+- [AI 辅助前端工作流入门：从 shadcn/ui、Figma 到 Builder.io，前端开发方式正在怎么变？](./blog/react-fundamentals/ai-assisted-frontend-workflow-shadcn-figma-builderio.md)
+- [TanStack Start 入门：一个基于 TanStack Router 的全栈 React 框架到底解决了什么问题？](./blog/react-fundamentals/tanstack-start-fullstack-react-framework-introduction.md)
 - [TanStack Table 入门：为什么它是 React 表格开发里的“表格引擎”](./blog/react-fundamentals/tanstack-table-react-table-engine.md)
 - [用 TanStack Table、React Query 和 shadcn/ui 搭一个可维护的数据表格架构](./blog/react-fundamentals/tanstack-table-react-query-shadcn-architecture.md)
 
@@ -63,6 +74,7 @@
 - [React 多步骤表单工程化落地：从 Zod Schema、React Hook Form 到 Zustand 持久化](./blog/forms-uploads/react-multistep-form-zod-rhf-zustand.md)
 - [React 文件上传不只是 input type=file：从状态建模、上传进度到工程化封装](./blog/forms-uploads/react-file-upload-state-progress.md)
 - [React 多文件上传怎么做：从 File Input 到并发上传进度的工程化封装](./blog/forms-uploads/react-multi-file-upload-progress.md)
+- [Next.js App Router 图片上传入门：从 file input、API Route 到签名 URL 和图片优化](./blog/forms-uploads/nextjs-app-router-image-upload-signed-url-optimization.md)
 
 ### 认证与权限
 
