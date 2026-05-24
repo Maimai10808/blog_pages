@@ -1,9 +1,18 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-05-24T14:31:51.758Z",
-  "total": 52,
+  "updatedAt": "2026-05-24T18:53:39.920Z",
+  "total": 53,
   "posts": [
+    {
+      "title": "Docker 入门：为什么容器化是应用部署绕不开的一步",
+      "description": "很多开发者第一次接触 Docker，往往是因为项目“在我电脑上明明能跑，到了服务器就不行”。本地开发时，前端、后端、数据库、运行时环境都配置好了，代码也能正常启动。但一旦要部署到另一台机器，就会遇到各种问题：Python 版本不一致、Node 版本不一致、依赖安装失败、数据库没初始化、环境变量没配置、端口冲突……",
+      "date": "2026-05-25",
+      "updatedAt": "2026-05-25T02:53:16+08:00",
+      "category": "deployment-devops",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/deployment-devops/docker-containerization-introduction.md",
+      "path": "blog/deployment-devops/docker-containerization-introduction.md"
+    },
     {
       "title": "Next.js 图片上传工程落地：从 Uploadcare 上传组件到图片存储、展示与安全上传",
       "description": "在前端项目里，图片上传看起来很简单：放一个上传按钮，用户选择图片，然后把图片显示出来。很多 demo 也确实只需要几行代码就能跑起来。",
