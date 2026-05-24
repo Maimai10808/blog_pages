@@ -75,6 +75,7 @@
 - [React 文件上传不只是 input type=file：从状态建模、上传进度到工程化封装](./blog/forms-uploads/react-file-upload-state-progress.md)
 - [React 多文件上传怎么做：从 File Input 到并发上传进度的工程化封装](./blog/forms-uploads/react-multi-file-upload-progress.md)
 - [Next.js App Router 图片上传入门：从 file input、API Route 到签名 URL 和图片优化](./blog/forms-uploads/nextjs-app-router-image-upload-signed-url-optimization.md)
+- [Next.js 图片上传工程落地：从 Uploadcare 上传组件到图片存储、展示与安全上传](./blog/forms-uploads/nextjs-uploadcare-image-upload-engineering.md)
 
 ### 认证与权限
 
