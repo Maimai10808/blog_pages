@@ -22,6 +22,7 @@
 - [从 0x00 到 bit、byte、二进制、十六进制：讲清计算机底层表示](./blog/computer-science-basics/computer-bits-bytes-binary-hex.md)
 - [Git 和 GitHub 入门：从版本控制到团队协作，一篇文章讲清楚](./blog/computer-science-basics/git-github-version-control-introduction.md)
 - [Linux 终端入门：新手必须掌握的常用命令和基本思路](./blog/computer-science-basics/linux-terminal-basic-commands-introduction.md)
+- [常见网络协议入门：从 IP 地址到 HTTP，一篇搞懂网络通信基础](./blog/computer-science-basics/network-protocols-ip-http-security-basics.md)
 
 ### AI 工具与工作流
 
