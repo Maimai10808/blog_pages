@@ -1,8 +1,8 @@
 # blog_pages
 
-这个仓库用于存放前端工程化与 Web3 前端实践相关的 Markdown 技术文章。内容以“项目落地”为主，不只写 API 用法，而是围绕真实业务里的状态边界、目录拆分、异步流程、认证链路、请求封装、钱包适配和组件消费方式展开。
+这个仓库用于存放计算机基础、前端工程化、DevOps 与 Web3 前端实践相关的 Markdown 技术文章。内容以“项目落地”为主，不只写 API 用法，也会围绕网络协议、Linux、Git、容器化、CI/CD，以及真实业务里的状态边界、目录拆分、异步流程、认证链路、请求封装、钱包适配和组件消费方式展开。
 
-文章主要覆盖 React、Next.js、状态管理、表单、文件上传、数据请求、实时通信、D3 可视化，以及 Web3 登录、支付、充值提现等方向。
+文章主要覆盖计算机与网络基础、Linux 终端、Git、Docker、GitHub Actions、React、Next.js、状态管理、表单、文件上传、数据请求、实时通信、D3 可视化，以及 Web3 登录、支付、充值提现等方向。
 
 ## 内容定位
 
@@ -21,6 +21,7 @@
 
 - [从 0x00 到 bit、byte、二进制、十六进制：讲清计算机底层表示](./blog/computer-science-basics/computer-bits-bytes-binary-hex.md)
 - [Git 和 GitHub 入门：从版本控制到团队协作，一篇文章讲清楚](./blog/computer-science-basics/git-github-version-control-introduction.md)
+- [如何写好 Git Commit Message：一份实用的提交信息指南](./blog/computer-science-basics/git_commit_message.md)
 - [Linux 终端入门：新手必须掌握的常用命令和基本思路](./blog/computer-science-basics/linux-terminal-basic-commands-introduction.md)
 - [常见网络协议入门：从 IP 地址到 HTTP，一篇搞懂网络通信基础](./blog/computer-science-basics/network-protocols-ip-http-security-basics.md)
 
@@ -103,6 +104,11 @@
 ### 数据可视化
 
 - [D3.js 入门：它不只是画图，更是把数据映射成可视化图形的工具](./blog/data-visualization/d3js-data-visualization-introduction.md)
+
+### 工程化思考
+
+- [从零搭建企业级 Mono Repo 工程：前端高薪必备技能](./blog/感想/MonoRepo.md)
+- [为什么现代前端一定要学工程化？](./blog/感想/为什么现代前端一定要学工程化.md)
 
 ## 写作风格
 
