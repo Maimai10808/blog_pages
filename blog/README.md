@@ -6,9 +6,9 @@ Total posts: **60**
 
 ## Latest Posts
 
+- [为什么现代前端一定要学工程化？](https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/为什么现代前端一定要学工程化.md) · `感想` · 2026-06-06
 - [从零搭建企业级 Mono Repo 工程：前端高薪必备技能](https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/MonoRepo.md) · `感想` · 2026-06-06
-- [为什么现代前端一定要学工程化？](https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/为什么现代前端一定要学工程化.md) · `感想` · 2026-06-03
-- [如何写好 Git Commit Message：一份实用的提交信息指南](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git_commit_message.md) · `computer-science-basics` · 2026-05-30
+- [如何写好 Git Commit Message：一份实用的提交信息指南](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git_commit_message.md) · `computer-science-basics` · 2026-06-06
 - [常见网络协议入门：从 IP 地址到 HTTP，一篇搞懂网络通信基础](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/network-protocols-ip-http-security-basics.md) · `computer-science-basics` · 2026-05-28
 - [Git 和 GitHub 入门：从版本控制到团队协作，一篇文章讲清楚](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git-github-version-control-introduction.md) · `computer-science-basics` · 2026-05-25
 - [Linux 终端入门：新手必须掌握的常用命令和基本思路](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/linux-terminal-basic-commands-introduction.md) · `computer-science-basics` · 2026-05-25
@@ -31,7 +31,7 @@ Total posts: **60**
 
 ### computer-science-basics
 
-- [如何写好 Git Commit Message：一份实用的提交信息指南](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git_commit_message.md) · 2026-05-30
+- [如何写好 Git Commit Message：一份实用的提交信息指南](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git_commit_message.md) · 2026-06-06
 - [常见网络协议入门：从 IP 地址到 HTTP，一篇搞懂网络通信基础](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/network-protocols-ip-http-security-basics.md) · 2026-05-28
 - [Git 和 GitHub 入门：从版本控制到团队协作，一篇文章讲清楚](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git-github-version-control-introduction.md) · 2026-05-25
 - [Linux 终端入门：新手必须掌握的常用命令和基本思路](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/linux-terminal-basic-commands-introduction.md) · 2026-05-25
@@ -109,5 +109,5 @@ Total posts: **60**
 
 ### 感想
 
+- [为什么现代前端一定要学工程化？](https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/为什么现代前端一定要学工程化.md) · 2026-06-06
 - [从零搭建企业级 Mono Repo 工程：前端高薪必备技能](https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/MonoRepo.md) · 2026-06-06
-- [为什么现代前端一定要学工程化？](https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/为什么现代前端一定要学工程化.md) · 2026-06-03

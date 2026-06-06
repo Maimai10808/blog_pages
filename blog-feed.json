@@ -1,44 +1,37 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-<<<<<<< Updated upstream
-  "updatedAt": "2026-05-28T13:59:02.424Z",
-  "total": 57,
-  "posts": [
-    {
-=======
-  "updatedAt": "2026-06-06T08:51:13.286Z",
+  "updatedAt": "2026-06-06T08:54:53.892Z",
   "total": 60,
   "posts": [
     {
-      "title": "从零搭建企业级 Mono Repo 工程：前端高薪必备技能",
-      "description": "在前端开发中，很多同学可能只熟悉小项目开发，但当你进入大型项目时，你会发现几乎所有企业都在用 Mono Repo（单仓库管理） 来组织代码。它不仅是一种代码组织方式，更是现代前端工程能力的分水岭。如果你不会 Mono Repo，想拿高薪项目的入场券几乎不可能。",
-      "date": "2026-06-06",
-      "updatedAt": "2026-06-06T00:00:00.000Z",
-      "category": "感想",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/MonoRepo.md",
-      "path": "blog/感想/MonoRepo.md"
-    },
-    {
       "title": "为什么现代前端一定要学工程化？",
       "description": "很多前端初学者都会有一个疑问：为什么以前写前端时，一个项目可能就是几个简单的文件，`index.html`、`style.css`、`main.js` 就能跑起来；而现在一进入 React、Vue 或 Next.js 项目，目录结构立刻变得复杂起来，文件数量也成倍增加？",
-      "date": "2026-06-03",
-      "updatedAt": "2026-06-03T00:00:00.000Z",
+      "date": "2026-06-06",
+      "updatedAt": "2026-06-06T16:54:35+08:00",
       "category": "感想",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/为什么现代前端一定要学工程化.md",
       "path": "blog/感想/为什么现代前端一定要学工程化.md"
     },
     {
+      "title": "从零搭建企业级 Mono Repo 工程：前端高薪必备技能",
+      "description": "在前端开发中，很多同学可能只熟悉小项目开发，但当你进入大型项目时，你会发现几乎所有企业都在用 Mono Repo（单仓库管理） 来组织代码。它不仅是一种代码组织方式，更是现代前端工程能力的分水岭。如果你不会 Mono Repo，想拿高薪项目的入场券几乎不可能。",
+      "date": "2026-06-06",
+      "updatedAt": "2026-06-06T16:54:35+08:00",
+      "category": "感想",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/MonoRepo.md",
+      "path": "blog/感想/MonoRepo.md"
+    },
+    {
       "title": "如何写好 Git Commit Message：一份实用的提交信息指南",
       "description": "在日常开发中，我们几乎每天都会用到 Git。无论是个人项目、团队协作，还是参与开源项目，提交代码都是一个非常高频的操作。",
-      "date": "2026-05-30",
-      "updatedAt": "2026-05-30T00:00:00.000Z",
+      "date": "2026-06-06",
+      "updatedAt": "2026-06-06T16:54:35+08:00",
       "category": "computer-science-basics",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/git_commit_message.md",
       "path": "blog/computer-science-basics/git_commit_message.md"
     },
     {
->>>>>>> Stashed changes
       "title": "常见网络协议入门：从 IP 地址到 HTTP，一篇搞懂网络通信基础",
       "description": "在学习 Wireshark、网络安全分析或渗透测试之前，理解常见网络协议是非常重要的一步。网络协议决定了设备如何通信、数据如何传输、请求如何到达目标服务器，以及攻击者可能从哪些地方发现漏洞。",
       "date": "2026-05-28",
