@@ -1,26 +1,206 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-06-06T08:54:53.892Z",
-  "total": 60,
+  "updatedAt": "2026-06-12T05:06:24.915Z",
+  "total": 80,
   "posts": [
+    {
+      "title": "Codex App 完整教程：从安装、项目管理到插件、Skills、MCP 与电脑自动化",
+      "description": "最近 Codex App 的能力越来越全面，已经逐渐变成 Codex 几大产品形态里最强的一个。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "ai-tools-workflows",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/codex-app-complete-guide.md",
+      "path": "blog/ai-tools-workflows/codex-app-complete-guide.md"
+    },
+    {
+      "title": "Codex 官方最佳实践解读：如何更高效地管理线程、工具、自动化和长期项目",
+      "description": "最近 Codex 官方团队发布了一篇文章，叫做 **Getting the most out of Codex**，主要讲的是如何更高效地使用 Codex，以及在实际工作中有哪些最佳实践。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "ai-tools-workflows",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/codex-official-best-practices.md",
+      "path": "blog/ai-tools-workflows/codex-official-best-practices.md"
+    },
+    {
+      "title": "EIP-1559 详解：Ethereum 手续费机制如何从 Gas Price 走向 Base Fee",
+      "description": "在 Ethereum 早期的手续费模型中，用户发送交易时需要自己设置一个 `gas price`。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/eip-1559-ethereum-fee-mechanism.md",
+      "path": "blog/blockchain-web3-fundamentals/eip-1559-ethereum-fee-mechanism.md"
+    },
+    {
+      "title": "EIP-7702 详解：让 EOA 临时拥有智能合约能力，钱包体验会发生什么变化？",
+      "description": "在过去，用户和 DeFi 协议交互时，经常会遇到一个非常典型的操作流程：",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/eip-7702-smart-eoa-delegation.md",
+      "path": "blog/blockchain-web3-fundamentals/eip-7702-smart-eoa-delegation.md"
+    },
+    {
+      "title": "ERC-1271 与 CoW Protocol 智能订单：让智能合约也能“签名”下单",
+      "description": "在以太坊中，普通用户使用钱包下单、授权或签署消息时，通常依赖 EOA，也就是外部拥有账户。EOA 有私钥，因此可以通过 ECDSA 签名证明“我同意这笔操作”。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/erc-1271-cow-protocol-smart-orders.md",
+      "path": "blog/blockchain-web3-fundamentals/erc-1271-cow-protocol-smart-orders.md"
+    },
+    {
+      "title": "ERC20 Permit 详解：用签名完成授权，减少一次 approve 交易",
+      "description": "在 ERC20 Token 的交互中，`approve + transferFrom` 是一个非常常见的流程。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/erc20-permit-signature-approval.md",
+      "path": "blog/blockchain-web3-fundamentals/erc20-permit-signature-approval.md"
+    },
+    {
+      "title": "EVM 完整入门指南：从 Stack、Memory、Calldata、Storage 到 Opcode 执行过程",
+      "description": "如果你想从一个初级或中级 Solidity 开发者，继续成长为更成熟的区块链工程师，甚至是智能合约安全研究员，那么理解 EVM 是绕不开的一步。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/evm-stack-memory-storage-opcodes-guide.md",
+      "path": "blog/blockchain-web3-fundamentals/evm-stack-memory-storage-opcodes-guide.md"
+    },
+    {
+      "title": "HTTP 缓存机制详解：从 Cache-Control 到 ETag 与 Cache Busting",
+      "description": "在 Web 开发中，HTTP 缓存是一个非常重要但也容易被忽视的性能优化点。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/http-cache-control-etag-cache-busting.md",
+      "path": "blog/computer-science-basics/http-cache-control-etag-cache-busting.md"
+    },
+    {
+      "title": "JWT 完整入门指南：从原理、结构到 Token 与 Session 的区别",
+      "description": "在后端开发和前后端分离项目中，JWT 是一个非常常见的概念。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "auth-permissions",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/jwt-token-session-complete-guide.md",
+      "path": "blog/auth-permissions/jwt-token-session-complete-guide.md"
+    },
+    {
+      "title": "Next.js Image 响应式图片优化实践：别只写四个必填属性",
+      "description": "在 Next.js 中，`Image` 组件已经帮我们做了很多图片优化工作。按照官方文档的最低要求，我们只需要提供几个基础属性，就可以正常渲染一张图片：",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-image-responsive-optimization-practices.md",
+      "path": "blog/react-fundamentals/nextjs-image-responsive-optimization-practices.md"
+    },
+    {
+      "title": "Next.js Image 组件实战：5 种常见图片布局与优化方案",
+      "description": "在页面中添加一张图片，看起来似乎是一件非常简单的事。写一个 `img` 标签，传入图片地址，再加一点 CSS，好像就完成了。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-image-common-layouts-practices.md",
+      "path": "blog/react-fundamentals/nextjs-image-common-layouts-practices.md"
+    },
+    {
+      "title": "Permit2 是什么：一次授权，多次签名，让 ERC20 支付更顺滑",
+      "description": "在 ERC20 Token 的使用过程中，授权一直是一个非常核心但又不太友好的流程。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/permit2-erc20-signature-approval.md",
+      "path": "blog/blockchain-web3-fundamentals/permit2-erc20-signature-approval.md"
+    },
+    {
+      "title": "TCP 三次握手：别只会背 SYN、SYN-ACK、ACK",
+      "description": "很多人提到 TCP 三次握手，第一反应就是背流程：SYN、SYN-ACK、ACK。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/tcp-three-way-handshake.md",
+      "path": "blog/computer-science-basics/tcp-three-way-handshake.md"
+    },
+    {
+      "title": "Uniswap 流动性池入门：如何通过提供流动性赚取交易手续费",
+      "description": "在 Uniswap 上，用户不仅可以兑换 Token，也可以成为流动性提供者，也就是 Liquidity Provider，简称 LP。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/uniswap-liquidity-pool-introduction.md",
+      "path": "blog/blockchain-web3-fundamentals/uniswap-liquidity-pool-introduction.md"
+    },
+    {
+      "title": "Web 安全基础：同源策略、SameSite Cookie 与 CORS 详解",
+      "description": "在 Web 安全中，同源策略是一个非常核心的概念。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "web-security",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/web-security-same-origin-samesite-cors.md",
+      "path": "blog/web-security/web-security-same-origin-samesite-cors.md"
+    },
+    {
+      "title": "Web3 钱包安全指南：签名消息和发送交易时，钱包到底应该展示什么",
+      "description": "在使用硬件钱包或浏览器钱包时，我们经常会遇到两类操作：",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/web3-wallet-signature-transaction-security.md",
+      "path": "blog/blockchain-web3-fundamentals/web3-wallet-signature-transaction-security.md"
+    },
     {
       "title": "为什么现代前端一定要学工程化？",
       "description": "很多前端初学者都会有一个疑问：为什么以前写前端时，一个项目可能就是几个简单的文件，`index.html`、`style.css`、`main.js` 就能跑起来；而现在一进入 React、Vue 或 Next.js 项目，目录结构立刻变得复杂起来，文件数量也成倍增加？",
-      "date": "2026-06-06",
-      "updatedAt": "2026-06-06T16:54:35+08:00",
-      "category": "感想",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/为什么现代前端一定要学工程化.md",
-      "path": "blog/感想/为什么现代前端一定要学工程化.md"
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/why-modern-frontend-needs-engineering.md",
+      "path": "blog/frontend-engineering/why-modern-frontend-needs-engineering.md"
     },
     {
       "title": "从零搭建企业级 Mono Repo 工程：前端高薪必备技能",
       "description": "在前端开发中，很多同学可能只熟悉小项目开发，但当你进入大型项目时，你会发现几乎所有企业都在用 Mono Repo（单仓库管理） 来组织代码。它不仅是一种代码组织方式，更是现代前端工程能力的分水岭。如果你不会 Mono Repo，想拿高薪项目的入场券几乎不可能。",
-      "date": "2026-06-06",
-      "updatedAt": "2026-06-06T16:54:35+08:00",
-      "category": "感想",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/感想/MonoRepo.md",
-      "path": "blog/感想/MonoRepo.md"
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/enterprise-monorepo-engineering.md",
+      "path": "blog/frontend-engineering/enterprise-monorepo-engineering.md"
+    },
+    {
+      "title": "前端媒体资源优化实践：用 ImageKit 优化图片、视频与上传体验",
+      "description": "在 Web 开发中，性能优化一直是一个绕不开的话题。很多开发者在谈到优化时，第一反应往往是压缩 JavaScript 体积、减少 CSS 文件大小、优化接口响应时间，或者在 Lighthouse、PageSpeed Insights 中反复检查性能分数。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "forms-uploads",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/forms-uploads/frontend-media-optimization-imagekit.md",
+      "path": "blog/forms-uploads/frontend-media-optimization-imagekit.md"
+    },
+    {
+      "title": "我是如何用 Codex 维护长期项目的：从项目管理、文件记忆到局部 Skill",
+      "description": "很多人使用 Codex，可能还停留在“问一句、答一句”的阶段。但如果你真的想用它维护一个长期项目，不管是写代码、做内容、管理数据，还是处理创业任务，仅仅靠聊天是不够的。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "ai-tools-workflows",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/codex-long-term-project-maintenance.md",
+      "path": "blog/ai-tools-workflows/codex-long-term-project-maintenance.md"
+    },
+    {
+      "title": "智能合约钱包和普通加密钱包有什么区别？",
+      "description": "很多刚接触加密世界的人，都会把“钱包”理解成现实生活中的钱包。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/smart-contract-wallet-vs-crypto-wallet.md",
+      "path": "blog/blockchain-web3-fundamentals/smart-contract-wallet-vs-crypto-wallet.md"
+    },
+    {
+      "title": "稳定币完整入门：从购买力、抵押机制到 DeFi 中的真实需求",
+      "description": "在 DeFi 世界里，稳定币是最重要的基础设施之一。",
+      "date": "2026-06-12",
+      "updatedAt": "2026-06-12T13:06:03+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/stablecoin-defi-introduction.md",
+      "path": "blog/blockchain-web3-fundamentals/stablecoin-defi-introduction.md"
     },
     {
       "title": "如何写好 Git Commit Message：一份实用的提交信息指南",
