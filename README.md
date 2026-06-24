@@ -2,7 +2,7 @@
 
 这个仓库用于存放计算机基础、Web 安全、前端工程化、DevOps、区块链原理与 Web3 前端实践相关的 Markdown 技术文章。内容以“项目落地”为主，不只写 API 用法，也会围绕网络协议、Linux、Git、容器化、CI/CD，以及真实业务里的状态边界、目录拆分、异步流程、认证链路、请求封装、钱包适配和组件消费方式展开。
 
-文章主要覆盖计算机与网络基础、Linux 终端、Git、Web 安全、前端工程化、Docker、GitHub Actions、React、Next.js、状态管理、表单、文件上传、数据请求、实时通信、D3 可视化、区块链协议，以及 Web3 登录、支付、充值提现等方向。
+文章主要覆盖计算机与网络基础、Linux 终端、Git、Web 安全、前端工程化、Docker、GitHub Actions、React、Next.js、状态管理、表单、文件上传、数据请求、实时通信、交易平台前端、金融市场基础、D3 可视化、区块链协议，以及 Web3 登录、支付、充值提现等方向。
 
 ## 内容定位
 
@@ -30,6 +30,7 @@
 ### Web 安全
 
 - [Web 安全基础：同源策略、SameSite Cookie 与 CORS 详解](./blog/web-security/web-security-same-origin-samesite-cors.md)
+- [前端安全入门：从 XSS 到 dangerouslySetInnerHTML，再到 DOMPurify](./blog/web-security/frontend-xss-dangerouslysetinnerhtml-dompurify.md)
 
 ### AI 工具与工作流
 
@@ -64,6 +65,11 @@
 - [Next.js Image 组件入门：为什么一张图片也值得认真优化？](./blog/react-fundamentals/nextjs-image-component-optimization.md)
 - [Next.js Image 组件实战：5 种常见图片布局与优化方案](./blog/react-fundamentals/nextjs-image-common-layouts-practices.md)
 - [Next.js Image 响应式图片优化实践：别只写四个必填属性](./blog/react-fundamentals/nextjs-image-responsive-optimization-practices.md)
+- [Next.js Route Handler 入门：理解 NextRequest 与 NextResponse](./blog/react-fundamentals/nextjs-route-handler-nextrequest-nextresponse.md)
+- [Next.js 性能优化实战：用 dynamic 懒加载降低首屏 JavaScript 体积](./blog/react-fundamentals/nextjs-dynamic-import-performance.md)
+- [在 Next.js 中使用 Sonner 实现 Toast 通知](./blog/react-fundamentals/nextjs-sonner-toast-notifications.md)
+- [React / Next.js 中生成二维码的三种方式：客户端生成、服务端生成与外部 API 方案](./blog/react-fundamentals/react-nextjs-qr-code-generation.md)
+- [React 性能优化：深入理解 useMemo 的作用、场景与最佳实践](./blog/react-fundamentals/react-usememo-performance-best-practices.md)
 - [React useState 和 useEffect 入门：为什么这两个 Hook 最容易被用错？](./blog/react-fundamentals/react-usestate-useeffect-beginner-pitfalls.md)
 - [React useEffect 请求封装：从页面请求到可复用 Hook](./blog/react-fundamentals/react-useeffect-fetch-request-hook.md)
 - [React Hooks 底层原理深度解析：从数组到链表的魔法](./blog/react-fundamentals/react-hooks-internals-array-linked-list.md)
@@ -85,7 +91,13 @@
 
 ### 数据请求与实时通信
 
+- [Axios 快速入门：从基础请求到拦截器、全局配置与错误处理](./blog/data-fetching-realtime/axios-basics-interceptors-error-handling.md)
+- [从 Axios 到统一请求层：实际项目中的 Fetcher 应该怎么设计？](./blog/data-fetching-realtime/axios-unified-fetcher-request-layer.md)
+- [React 博客项目中使用 Axios + JSON Server 实现完整 CRUD](./blog/data-fetching-realtime/react-axios-json-server-crud.md)
 - [Next.js 16 Cache Components 完整代码示例：讲清 Suspense、use cache 和 cacheLife](./blog/data-fetching-realtime/nextjs-cache-components-suspense-use-cache.md)
+- [React / Next.js 中如何落地 MQTT 单例客户端：从实时行情订阅到引用计数管理](./blog/data-fetching-realtime/nextjs-mqtt-singleton-client.md)
+- [HTTP 快照 + MQTT 实时推送：一种更稳的前端实时数据架构](./blog/data-fetching-realtime/http-snapshot-mqtt-realtime-architecture.md)
+- [TypeScript 中如何优雅实现 Server-Sent Events：基于 Effect 的实时同步方案](./blog/data-fetching-realtime/typescript-effect-sse-realtime-sync.md)
 - [TanStack Query 项目落地：从 queryKey、缓存失效到无限分页的工程化封装](./blog/data-fetching-realtime/tanstack-query-querykey-cache-infinite.md)
 - [React Query 项目落地：从接口请求到可维护的数据层封装](./blog/data-fetching-realtime/react-query-maintainable-data-requests.md)
 - [从零实现 React Query 的 useQuery 钩子：深入理解其核心机制](./blog/data-fetching-realtime/react-query-usequery-from-scratch.md)
@@ -94,6 +106,7 @@
 
 ### 表单与上传
 
+- [为什么 React 表单推荐使用 React Hook Form + Zod？](./blog/forms-uploads/react-hook-form-zod-recommended-pattern.md)
 - [在 React 应用中使用 Zod 进行数据验证的全面教程与应用](./blog/forms-uploads/react-zod-data-validation.md)
 - [React Hook Form 项目落地：从受控表单、Zod 校验到异步提交错误处理](./blog/forms-uploads/react-hook-form-zod-submit-errors.md)
 - [React 多步骤表单工程化落地：从 Zod Schema、React Hook Form 到 Zustand 持久化](./blog/forms-uploads/react-multistep-form-zod-rhf-zustand.md)
@@ -106,7 +119,12 @@
 ### 认证与权限
 
 - [React 认证不只是存 Token：JWT、Access Token、Refresh Token 的工程化落地](./blog/auth-permissions/react-jwt-auth-token-refresh.md)
+- [React 中使用 Axios 实现登录表单与全局认证状态](./blog/auth-permissions/react-axios-login-auth-context.md)
 - [JWT 完整入门指南：从原理、结构到 Token 与 Session 的区别](./blog/auth-permissions/jwt-token-session-complete-guide.md)
+- [Next.js 登录模块怎么落地：React Hook Form + Zod + Zustand + API 完整链路](./blog/auth-permissions/nextjs-login-rhf-zod-zustand-api.md)
+- [Next.js 注册模块怎么落地：React Hook Form + Zod + API 的完整链路](./blog/auth-permissions/nextjs-registration-rhf-zod-api.md)
+- [Next.js 找回密码模块怎么落地：React Hook Form + Zod + API 完整链路](./blog/auth-permissions/nextjs-password-reset-rhf-zod-api.md)
+- [从请求层到路由保护：Next.js 项目用户鉴权完整实践](./blog/auth-permissions/nextjs-user-authentication-request-route-protection.md)
 - [Next.js 认证不只是登录表单：从 Server Action、JWT Cookie 到 Middleware 的工程化落地](./blog/auth-permissions/nextjs-server-action-jwt-cookie-auth.md)
 - [Next.js 认证不只是保护页面：从 Middleware、Server Action 到 Data Access Layer 的工程化实践](./blog/auth-permissions/nextjs-auth-middleware-server-action-dal.md)
 
@@ -128,9 +146,27 @@
 - [Web3 SIWE 钱包登录：从签名认证到业务登录态](./blog/web3-frontend/web3-siwe-wallet-login-flow.md)
 - [Reown AppKit 入门：前端如何快速接入 Web3 钱包连接能力](./blog/web3-frontend/reown-appkit-wallet-connect-introduction.md)
 - [Reown AppKit + SIWE 项目落地：从钱包连接到后端登录态的完整前端方案](./blog/web3-frontend/reown-appkit-siwe-wallet-auth.md)
+- [Web3 前端钱包模块如何落地：从钱包连接、SIWE 登录到业务账户状态同步](./blog/web3-frontend/web3-frontend-wallet-module-implementation.md)
+- [Web3 前端多链适配如何落地：从钱包连接到签名、支付与交易分发](./blog/web3-frontend/web3-frontend-multichain-adapter-implementation.md)
+- [Web3 前端 EVM 交互如何落地：从切链、签名到 ERC20 支付与合约领奖](./blog/web3-frontend/web3-frontend-evm-interaction-implementation.md)
+- [Web3 前端交易系统如何落地：从下单 UI 到 Operation 编码、签名与实时状态更新](./blog/web3-frontend/web3-frontend-trading-system-implementation.md)
+- [Web3 前端如何落地 IPFS 上传：从 Token Logo 到 Metadata JSON](./blog/web3-frontend/web3-frontend-ipfs-upload-implementation.md)
+- [Web3 前端实时通信如何落地：从 SSE 订阅到行情、订单与账户状态更新](./blog/web3-frontend/web3-frontend-realtime-sse-implementation.md)
 - [Web3 空投领取前端怎么落地：从 React Query、钱包切链到链上 Claim 的完整工程封装](./blog/web3-frontend/web3-airdrop-claim-frontend-flow.md)
 - [Web3 充值提现流程：从链上交易到后端状态同步](./blog/web3-frontend/web3-deposit-withdrawal-flow.md)
 - [多链支付前端怎么封装：从钱包适配器到统一 usePay 的工程化落地](./blog/web3-frontend/multichain-payment-frontend-usepay.md)
+
+### 交易平台前端
+
+- [从 MQTT 单例客户端到 Zustand 行情 Store：Next.js 交易所实时行情系统实践](./blog/trading-platform-frontend/nextjs-exchange-mqtt-zustand-market-data.md)
+- [从交易对切换到下单撤单：Next.js 现货交易页完整实践](./blog/trading-platform-frontend/nextjs-spot-trading-page-implementation.md)
+- [从开多开空到一键平仓：Next.js 合约交易页完整实践](./blog/trading-platform-frontend/nextjs-futures-trading-page-implementation.md)
+
+### 金融市场基础
+
+- [写给 Web3 新人的加密货币交易入门：从现货、USDT 到合约交易](./blog/financial-markets/crypto-spot-usdt-futures-trading-introduction.md)
+- [写给 Web3 从业者的期货入门：从合约规格、保证金到永续合约](./blog/financial-markets/futures-margin-perpetual-contracts-introduction.md)
+- [给投资小白的一次系统扫盲：从余额宝、债券、股票到基金](./blog/financial-markets/investment-basics-stocks-bonds-funds.md)
 
 ### 数据可视化
 
