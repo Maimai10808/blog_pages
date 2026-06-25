@@ -1,9 +1,171 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-06-24T08:44:17.367Z",
-  "total": 110,
+  "updatedAt": "2026-06-25T08:15:38.539Z",
+  "total": 127,
   "posts": [
+    {
+      "title": "Next.js 16 Cache Components 入门：如何用 `use cache` 和 Suspense 优化页面性能",
+      "description": "Next.js 16 引入了新的 **Cache Components** 机制，让我们可以更清晰地处理页面中的动态数据、缓存数据和流式渲染。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "data-fetching-realtime",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/nextjs-16-cache-components-use-cache-suspense.md",
+      "path": "blog/data-fetching-realtime/nextjs-16-cache-components-use-cache-suspense.md"
+    },
+    {
+      "title": "Next.js 16 中 middleware.ts 改为 proxy.ts：认证逻辑到底应该放在哪里？",
+      "description": "Next.js 16 中有一个很重要的变化：原来的 `middleware.ts` 文件名被标记为 deprecated，现在推荐改成 `proxy.ts`。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "auth-permissions",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/nextjs-proxy-authentication-dal.md",
+      "path": "blog/auth-permissions/nextjs-proxy-authentication-dal.md"
+    },
+    {
+      "title": "Next.js Intercepting Routes 详解：如何实现“路由变了，但页面以弹窗打开”",
+      "description": "在 Next.js App Router 中，有一个很强但讨论不算多的能力：**Intercepting Routes，拦截路由**。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-intercepting-routes-modal.md",
+      "path": "blog/react-fundamentals/nextjs-intercepting-routes-modal.md"
+    },
+    {
+      "title": "Next.js Link 组件详解：什么时候应该关闭 `prefetch`？",
+      "description": "在 Next.js 项目中，页面跳转通常会使用官方提供的 `<Link />` 组件。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-link-prefetch-behavior.md",
+      "path": "blog/react-fundamentals/nextjs-link-prefetch-behavior.md"
+    },
+    {
+      "title": "Next.js Parallel Routes 详解：如何让一个页面同时渲染多个独立区域",
+      "description": "在 Next.js App Router 中，Parallel Routes，也就是**并行路由**，是一个非常重要但容易被忽略的能力。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-parallel-routes-independent-regions.md",
+      "path": "blog/react-fundamentals/nextjs-parallel-routes-independent-regions.md"
+    },
+    {
+      "title": "Next.js proxy.ts 入门：从 middleware.ts 迁移到 proxy.ts，并实现重定向、matcher 与 Cookie 操作",
+      "description": "在 Next.js 新版本中，原来的 `middleware.ts` 文件名已经逐渐被弃用，新的推荐写法是使用：",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-proxy-middleware-migration.md",
+      "path": "blog/react-fundamentals/nextjs-proxy-middleware-migration.md"
+    },
+    {
+      "title": "Next.js 路由预加载详解：如何用 `router.prefetch` 提升页面跳转体验",
+      "description": "在 Next.js 中，很多人都熟悉 `router.push`、`router.replace`，但很少真正使用过另一个很有价值的 API：",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-router-prefetch-navigation.md",
+      "path": "blog/react-fundamentals/nextjs-router-prefetch-navigation.md"
+    },
+    {
+      "title": "Next.js 项目目录结构怎么设计？从入门到进阶的三种组织方式",
+      "description": "Next.js 进入 App Router 时代之后，很多开发者都会遇到一个问题：",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-project-directory-structure-patterns.md",
+      "path": "blog/react-fundamentals/nextjs-project-directory-structure-patterns.md"
+    },
+    {
+      "title": "React Query 与 Server Components：在 Next.js 中到底该怎么配合使用？",
+      "description": "在 React 进入 Server Components 时代之后，很多人都会遇到一个问题：",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "data-fetching-realtime",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/react-query-server-components-nextjs.md",
+      "path": "blog/data-fetching-realtime/react-query-server-components-nextjs.md"
+    },
+    {
+      "title": "React Query 入门教程：从 useQuery 到 useMutation，彻底理解服务端状态管理",
+      "description": "在 React 项目中，只要涉及接口请求，我们就会遇到这些问题：",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "data-fetching-realtime",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/react-query-usequery-usemutation-introduction.md",
+      "path": "blog/data-fetching-realtime/react-query-usequery-usemutation-introduction.md"
+    },
+    {
+      "title": "React Query 和 Zustand 如何正确组合：别再把服务端数据重复塞进 Store 了",
+      "description": "在 React 项目中，`React Query` 和 `Zustand` 都是非常流行的状态管理工具。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "state-management",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/react-query-zustand-state-boundary.md",
+      "path": "blog/state-management/react-query-zustand-state-boundary.md"
+    },
+    {
+      "title": "Zustand persist 中间件详解：让 Store 状态刷新后不丢失",
+      "description": "在 Zustand 中，我们已经可以通过 `create` 创建 Store，也可以借助 `immer` 简化复杂状态更新，借助 `devtools` 接入 Redux DevTools 调试状态变化。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "state-management",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/zustand-persist-middleware.md",
+      "path": "blog/state-management/zustand-persist-middleware.md"
+    },
+    {
+      "title": "Zustand 为什么要用 Selector？顺便讲清楚如何自动生成 Selector",
+      "description": "在 Zustand 里读取状态非常简单。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "state-management",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/zustand-selector-auto-generation.md",
+      "path": "blog/state-management/zustand-selector-auto-generation.md"
+    },
+    {
+      "title": "Zustand 入门教程：React 状态管理从本地状态到全局 Store",
+      "description": "在 React 项目中，我们经常会遇到状态共享的问题。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "state-management",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/zustand-react-state-management-introduction.md",
+      "path": "blog/state-management/zustand-react-state-management-introduction.md"
+    },
+    {
+      "title": "Zustand 最佳实践：别只会 create Store，真正项目里要这样组织状态",
+      "description": "Zustand 是 React 生态里非常轻量的状态管理库。它上手很简单，不需要 Provider，不需要写一堆模板代码，也不像 Redux 那样有很强的约束。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "state-management",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/zustand-store-organization-best-practices.md",
+      "path": "blog/state-management/zustand-store-organization-best-practices.md"
+    },
+    {
+      "title": "前端 SSE 入门到实战：原理、用法、踩坑和最佳实践",
+      "description": "在前端实时通信里，大家最熟悉的可能是 WebSocket。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "data-fetching-realtime",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/frontend-sse-introduction-practices.md",
+      "path": "blog/data-fetching-realtime/frontend-sse-introduction-practices.md"
+    },
+    {
+      "title": "实时数据到底怎么落地？用「HTTP 快照 + MQTT 推送 + 状态管理」讲清楚",
+      "description": "很多人聊实时数据时，容易一上来就说 WebSocket、SSE、MQTT，然后列一堆连接封装、topic 设计、重连机制、状态管理目录。",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "data-fetching-realtime",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/http-snapshot-mqtt-state-management.md",
+      "path": "blog/data-fetching-realtime/http-snapshot-mqtt-state-management.md"
+    },
+    {
+      "title": "权限系统到底该怎么设计？从 Role 判断到 RBAC，再到 ABAC",
+      "description": "在很多项目里，权限判断一开始都是这样写的：",
+      "date": "2026-06-25",
+      "updatedAt": "2026-06-25T16:15:14+08:00",
+      "category": "auth-permissions",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/permission-system-rbac-abac-design.md",
+      "path": "blog/auth-permissions/permission-system-rbac-abac-design.md"
+    },
     {
       "title": "Axios 快速入门：从基础请求到拦截器、全局配置与错误处理",
       "description": "在前端开发中，请求后端接口是非常常见的需求。浏览器原生提供了 `fetch API`，但在实际项目中，很多开发者更喜欢使用 `Axios`。Axios 是一个基于 Promise 的 HTTP 客户端，可以运行在浏览器和 Node.js 环境中，常用于 React、Vue、原生 JavaScript 或全栈项目中。",
@@ -750,15 +912,6 @@
       "category": "react-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-hooks-internals-array-linked-list.md",
       "path": "blog/react-fundamentals/react-hooks-internals-array-linked-list.md"
-    },
-    {
-      "title": "React Query + Zustand 正确结合方式：不要把接口数据复制进 Store",
-      "description": "在很多 React 项目里，React Query 和 Zustand 都非常常见。",
-      "date": "2026-05-21",
-      "updatedAt": "2026-05-21T15:34:07+08:00",
-      "category": "state-management",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/react-query-zustand-state-boundary.md",
-      "path": "blog/state-management/react-query-zustand-state-boundary.md"
     },
     {
       "title": "React Query 不只是 useQuery：前端项目中更可维护的数据请求组织方式",
