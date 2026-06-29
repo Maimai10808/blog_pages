@@ -1,9 +1,297 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-06-25T08:18:15.337Z",
-  "total": 127,
+  "updatedAt": "2026-06-29T02:44:18.539Z",
+  "total": 158,
   "posts": [
+    {
+      "title": "AES 加密算法详解：它是如何把明文变成密文的？",
+      "description": "AES 是现代密码学中最重要、最常见的对称加密算法之一。无论是 HTTPS、磁盘加密、数据库加密，还是各种安全通信协议，AES 都是一个绕不开的基础算法。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/aes-encryption-algorithm-explained.md",
+      "path": "blog/computer-science-basics/aes-encryption-algorithm-explained.md"
+    },
+    {
+      "title": "Cookie 详解：创建方式、属性、类型与安全风险",
+      "description": "Cookie 是浏览器中非常重要的一种数据存储机制。它看起来只是一个很小的 key-value 数据，但在 Web 应用中却承担着很多关键功能。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "web-security",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/cookie-attributes-types-security-risks.md",
+      "path": "blog/web-security/cookie-attributes-types-security-risks.md"
+    },
+    {
+      "title": "Ethereum Gas 详解：为什么交易费这么贵？如何降低交易成本？",
+      "description": "在以太坊上做任何链上操作，几乎都绕不开一个概念：",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/ethereum-gas-fee-cost-optimization.md",
+      "path": "blog/blockchain-web3-fundamentals/ethereum-gas-fee-cost-optimization.md"
+    },
+    {
+      "title": "Merkle Tree 详解：为什么空投和白名单都喜欢用它？",
+      "description": "在 Web3 开发里，Merkle Tree 是一个非常高频的概念。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/merkle-tree-airdrop-whitelist.md",
+      "path": "blog/blockchain-web3-fundamentals/merkle-tree-airdrop-whitelist.md"
+    },
+    {
+      "title": "Next.js 最佳实践总结：从 App Router 到缓存、懒加载与 SEO 优化",
+      "description": "Next.js 是目前 React 生态中非常流行的全栈框架。它不仅可以用来写前端页面，还可以处理服务端渲染、路由、缓存、图片优化、字体优化、SEO、API 等能力。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-app-router-cache-lazy-loading-seo-best-practices.md",
+      "path": "blog/react-fundamentals/nextjs-app-router-cache-lazy-loading-seo-best-practices.md"
+    },
+    {
+      "title": "Next.js 字体优化指南：next/font、Google Fonts、本地字体与 Tailwind CSS",
+      "description": "在 Next.js 项目中，字体加载看起来只是一个小问题，但它会直接影响页面性能、用户体验和布局稳定性。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-font-optimization-guide.md",
+      "path": "blog/react-fundamentals/nextjs-font-optimization-guide.md"
+    },
+    {
+      "title": "Next.js 懒加载详解：用 `next/dynamic` 优化首屏加载性能",
+      "description": "在前端应用中，浏览器一开始需要下载、解析和执行 JavaScript。一般来说，**发送到浏览器的 JavaScript 越少，页面初始加载速度就越快**。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-lazy-loading-explained.md",
+      "path": "blog/react-fundamentals/nextjs-lazy-loading-explained.md"
+    },
+    {
+      "title": "PoW 和 PoS 到底有什么区别？从挖矿到质押的共识机制演进",
+      "description": "在区块链系统里，有一个非常核心的问题：",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/pow-pos-consensus-mechanism.md",
+      "path": "blog/blockchain-web3-fundamentals/pow-pos-consensus-mechanism.md"
+    },
+    {
+      "title": "React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？",
+      "description": "在 React 中，`useCallback` 是一个经常被提到，但也经常被误用的 Hook。很多人一听到“性能优化”，就会下意识地把函数全部包一层 `useCallback`，但实际上，这并不是它的正确用法。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md",
+      "path": "blog/react-fundamentals/react-usecallback-explained.md"
+    },
+    {
+      "title": "React useRef 的理解与应用：跨渲染持久存在的值容器",
+      "description": "`useRef` 可以理解成一个“跨渲染持久存在的盒子”。这个盒子里放的值在 `ref.current` 上，修改它不会触发组件重新渲染。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-persistent-box.md",
+      "path": "blog/react-fundamentals/react-useref-persistent-box.md"
+    },
+    {
+      "title": "setInterval 和 requestAnimationFrame 有什么区别？为什么动画更推荐使用 rAF？",
+      "description": "在前端开发中，我们经常会遇到需要“重复执行某段代码”的场景。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/setinterval-requestanimationframe-animation.md",
+      "path": "blog/react-fundamentals/setinterval-requestanimationframe-animation.md"
+    },
+    {
+      "title": "Slippage 滑点详解：为什么你的成交价格和预期不一样？",
+      "description": "在加密货币交易中，滑点是一个无法完全避免的问题。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "financial-markets",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/financial-markets/slippage-trading-price-execution.md",
+      "path": "blog/financial-markets/slippage-trading-price-execution.md"
+    },
+    {
+      "title": "Solidity 中三种编码 calldata 的方式：encodeWithSignature、encodeWithSelector 和 encodeCall",
+      "description": "在 Solidity 中，我们有时会使用低级调用：",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/solidity-calldata-encoding-methods.md",
+      "path": "blog/blockchain-web3-fundamentals/solidity-calldata-encoding-methods.md"
+    },
+    {
+      "title": "Solidity 数据位置详解：storage、memory、stack 和 calldata 到底有什么区别？",
+      "description": "Solidity 是一门非常特殊的编程语言。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/solidity-data-location-storage-memory-stack-calldata.md",
+      "path": "blog/blockchain-web3-fundamentals/solidity-data-location-storage-memory-stack-calldata.md"
+    },
+    {
+      "title": "Uniswap v3 详解：集中流动性如何改变 AMM？",
+      "description": "Uniswap 是 DeFi 世界里最重要的协议之一。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/uniswap-v3-concentrated-liquidity.md",
+      "path": "blog/blockchain-web3-fundamentals/uniswap-v3-concentrated-liquidity.md"
+    },
+    {
+      "title": "Uniswap 全面指南：从 Swap 到 LP 做市，如何理解 v2、v3 和 v4？",
+      "description": "Uniswap 是 DeFi 里最重要的去中心化交易协议之一。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/uniswap-swap-lp-v2-v3-v4-guide.md",
+      "path": "blog/blockchain-web3-fundamentals/uniswap-swap-lp-v2-v3-v4-guide.md"
+    },
+    {
+      "title": "Web Session 是怎么工作的？一文讲清服务器会话机制",
+      "description": "在 Web 开发中，Session 是一个非常重要的概念。很多登录系统、后台管理系统、购物车、验证码、权限判断等功能，背后都离不开 Session。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "auth-permissions",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/web-session-server-session-mechanism.md",
+      "path": "blog/auth-permissions/web-session-server-session-mechanism.md"
+    },
+    {
+      "title": "Web 开发者必须理解的 HTTP：请求、响应、状态码与 Express 示例",
+      "description": "无论是前端、后端，还是全栈开发，HTTP 都是每天都会接触的基础协议。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/http-request-response-status-express.md",
+      "path": "blog/computer-science-basics/http-request-response-status-express.md"
+    },
+    {
+      "title": "一文理解 CDN：为什么现代 Web 服务都离不开它？",
+      "description": "CDN，全称是 **Content Delivery Network，内容分发网络**。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/cdn-web-service-introduction.md",
+      "path": "blog/computer-science-basics/cdn-web-service-introduction.md"
+    },
+    {
+      "title": "一文理解 EIP-712：如何用链下签名实现链上授权执行",
+      "description": "在以太坊开发中，我们经常会遇到一种场景：",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/eip-712-offchain-signature-authorization.md",
+      "path": "blog/blockchain-web3-fundamentals/eip-712-offchain-signature-authorization.md"
+    },
+    {
+      "title": "一文理解 HTTP：从请求响应到 HTTP/1.1、HTTP/2 与 HTTP/3",
+      "description": "HTTP，全称是 **HyperText Transfer Protocol，超文本传输协议**。它是 Web 世界中最基础、最常见的应用层协议之一。我们平时在浏览器中打开网页、加载图片、请求接口、下载文件，本质上很多时候都离不开 HTTP。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/http-protocol-introduction.md",
+      "path": "blog/computer-science-basics/http-protocol-introduction.md"
+    },
+    {
+      "title": "一文理解 TCP/IP 模型与 OSI 模型：为什么网络设备能互相通信？",
+      "description": "今天我们已经习惯了不同设备之间互相通信。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/tcp-ip-osi-model-network-communication.md",
+      "path": "blog/computer-science-basics/tcp-ip-osi-model-network-communication.md"
+    },
+    {
+      "title": "一文看懂跨链桥技术：为什么区块链之间需要“桥”？",
+      "description": "如果你要去意大利旅行，出发前可能会准备机票、酒店、行李、行程攻略。最后还有一件事很重要：换钱。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/cross-chain-bridge-introduction.md",
+      "path": "blog/blockchain-web3-fundamentals/cross-chain-bridge-introduction.md"
+    },
+    {
+      "title": "一文讲清 React useRef：什么时候该用 ref，什么时候该用 state？",
+      "description": "在 React 中，`useRef` 是一个非常重要的 Hook。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-ref-vs-state.md",
+      "path": "blog/react-fundamentals/react-useref-ref-vs-state.md"
+    },
+    {
+      "title": "代理合约详解：Upgradeable Proxy Contract 是怎么实现合约升级的？",
+      "description": "在以太坊里，智能合约一旦部署，代码通常就是不可修改的。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/upgradeable-proxy-contract-explained.md",
+      "path": "blog/blockchain-web3-fundamentals/upgradeable-proxy-contract-explained.md"
+    },
+    {
+      "title": "以太坊交易详解：从 EOA 到智能合约调用",
+      "description": "在以太坊中，交易是整个网络状态变化的入口。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/ethereum-transaction-eoa-contract-call.md",
+      "path": "blog/blockchain-web3-fundamentals/ethereum-transaction-eoa-contract-call.md"
+    },
+    {
+      "title": "前端开发如何用 Multicall 优化链上数据读取：以 Next.js 批量查询 Token 余额为例",
+      "description": "在区块链应用开发中，前端页面经常需要读取链上数据。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "web3-frontend",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-frontend-multicall-token-balance-query.md",
+      "path": "blog/web3-frontend/web3-frontend-multicall-token-balance-query.md"
+    },
+    {
+      "title": "当你在浏览器输入 google.com 并按下 Enter，背后到底发生了什么？",
+      "description": "很多人每天都会在浏览器地址栏输入一个网址，比如 `google.com`，然后按下 Enter。页面很快打开，看起来只是一个简单动作。但在这短短几百毫秒到几秒之间，浏览器、操作系统、DNS、路由器、TCP、TLS、HTTP 以及服务器之间已经完成了一整套复杂的协作。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "computer-science-basics",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/browser-enter-url-request-lifecycle.md",
+      "path": "blog/computer-science-basics/browser-enter-url-request-lifecycle.md"
+    },
+    {
+      "title": "拥有一枚比特币，究竟意味着什么？",
+      "description": "很多人都听说过比特币。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/bitcoin-ownership-meaning.md",
+      "path": "blog/blockchain-web3-fundamentals/bitcoin-ownership-meaning.md"
+    },
+    {
+      "title": "浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解",
+      "description": "在前端开发中，我们经常需要把一些数据临时或长期保存在用户浏览器中。比如保存用户偏好设置、主题模式、登录状态、表单草稿、购物车信息等。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "web-security",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md",
+      "path": "blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md"
+    },
+    {
+      "title": "浏览器同源策略详解：它到底限制了什么？",
+      "description": "在现代 Web 开发中，**同源策略**是一个非常基础但又非常重要的安全机制。很多人在学习前端安全、跨域请求、iframe、Cookie、CORS 时，都会遇到这个概念。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "web-security",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-same-origin-policy.md",
+      "path": "blog/web-security/browser-same-origin-policy.md"
+    },
+    {
+      "title": "高频 SSE 场景下，前端如何优化渲染性能？",
+      "description": "在实时行情、期权报价、订单状态、持仓变化这类前端系统中，SSE 是一种很常见的实时推送方案。",
+      "date": "2026-06-29",
+      "updatedAt": "2026-06-29T10:43:51+08:00",
+      "category": "data-fetching-realtime",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/high-frequency-sse-render-performance.md",
+      "path": "blog/data-fetching-realtime/high-frequency-sse-render-performance.md"
+    },
     {
       "title": "Next.js 16 Cache Components 入门：如何用 `use cache` 和 Suspense 优化页面性能",
       "description": "Next.js 16 引入了新的 **Cache Components** 机制，让我们可以更清晰地处理页面中的动态数据、缓存数据和流式渲染。",
@@ -948,15 +1236,6 @@
       "category": "react-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usememo-reference-performance.md",
       "path": "blog/react-fundamentals/react-usememo-reference-performance.md"
-    },
-    {
-      "title": "React useRef 的理解与应用：跨渲染持久存在的值容器",
-      "description": "`useRef` 可以理解成一个“跨渲染持久存在的盒子”。这个盒子里放的值在 `ref.current` 上，修改它不会触发组件重新渲染。",
-      "date": "2026-05-21",
-      "updatedAt": "2026-05-21T15:34:07+08:00",
-      "category": "react-fundamentals",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-persistent-box.md",
-      "path": "blog/react-fundamentals/react-useref-persistent-box.md"
     },
     {
       "title": "React 多文件上传怎么做：从 File Input 到并发上传进度的工程化封装",

@@ -15,7 +15,7 @@ Total posts: **158**
 - [Next.js 懒加载详解：用 `next/dynamic` 优化首屏加载性能](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-lazy-loading-explained.md) · `react-fundamentals` · 2026-06-29
 - [PoW 和 PoS 到底有什么区别？从挖矿到质押的共识机制演进](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/pow-pos-consensus-mechanism.md) · `blockchain-web3-fundamentals` · 2026-06-29
 - [React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md) · `react-fundamentals` · 2026-06-29
-- [setInterval 和 requestAnimationFrame 有什么区别？为什么动画更推荐使用 rAF？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/setinterval-requestanimationframe-animation.md) · `react-fundamentals` · 2026-06-29
+- [React useRef 的理解与应用：跨渲染持久存在的值容器](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-persistent-box.md) · `react-fundamentals` · 2026-06-29
 
 ## Categories
 
@@ -142,6 +142,7 @@ Total posts: **158**
 - [Next.js 字体优化指南：next/font、Google Fonts、本地字体与 Tailwind CSS](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-font-optimization-guide.md) · 2026-06-29
 - [Next.js 懒加载详解：用 `next/dynamic` 优化首屏加载性能](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-lazy-loading-explained.md) · 2026-06-29
 - [React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md) · 2026-06-29
+- [React useRef 的理解与应用：跨渲染持久存在的值容器](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-persistent-box.md) · 2026-06-29
 - [setInterval 和 requestAnimationFrame 有什么区别？为什么动画更推荐使用 rAF？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/setinterval-requestanimationframe-animation.md) · 2026-06-29
 - [一文讲清 React useRef：什么时候该用 ref，什么时候该用 state？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-ref-vs-state.md) · 2026-06-29
 - [Next.js Intercepting Routes 详解：如何实现“路由变了，但页面以弹窗打开”](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-intercepting-routes-modal.md) · 2026-06-25
@@ -174,7 +175,6 @@ Total posts: **158**
 - [React Server Components 是什么：讲清 CSR、Server Components 与 Next.js 客户端/服务端组件](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-server-components-csr-nextjs.md) · 2026-05-21
 - [React useCallback 的理解与应用：不是加速函数，而是稳定函数引用](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-stable-function-reference.md) · 2026-05-21
 - [React useMemo 怎么理解：缓存计算结果和稳定引用的工程化场景](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usememo-reference-performance.md) · 2026-05-21
-- [React useRef 的理解与应用：跨渲染持久存在的值容器](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-persistent-box.md) · 2026-05-21
 - [React 大列表优化落地：从普通 map 到 react-window / react-virtualized 的工程化封装](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-large-list-virtualization.md) · 2026-05-21
 - [React 数据请求不要只会 useEffect：从 loading、error 到竞态处理的工程化封装](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useeffect-fetch-request-hook.md) · 2026-05-21
 - [React 项目目录结构怎么设计：从基础分层到真实业务落地](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-project-directory-structure.md) · 2026-05-21
