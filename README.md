@@ -20,7 +20,7 @@
 
 ## 内容地图
 
-目录按阅读路线重新组织：先是计算机和工程底座，再进入 React / Next.js 项目实践，随后是状态、请求、实时通信、认证、Web3 和交易平台前端。
+目录按阅读路线组织：先是计算机和工程底座，再进入 React / Next.js 项目实践，随后是状态、请求、实时通信、认证、Web3 和交易平台前端。
 
 <details>
 <summary><strong>A. 计算机基础与工程底座</strong></summary>
@@ -260,59 +260,6 @@ Web3 前端不能只停留在“连钱包”。如果不理解 EVM、签名、�
 - [OpenClaw 入门：为什么它不只是一个 AI 聊天机器人，而是个人 AI 助手框架？](./blog/ai-tools-workflows/openclaw-personal-ai-assistant-framework-introduction.md)
 
 </details>
-
-## 推荐阅读路线
-
-### 路线 1：前端工程化入门到项目落地
-
-从基础工具和语言能力开始，再进入 React / Next.js 的项目组织方式。
-
-1. [Linux 终端入门](./blog/computer-science-basics/linux-terminal-basic-commands-introduction.md)
-2. [Git 和 GitHub 入门](./blog/computer-science-basics/git-github-version-control-introduction.md)
-3. [从 JSX 到 TSX：React 开发者必须掌握的 TypeScript 基础](./blog/react-fundamentals/react-jsx-to-tsx-typescript-basics.md)
-4. [React useState 和 useEffect 入门](./blog/react-fundamentals/react-usestate-useeffect-beginner-pitfalls.md)
-5. [React 项目目录结构怎么设计](./blog/react-fundamentals/react-project-directory-structure.md)
-6. [从 Axios 到统一请求层：实际项目中的 Fetcher 应该怎么设计？](./blog/data-fetching-realtime/axios-unified-fetcher-request-layer.md)
-7. [React Query 不只是 useQuery](./blog/data-fetching-realtime/react-query-maintainable-data-requests.md)
-8. [Zustand 最佳实践](./blog/state-management/zustand-store-organization-best-practices.md)
-9. [Next.js 项目目录结构怎么设计？](./blog/react-fundamentals/nextjs-project-directory-structure-patterns.md)
-
-### 路线 2：实时通信与交易平台前端
-
-从网络和请求层入手，再到缓存、实时推送、行情 Store 和交易页面。
-
-1. [常见网络协议入门](./blog/computer-science-basics/network-protocols-ip-http-security-basics.md)
-2. [一文理解 TCP/IP 模型与 OSI 模型](./blog/computer-science-basics/tcp-ip-osi-model-network-communication.md)
-3. [HTTP 缓存机制详解](./blog/computer-science-basics/http-cache-control-etag-cache-busting.md)
-4. [Axios 快速入门](./blog/data-fetching-realtime/axios-basics-interceptors-error-handling.md)
-5. [React Query 入门教程](./blog/data-fetching-realtime/react-query-usequery-usemutation-introduction.md)
-6. [React Query 和 Zustand 如何正确组合](./blog/state-management/react-query-zustand-state-boundary.md)
-7. [前端 SSE 入门到实战](./blog/data-fetching-realtime/frontend-sse-introduction-practices.md)
-8. [高频 SSE 场景下，前端如何优化渲染性能？](./blog/data-fetching-realtime/high-frequency-sse-render-performance.md)
-9. [React / Next.js 中如何落地 MQTT 单例客户端](./blog/data-fetching-realtime/nextjs-mqtt-singleton-client.md)
-10. [HTTP 快照 + MQTT 实时推送](./blog/data-fetching-realtime/http-snapshot-mqtt-realtime-architecture.md)
-11. [交易所实时行情系统实践](./blog/trading-platform-frontend/nextjs-exchange-mqtt-zustand-market-data.md)
-12. [Next.js 现货交易页完整实践](./blog/trading-platform-frontend/nextjs-spot-trading-page-implementation.md)
-13. [Next.js 合约交易页完整实践](./blog/trading-platform-frontend/nextjs-futures-trading-page-implementation.md)
-
-### 路线 3：Web3 前端
-
-先补齐链上基础，再进入钱包、签名、交易、多链和后端状态同步。
-
-1. [EVM 完整入门指南](./blog/blockchain-web3-fundamentals/evm-stack-memory-storage-opcodes-guide.md)
-2. [Web3 钱包安全指南](./blog/blockchain-web3-fundamentals/web3-wallet-signature-transaction-security.md)
-3. [Ethereum Gas 详解](./blog/blockchain-web3-fundamentals/ethereum-gas-fee-cost-optimization.md)
-4. [一文理解 EIP-712](./blog/blockchain-web3-fundamentals/eip-712-offchain-signature-authorization.md)
-5. [Web3 前端如何落地 SIWE 钱包登录](./blog/web3-frontend/web3-siwe-wallet-login-flow.md)
-6. [Reown AppKit 入门](./blog/web3-frontend/reown-appkit-wallet-connect-introduction.md)
-7. [ERC20 Permit 详解](./blog/blockchain-web3-fundamentals/erc20-permit-signature-approval.md)
-8. [Web3 前端多链适配如何落地](./blog/web3-frontend/web3-frontend-multichain-adapter-implementation.md)
-9. [Web3 前端 EVM 交互如何落地](./blog/web3-frontend/web3-frontend-evm-interaction-implementation.md)
-10. [前端开发如何用 Multicall 优化链上数据读取](./blog/web3-frontend/web3-frontend-multicall-token-balance-query.md)
-11. [多链支付前端怎么封装](./blog/web3-frontend/multichain-payment-frontend-usepay.md)
-12. [Web3 前端如何落地充值与提现模块](./blog/web3-frontend/web3-deposit-withdrawal-flow.md)
-13. [Web3 前端交易系统如何落地](./blog/web3-frontend/web3-frontend-trading-system-implementation.md)
-14. [Web3 空投领取前端怎么落地](./blog/web3-frontend/web3-airdrop-claim-frontend-flow.md)
 
 ## 适合读者
 
