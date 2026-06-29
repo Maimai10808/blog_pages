@@ -44,7 +44,7 @@ ref.current = ref.current + 1;
 适用于输入框聚焦、滚动到某个位置、读取元素尺寸等。
 
 ```tsx
-import { useRef } from 'react';
+import { useRef } from "react";
 
 export function FocusInput() {
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -52,9 +52,7 @@ export function FocusInput() {
   return (
     <>
       <input ref={inputRef} />
-      <button onClick={() => inputRef.current?.focus()}>
-        Focus
-      </button>
+      <button onClick={() => inputRef.current?.focus()}>Focus</button>
     </>
   );
 }
@@ -67,20 +65,15 @@ export function FocusInput() {
 错误示例：
 
 ```tsx
-inputRef.current!.value = 'xxx';
+inputRef.current!.value = "xxx";
 ```
 
 正确方式是使用受控组件：
 
 ```tsx
-const [name, setName] = useState('');
+const [name, setName] = useState("");
 
-return (
-  <input
-    value={name}
-    onChange={event => setName(event.target.value)}
-  />
-);
+return <input value={name} onChange={(event) => setName(event.target.value)} />;
 ```
 
 ### B. 存不会影响 UI、但要跨渲染记住的东西
@@ -101,7 +94,7 @@ return (
 const renderCount = useRef(0);
 renderCount.current++;
 
-console.log('render', renderCount.current);
+console.log("render", renderCount.current);
 ```
 
 每次 render 时 `renderCount.current` 都会增加，但不会因为它的变化导致额外 render。
@@ -187,7 +180,7 @@ useEffect(() => {
 
 useEffect(() => {
   socket.onmessage = () => {
-    console.log('latest balance', balanceRef.current);
+    console.log("latest balance", balanceRef.current);
   };
 }, []);
 ```
@@ -226,10 +219,10 @@ function PriceStream() {
   const wsRef = useRef<WebSocket | null>(null);
 
   useEffect(() => {
-    const ws = new WebSocket('wss://example.com/prices');
+    const ws = new WebSocket("wss://example.com/prices");
     wsRef.current = ws;
 
-    ws.onmessage = event => {
+    ws.onmessage = (event) => {
       const msg = JSON.parse(event.data);
       // 这里更新 UI 才用 setState
       // setPrice(msg.price);
@@ -242,7 +235,7 @@ function PriceStream() {
   }, []);
 
   const sendPing = () => {
-    wsRef.current?.send(JSON.stringify({ type: 'ping' }));
+    wsRef.current?.send(JSON.stringify({ type: "ping" }));
   };
 
   return <button onClick={sendPing}>Ping</button>;
@@ -390,7 +383,7 @@ async function fetchBalance(address: string, chainId: number) {
 ### 错误：用 ref 当 state 用
 
 ```tsx
-inputRef.current!.value = 'xxx';
+inputRef.current!.value = "xxx";
 ```
 
 这样 UI 看似变了，但 React state 没变。后续 React 重新渲染时，DOM 状态和组件状态可能不一致。
@@ -398,14 +391,9 @@ inputRef.current!.value = 'xxx';
 ### 正确：要更新 UI 就用 state
 
 ```tsx
-const [name, setName] = useState('');
+const [name, setName] = useState("");
 
-return (
-  <input
-    value={name}
-    onChange={event => setName(event.target.value)}
-  />
-);
+return <input value={name} onChange={(event) => setName(event.target.value)} />;
 ```
 
 ### 正确：ref 只做命令式操作
@@ -435,16 +423,16 @@ inputRef.current?.focus();
 
 再具体一点：
 
-| 场景 | 推荐 |
-| --- | --- |
-| 输入框内容要展示到 UI | `useState` |
-| 点击按钮后页面要更新 | `useState` |
-| 保存 timer id | `useRef` |
-| 保存 WebSocket 实例 | `useRef` |
-| 保存上一次的 props/state | `useRef` |
-| 保存请求序号，防止乱序覆盖 | `useRef` |
-| 操作 DOM 聚焦、滚动、测量 | `useRef` |
-| 保存缓存 Map，不想每次 set 都渲染 | `useRef` |
+| 场景                              | 推荐       |
+| --------------------------------- | ---------- |
+| 输入框内容要展示到 UI             | `useState` |
+| 点击按钮后页面要更新              | `useState` |
+| 保存 timer id                     | `useRef`   |
+| 保存 WebSocket 实例               | `useRef`   |
+| 保存上一次的 props/state          | `useRef`   |
+| 保存请求序号，防止乱序覆盖        | `useRef`   |
+| 操作 DOM 聚焦、滚动、测量         | `useRef`   |
+| 保存缓存 Map，不想每次 set 都渲染 | `useRef`   |
 
 ---
 
