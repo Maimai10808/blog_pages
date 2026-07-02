@@ -22,7 +22,7 @@ Vite 的目标很明确：
 减少不必要的打包工作
 提供现代化的开发体验
 支持多种前端框架
-```text
+```
 
 Vite 并不只适用于 Vue。它是框架无关的，可以用于：
 
@@ -52,7 +52,7 @@ Vite 的思路不同。
 ```text
 依赖代码：node_modules 里的第三方库
 源码代码：你自己写的业务代码
-```text
+```
 
 对于依赖代码，Vite 使用非常快的 esbuild 进行预构建。
 
@@ -80,7 +80,7 @@ node --version
 
 ```bash
 npm --version
-```text
+```
 
 然后创建项目：
 
@@ -92,7 +92,7 @@ Vite 会提示你输入项目名称。如果想在当前目录创建，可以输
 
 ```bash
 .
-```text
+```
 
 接着选择框架：
 
@@ -104,7 +104,7 @@ React
 
 ```text
 JavaScript
-```text
+```
 
 创建完成后，安装依赖：
 
@@ -116,7 +116,7 @@ npm install
 
 ```bash
 npm run dev
-```text
+```
 
 默认情况下，Vite 会把项目运行在：
 
@@ -144,7 +144,7 @@ project/
     main.jsx
   package.json
   vite.config.js
-```text
+```
 
 几个关键文件和目录：
 
@@ -175,7 +175,7 @@ export default function Header() {
     </header>
   );
 }
-```tsx
+```
 
 然后在 `App.jsx` 中引入：
 
@@ -220,7 +220,7 @@ export default App;
 ```text
 src/assets/react.svg
 src/assets/logo.png
-```tsx
+```
 
 在代码中引入：
 
@@ -240,7 +240,7 @@ function App() {
 给文件名添加 hash，方便缓存
 小于一定大小的资源可能会被转成 base64 内联
 可以通过插件进一步优化
-```text
+```
 
 构建后，文件名可能变成：
 
@@ -257,7 +257,7 @@ logo-Dkfj391a.png
 ```text
 public/vite.svg
 public/robots.txt
-```tsx
+```
 
 使用时：
 
@@ -275,7 +275,7 @@ favicon.ico
 manifest.json
 不需要 hash 的静态文件
 需要固定路径访问的资源
-```text
+```
 
 简单判断：
 
@@ -294,7 +294,7 @@ Vite 提供了环境变量能力。
 
 ```js
 import.meta.env;
-```text
+```
 
 访问环境信息。
 
@@ -313,7 +313,7 @@ import.meta.env.SSR：是否是服务端渲染环境
 ```js
 console.log(import.meta.env.MODE);
 console.log(import.meta.env.DEV);
-```text
+```
 
 ### 自定义环境变量
 
@@ -331,7 +331,7 @@ const greeting = import.meta.env.VITE_GREETING;
 function App() {
   return <h2>{greeting}</h2>;
 }
-```text
+```
 
 注意，Vite 中暴露给客户端的环境变量必须以：
 
@@ -345,7 +345,7 @@ VITE_
 
 ```env
 API_KEY=abc123
-```text
+```
 
 客户端代码中无法直接通过 `import.meta.env.API_KEY` 读取。
 
@@ -359,7 +359,7 @@ VITE_API_URL=https://api.example.com
 
 ```js
 const apiUrl = import.meta.env.VITE_API_URL;
-```text
+```
 
 ### 重要提醒
 
@@ -381,7 +381,7 @@ Google Analytics ID
 公开项目 ID
 站点名称
 非敏感配置
-```text
+```
 
 不适合放：
 
@@ -407,7 +407,7 @@ Vite 对 TypeScript 支持非常友好。
 tsconfig.json
 vite-env.d.ts
 TypeScript 相关依赖
-```text
+```
 
 如果你一开始选的是 JavaScript，也可以逐步迁移。
 
@@ -421,7 +421,7 @@ main.jsx
 
 ```text
 main.tsx
-```tsx
+```
 
 同时记得修改 `index.html` 中的入口路径：
 
@@ -441,7 +441,7 @@ main.tsx
     "build": "tsc && vite build"
   }
 }
-```text
+```
 
 这样构建时会先执行 TypeScript 类型检查，再执行 Vite 生产构建。
 
@@ -463,7 +463,7 @@ main.tsx
 
 ```bash
 npm run dev
-```text
+```
 
 生产构建使用：
 
@@ -481,7 +481,7 @@ npm run build
     "preview": "vite preview"
   }
 }
-```text
+```
 
 运行：
 
@@ -493,7 +493,7 @@ Vite 会生成生产环境文件，默认输出到：
 
 ```text
 dist/
-```text
+```
 
 构建完成后，你可以本地预览：
 
@@ -505,7 +505,7 @@ npm run preview
 
 ```text
 http://localhost:4173
-```text
+```
 
 需要注意：
 
@@ -527,7 +527,7 @@ Vite 默认配置已经很好用，但它也很灵活。
 
 ```text
 vite.config.js
-```text
+```
 
 一个典型的 React 配置：
 
@@ -554,7 +554,7 @@ export default defineConfig({
     port: 3000,
   },
 });
-```text
+```
 
 然后运行：
 
@@ -566,7 +566,7 @@ npm run dev
 
 ```text
 http://localhost:3000
-```text
+```
 
 ### 修改构建输出目录
 
@@ -590,7 +590,7 @@ export default defineConfig({
 
 ```bash
 npm run build
-```text
+```
 
 构建结果会输出到：
 
@@ -610,7 +610,7 @@ base
 css
 env
 assets
-```text
+```
 
 日常开发中最常见的是端口、输出目录、路径别名和插件配置。
 
@@ -638,7 +638,7 @@ Vite 插件基于 Rollup 插件机制，因此它既能使用 Vite 插件生态�
 
 ```bash
 npm install -D vite-plugin-qrcode
-```text
+```
 
 配置：
 
@@ -656,7 +656,7 @@ export default defineConfig({
 
 ```bash
 vite --host
-```text
+```
 
 这样启动后，终端会显示二维码。你可以用手机扫码，在手机上测试页面。
 
@@ -672,7 +672,7 @@ vite-plugin-svgr
 
 ```bash
 npm install -D vite-plugin-svgr
-```text
+```
 
 配置：
 
@@ -694,7 +694,7 @@ import ReactLogo from "./assets/react.svg?react";
 function App() {
   return <ReactLogo className="h-24 w-24" />;
 }
-```text
+```
 
 这样 SVG 就可以像 React 组件一样使用。
 
@@ -777,7 +777,7 @@ Rollup 有成熟的 tree-shaking、打包优化和插件生态。
 
 ```bash
 npm create vite@latest
-```text
+```
 
 创建项目。
 
@@ -789,7 +789,7 @@ npm install
 
 ```bash
 npm run dev
-```text
+```
 
 启动开发服务器。
 
@@ -801,7 +801,7 @@ npm run build
 
 ```bash
 npm run preview
-```text
+```
 
 本地预览生产构建结果。
 
@@ -831,7 +831,7 @@ npm run preview
 上线前用 npm run preview 检查构建结果
 需要特殊能力优先查 Vite 插件生态
 配置尽量保持简单，不要过度工程化
-```text
+```
 
 Vite 的理念就是简单、快速、够用。不要一开始就把配置写得很复杂。
 
