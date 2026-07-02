@@ -19,7 +19,8 @@ Total posts: **192**
 
 ## Categories
 
-### ai-tools-workflows
+<details>
+<summary><strong>ai-tools-workflows</strong> (5)</summary>
 
 - [从 LLM 到 Agent，再到 Playwright MCP：AI 自动化测试到底是怎么工作的？](https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/llm-agent-playwright-mcp-ai-automation-testing.md) · 2026-07-02
 - [Codex App 完整教程：从安装、项目管理到插件、Skills、MCP 与电脑自动化](https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/codex-app-complete-guide.md) · 2026-06-12
@@ -27,7 +28,10 @@ Total posts: **192**
 - [我是如何用 Codex 维护长期项目的：从项目管理、文件记忆到局部 Skill](https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/codex-long-term-project-maintenance.md) · 2026-06-12
 - [OpenClaw 入门：为什么它不只是一个 AI 聊天机器人，而是个人 AI 助手框架？](https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/openclaw-personal-ai-assistant-framework-introduction.md) · 2026-05-24
 
-### auth-permissions
+</details>
+
+<details>
+<summary><strong>auth-permissions</strong> (12)</summary>
 
 - [Web Session 是怎么工作的？一文讲清服务器会话机制](https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/web-session-server-session-mechanism.md) · 2026-06-29
 - [Next.js 16 中 middleware.ts 改为 proxy.ts：认证逻辑到底应该放在哪里？](https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/nextjs-proxy-authentication-dal.md) · 2026-06-25
@@ -42,7 +46,10 @@ Total posts: **192**
 - [Next.js 认证不只是登录表单：从 Server Action、JWT Cookie 到 Middleware 的工程化落地](https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/nextjs-server-action-jwt-cookie-auth.md) · 2026-05-21
 - [React 认证不只是存 Token：JWT、Access Token、Refresh Token 的工程化落地](https://github.com/Maimai10808/blog_pages/blob/main/blog/auth-permissions/react-jwt-auth-token-refresh.md) · 2026-05-21
 
-### blockchain-web3-fundamentals
+</details>
+
+<details>
+<summary><strong>blockchain-web3-fundamentals</strong> (22)</summary>
 
 - [Ethereum Gas 详解：为什么交易费这么贵？如何降低交易成本？](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/ethereum-gas-fee-cost-optimization.md) · 2026-06-29
 - [Merkle Tree 详解：为什么空投和白名单都喜欢用它？](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/merkle-tree-airdrop-whitelist.md) · 2026-06-29
@@ -67,7 +74,10 @@ Total posts: **192**
 - [智能合约钱包和普通加密钱包有什么区别？](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/smart-contract-wallet-vs-crypto-wallet.md) · 2026-06-12
 - [稳定币完整入门：从购买力、抵押机制到 DeFi 中的真实需求](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/stablecoin-defi-introduction.md) · 2026-06-12
 
-### computer-science-basics
+</details>
+
+<details>
+<summary><strong>computer-science-basics</strong> (13)</summary>
 
 - [AES 加密算法详解：它是如何把明文变成密文的？](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/aes-encryption-algorithm-explained.md) · 2026-06-29
 - [Web 开发者必须理解的 HTTP：请求、响应、状态码与 Express 示例](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/http-request-response-status-express.md) · 2026-06-29
@@ -83,7 +93,10 @@ Total posts: **192**
 - [Linux 终端入门：新手必须掌握的常用命令和基本思路](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/linux-terminal-basic-commands-introduction.md) · 2026-05-25
 - [从 0x00 到 bit、byte、二进制、十六进制：讲清计算机底层表示](https://github.com/Maimai10808/blog_pages/blob/main/blog/computer-science-basics/computer-bits-bytes-binary-hex.md) · 2026-05-21
 
-### data-fetching-realtime
+</details>
+
+<details>
+<summary><strong>data-fetching-realtime</strong> (18)</summary>
 
 - [高频 SSE 场景下，前端如何优化渲染性能？](https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/high-frequency-sse-render-performance.md) · 2026-06-29
 - [Next.js 16 Cache Components 入门：如何用 `use cache` 和 Suspense 优化页面性能](https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/nextjs-16-cache-components-use-cache-suspense.md) · 2026-06-25
@@ -104,23 +117,35 @@ Total posts: **192**
 - [前端如何用 @microsoft/fetch-event-source 落地 SSE：比原生 EventSource 更灵活的实时推送方案](https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/frontend-fetch-event-source-sse.md) · 2026-05-21
 - [前端如何落地 SSE：从实时评论到可复用的实时数据 Hook](https://github.com/Maimai10808/blog_pages/blob/main/blog/data-fetching-realtime/frontend-sse-realtime-hook.md) · 2026-05-21
 
-### data-visualization
+</details>
+
+<details>
+<summary><strong>data-visualization</strong> (1)</summary>
 
 - [D3.js 入门：它不只是画图，更是把数据映射成可视化图形的工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/data-visualization/d3js-data-visualization-introduction.md) · 2026-05-21
 
-### deployment-devops
+</details>
+
+<details>
+<summary><strong>deployment-devops</strong> (2)</summary>
 
 - [GitHub Actions 入门：从自动测试到自动部署，理解 CI/CD 的基本流程](https://github.com/Maimai10808/blog_pages/blob/main/blog/deployment-devops/github-actions-ci-cd-introduction.md) · 2026-05-25
 - [Docker 入门：为什么容器化是应用部署绕不开的一步](https://github.com/Maimai10808/blog_pages/blob/main/blog/deployment-devops/docker-containerization-introduction.md) · 2026-05-25
 
-### financial-markets
+</details>
+
+<details>
+<summary><strong>financial-markets</strong> (4)</summary>
 
 - [Slippage 滑点详解：为什么你的成交价格和预期不一样？](https://github.com/Maimai10808/blog_pages/blob/main/blog/financial-markets/slippage-trading-price-execution.md) · 2026-06-29
 - [写给 Web3 从业者的期货入门：从合约规格、保证金到永续合约](https://github.com/Maimai10808/blog_pages/blob/main/blog/financial-markets/futures-margin-perpetual-contracts-introduction.md) · 2026-06-24
 - [写给 Web3 新人的加密货币交易入门：从现货、USDT 到合约交易](https://github.com/Maimai10808/blog_pages/blob/main/blog/financial-markets/crypto-spot-usdt-futures-trading-introduction.md) · 2026-06-24
 - [给投资小白的一次系统扫盲：从余额宝、债券、股票到基金](https://github.com/Maimai10808/blog_pages/blob/main/blog/financial-markets/investment-basics-stocks-bonds-funds.md) · 2026-06-24
 
-### forms-uploads
+</details>
+
+<details>
+<summary><strong>forms-uploads</strong> (9)</summary>
 
 - [为什么 React 表单推荐使用 React Hook Form + Zod？](https://github.com/Maimai10808/blog_pages/blob/main/blog/forms-uploads/react-hook-form-zod-recommended-pattern.md) · 2026-06-24
 - [前端媒体资源优化实践：用 ImageKit 优化图片、视频与上传体验](https://github.com/Maimai10808/blog_pages/blob/main/blog/forms-uploads/frontend-media-optimization-imagekit.md) · 2026-06-12
@@ -132,7 +157,10 @@ Total posts: **192**
 - [React 文件上传不只是 input type=file：从状态建模、上传进度到工程化封装](https://github.com/Maimai10808/blog_pages/blob/main/blog/forms-uploads/react-file-upload-state-progress.md) · 2026-05-21
 - [在 React 应用中使用 Zod 进行数据验证的全面教程与应用](https://github.com/Maimai10808/blog_pages/blob/main/blog/forms-uploads/react-zod-data-validation.md) · 2026-05-21
 
-### frontend-engineering
+</details>
+
+<details>
+<summary><strong>frontend-engineering</strong> (6)</summary>
 
 - [Chrome DevTools 使用指南：前端开发必须掌握的调试工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/chrome-devtools-frontend-debugging-guide.md) · 2026-07-02
 - [Moment.js 入门教程：安装、格式化、时间修改与常用方法](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/momentjs-date-formatting-time-manipulation.md) · 2026-07-02
@@ -141,7 +169,10 @@ Total posts: **192**
 - [为什么现代前端一定要学工程化？](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/why-modern-frontend-needs-engineering.md) · 2026-06-12
 - [从零搭建企业级 Mono Repo 工程：前端高薪必备技能](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/enterprise-monorepo-engineering.md) · 2026-06-12
 
-### frontend-styling
+</details>
+
+<details>
+<summary><strong>frontend-styling</strong> (7)</summary>
 
 - [10 个值得早点掌握的 Tailwind CSS 实用技巧](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-practical-tips.md) · 2026-07-02
 - [10 个我希望早点知道的 Tailwind CSS 实用工具类](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-useful-utilities.md) · 2026-07-02
@@ -151,7 +182,10 @@ Total posts: **192**
 - [Tailwind CSS 完整入门：从工具类到响应式布局、暗黑模式与自定义主题](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-introduction-responsive-dark-theme.md) · 2026-07-02
 - [用 Tailwind CSS 实现图片背景、渐变遮罩和混合模式效果](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-image-background-gradient-overlay-blend.md) · 2026-07-02
 
-### react-fundamentals
+</details>
+
+<details>
+<summary><strong>react-fundamentals</strong> (57)</summary>
 
 - [Next.js App Router 常见错误总结：Server Components、Server Actions、缓存与渲染模式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-app-router-common-errors.md) · 2026-07-02
 - [Next.js Hydration Error 详解：为什么会出现，以及 3 种常见修复方式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-hydration-error-common-fixes.md) · 2026-07-02
@@ -211,7 +245,10 @@ Total posts: **192**
 - [TypeScript Generics 泛型的理解与应用](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/typescript-generics-understanding.md) · 2026-05-21
 - [深入探讨 React 的核心工作原理](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-core-working-principles.md) · 2026-05-21
 
-### state-management
+</details>
+
+<details>
+<summary><strong>state-management</strong> (8)</summary>
 
 - [React Query 和 Zustand 如何正确组合：别再把服务端数据重复塞进 Store 了](https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/react-query-zustand-state-boundary.md) · 2026-06-25
 - [Zustand persist 中间件详解：让 Store 状态刷新后不丢失](https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/zustand-persist-middleware.md) · 2026-06-25
@@ -222,12 +259,18 @@ Total posts: **192**
 - [Redux Toolkit 项目落地：从 slice、thunk 到可维护的前端状态管理](https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/redux-toolkit-project-state-management.md) · 2026-05-21
 - [Zustand 项目落地：从全局状态、Store 拆分到真实业务封装](https://github.com/Maimai10808/blog_pages/blob/main/blog/state-management/zustand-project-state-management.md) · 2026-05-21
 
-### testing-quality
+</details>
+
+<details>
+<summary><strong>testing-quality</strong> (2)</summary>
 
 - [Playwright API 测试入门：从项目搭建到 GET / POST / PUT / DELETE 请求实战](https://github.com/Maimai10808/blog_pages/blob/main/blog/testing-quality/playwright-api-testing-introduction.md) · 2026-07-02
 - [Playwright 测试 React 应用入门：从“测什么”到“怎么测”的完整实践](https://github.com/Maimai10808/blog_pages/blob/main/blog/testing-quality/playwright-react-app-testing-introduction.md) · 2026-07-02
 
-### trading-platform-frontend
+</details>
+
+<details>
+<summary><strong>trading-platform-frontend</strong> (5)</summary>
 
 - [React 项目中如何落地自研 K 线图表：以 lightweight-charts 分时线为例](https://github.com/Maimai10808/blog_pages/blob/main/blog/trading-platform-frontend/react-lightweight-charts-kline-implementation.md) · 2026-07-02
 - [使用 TradingView Lightweight Charts 实现技术指标：从 SMA 到实时 ZigZag](https://github.com/Maimai10808/blog_pages/blob/main/blog/trading-platform-frontend/tradingview-lightweight-charts-technical-indicators.md) · 2026-07-02
@@ -235,7 +278,10 @@ Total posts: **192**
 - [从交易对切换到下单撤单：Next.js 现货交易页完整实践](https://github.com/Maimai10808/blog_pages/blob/main/blog/trading-platform-frontend/nextjs-spot-trading-page-implementation.md) · 2026-06-24
 - [从开多开空到一键平仓：Next.js 合约交易页完整实践](https://github.com/Maimai10808/blog_pages/blob/main/blog/trading-platform-frontend/nextjs-futures-trading-page-implementation.md) · 2026-06-24
 
-### web-security
+</details>
+
+<details>
+<summary><strong>web-security</strong> (5)</summary>
 
 - [Cookie 详解：创建方式、属性、类型与安全风险](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/cookie-attributes-types-security-risks.md) · 2026-06-29
 - [浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md) · 2026-06-29
@@ -243,7 +289,10 @@ Total posts: **192**
 - [前端安全入门：从 XSS 到 dangerouslySetInnerHTML，再到 DOMPurify](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/frontend-xss-dangerouslysetinnerhtml-dompurify.md) · 2026-06-24
 - [Web 安全基础：同源策略、SameSite Cookie 与 CORS 详解](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/web-security-same-origin-samesite-cors.md) · 2026-06-12
 
-### web3-frontend
+</details>
+
+<details>
+<summary><strong>web3-frontend</strong> (16)</summary>
 
 - [前端如何落地 SIWE 钱包登录：从 Reown AppKit 到 Token 鉴权完整链路](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-siwe-reown-appkit-token-auth-flow.md) · 2026-07-02
 - [Telegram Mini App 静态壳与 CSR 交互：为什么 Next.js 要用 output export？](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/telegram-mini-app-static-shell-csr.md) · 2026-07-02
@@ -261,3 +310,5 @@ Total posts: **192**
 - [Web3 前端如何落地 SIWE 钱包登录：从钱包连接到后端 Session](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-siwe-wallet-login-flow.md) · 2026-05-21
 - [Web3 前端如何落地充值与提现模块：以 Next.js + 钱包签名 + 后端执行为例](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-deposit-withdrawal-flow.md) · 2026-05-21
 - [多链支付前端怎么封装：从钱包适配器到统一 usePay 的工程化落地](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/multichain-payment-frontend-usepay.md) · 2026-05-21
+
+</details>

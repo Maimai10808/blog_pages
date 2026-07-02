@@ -8,7 +8,7 @@
 LocalStorage
 SessionStorage
 Cookie
-```text
+```
 
 这三者都可以把数据存储在用户的浏览器中，但它们的生命周期、容量、作用范围、是否会发送到服务器等方面都有明显区别。
 
@@ -65,7 +65,7 @@ LocalStorage、SessionStorage 和 Cookie 都有一个共同点：
 ```text
 LocalStorage 和 SessionStorage 比较相似；
 Cookie 和前两者差别更大。
-```text
+```
 
 Cookie 出现得更早，最初主要是为了解决 HTTP 无状态的问题，让浏览器能够在请求中携带一些状态信息给服务器。
 
@@ -107,7 +107,7 @@ LocalStorage 中的数据会长期保存在浏览器中。
 
 ```js
 localStorage.setItem("theme", "dark");
-```text
+```
 
 即使用户关闭浏览器，第二天重新打开网站，这个数据仍然存在。
 
@@ -167,7 +167,7 @@ Cookie 的过期时间需要通过字符串形式设置，例如：
 
 ```js
 document.cookie = `name=Kyle; expires=${new Date(9999, 0, 1).toUTCString()}`;
-```text
+```
 
 ---
 
@@ -207,7 +207,7 @@ LocalStorage 和 SessionStorage 只是保存在浏览器本地。
 ```js
 localStorage.setItem("name", "Bob");
 sessionStorage.setItem("name", "John");
-```text
+```
 
 这些数据只存在于浏览器端。除非你自己通过 JavaScript 把它们放进请求里，否则服务器不会自动收到这些数据。
 
@@ -270,7 +270,7 @@ localStorage.setItem("theme", "dark");
 const theme = localStorage.getItem("theme");
 
 console.log(theme);
-```text
+```
 
 ---
 
@@ -300,7 +300,7 @@ sessionStorage.setItem("currentStep", "2");
 const step = sessionStorage.getItem("currentStep");
 
 console.log(step);
-```text
+```
 
 ---
 
@@ -332,7 +332,7 @@ SameSite
 Expires / Max-Age
 Path
 Domain
-```text
+```
 
 尤其是认证 Cookie，通常应该由服务端设置，并尽量使用 `HttpOnly`，避免被前端 JavaScript 直接读取，从而降低 XSS 风险。
 
@@ -352,7 +352,7 @@ localStorage.removeItem(key);
 
 ```js
 localStorage.setItem("name", "Bob");
-```ts
+```
 
 这里 `"name"` 是 key，`"Bob"` 是 value。
 
@@ -381,7 +381,7 @@ localStorage.setItem("user", JSON.stringify(user));
 const name = localStorage.getItem("name");
 
 console.log(name);
-```text
+```
 
 如果 key 存在，会返回对应的字符串值。
 
@@ -397,7 +397,7 @@ null;
 
 ```js
 localStorage.removeItem("name");
-```text
+```
 
 这会删除 key 为 `"name"` 的数据。
 
@@ -428,7 +428,7 @@ SessionStorage 的 API 和 LocalStorage 几乎完全一样。
 sessionStorage.setItem(key, value);
 sessionStorage.getItem(key);
 sessionStorage.removeItem(key);
-```text
+```
 
 ### 1. 设置数据
 
@@ -442,7 +442,7 @@ sessionStorage.setItem("name", "John");
 const name = sessionStorage.getItem("name");
 
 console.log(name);
-```text
+```
 
 ### 3. 删除数据
 
@@ -455,7 +455,7 @@ sessionStorage.removeItem("name");
 ```js
 sessionStorage.setItem("name", "John");
 sessionStorage.setItem("name", "Bob");
-```text
+```
 
 同样，后一次设置会覆盖前一次。
 
@@ -481,7 +481,7 @@ document.cookie;
 
 ```js
 document.cookie = "name=Kyle";
-```text
+```
 
 这会添加一个 Cookie：
 
@@ -499,7 +499,7 @@ name=Kyle
 
 ```js
 document.cookie = `name=Kyle; expires=${new Date(2027, 0, 1).toUTCString()}`;
-```text
+```
 
 这里的日期表示 2027 年 1 月 1 日。
 
@@ -515,7 +515,7 @@ document.cookie = `name=Kyle; expires=${new Date(2027, 0, 1).toUTCString()}`;
 
 ```js
 new Date(2027, 0, 1);
-```text
+```
 
 表示 2027 年 1 月 1 日。
 
@@ -536,7 +536,7 @@ document.cookie = `name=Kyle; expires=${new Date(9999, 0, 1).toUTCString()}`;
 ```js
 document.cookie = `name=Kyle; expires=${new Date(9999, 0, 1).toUTCString()}`;
 document.cookie = `lastName=Smith; expires=${new Date(9999, 0, 1).toUTCString()}`;
-```text
+```
 
 这样会得到两个 Cookie：
 
@@ -555,7 +555,7 @@ lastName=Smith
 
 ```js
 console.log(document.cookie);
-```text
+```
 
 输出结果通常是一个字符串：
 
@@ -580,7 +580,7 @@ LocalStorage 和 SessionStorage 更像一个简单的 key-value 数据库：
 ```js
 localStorage.setItem("name", "Bob");
 localStorage.getItem("name");
-```text
+```
 
 而 Cookie 更像是在操作一段特殊格式的字符串：
 
@@ -592,7 +592,7 @@ document.cookie = "name=Kyle; expires=...";
 
 ```text
 name=Kyle; lastName=Smith
-```text
+```
 
 你需要自己拆分、解析、匹配 key。
 
@@ -634,7 +634,7 @@ LocalStorage 或 SessionStorage
 长期本地保存：LocalStorage
 当前标签页临时保存：SessionStorage
 需要发给服务器：Cookie
-```text
+```
 
 ---
 

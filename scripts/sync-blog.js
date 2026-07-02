@@ -214,11 +214,14 @@ function generateBlogReadme(posts) {
     "",
     ...categories.flatMap((category) => {
       return [
-        `### ${category}`,
+        "<details>",
+        `<summary><strong>${category}</strong> (${grouped[category].length})</summary>`,
         "",
         ...grouped[category].map((post) => {
           return `- [${post.title}](${post.githubUrl}) · ${post.date}`;
         }),
+        "",
+        "</details>",
         "",
       ];
     }),
