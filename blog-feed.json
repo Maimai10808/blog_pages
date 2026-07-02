@@ -1,9 +1,315 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-06-29T02:48:56.088Z",
-  "total": 158,
+  "updatedAt": "2026-07-02T07:55:49.799Z",
+  "total": 192,
   "posts": [
+    {
+      "title": "10 个值得早点掌握的 Tailwind CSS 实用技巧",
+      "description": "Tailwind CSS 的优势不只是“把 CSS 写在 className 里”，更重要的是它提供了一整套高效的样式组织方式。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-practical-tips.md",
+      "path": "blog/frontend-styling/tailwind-css-practical-tips.md"
+    },
+    {
+      "title": "10 个我希望早点知道的 Tailwind CSS 实用工具类",
+      "description": "Tailwind CSS 最大的优点之一，是它非常容易上手。大多数 Tailwind class 都能和 CSS 属性一一对应，比如：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-useful-utilities.md",
+      "path": "blog/frontend-styling/tailwind-css-useful-utilities.md"
+    },
+    {
+      "title": "Chrome DevTools 使用指南：前端开发必须掌握的调试工具",
+      "description": "Chrome DevTools 是 Chrome 浏览器内置的一套开发者工具。很多人只知道用它看 HTML、改 CSS、打印 `console.log`，但实际上 DevTools 的功能远不止这些。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/chrome-devtools-frontend-debugging-guide.md",
+      "path": "blog/frontend-engineering/chrome-devtools-frontend-debugging-guide.md"
+    },
+    {
+      "title": "CSS Flexbox 完整入门：从居中一个 div 到响应式布局",
+      "description": "如果你曾经在 CSS 中遇到过这些问题：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/css-flexbox-responsive-layout.md",
+      "path": "blog/frontend-styling/css-flexbox-responsive-layout.md"
+    },
+    {
+      "title": "CSS Grid 完整入门：从基础网格到响应式布局实战",
+      "description": "CSS Grid 是现代 CSS 布局中非常重要的一部分。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/css-grid-responsive-layout.md",
+      "path": "blog/frontend-styling/css-grid-responsive-layout.md"
+    },
+    {
+      "title": "CSS 单位怎么选？一次讲清 px、%、rem、em、vh、vw 的使用场景",
+      "description": "在网页设计和前端开发中，我们经常会遇到这些单位：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/css-units-px-percent-rem-em-vh-vw.md",
+      "path": "blog/frontend-styling/css-units-px-percent-rem-em-vh-vw.md"
+    },
+    {
+      "title": "Moment.js 入门教程：安装、格式化、时间修改与常用方法",
+      "description": "Moment.js 是一个经典的 JavaScript 日期时间处理库。虽然现在很多新项目会考虑使用 Day.js、date-fns 或原生 `Intl` API，但在不少老项目和已有系统中，Moment.js 仍然很常见。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/momentjs-date-formatting-time-manipulation.md",
+      "path": "blog/frontend-engineering/momentjs-date-formatting-time-manipulation.md"
+    },
+    {
+      "title": "Next.js App Router 常见错误总结：Server Components、Server Actions、缓存与渲染模式",
+      "description": "Next.js App Router 引入了很多新的概念，例如 Server Components、Client Components、Server Actions、Suspense、Streaming、静态渲染、动态渲染、Route Handlers、Search Params 等。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-app-router-common-errors.md",
+      "path": "blog/react-fundamentals/nextjs-app-router-common-errors.md"
+    },
+    {
+      "title": "Next.js Hydration Error 详解：为什么会出现，以及 3 种常见修复方式",
+      "description": "在 Next.js 项目中，很多人都会遇到一个很典型的报错：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-hydration-error-common-fixes.md",
+      "path": "blog/react-fundamentals/nextjs-hydration-error-common-fixes.md"
+    },
+    {
+      "title": "Next.js Server Actions：它真的会替代 API Routes 吗？",
+      "description": "在过去的 React 或 Next.js 项目中，如果我们想要提交一个表单，比如新增一条 Todo，通常需要经历一整套前后端交互流程：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-server-actions-vs-api-routes.md",
+      "path": "blog/react-fundamentals/nextjs-server-actions-vs-api-routes.md"
+    },
+    {
+      "title": "Next.js Server Component 模式：如何隔离 Server-only Code？",
+      "description": "在 Next.js App Router 中，我们经常会同时使用 Server Component 和 Client Component。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-server-component-server-only-code.md",
+      "path": "blog/react-fundamentals/nextjs-server-component-server-only-code.md"
+    },
+    {
+      "title": "Next.js 性能优化实战：7 个常见瓶颈与解决方案",
+      "description": "很多时候，一个 Web 应用功能已经做完了，页面也很好看，但一跑性能测试就发现：页面加载慢、导航卡顿、图片巨大、首屏阻塞、静态页面被意外动态渲染。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-performance-common-bottlenecks.md",
+      "path": "blog/react-fundamentals/nextjs-performance-common-bottlenecks.md"
+    },
+    {
+      "title": "Next.js 环境变量使用指南：不要再把 API Key 写死在代码里",
+      "description": "在前端项目中，如果你需要使用 API Key、数据库地址、第三方服务密钥等敏感信息，最糟糕的做法就是直接把它们写成字符串放进项目代码里。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-environment-variables-api-key-guide.md",
+      "path": "blog/react-fundamentals/nextjs-environment-variables-api-key-guide.md"
+    },
+    {
+      "title": "Playwright API 测试入门：从项目搭建到 GET / POST / PUT / DELETE 请求实战",
+      "description": "在前端自动化测试里，很多人第一反应是“页面测试”：打开浏览器、点击按钮、填写表单、断言页面内容。但 Playwright 不只能做 UI 自动化，它也可以直接做 **API 测试**。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "testing-quality",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/testing-quality/playwright-api-testing-introduction.md",
+      "path": "blog/testing-quality/playwright-api-testing-introduction.md"
+    },
+    {
+      "title": "Playwright 测试 React 应用入门：从“测什么”到“怎么测”的完整实践",
+      "description": "在 React 项目里，很多人听到“测试”两个字，第一反应可能是单元测试：测试某个函数、某个组件、某个工具方法。但在真实业务项目中，我们更关心的是：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "testing-quality",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/testing-quality/playwright-react-app-testing-introduction.md",
+      "path": "blog/testing-quality/playwright-react-app-testing-introduction.md"
+    },
+    {
+      "title": "React 18 Suspense SSR：HTML Streaming 与 Selective Hydration 解决了什么问题？",
+      "description": "在理解 React Server Components 之前，我们需要先理解 React 18 对传统 SSR 做了哪些改进。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-18-suspense-ssr-streaming-selective-hydration.md",
+      "path": "blog/react-fundamentals/react-18-suspense-ssr-streaming-selective-hydration.md"
+    },
+    {
+      "title": "React 最佳实践：从“能写组件”到“写出可维护的前端代码”",
+      "description": "现在学习 React，已经不只是会写 `useState`、会拆组件、会调接口就够了。真正的 React 开发能力，更多体现在你是否能写出结构清晰、可复用、可维护、可扩展的代码。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-best-practices-maintainable-frontend-code.md",
+      "path": "blog/react-fundamentals/react-best-practices-maintainable-frontend-code.md"
+    },
+    {
+      "title": "React 应用中的错误处理：预期错误、非预期错误与 Error Boundary",
+      "description": "在 React 项目中，错误是不可避免的。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-error-boundary-error-handling.md",
+      "path": "blog/react-fundamentals/react-error-boundary-error-handling.md"
+    },
+    {
+      "title": "React 开发者必须掌握的 TypeScript 知识",
+      "description": "现在如果你想成为 React 开发者，TypeScript 基本已经是绕不开的技能了。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-typescript-essential-knowledge.md",
+      "path": "blog/react-fundamentals/react-typescript-essential-knowledge.md"
+    },
+    {
+      "title": "React 新手最容易踩的 useState 和 useEffect 误区",
+      "description": "在 React 里，`useState` 和 `useEffect` 是最常用的两个 Hooks。很多人刚学 React 时，基本都是从它们开始：用 `useState` 管理状态，用 `useEffect` 请求数据、监听事件、同步副作用。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usestate-useeffect-common-pitfalls.md",
+      "path": "blog/react-fundamentals/react-usestate-useeffect-common-pitfalls.md"
+    },
+    {
+      "title": "React 项目中如何落地自研 K 线图表：以 lightweight-charts 分时线为例",
+      "description": "在交易类项目中，K 线图表通常是非常核心的模块。很多项目会直接接入 TradingView Widget，把历史 K 线、实时行情、指标、缩放交互全部交给第三方处理。这种方式集成快、功能完整，但可控性相对较弱。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "trading-platform-frontend",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/trading-platform-frontend/react-lightweight-charts-kline-implementation.md",
+      "path": "blog/trading-platform-frontend/react-lightweight-charts-kline-implementation.md"
+    },
+    {
+      "title": "Tailwind CSS 完整入门：从工具类到响应式布局、暗黑模式与自定义主题",
+      "description": "很多前端开发者学了很久 CSS，还是会反复搜索：“如何让 div 居中？”、“移动端怎么适配？”、“暗黑模式怎么做？”、“Tailwind 这些类名到底怎么记？”",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-introduction-responsive-dark-theme.md",
+      "path": "blog/frontend-styling/tailwind-css-introduction-responsive-dark-theme.md"
+    },
+    {
+      "title": "Telegram Mini App 静态壳与 CSR 交互：为什么 Next.js 要用 output export？",
+      "description": "你可以先抓住一句话：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "web3-frontend",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/telegram-mini-app-static-shell-csr.md",
+      "path": "blog/web3-frontend/telegram-mini-app-static-shell-csr.md"
+    },
+    {
+      "title": "TypeScript Utility Types 全解析：18 个内置工具类型到底怎么用？",
+      "description": "TypeScript 提供了很多内置工具类型，也就是 Utility Types。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/typescript-utility-types-guide.md",
+      "path": "blog/react-fundamentals/typescript-utility-types-guide.md"
+    },
+    {
+      "title": "TypeScript 中为什么我更推荐使用 type，而不是 interface？",
+      "description": "在 TypeScript 中，`type` 和 `interface` 都可以用来描述对象结构。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/typescript-type-vs-interface-recommendation.md",
+      "path": "blog/react-fundamentals/typescript-type-vs-interface-recommendation.md"
+    },
+    {
+      "title": "TypeScript 中的 unknown：为什么它比 any 更安全？",
+      "description": "在 TypeScript 项目中，你会越来越频繁地遇到 `unknown` 类型。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/typescript-unknown-vs-any.md",
+      "path": "blog/react-fundamentals/typescript-unknown-vs-any.md"
+    },
+    {
+      "title": "Vite 入门指南：更快启动、更快更新的现代前端构建工具",
+      "description": "在现代前端开发中，构建工具已经成为项目不可缺少的一部分。无论你使用 React、Vue、Svelte，还是原生 JavaScript，都需要一个工具来帮你启动开发服务器、处理模块、加载静态资源、读取环境变量、支持 TypeScript，并最终打包生产环境代码。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md",
+      "path": "blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md"
+    },
+    {
+      "title": "从 LLM 到 Agent，再到 Playwright MCP：AI 自动化测试到底是怎么工作的？",
+      "description": "过去我们写自动化测试，通常是这样的流程：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "ai-tools-workflows",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/ai-tools-workflows/llm-agent-playwright-mcp-ai-automation-testing.md",
+      "path": "blog/ai-tools-workflows/llm-agent-playwright-mcp-ai-automation-testing.md"
+    },
+    {
+      "title": "从普通 try-catch 到类型安全 Result Pattern：前端项目如何设计错误处理架构",
+      "description": "判断一个开发者是否成熟，很多时候不是看他会不会写功能，而是看他如何处理错误。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/type-safe-result-pattern-error-handling.md",
+      "path": "blog/frontend-engineering/type-safe-result-pattern-error-handling.md"
+    },
+    {
+      "title": "使用 TanStack Virtual 优化 React 大列表性能：5000 条数据也能丝滑滚动",
+      "description": "在前端开发中，我们经常会遇到大列表渲染问题。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/tanstack-virtual-react-large-list-performance.md",
+      "path": "blog/react-fundamentals/tanstack-virtual-react-large-list-performance.md"
+    },
+    {
+      "title": "使用 TradingView Lightweight Charts 实现技术指标：从 SMA 到实时 ZigZag",
+      "description": "在交易类前端项目中，行情图表是非常核心的模块。无论是交易所、期权平台、DeFi 看板，还是普通的行情详情页，只要涉及价格走势展示，基本都会遇到一个问题：如何在图表上叠加各种技术指标？",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "trading-platform-frontend",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/trading-platform-frontend/tradingview-lightweight-charts-technical-indicators.md",
+      "path": "blog/trading-platform-frontend/tradingview-lightweight-charts-technical-indicators.md"
+    },
+    {
+      "title": "前端如何落地 SIWE 钱包登录：从 Reown AppKit 到 Token 鉴权完整链路",
+      "description": "在 Web3 项目中，钱包登录是一个非常核心的认证模块。它和传统 Web2 的账号密码登录不一样，用户不是输入手机号、邮箱或密码，而是通过钱包签名来证明自己拥有某个链上地址。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "web3-frontend",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-siwe-reown-appkit-token-auth-flow.md",
+      "path": "blog/web3-frontend/web3-siwe-reown-appkit-token-auth-flow.md"
+    },
+    {
+      "title": "前端如何落地 Web3 出入金模块：以 Deposit / Withdraw 核心链路为例",
+      "description": "在 Web3 交易类产品中，出入金模块通常不是一个简单的“表单提交”功能。它同时涉及钱包连接、余额校验、链上授权、签名确认、后端提交、交易状态反馈以及用户资产刷新。前端在其中承担的不只是页面展示，而是要把链上交互、业务规则和用户体验串成一条稳定、清晰、可回溯的流程。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "web3-frontend",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-deposit-withdraw-module-flow.md",
+      "path": "blog/web3-frontend/web3-deposit-withdraw-module-flow.md"
+    },
+    {
+      "title": "用 Tailwind CSS 实现图片背景、渐变遮罩和混合模式效果",
+      "description": "在网页设计中，我们经常会遇到这样的需求：",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T15:55:26+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-image-background-gradient-overlay-blend.md",
+      "path": "blog/frontend-styling/tailwind-css-image-background-gradient-overlay-blend.md"
+    },
     {
       "title": "AES 加密算法详解：它是如何把明文变成密文的？",
       "description": "AES 是现代密码学中最重要、最常见的对称加密算法之一。无论是 HTTPS、磁盘加密、数据库加密，还是各种安全通信协议，AES 都是一个绕不开的基础算法。",
