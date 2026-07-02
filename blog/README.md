@@ -6,7 +6,6 @@ Total posts: **192**
 
 ## Latest Posts
 
-- [Vite 入门指南：更快启动、更快更新的现代前端构建工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md) · `frontend-engineering` · 2026-07-02
 - [10 个值得早点掌握的 Tailwind CSS 实用技巧](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-practical-tips.md) · `frontend-styling` · 2026-07-02
 - [10 个我希望早点知道的 Tailwind CSS 实用工具类](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-useful-utilities.md) · `frontend-styling` · 2026-07-02
 - [Chrome DevTools 使用指南：前端开发必须掌握的调试工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/chrome-devtools-frontend-debugging-guide.md) · `frontend-engineering` · 2026-07-02
@@ -16,6 +15,7 @@ Total posts: **192**
 - [Moment.js 入门教程：安装、格式化、时间修改与常用方法](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/momentjs-date-formatting-time-manipulation.md) · `frontend-engineering` · 2026-07-02
 - [Next.js App Router 常见错误总结：Server Components、Server Actions、缓存与渲染模式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-app-router-common-errors.md) · `react-fundamentals` · 2026-07-02
 - [Next.js Hydration Error 详解：为什么会出现，以及 3 种常见修复方式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-hydration-error-common-fixes.md) · `react-fundamentals` · 2026-07-02
+- [Next.js Server Actions：它真的会替代 API Routes 吗？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-server-actions-vs-api-routes.md) · `react-fundamentals` · 2026-07-02
 
 ## Categories
 
@@ -134,10 +134,10 @@ Total posts: **192**
 
 ### frontend-engineering
 
-- [Vite 入门指南：更快启动、更快更新的现代前端构建工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md) · 2026-07-02
 - [Chrome DevTools 使用指南：前端开发必须掌握的调试工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/chrome-devtools-frontend-debugging-guide.md) · 2026-07-02
 - [Moment.js 入门教程：安装、格式化、时间修改与常用方法](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/momentjs-date-formatting-time-manipulation.md) · 2026-07-02
 - [从普通 try-catch 到类型安全 Result Pattern：前端项目如何设计错误处理架构](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/type-safe-result-pattern-error-handling.md) · 2026-07-02
+- [Vite 入门指南：更快启动、更快更新的现代前端构建工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md) · 2026-07-02
 - [为什么现代前端一定要学工程化？](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/why-modern-frontend-needs-engineering.md) · 2026-06-12
 - [从零搭建企业级 Mono Repo 工程：前端高薪必备技能](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/enterprise-monorepo-engineering.md) · 2026-06-12
 
@@ -245,8 +245,8 @@ Total posts: **192**
 
 ### web3-frontend
 
-- [Telegram Mini App 静态壳与 CSR 交互：为什么 Next.js 要用 output export？](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/telegram-mini-app-static-shell-csr.md) · 2026-07-02
 - [前端如何落地 SIWE 钱包登录：从 Reown AppKit 到 Token 鉴权完整链路](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-siwe-reown-appkit-token-auth-flow.md) · 2026-07-02
+- [Telegram Mini App 静态壳与 CSR 交互：为什么 Next.js 要用 output export？](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/telegram-mini-app-static-shell-csr.md) · 2026-07-02
 - [前端如何落地 Web3 出入金模块：以 Deposit / Withdraw 核心链路为例](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-deposit-withdraw-module-flow.md) · 2026-07-02
 - [前端开发如何用 Multicall 优化链上数据读取：以 Next.js 批量查询 Token 余额为例](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-frontend-multicall-token-balance-query.md) · 2026-06-29
 - [Web3 前端 EVM 交互如何落地：从切链、签名到 ERC20 支付与合约领奖](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-frontend-evm-interaction-implementation.md) · 2026-06-24
