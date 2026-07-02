@@ -6,7 +6,7 @@ Tailwind CSS 的优势不只是“把 CSS 写在 className 里”，更重要的
 
 ```html
 <div class="flex items-center justify-center bg-blue-500"></div>
-```tsx
+```
 
 但 Tailwind 真正好用的地方，往往藏在一些高级用法里。
 
@@ -59,7 +59,7 @@ Tailwind CSS 的优势不只是“把 CSS 写在 className 里”，更重要的
 
   <p class="text-gray-500 group-hover:text-blue-500">Description</p>
 </div>
-```text
+```
 
 当父元素 hover 时：
 
@@ -72,7 +72,7 @@ p 变成蓝色
 
 ```html
 group group-hover:
-```tsx
+```
 
 `group` 放在父元素上，`group-hover:` 放在子元素上。
 
@@ -100,7 +100,7 @@ group group-hover:
 
 ```html
 peer peer-focus:
-```tsx
+```
 
 `peer` 放在触发状态的元素上，`peer-focus:` 放在被影响的兄弟元素上。
 
@@ -128,7 +128,7 @@ Tailwind 提供了非常方便的动画过渡类。
 
 ```html
 <button class="bg-blue-500 hover:bg-blue-600">Button</button>
-```tsx
+```
 
 如果直接这样写，颜色变化会非常突兀。
 
@@ -145,7 +145,7 @@ Tailwind 提供了非常方便的动画过渡类。
 ```text
 transition-colors：只对颜色变化添加过渡
 duration-300：动画持续 300ms
-```tsx
+```
 
 也可以添加缓动曲线和延迟：
 
@@ -172,7 +172,7 @@ ease-in
 ease-out
 ease-in-out
 delay-100
-```tsx
+```
 
 Tailwind 也提供了一些预设动画：
 
@@ -200,7 +200,7 @@ Tailwind 是 **mobile-first** 框架。
 
 ```html
 <div class="grid grid-cols-2 sm:grid-cols-3">...</div>
-```text
+```
 
 含义是：
 
@@ -215,7 +215,7 @@ sm 及以上：3 列
 
 ```html
 <div class="grid grid-cols-3 sm:grid-cols-2">...</div>
-```text
+```
 
 意思是小屏幕 2 列，大屏幕 3 列。
 
@@ -237,7 +237,7 @@ sm 及以上：2 列
 ```text
 小屏幕：2 列
 大屏幕：3 列
-```tsx
+```
 
 应该写：
 
@@ -250,7 +250,7 @@ sm 及以上：2 列
 ```text
 先写最小屏幕的默认样式
 再用 sm / md / lg / xl 向上覆盖
-```tsx
+```
 
 ---
 
@@ -268,7 +268,7 @@ Tailwind 也支持范围控制。
 
 ```html
 <div class="grid grid-cols-2 min-[400px]:grid-cols-3">...</div>
-```text
+```
 
 表示屏幕宽度达到 400px 后变成三列。
 
@@ -294,7 +294,7 @@ module.exports = {
 
 ```html
 <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3">...</div>
-```text
+```
 
 ---
 
@@ -315,7 +315,7 @@ hover 查看 CSS 详情
 
 ```tsx
 <div className="flex items-center justify-center bg-blue-500" />
-```text
+```
 
 但如果你把 class 写到变量里，有时候 IntelliSense 可能就不提示了。
 
@@ -331,7 +331,7 @@ const buttonStyles = "rounded-lg bg-blue-500 px-4 py-2 text-white";
 
 ```text
 Tailwind CSS: Class Attributes
-```text
+```
 
 然后添加你常用的变量名，比如：
 
@@ -353,7 +353,7 @@ const buttonVariants = {
   secondary: "bg-gray-100 text-gray-900",
   danger: "bg-red-500 text-white",
 };
-```tsx
+```
 
 配置好以后，写这些字符串时也能获得 Tailwind IntelliSense 支持。
 
@@ -375,7 +375,7 @@ const [color, setColor] = useState("green");
 
 ```tsx
 <div className={`bg-${color}-500`}>Content</div>
-```tsx
+```
 
 你可能以为当 `color = "green"` 时，它会生成：
 
@@ -393,7 +393,7 @@ const [color, setColor] = useState("green");
 
 ```tsx
 `bg-${color}-500`;
-```text
+```
 
 在源码里并没有明确出现：
 
@@ -419,7 +419,7 @@ const colorClasses = {
 };
 
 <div className={colorClasses[color]}>Content</div>;
-```text
+```
 
 这样 Tailwind 能扫描到完整类名：
 
@@ -439,7 +439,7 @@ bg-blue-500
 
 ```tsx
 `bg-${color}-${shade}`;
-```tsx
+```
 
 而 `color` 和 `shade` 都是动态的，可能组合非常多。
 
@@ -465,7 +465,7 @@ Tailwind 很强，但不是所有动态样式都必须用 Tailwind 解决。
 
 ```html
 <div class="third-party-card"></div>
-```text
+```
 
 你想覆盖它的样式，就需要写 CSS。
 
@@ -489,7 +489,7 @@ Tailwind 很强，但不是所有动态样式都必须用 Tailwind 解决。
 .custom-card {
   box-shadow: 0 0 20px theme("colors.purple.500");
 }
-```tsx
+```
 
 这样你不需要手写颜色值，而是直接使用 Tailwind 的颜色系统。
 
@@ -511,7 +511,7 @@ Tailwind 的 arbitrary value 任意值也很好用。
 0 0 20px
 写成
 0_0_20px
-```tsx
+```
 
 ---
 
@@ -543,7 +543,7 @@ module.exports = {
     },
   },
 };
-```tsx
+```
 
 然后就可以直接使用：
 
@@ -575,7 +575,7 @@ module.exports = {
     },
   },
 };
-```tsx
+```
 
 然后就可以使用：
 
@@ -594,7 +594,7 @@ neon-red
 neon-green
 neon-blue
 neon-purple
-```text
+```
 
 并且希望颜色可以自动来自 Tailwind 主题，就可以写自定义插件。
 
@@ -629,7 +629,7 @@ module.exports = {
 <div class="neon-red">Red Neon</div>
 <div class="neon-green">Green Neon</div>
 <div class="neon-blue">Blue Neon</div>
-```text
+```
 
 而且好处是：
 
@@ -659,7 +659,7 @@ IntelliSense 也能提示
 
 ```js
 import colors from "tailwindcss/colors";
-```text
+```
 
 然后定义自己的主题色：
 
@@ -678,7 +678,7 @@ const theme = {
     ...colors.violet,
   },
 };
-```text
+```
 
 然后在 Tailwind 配置中使用：
 
@@ -705,7 +705,7 @@ export default {
 <div class="bg-primary text-white">Primary</div>
 
 <div class="bg-primary-100 text-primary-700">Primary Light</div>
-```tsx
+```
 
 这个技巧非常适合做可切换主题，或者统一项目视觉风格。
 
@@ -731,7 +731,7 @@ function Button({ className }: { className?: string }) {
 
 ```tsx
 <Button className="text-white" />
-```text
+```
 
 你可能希望最终文字变成白色。
 
@@ -750,7 +750,7 @@ text-white
 
 ```bash
 npm install tailwind-merge
-```tsx
+```
 
 使用：
 
@@ -775,7 +775,7 @@ function Button({ className }: { className?: string }) {
 
 ```tsx
 <Button className="text-white" />
-```text
+```
 
 最终会正确合并成：
 
@@ -819,7 +819,7 @@ function Button({
     </button>
   );
 }
-```text
+```
 
 这样组件既有默认样式，又允许外部安全覆盖。
 

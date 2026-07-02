@@ -18,7 +18,7 @@ const [count, setCount] = useState(0);
 function handleClick() {
   setCount(count + 1);
 }
-```text
+```
 
 点击按钮后，`count` 增加 1，这没有问题。
 
@@ -46,7 +46,7 @@ setCount(0 + 1);
 setCount(0 + 1);
 setCount(0 + 1);
 setCount(0 + 1);
-```text
+```
 
 所以最终只是把 `count` 设置为 1。
 
@@ -71,7 +71,7 @@ function handleClick() {
 setCount((prev) => prev + 1);
 setTodos((prev) => [...prev, newTodo]);
 setUser((prev) => ({ ...prev, name: newName }));
-```tsx
+```
 
 只要你要基于旧值计算新值，就优先使用函数式更新。
 
@@ -118,7 +118,7 @@ function ProductCard({ id }: { id?: string }) {
 
   return <div>Product Card</div>;
 }
-```tsx
+```
 
 也可以写成单个 return：
 
@@ -148,7 +148,7 @@ const [user, setUser] = useState({
   city: "Shanghai",
   age: 20,
 });
-```text
+```
 
 如果用户输入 name，新手可能会这样写：
 
@@ -164,7 +164,7 @@ user.name = e.target.value;
 setUser({
   name: e.target.value,
 });
-```text
+```
 
 这样虽然更新了 `name`，但原来的 `city` 和 `age` 会丢失。因为你传进去的是一个全新的对象，里面只有 `name`。
 
@@ -184,7 +184,7 @@ setUser((prev) => ({
   ...prev,
   name: e.target.value,
 }));
-```tsx
+```
 
 这里的 `...prev` 表示保留旧对象里的所有字段，然后用新的 `name` 覆盖旧的 `name`。
 
@@ -214,7 +214,7 @@ const [email, setEmail] = useState("");
 const [password, setPassword] = useState("");
 const [address, setAddress] = useState("");
 const [zipCode, setZipCode] = useState("");
-```tsx
+```
 
 字段少的时候还能接受，但字段一多，代码会变得非常臃肿。
 
@@ -237,7 +237,7 @@ const [form, setForm] = useState({
 <input name="firstName" value={form.firstName} onChange={handleChange} />
 <input name="lastName" value={form.lastName} onChange={handleChange} />
 <input name="email" value={form.email} onChange={handleChange} />
-```tsx
+```
 
 统一处理：
 
@@ -254,7 +254,7 @@ function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
 
 ```tsx
 [e.target.name]: e.target.value
-```tsx
+```
 
 它会根据当前 input 的 `name` 动态更新对应字段。
 
@@ -268,7 +268,7 @@ function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
 
 ```tsx
 firstName: e.target.value;
-```tsx
+```
 
 如果当前输入框是：
 
@@ -280,7 +280,7 @@ firstName: e.target.value;
 
 ```tsx
 email: e.target.value;
-```tsx
+```
 
 这样一个 `handleChange` 就可以处理整个表单。
 
@@ -305,7 +305,7 @@ const [totalPrice, setTotalPrice] = useState(0);
 useEffect(() => {
   setTotalPrice(quantity * pricePerItem);
 }, [quantity]);
-```text
+```
 
 这段代码能工作，但没有必要。
 
@@ -323,7 +323,7 @@ const totalPrice = quantity * pricePerItem;
 const fullName = firstName + " " + lastName;
 const completedTodos = todos.filter((todo) => todo.completed);
 const completedCount = completedTodos.length;
-```text
+```
 
 这些都属于派生状态。
 
@@ -351,7 +351,7 @@ true === true; // true
 const [price, setPrice] = useState(0);
 
 setPrice(0);
-```text
+```
 
 但对象和数组不同。
 
@@ -376,7 +376,7 @@ setPrice({
   number: 100,
   isTotal: true,
 });
-```tsx
+```
 
 虽然看起来内容没变，但这是一个新的对象，React 会认为状态变化了，从而重新渲染。
 
@@ -398,7 +398,7 @@ useEffect(() => {
 useEffect(() => {
   // ...
 }, [price.number]);
-```tsx
+```
 
 原则是：useEffect 依赖项尽量使用稳定的原始值，谨慎依赖对象和数组。
 
@@ -435,7 +435,7 @@ return (
 
 ```tsx
 post.title;
-```text
+```
 
 相当于：
 
@@ -450,7 +450,7 @@ undefined.title;
 ```tsx
 <h1>{post?.title}</h1>
 <p>{post?.body}</p>
-```tsx
+```
 
 但更清晰的做法是显式使用 `null` 表示初始没有数据，并配合 loading 状态：
 
@@ -496,7 +496,7 @@ return (
 
 ```tsx
 const [loading, setLoading] = useState(true);
-```text
+```
 
 TypeScript 会推断 `loading` 是 boolean。
 
@@ -510,7 +510,7 @@ setLoading("false"); // 错误
 ```tsx
 const [count, setCount] = useState(0);
 // count 被推断为 number
-```tsx
+```
 
 但对象请求数据场景容易出问题。
 
@@ -526,7 +526,7 @@ TypeScript 会推断 `post` 的类型就是 `null`。
 
 ```tsx
 setPost(data);
-```text
+```
 
 或者：
 
@@ -546,7 +546,7 @@ type Post = {
 };
 
 const [post, setPost] = useState<Post | null>(null);
-```text
+```
 
 这表示：`post` 初始可以是 `null`，但后面会变成 `Post` 类型。
 
@@ -567,7 +567,7 @@ const [text, setText] = useState("");
 const [loading, setLoading] = useState(false);
 const [post, setPost] = useState<Post | null>(null);
 const [todos, setTodos] = useState<Todo[]>([]);
-```tsx
+```
 
 原始类型通常可以自动推断；对象、数组、异步数据通常建议显式标注。
 
@@ -617,7 +617,7 @@ function useWindowSize() {
 
   return windowSize;
 }
-```tsx
+```
 
 组件中使用：
 
@@ -637,7 +637,7 @@ useLocalStorage;
 useDebounce;
 useFetch;
 useAuth;
-```tsx
+```
 
 它的作用是把可复用的状态逻辑抽出去，让组件保持简洁。
 
@@ -668,7 +668,7 @@ useReducer
 window
 document
 localStorage
-```tsx
+```
 
 例如：
 
@@ -686,7 +686,7 @@ function Page() {
 
 ```tsx
 "use client";
-```tsx
+```
 
 完整示例：
 
@@ -710,7 +710,7 @@ function Counter() {
 window.alert("hello");
 localStorage.getItem("token");
 document.addEventListener("keydown", handler);
-```tsx
+```
 
 需要注意：`'use client'` 是一个边界。一旦某个组件是 Client Component，它 import 的子组件也会进入客户端组件树。
 
@@ -745,7 +745,7 @@ useEffect(() => {
 
 ```tsx
 setCount(0 + 1);
-```tsx
+```
 
 所以永远是 1。
 
@@ -779,7 +779,7 @@ useEffect(() => {
     clearInterval(id);
   };
 }, []);
-```tsx
+```
 
 这样 `setCount` 每次都能拿到最新的状态，不需要依赖外部的 `count` 变量。
 
@@ -812,7 +812,7 @@ useEffect(() => {
 点击 id = 2
 点击 id = 3
 点击 id = 4
-```tsx
+```
 
 这会连续发出多个请求。
 
@@ -860,7 +860,7 @@ race condition
 组件卸载后的状态更新
 分页
 乐观更新
-```tsx
+```
 
 所以正式项目里，不建议大量手写 `useEffect` 请求数据。
 
@@ -879,7 +879,7 @@ const { data, isLoading, error } = useQuery({
   queryKey: ["post", id],
   queryFn: () => fetchPost(id),
 });
-```tsx
+```
 
 它会帮你处理缓存、loading、error、重复请求等问题。
 

@@ -19,7 +19,7 @@ Server Component 的优势是：
 不需要 hydration
 可以直接在服务端获取数据
 可以减少客户端 JavaScript 体积
-```text
+```
 
 但是如果你在页面文件顶部写了：
 
@@ -45,7 +45,7 @@ export default function HomePage() {
     </main>
   );
 }
-```tsx
+```
 
 如果这个页面没有 `useState`、`useEffect`、`onClick`、浏览器 API，就不应该加 `use client`。
 
@@ -70,7 +70,7 @@ export default function HomePage() {
 export function CTAButton() {
   return <button onClick={() => console.log("clicked")}>Get Started</button>;
 }
-```tsx
+```
 
 然后在 Server Component 页面里使用：
 
@@ -90,7 +90,7 @@ export default function HomePage() {
 ```text id="8iihhy"
 页面默认保持 Server Component。
 只有真正需要交互的小组件才加 use client。
-```tsx
+```
 
 这可以减少客户端 bundle，也可以减少 hydration 成本。
 
@@ -123,7 +123,7 @@ export function BlogCard() {
     />
   );
 }
-```text
+```
 
 `next/image` 的优势包括：
 
@@ -152,7 +152,7 @@ const nextConfig = {
 };
 
 export default nextConfig;
-```text
+```
 
 这样 Next.js 才会对这个远程图片做优化。
 
@@ -178,7 +178,7 @@ export default nextConfig;
 import moment from "moment";
 
 moment(date).format("YYYY-MM-DD");
-```text
+```
 
 `moment` 体积较大，如果只是简单日期格式化，完全可以使用原生 `Intl.DateTimeFormat`：
 
@@ -206,7 +206,7 @@ lodash 全量引入
 大型富文本编辑器
 无必要的 polyfill
 AI 自动安装的重复工具库
-```text
+```
 
 如果只是简单功能，优先考虑：
 
@@ -245,7 +245,7 @@ export default async function BlogPage() {
     </main>
   );
 }
-```tsx
+```
 
 如果 `getBlogPosts()` 慢 1 秒，那么整个页面都会被阻塞。
 用户连标题和导航都要等。
@@ -286,7 +286,7 @@ async function BlogList() {
 ```text id="064fdo"
 导航、标题、静态内容先显示
 博客列表等待数据完成后再流式插入
-```text
+```
 
 这就是 Streaming 的价值。
 
@@ -308,7 +308,7 @@ async function BlogList() {
 ```text id="fx3rpd"
 不要让一个慢接口阻塞整个页面。
 哪里慢，就把 Suspense 边界包在哪里。
-```tsx
+```
 
 ---
 
@@ -341,7 +341,7 @@ export default function RootLayout({
     </>
   );
 }
-```text
+```
 
 问题是：
 `getUserSession()` 需要读取请求相关信息，比如 cookies / headers。
@@ -363,7 +363,7 @@ Next.js 会输出哪些路由是 static，哪些是 dynamic。
 layout 是否读取了 cookies / headers
 navbar 是否服务端获取 session
 全局组件是否使用了认证库的服务端函数
-```tsx
+```
 
 对于全局导航栏中的用户信息，可以考虑在客户端获取：
 
@@ -393,7 +393,7 @@ export function Navbar() {
 ```text id="z05k3n"
 全局 layout 尽量不要服务端读取用户 session。
 否则容易让本来可以静态渲染的页面变成动态渲染。
-```tsx
+```
 
 ---
 
@@ -429,7 +429,7 @@ export default withAuth;
 export const config = {
   matcher: ["/dashboard/:path*"],
 };
-```text
+```
 
 或者根据认证库提供的方式配置 public paths：
 
@@ -446,7 +446,7 @@ Middleware 的作用是：
 检查是否登录
 未登录就 redirect
 已登录才放行
-```text
+```
 
 这样不需要每个 layout 都手动 `await requireUser()`。
 
@@ -468,7 +468,7 @@ Middleware 的作用是：
 ```text id="h431u2"
 路由级认证优先交给 Middleware。
 页面内部再做具体业务数据权限判断。
-```text
+```
 
 ---
 
@@ -514,7 +514,7 @@ export const requireUser = cache(async () => {
 
   return user;
 });
-```text
+```
 
 这样在同一次 render pass 里，多次调用：
 
@@ -535,7 +535,7 @@ getOrganization
 getPermissions
 getWorkspace
 读取当前请求上下文的函数
-```text
+```
 
 注意：`cache` 的缓存范围不是永久缓存。
 它主要是在一次服务端渲染请求中复用结果。
@@ -559,7 +559,7 @@ page.tsx 是否不必要地加了 use client
 layout.tsx 是否不必要地加了 use client
 大组件是否因为小交互变成 Client Component
 能否把按钮、弹窗、输入框拆出去
-```text
+```
 
 ### 2. 检查图片
 
@@ -579,7 +579,7 @@ layout.tsx 是否不必要地加了 use client
 是否有重复工具库
 AI 生成代码是否自动安装了不必要依赖
 是否可以用原生 Intl API 替代
-```text
+```
 
 ### 4. 检查慢数据
 
@@ -597,7 +597,7 @@ layout 是否服务端读取 session
 layout 是否调用 cookies / headers
 全局 Header 是否导致整站动态渲染
 认证信息是否可以客户端获取
-```text
+```
 
 ### 6. 检查路由保护
 
@@ -615,7 +615,7 @@ requireUser 是否在一个页面中被调用多次
 权限函数是否重复读取 session
 多个数据函数是否重复获取同一上下文
 是否可以用 React cache 包装
-```text
+```
 
 ---
 
@@ -649,7 +649,7 @@ Suspense / Streaming
 Static / Dynamic Rendering
 Middleware
 React cache
-```text
+```
 
 ---
 
@@ -673,7 +673,7 @@ Next.js 性能优化不是只靠一个技巧，而是要理解 App Router 的运
 
 ```bash id="2qxaq5"
 pnpm run build
-```text
+```
 
 观察哪些页面是 static，哪些页面是 dynamic。
 如果一个本该静态的页面变成动态渲染，通常说明项目里某个 layout、header、auth 函数或动态 API 使用位置不合理。

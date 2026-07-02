@@ -15,7 +15,7 @@ export type KlineData = {
   spot_price: string[];
   timestamp: number[];
 };
-```text
+```
 
 所以更准确的说法是：**这是一个自研实时分时线图表模块，而不是完整蜡烛图 K 线模块。**
 
@@ -74,7 +74,7 @@ usePublicSSE 建立公共行情 SSE 连接
 → ProChart 接收 data
 → lightweight-charts setData 初始化
 → 后续数据变化时 series.update 最新点
-```text
+```
 
 也就是说，图表组件本身不直接连接 SSE。
 它只负责接收已经整理好的 `KlineData`，然后渲染图表。
@@ -101,7 +101,7 @@ export type KlineData = {
   spot_price: string[];
   timestamp: number[];
 };
-```text
+```
 
 它的含义是：
 
@@ -116,7 +116,7 @@ timestamp[index] 对应 spot_price[index]
   timestamp: [1710000000, 1710000001, 1710000002],
   spot_price: ['65000.1', '65001.2', '65003.8']
 }
-```text
+```
 
 这类结构更像后端为了节省传输体积而设计的并行数组格式。相比对象数组：
 
@@ -135,7 +135,7 @@ timestamp[index] 对应 spot_price[index]
 某个时间点对应错价格
 图表点位错乱
 去重后价格和时间不匹配
-```tsx
+```
 
 因此在前端落地时，需要特别注意数据合并逻辑。
 
@@ -159,7 +159,7 @@ tsLineMapAtom
   ├─ BTC → { timestamp: [...], spot_price: [...] }
   ├─ ETH → { timestamp: [...], spot_price: [...] }
   └─ SOL → { timestamp: [...], spot_price: [...] }
-```text
+```
 
 这样做的好处是：**不同标的的数据互相隔离，不会因为切换交易对而覆盖。**
 
@@ -189,7 +189,7 @@ export type TsLineChannelItem = {
   spot_price: Array<string>;
   timestamp: Array<number>;
 };
-```text
+```
 
 每次收到新数据后，不是直接覆盖旧数据，而是执行：
 
@@ -214,7 +214,7 @@ const pairs = combinedTimestamps.map((time, index) => ({
   time,
   price: combinedPrices[index],
 }));
-```text
+```
 
 这里先把并行数组转成 pair：
 
@@ -244,7 +244,7 @@ const uniquePairsMap = new Map();
 pairs.forEach((pair) => {
   uniquePairsMap.set(pair.time, pair);
 });
-```text
+```
 
 Map 的特点是：同一个 key 后写入的值会覆盖先写入的值。
 
@@ -263,7 +263,7 @@ Map 的特点是：同一个 key 后写入的值会覆盖先写入的值。
 const sortedPairs = Array.from(uniquePairsMap.values()).sort(
   (a, b) => a.time - b.time,
 );
-```text
+```
 
 图表数据需要按时间升序排列，否则 lightweight-charts 可能无法正确渲染。
 
@@ -285,7 +285,7 @@ const slicedPairs = sortedPairs.slice(-300);
 1 分钟 300 点
 10 分钟 3000 点
 1 小时 18000 点
-```text
+```
 
 长期运行后，会带来几个问题：
 
@@ -306,7 +306,7 @@ React 状态变大
 只关心最近行情
 不做长周期历史回放
 保证图表轻量稳定
-```text
+```
 
 如果后续要支持 1m、5m、15m、1h 这种标准 K 线周期，就可以把 300 抽成配置：
 
@@ -320,7 +320,7 @@ const MAX_POINTS = 300;
 1s 分时线：保留 300 点
 1m K线：保留 500 根
 5m K线：保留 1000 根
-```text
+```
 
 ---
 
@@ -345,7 +345,7 @@ interface LightweightChartProps {
   height?: number;
   trend?: "Up" | "Down" | "Equal";
 }
-```text
+```
 
 初始化图表时，需要把项目里的 `KlineData` 转成 lightweight-charts 的 AreaSeries 数据格式：
 
@@ -365,7 +365,7 @@ AreaSeries 需要的数据格式是：
   time: UTCTimestamp;
   value: number;
 }
-```text
+```
 
 所以这里做了两件事：
 
@@ -379,7 +379,7 @@ timestamp + spot_price 并行数组
 
 ```ts
 seriesRef.current.setData(sortedData);
-```text
+```
 
 这一步适合首次加载，也适合整段数据重新初始化。
 
@@ -398,7 +398,7 @@ update：更新或追加最新一个点
 
 ```ts
 seriesRef.current.setData(sortedData);
-```text
+```
 
 后续实时更新时使用：
 
@@ -418,7 +418,7 @@ seriesRef.current.update({
 ```text
 第一次：setData 初始化完整数据
 后续：update 最新点
-```tsx
+```
 
 这也是自研实时行情图表里最重要的优化之一。
 
@@ -436,7 +436,7 @@ const lastTimeRef = useRef<number>(0);
 
 ```ts
 const lastPoint = sortedData[sortedData.length - 1];
-```text
+```
 
 然后判断：
 
@@ -456,7 +456,7 @@ if (lastPoint.time > lastTimeRef.current) {
 ```text
 只有出现更晚的 timestamp
 才追加新的图表点
-```text
+```
 
 这样可以避免同一个时间点被重复 update。
 
@@ -475,7 +475,7 @@ if (lastPoint.time > lastTimeRef.current) {
 ```text
 time > lastTime：追加新点
 time === lastTime 且 value 变化：更新当前点
-```tsx
+```
 
 这在标准 OHLC K 线里尤其常见。
 例如一分钟 K 线在这一分钟内会不断变化，但 timestamp 不变，open/high/low/close 会更新。此时不能只判断 `time > lastTime`，否则当前蜡烛不会实时变化。
@@ -503,7 +503,7 @@ chart 实例变化不需要触发 React 重新渲染
 series 实例是第三方库对象，不是页面展示状态
 lastTime 只是跨 render 记住上一次时间点
 hoveredPointIndex 是交互临时状态
-```tsx
+```
 
 如果把这些放进 `useState`，每次变化都会触发 React render，反而增加性能成本。
 
@@ -526,7 +526,7 @@ lightweight-charts 负责图表内部渲染
 
 ```ts
 "use client";
-```tsx
+```
 
 初始化图表放在 `useEffect` 中：
 
@@ -557,7 +557,7 @@ useEffect(() => {
 
 ```ts
 window.addEventListener("resize", handleResize);
-```text
+```
 
 所以清理时也要：
 
@@ -576,7 +576,7 @@ window.removeEventListener("resize", handleResize);
 → 监听 resize / crosshair
 → 数据更新 update
 → 组件卸载 remove chart + remove listener
-```text
+```
 
 这就是 React 中落地第三方图表库的标准方式。
 
@@ -603,7 +603,7 @@ BTC：价格较高，通常展示 2 位小数
 ETH：可以展示 2 或 4 位
 小币种：可能需要 4、6、8 位
 期权价格 / 波动率：可能有自己的精度规则
-```text
+```
 
 所以图表组件不能把价格精度写死。
 更好的方式是根据 symbol / underlying / instrument 配置动态生成。
@@ -640,7 +640,7 @@ const handleResize = () => {
     });
   }
 };
-```text
+```
 
 这段逻辑负责：
 
@@ -657,7 +657,7 @@ const handleResize = () => {
 对 resize 做 debounce
 页面隐藏时暂停不必要更新
 移动端横竖屏切换时重新 fitContent
-```text
+```
 
 如果图表容器宽度变化不是由浏览器窗口变化引起，而是由侧边栏展开、tab 切换、父容器布局变化引起，那么 `ResizeObserver` 会比 `window.resize` 更准确。
 
@@ -699,7 +699,7 @@ chartRef.current.setCrosshairPosition(
   sortedData[nextIndex].time as UTCTimestamp,
   seriesRef.current,
 );
-```text
+```
 
 这个逻辑是为了提升实时图表的交互体验。
 
@@ -728,7 +728,7 @@ chartRef.current.setCrosshairPosition(
   timestamp: number[];
   spot_price: string[];
 }
-```text
+```
 
 lightweight-charts 使用的是：
 
@@ -743,7 +743,7 @@ addAreaSeries();
   time: UTCTimestamp;
   value: number;
 }
-```text
+```
 
 标准 OHLC K 线则需要：
 
@@ -761,7 +761,7 @@ addAreaSeries();
 
 ```ts
 addCandlestickSeries();
-```text
+```
 
 两者区别可以总结为：
 
@@ -794,7 +794,7 @@ volume = 成交量累加
 
 如果新 candle.time > lastCandle.time
 → push 新 candle
-```text
+```
 
 这和当前只追加 `time + value` 的分时线逻辑不同。
 
@@ -822,7 +822,7 @@ useKlineStream
 解析服务端消息
 断线重连
 页面卸载时关闭连接
-```text
+```
 
 ### 2. 数据状态层
 
@@ -842,7 +842,7 @@ klineMapAtom
 去重排序
 截断最大长度
 清空缓存
-```text
+```
 
 ### 3. 数据转换层
 
@@ -867,7 +867,7 @@ ProChart
 KlineChart
 AreaChart
 CandlestickChart
-```text
+```
 
 职责：
 
@@ -889,7 +889,7 @@ CandlestickChart
 ChartContainer
 TradingPage
 MarketDetailPage
-```text
+```
 
 职责：
 
@@ -909,7 +909,7 @@ hooks/useSetTsLineMap.ts
 components/Charts/ProChart.tsx
 components/Charts/ChartContainer.tsx
 pages/TradingPage.tsx
-```text
+```
 
 ---
 
@@ -934,7 +934,7 @@ pages/TradingPage.tsx
 ```text
 初始化：setData
 实时：update
-```tsx
+```
 
 ### 3. 没有按 symbol 隔离状态
 
@@ -972,7 +972,7 @@ SSE payload 校验 symbol
 初始化 effect 只负责建图
 数据 effect 单独负责 setData / update
 必要时用 memo 稳定数据引用
-```tsx
+```
 
 ---
 
@@ -1006,7 +1006,7 @@ SSE payload 校验 symbol
 实时更新
 性能优化
 生命周期
-```tsx
+```
 
 比只说“我们用了 lightweight-charts”强很多。
 

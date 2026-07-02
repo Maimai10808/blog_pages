@@ -16,7 +16,7 @@ Next.js App Router 引入了很多新的概念，例如 Server Components、Clie
 
 ```tsx
 "use client";
-```tsx
+```
 
 比如：
 
@@ -41,7 +41,7 @@ export function FavoriteButton() {
 ```text
 useState
 onClick
-```tsx
+```
 
 这些都只能在客户端运行，所以这个组件必须是 Client Component。
 
@@ -71,7 +71,7 @@ export async function Product() {
 
   return <div>{product.title}</div>;
 }
-```text
+```
 
 它也会因为被 Client Component import 而变成 Client Component。
 这会导致服务端能力失效，比如不能在组件体内直接 `await fetch`，也会让更多代码被打包发送到浏览器。
@@ -95,7 +95,7 @@ export default function Page() {
     </>
   );
 }
-```tsx
+```
 
 ```tsx
 "use client";
@@ -111,7 +111,7 @@ export function FavoriteButton() {
 
 ```text
 use client 是边界，不是开关。不要为了一个按钮，把整棵组件树都变成客户端组件。
-```tsx
+```
 
 ---
 
@@ -143,7 +143,7 @@ export default function Page() {
 export function UpvoteButton() {
   return <button onClick={() => console.log("upvote")}>Upvote</button>;
 }
-```tsx
+```
 
 然后在 Server Component 中使用：
 
@@ -166,7 +166,7 @@ export default function Page() {
 ```text
 页面布局、数据展示、服务端请求：Server Component
 按钮、输入框、弹窗、表单交互：Client Component
-```text
+```
 
 ---
 
@@ -194,7 +194,7 @@ import { FavoriteButton } from "./FavoriteButton";
 export function Sidebar() {
   return <FavoriteButton />;
 }
-```tsx
+```
 
 即使 `FavoriteButton.tsx` 文件顶部没有 `use client`，只要它被一个 Client Component import，它最终也会进入客户端组件树。
 
@@ -222,7 +222,7 @@ export function Sidebar() {
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   return <div>{children}</div>;
 }
-```tsx
+```
 
 然后：
 
@@ -243,7 +243,7 @@ export default function Page() {
 ```text
 如果 Client Component import 了 Server Component，Server Component 会变成客户端边界的一部分。
 如果 Client Component 只是通过 children 接收它，Server Component 可以保持服务端组件。
-```tsx
+```
 
 所以，下面这种方式不好：
 
@@ -265,7 +265,7 @@ export function ThemeProvider() {
 <ThemeProvider>
   <Product />
 </ThemeProvider>
-```tsx
+```
 
 这就是所谓的 Server Components 和 Client Components 可以 interleave，也就是交错组合。
 
@@ -301,7 +301,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     </ThemeContext.Provider>
   );
 }
-```text
+```
 
 原因是 Server Component 的运行模式是 request-response。
 
@@ -323,7 +323,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
 ```tsx
 "use client";
-```text
+```
 
 是声明 Client Component。
 
@@ -349,7 +349,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export async function addProduct(formData: FormData) {
   // 这里是 Server Action
 }
-```text
+```
 
 Server Action 本质上会暴露一个服务端 POST 调用入口。
 如果你只是想让某个组件或工具函数只能在服务端使用，不应该乱加 `use server`。
@@ -383,7 +383,7 @@ export async function Page() {
 
   return <UserCard user={user} />;
 }
-```tsx
+```
 
 如果 `UserCard` 是 Client Component：
 
@@ -410,7 +410,7 @@ const safeUser = {
 };
 
 return <UserCard user={safeUser} />;
-```text
+```
 
 也就是说：
 
@@ -440,7 +440,7 @@ export function FavoriteButton() {
 
   return <button>Favorite</button>;
 }
-```text
+```
 
 这段 `console.log` 可能会在两个地方出现：
 
@@ -457,7 +457,7 @@ export function FavoriteButton() {
 ```text
 Server Component 只在服务端运行。
 Client Component 会在服务端预渲染一次，也会在客户端运行。
-```tsx
+```
 
 这会影响很多浏览器 API 的使用。
 
@@ -481,7 +481,7 @@ export function FavoriteButton() {
 
 ```text
 localStorage is not defined
-```text
+```
 
 因为服务端没有 `window`，也没有 `localStorage`。
 
@@ -510,7 +510,7 @@ export function FavoriteButton() {
 
   return <button>{value}</button>;
 }
-```tsx
+```
 
 `useEffect` 不会在服务端执行，所以可以安全访问浏览器 API。
 
@@ -537,7 +537,7 @@ Hydration Error 通常来自：
 和
 客户端首次渲染的 HTML
 不一致
-```tsx
+```
 
 例如：
 
@@ -556,7 +556,7 @@ export function FavoriteButton() {
 
 ```html
 <div>no</div>
-```tsx
+```
 
 客户端有 localStorage，可能渲染出：
 
@@ -573,7 +573,7 @@ export function FavoriteButton() {
 用 suppressHydrationWarning 只压制明确可接受的不一致
 避免在首屏渲染中直接使用 Date、Math.random、localStorage 等不稳定值
 修复错误 HTML 结构，例如 p 标签里不能放 div
-```text
+```
 
 `suppressHydrationWarning` 不是万能解法，只有在你明确知道不一致是可接受的时候才用。
 
@@ -603,7 +603,7 @@ import dynamic from "next/dynamic";
 const Carousel = dynamic(() => import("./Carousel"), {
   ssr: false,
 });
-```text
+```
 
 可以简单记：
 
@@ -623,7 +623,7 @@ const Carousel = dynamic(() => import("./Carousel"), {
 → fetch /api/products
 → API Route
 → 数据库
-```tsx
+```
 
 但在 App Router 中，Server Component 本来就在服务端运行。
 所以很多时候可以直接在 Server Component 中访问数据库：
@@ -640,7 +640,7 @@ export default async function Page() {
 
 ```ts
 app / api / products / route.ts;
-```text
+```
 
 然后在 Server Component 里 fetch 它。
 
@@ -672,7 +672,7 @@ async function ProductPrice() {
   const product = await getProduct();
   return <p>{product.price}</p>;
 }
-```tsx
+```
 
 很多人会担心重复请求。
 
@@ -704,7 +704,7 @@ export const getProduct = cache(async (id: string) => {
 const product = await getProduct();
 const ratings = await getRatings();
 const comments = await getComments();
-```text
+```
 
 如果它们彼此不依赖，这样会浪费时间。
 
@@ -723,7 +723,7 @@ const [product, ratings, comments] = await Promise.all([
   getRatings(),
   getComments(),
 ]);
-```text
+```
 
 如果希望一个请求失败不影响其他请求，可以用：
 
@@ -749,7 +749,7 @@ async function Ratings() {
 
   return <div>{ratings.length}</div>;
 }
-```text
+```
 
 因为 `Ratings` 嵌套在 `Product` 里，可能导致 `getRatings` 需要等 `getProduct` 完成后才开始。
 
@@ -782,7 +782,7 @@ export async function addProduct(formData: FormData) {
     data: { title },
   });
 }
-```tsx
+```
 
 页面中：
 
@@ -804,7 +804,7 @@ Server Action 适合：
 表单提交
 调用数据库
 调用服务端逻辑
-```text
+```
 
 而且表单 action 有 progressive enhancement，某些场景下即使没有 JavaScript 也可以工作。
 
@@ -838,7 +838,7 @@ export async function addProduct(formData: FormData) {
 
 ```ts
 revalidatePath("/");
-```text
+```
 
 这样可能会让整个应用的大量缓存失效。
 
@@ -878,7 +878,7 @@ export function AddButton() {
     </button>
   );
 }
-```text
+```
 
 也就是说：
 
@@ -909,7 +909,7 @@ export async function addProduct(formData: FormData) {
     data: { title },
   });
 }
-```text
+```
 
 更好的做法是：
 
@@ -949,7 +949,7 @@ Server Action 中要做：
 权限判断
 错误处理
 缓存刷新
-```text
+```
 
 不要因为它写起来像普通函数，就忘记它是服务端入口。
 
@@ -969,7 +969,7 @@ export async function getProduct(id: string) {
 
 ```ts
 "use server";
-```text
+```
 
 因为这会把它变成 Server Action。
 
@@ -989,7 +989,7 @@ export async function getProduct(id: string) {
 server-utils.ts
 product.server.ts
 data-access.ts
-```text
+```
 
 这样团队成员也更容易知道这些函数只能用于服务端。
 
@@ -1009,7 +1009,7 @@ data-access.ts
 export default function ProductPage({ params }: { params: { id: string } }) {
   return <div>{params.id}</div>;
 }
-```text
+```
 
 如果 URL 是：
 
@@ -1021,7 +1021,7 @@ export default function ProductPage({ params }: { params: { id: string } }) {
 
 ```text
 params.id = "123"
-```text
+```
 
 Search Params 是问号后面的参数：
 
@@ -1039,7 +1039,7 @@ export default function ProductPage({
 }) {
   return <div>{searchParams.color}</div>;
 }
-```text
+```
 
 区别是：
 
@@ -1064,7 +1064,7 @@ export default function Page({
 }) {
   return <div>{searchParams.color}</div>;
 }
-```tsx
+```
 
 这种方式发生在服务端。
 当 URL query 变化时，Next.js 需要向服务端请求新的 RSC payload。
@@ -1095,7 +1095,7 @@ export function ColorFilter() {
 ```text
 参数影响服务端数据请求：用 page searchParams。
 参数只影响客户端 UI：用 useSearchParams。
-```text
+```
 
 ---
 
@@ -1116,7 +1116,7 @@ loading.tsx
 export default function Loading() {
   return <div>Loading...</div>;
 }
-```text
+```
 
 如果它和 `page.tsx` 在同一层级，Next.js 会自动为这个 route segment 创建 Suspense 边界。
 当页面等待数据时，会先显示 loading UI。
@@ -1153,7 +1153,7 @@ export default function ProductPage() {
     </>
   );
 }
-```text
+```
 
 这样用户可以先看到页面标题和按钮，只让真正慢的区域显示 loading。
 
@@ -1180,7 +1180,7 @@ async function Product() {
     </Suspense>
   );
 }
-```tsx
+```
 
 因为 `await getProduct()` 已经发生在 Suspense 里面内容渲染之前。
 
@@ -1197,7 +1197,7 @@ async function Product() {
 ```text
 Suspense 必须包住会 suspend 的组件。
 不能放在 await 之后。
-```tsx
+```
 
 ---
 
@@ -1219,7 +1219,7 @@ Suspense 必须包住会 suspend 的组件。
 <Suspense key={searchParams.id} fallback={<div>Loading...</div>}>
   <Product id={searchParams.id} />
 </Suspense>
-```text
+```
 
 React 看到 key 变化，会把它当成新的内容，从而重新触发 Suspense。
 
@@ -1246,7 +1246,7 @@ cookies()
 headers()
 searchParams prop
 依赖请求时信息的认证函数
-```tsx
+```
 
 例如：
 
@@ -1270,7 +1270,7 @@ export async function Header() {
 
   return <div>{user?.email}</div>;
 }
-```text
+```
 
 如果 `Header` 放在 root layout 中，那么整个应用可能都变成动态渲染。
 
@@ -1296,7 +1296,7 @@ export async function Price() {
 
   return <div>Price</div>;
 }
-```text
+```
 
 短期看它在 Server Component 中似乎不会泄露。
 但如果这个组件或文件被误 import 到 Client Component，secret 就可能进入客户端 bundle。
@@ -1311,7 +1311,7 @@ SECRET_API_KEY=super-secret-key
 
 ```ts
 const key = process.env.SECRET_API_KEY;
-```text
+```
 
 Next.js 默认不会把普通环境变量发送到客户端。
 
@@ -1326,7 +1326,7 @@ NEXT_PUBLIC_API_URL=https://example.com
 ```text
 普通 env 默认只在服务端。
 NEXT_PUBLIC_ 开头才会进入客户端 bundle。
-```text
+```
 
 注意：即使用环境变量，如果你把它 render 到页面中，仍然会显示给用户。
 
@@ -1352,7 +1352,7 @@ import "server-only";
 export async function getData() {
   return fetch(`https://api.com?key=${process.env.SECRET_API_KEY}`);
 }
-```text
+```
 
 并且文件命名可以更明确：
 
@@ -1366,7 +1366,7 @@ data-access.server.ts
 
 ```text
 client-utils.ts
-```tsx
+```
 
 这样大型项目中更不容易误用。
 
@@ -1418,7 +1418,7 @@ export default async function Page() {
 
   return <div>{product.title}</div>;
 }
-```text
+```
 
 同理，如果第三方认证库内部使用 redirect，也要注意不要把它包进会吞掉错误的 try/catch。
 

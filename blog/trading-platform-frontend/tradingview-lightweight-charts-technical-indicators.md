@@ -33,7 +33,7 @@ addSeries 添加图表序列
 setData 写入历史数据
   ↓
 update 增量更新实时数据
-```tsx
+```
 
 也就是说，图表本身需要挂载到一个真实的 DOM 容器上。无论项目是 React、Vue、Next.js 还是原生 TypeScript，本质上都需要先准备一个 div：
 
@@ -52,7 +52,7 @@ const chart = createChart(container, {
   width: container.clientWidth,
   height: 400,
 });
-```text
+```
 
 `createChart` 的第一个参数是图表挂载容器，第二个参数是配置项，主要用于控制样式、时间轴、价格轴、背景颜色、网格线、crosshair 等。
 
@@ -76,7 +76,7 @@ series：图表上的某一种数据序列
 ```text
 CandlestickSeries：展示 K 线
 LineSeries：展示 SMA 均线
-```text
+```
 
 示例：
 
@@ -113,7 +113,7 @@ const candleData = [
     close: 50200,
   },
 ];
-```text
+```
 
 然后：
 
@@ -130,7 +130,7 @@ const smaData = [
     value: 50100,
   },
 ];
-```text
+```
 
 然后：
 
@@ -149,7 +149,7 @@ time + value
 
 HistogramSeries:
 time + value + color
-```text
+```
 
 这是学习 Lightweight Charts 最关键的点之一：
 **先确定你要画什么类型的图，再准备它要求的数据结构。**
@@ -190,7 +190,7 @@ function calculateSMA(data: CandlestickData[], period: number) {
 
   return result;
 }
-```text
+```
 
 然后：
 
@@ -230,7 +230,7 @@ const rsiSeries = chart.addLineSeries(
   },
   1,
 );
-```text
+```
 
 默认主图 pane index 是 `0`。
 如果把 RSI 放到 `1`，Lightweight Charts 会自动创建一个新的副图区域。
@@ -254,7 +254,7 @@ RSI 数据格式依然是：
     value: 65.3,
   },
 ];
-```text
+```
 
 ---
 
@@ -287,7 +287,7 @@ rsiSeries.createPriceLine({
   axisLabelVisible: true,
   title: "Oversold",
 });
-```text
+```
 
 虽然方法名叫 `createPriceLine`，但这里的 `price` 并不一定是真正的价格。
 对于 RSI 来说，它就是 RSI 数值。
@@ -332,7 +332,7 @@ const markers = pivots.map((pivot) => ({
 }));
 
 createSeriesMarkers(candleSeries, markers);
-```text
+```
 
 Markers 可以用于很多场景：
 
@@ -373,7 +373,7 @@ segments.forEach((segment) => {
 
   series.setData(segment.data);
 });
-```text
+```
 
 这种方式看起来有点绕，但在需要绘制“不连续线段”的场景下很实用。
 
@@ -412,7 +412,7 @@ const histogramSeries = chart.addHistogramSeries(
   },
   1,
 );
-```text
+```
 
 Histogram 数据格式通常是：
 
@@ -436,7 +436,7 @@ Histogram 数据格式通常是：
 
 ```ts
 histogramSeries.setData(macdHistogramData);
-```text
+```
 
 MACD 的两个线也可以继续用 LineSeries：
 
@@ -459,7 +459,7 @@ const deaSeries = chart.addLineSeries({}, 1);
 ```text
 setData：一次性替换整段数据
 update：只更新最新一个点
-```text
+```
 
 如果每次 WebSocket 推送都调用 `setData`，图表会不断重绘整段数据，性能很差。
 
@@ -492,7 +492,7 @@ candleSeries.update(candle)
 重新计算最新指标点
   ↓
 indicatorSeries.update(indicatorPoint)
-```text
+```
 
 ---
 
@@ -517,7 +517,7 @@ if (newCandle.time === lastCandle.time) {
 }
 
 candleSeries.update(newCandle);
-```text
+```
 
 这一步不仅是为了图表更新，也是为了后续指标计算。
 
@@ -547,7 +547,7 @@ smaSeries.update({
 
 ```ts
 const markerApi = createSeriesMarkers(candleSeries, initialMarkers);
-```text
+```
 
 后续更新时：
 
@@ -564,7 +564,7 @@ markerApi.setMarkers(newMarkers);
 ```ts
 markers.push(newMarker);
 markerApi.setMarkers(markers);
-```text
+```
 
 这种方式更可控，也更适合复杂指标，比如 ZigZag、策略信号、回测标记等。
 
@@ -591,7 +591,7 @@ const confirmationLine = series.createPriceLine({
 confirmationLine.applyOptions({
   price: nextConfirmationPrice,
 });
-```text
+```
 
 这类用法适合：
 
@@ -626,7 +626,7 @@ confirmationLine.applyOptions({
 把 HistogramData 画成柱状图
 把 Marker 画成图表标记
 把 PriceLine 画成水平线
-```text
+```
 
 所以技术指标实现可以拆成两层：
 
@@ -652,7 +652,7 @@ confirmationLine.applyOptions({
 转换成 Lightweight Charts 需要的数据格式
   ↓
 series.setData / series.update
-```text
+```
 
 ---
 
@@ -672,7 +672,7 @@ series.setData / series.update
 const containerRef = useRef<HTMLDivElement>(null);
 const chartRef = useRef<IChartApi | null>(null);
 const seriesRef = useRef<ISeriesApi<"Line"> | null>(null);
-```tsx
+```
 
 初始化图表：
 
@@ -700,7 +700,7 @@ useEffect(() => {
 
   seriesRef.current.update(latestPoint);
 }, [latestPoint]);
-```tsx
+```
 
 关键点是：
 
@@ -738,7 +738,7 @@ ZigZag / SuperTrend
 买卖点信号
 回测入场离场标记
 实时策略提示
-```text
+```
 
 对于前端开发来说，真正重要的不是记住每个指标公式，而是理解：
 

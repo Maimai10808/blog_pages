@@ -4,7 +4,7 @@ Tailwind CSS 最大的优点之一，是它非常容易上手。大多数 Tailwi
 
 ```html id="xnbh0o"
 <div class="flex items-center justify-center">Hello</div>
-```css
+```
 
 基本上就是：
 
@@ -28,7 +28,7 @@ justify-content: center;
 
 ```html id="45g1wg"
 <div class="container">Content</div>
-```tsx
+```
 
 不过需要注意，Tailwind 默认的 `container` 并不会自动居中，也不会自带左右 padding。
 
@@ -44,7 +44,7 @@ justify-content: center;
 container：响应式最大宽度
 mx-auto：左右自动 margin，实现居中
 px-4：左右内边距
-```text
+```
 
 如果你希望项目里所有 container 默认都居中，并且自带 padding，可以在 Tailwind 配置里统一设置：
 
@@ -63,7 +63,7 @@ export default {
 
 ```html id="15u5ji"
 <div class="container">Content</div>
-```text
+```
 
 就可以自动拥有居中和左右 padding。
 
@@ -87,7 +87,7 @@ Landing Page 各个 section
 
 ```html id="rwq4ro"
 <div class="w-48 h-48"></div>
-```tsx
+```
 
 Tailwind 提供了更简洁的写法：
 
@@ -100,7 +100,7 @@ Tailwind 提供了更简洁的写法：
 ```css id="71b42s"
 width: 12rem;
 height: 12rem;
-```tsx
+```
 
 如果要做圆形：
 
@@ -116,7 +116,7 @@ icon button
 圆形装饰元素
 加载动画容器
 固定尺寸卡片
-```tsx
+```
 
 相比 `w-* h-*` 分开写，`size-*` 更短，也更不容易写错。
 
@@ -144,7 +144,7 @@ icon button
   <div class="border-b">Item 2</div>
   <div>Item 3</div>
 </div>
-```tsx
+```
 
 更好的方式是使用 `divide-y`：
 
@@ -166,7 +166,7 @@ icon button
   <div>Item 2</div>
   <div>Item 3</div>
 </div>
-```tsx
+```
 
 如果是横向布局，可以用：
 
@@ -187,7 +187,7 @@ icon button
 设置项列表
 移动端选项列表
 Tab 区域
-```tsx
+```
 
 ---
 
@@ -214,7 +214,7 @@ Tab 区域
   <div>Item 2</div>
   <div>Item 3</div>
 </div>
-```tsx
+```
 
 它会在子元素之间添加垂直间距。
 
@@ -238,7 +238,7 @@ Tab 区域
 文章段落
 按钮组
 侧边栏菜单
-```tsx
+```
 
 不过如果你已经用了 flex 或 grid，优先考虑 `gap`，语义更直接。
 
@@ -261,7 +261,7 @@ Tailwind 提供了 `line-clamp-*`：
 ```html id="deeo57"
 <p class="line-clamp-2">...</p>
 <p class="line-clamp-5">...</p>
-```text
+```
 
 如果文本本身没有超过指定行数，就会正常显示，不会强行加省略号。
 
@@ -284,7 +284,7 @@ Tailwind 用一个 class 就封装好了。
 评论内容
 通知列表
 卡片标题和简介
-```tsx
+```
 
 ---
 
@@ -306,7 +306,7 @@ Tailwind 用一个 class 就封装好了。
 overflow: hidden;
 text-overflow: ellipsis;
 white-space: nowrap;
-```text
+```
 
 非常适合：
 
@@ -324,7 +324,7 @@ white-space: nowrap;
 
 ```html id="na6u6r"
 <p class="max-w-40 truncate">0x1234567890abcdef1234567890abcdef</p>
-```tsx
+```
 
 注意，`truncate` 通常需要配合一个明确宽度或最大宽度，否则它不知道什么时候算“超出”。
 
@@ -346,7 +346,7 @@ Tailwind 写渐变非常方便。
 bg-gradient-to-r：渐变方向，从左到右
 from-orange-500：起始颜色
 to-black：结束颜色
-```tsx
+```
 
 如果想加中间色，可以用 `via-*`：
 
@@ -362,7 +362,7 @@ to-black：结束颜色
 <div
   class="h-48 w-full bg-gradient-to-r from-orange-500 from-20% via-white via-70% to-black to-90%"
 ></div>
-```text
+```
 
 这表示：
 
@@ -380,7 +380,7 @@ to-black：结束颜色
 <div class="bg-gradient-to-t"></div>
 <div class="bg-gradient-to-b"></div>
 <div class="bg-gradient-to-br"></div>
-```text
+```
 
 适合场景：
 
@@ -407,7 +407,7 @@ Hero 背景
 <button class="h-12 w-24 bg-blue-500 text-white ring-4 ring-red-500">
   Button
 </button>
-```tsx
+```
 
 这会给按钮加一个红色外圈。
 
@@ -425,7 +425,7 @@ Hero 背景
 <button class="ring-4 ring-black">Button</button>
 <button class="ring-4 ring-blue-500">Button</button>
 <button class="ring-4 ring-red-500">Button</button>
-```tsx
+```
 
 `ring` 的好处是它不会影响元素本身的 border，也不会和 outline 混在一起。
 
@@ -443,7 +443,7 @@ Hero 背景
 
 ```html id="pdp9z3"
 <div class="rounded-xl border p-4 ring-2 ring-blue-500">Selected Card</div>
-```text
+```
 
 常见场景：
 
@@ -468,7 +468,7 @@ Tailwind 内置了一些常用动画。
 <div
   class="size-8 animate-spin rounded-full border-4 border-slate-300 border-t-blue-500"
 ></div>
-```tsx
+```
 
 常用于 loading spinner。
 
@@ -487,7 +487,7 @@ animate-spin：旋转
 animate-ping：扩散闪烁
 animate-pulse：淡入淡出，常用于骨架屏
 animate-bounce：上下弹跳
-```tsx
+```
 
 例如骨架屏：
 
@@ -509,7 +509,7 @@ animate-bounce：上下弹跳
 状态点
 按钮反馈
 空状态插画
-```tsx
+```
 
 如果内置动画不够，也可以在 Tailwind 配置中自定义动画。
 
@@ -536,7 +536,7 @@ animate-bounce：上下弹跳
   <XIcon />
   <span class="sr-only">Close</span>
 </button>
-```text
+```
 
 如果没有 `sr-only`，屏幕阅读器用户可能只知道这里有个按钮，但不知道按钮是做什么的。
 
@@ -555,7 +555,7 @@ animate-bounce：上下弹跳
 
 ```html id="ld883q"
 <span class="not-sr-only">Visible again</span>
-```tsx
+```
 
 它可以把之前隐藏给屏幕阅读器的内容重新显示出来。
 
@@ -577,7 +577,7 @@ animate-bounce：上下弹跳
 
 ```html id="y46eyh"
 <article class="prose">...</article>
-```tsx
+```
 
 只要加上 `prose`，里面的普通 HTML 内容就会自动拥有非常漂亮的排版样式。
 
@@ -610,7 +610,7 @@ animate-bounce：上下弹跳
 链接
 图片
 分割线
-```text
+```
 
 非常适合：
 
@@ -628,7 +628,7 @@ CMS 内容
 
 ```html id="7n50rj"
 <article class="prose dark:prose-invert">...</article>
-```text
+```
 
 `dark:prose-invert` 会让文章在暗黑模式下自动适配颜色。
 

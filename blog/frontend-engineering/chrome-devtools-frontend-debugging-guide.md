@@ -14,7 +14,7 @@ Chrome DevTools 是 Chrome 浏览器内置的一套开发者工具。很多人�
 测试移动端页面
 运行性能审计
 甚至把浏览器当作一个简单的代码编辑器
-```text
+```
 
 对于前端开发来说，DevTools 几乎是每天都会用到的工具。本文会围绕几个最常用的面板，系统梳理它的核心功能。
 
@@ -35,7 +35,7 @@ Chrome DevTools 是 Chrome 浏览器内置的一套开发者工具。很多人�
 View
 → Developer
 → Developer Tools
-```text
+```
 
 快捷键：
 
@@ -52,7 +52,7 @@ DevTools 默认可能停靠在浏览器底部，也可以通过右上角三个�
 左侧
 右侧
 独立窗口
-```text
+```
 
 很多开发者习惯放在右侧，因为这样更适合宽屏开发。
 
@@ -82,7 +82,7 @@ DevTools 左上角有一个类似手机和平板的图标，可以进入设备�
 小屏笔记本
 大屏笔记本
 自定义尺寸
-```text
+```
 
 可以选择已有设备：
 
@@ -103,7 +103,7 @@ Galaxy
 图片是否溢出
 移动端布局是否正常
 横屏和竖屏是否都可用
-```text
+```
 
 现在移动端访问占比很高，所以写页面时不能只看桌面端效果。
 Device Toolbar 是调试响应式页面最方便的入口之一。
@@ -134,7 +134,7 @@ HTTPS 的作用是加密浏览器和服务器之间的数据传输。它可以�
 表单数据
 用户隐私
 接口通信
-```text
+```
 
 如果页面中有些资源通过 HTTP 加载，可能会出现 mixed content 问题，影响安全性。
 
@@ -168,7 +168,7 @@ JavaScript 执行时间过长
 页面元素过多
 SEO 标签缺失
 可访问性不达标
-```text
+```
 
 其中 Performance 分数通常最容易暴露问题。
 
@@ -207,7 +207,7 @@ Elements 是 DevTools 最常用的面板之一。
 修改 class
 删除 DOM 节点
 拖拽调整元素位置
-```tsx
+```
 
 例如可以把一个链接文本从：
 
@@ -219,7 +219,7 @@ Elements 是 DevTools 最常用的面板之一。
 
 ```html
 <a href="https://bbc.co.uk" target="_blank">BBC</a>
-```text
+```
 
 修改后页面会立即生效。
 但要注意，这些变化只是浏览器本地临时修改，刷新页面后就会消失，不会真正影响线上网站。
@@ -245,7 +245,7 @@ DOM 结构是否合理
 padding-top: 500px;
 color: red;
 background-color: white;
-```text
+```
 
 修改后页面会立刻更新。
 
@@ -269,7 +269,7 @@ content
 padding
 border
 margin
-```text
+```
 
 颜色通常会高亮显示，帮助你判断元素占位、内边距和外边距。
 
@@ -291,7 +291,7 @@ margin
 
 ```text
 :hov
-```text
+```
 
 强制开启状态：
 
@@ -312,7 +312,7 @@ margin
 输入框 focus 效果
 菜单展开状态
 交互组件样式
-```text
+```
 
 ---
 
@@ -338,7 +338,7 @@ HSL / HSLA
 
 ```css
 width: 100px;
-```text
+```
 
 选中 `100` 后：
 
@@ -361,7 +361,7 @@ Console 面板可以直接运行 JavaScript。
 
 ```js
 alert("hello");
-```text
+```
 
 也可以做简单计算：
 
@@ -375,7 +375,7 @@ alert("hello");
 
 ```js
 $_;
-```text
+```
 
 表示上一次表达式的返回值。
 
@@ -391,7 +391,7 @@ $_;
 
 ```js
 $_;
-```text
+```
 
 会得到 `4`。
 
@@ -411,7 +411,7 @@ $0;
 
 ```js
 $1;
-```text
+```
 
 表示上一次选中的元素。
 
@@ -431,7 +431,7 @@ $4;
 $0.classList;
 $0.textContent;
 $0.style.color = "red";
-```text
+```
 
 可以直接操作当前选中的元素。
 
@@ -453,7 +453,7 @@ console.error("This is an error");
 
 ```js
 console.warn("This is a warning");
-```text
+```
 
 会输出黄色警告信息。
 
@@ -472,7 +472,7 @@ console.assert(2 + 2 === 5, "That is incorrect");
 
 ```js
 console.dir(document);
-```text
+```
 
 以 JavaScript 对象树的形式展示内容。
 适合查看 DOM 对象的属性和方法。
@@ -502,7 +502,7 @@ const people = [
 ];
 
 console.table(people);
-```text
+```
 
 `console.table` 比 `console.log` 更适合查看数组对象，结构更清楚。
 
@@ -547,7 +547,7 @@ for (let i = 1; i <= 100; i++) {
 }
 
 console.timeEnd("fizzbuzz");
-```text
+```
 
 它会输出这段代码执行用了多久。
 
@@ -568,7 +568,7 @@ Verbose
 
 ```js
 console.clear();
-```text
+```
 
 快捷键也可以清理：
 
@@ -581,7 +581,7 @@ Windows：Ctrl + L
 
 ```text
 Preserve log
-```text
+```
 
 这样刷新页面后，Console 内容不会被清空。
 调试页面跳转、刷新、请求错误时很有用。
@@ -620,7 +620,7 @@ DOM 查询脚本
 性能测试脚本
 批量操作脚本
 实验性 JavaScript 代码
-```text
+```
 
 ---
 
@@ -644,7 +644,7 @@ Sources
 
 ```html
 <title>Burger Case</title>
-```text
+```
 
 保存后，修改会同步到本地项目文件中。
 如果同时打开 VS Code，也能看到文件被更新。
@@ -661,7 +661,7 @@ sources.css
 body {
   background-color: springgreen;
 }
-```tsx
+```
 
 然后修改 HTML 引入：
 
@@ -691,7 +691,7 @@ JavaScript 文件
 接口请求
 视频
 其他资源
-```text
+```
 
 可以按类型过滤：
 
@@ -715,7 +715,7 @@ Response
 Timing
 Cookies
 Payload
-```text
+```
 
 其中 Headers 可以看到请求头和响应头。
 Response 可以看到服务器返回的具体内容。
@@ -749,7 +749,7 @@ Network 面板中有一个瀑布图，可以看到每个资源的加载时间。
 JS 文件是否太多
 CSS 是否阻塞渲染
 接口是否响应慢
-```text
+```
 
 底部还会显示：
 
@@ -768,7 +768,7 @@ No throttling
 Fast 3G
 Slow 3G
 Offline
-```text
+```
 
 这样可以测试用户在弱网环境下的页面体验。
 
@@ -799,7 +799,7 @@ Service Workers
 Images
 Fonts
 Stylesheets
-```text
+```
 
 ### 1. Local Storage
 
@@ -815,7 +815,7 @@ localStorage.setItem("password", "123456");
 ```text
 Local Storage
 → 当前域名
-```text
+```
 
 就能看到对应 key 和 value。
 
@@ -830,7 +830,7 @@ console.log(username);
 
 ```js
 localStorage.clear();
-```text
+```
 
 Local Storage 的特点是：
 
@@ -847,7 +847,7 @@ Local Storage 的特点是：
 语言设置
 简单用户配置
 草稿缓存
-```text
+```
 
 不要存敏感信息，例如明文密码。
 
@@ -868,7 +868,7 @@ sessionStorage.clear();
 ```text
 Session Storage 只在当前浏览器会话中存在
 关闭标签页或浏览器后会清空
-```text
+```
 
 适合保存临时数据。
 
@@ -887,7 +887,7 @@ Application 面板中可以查看：
 ```text
 Cookies
 → 当前域名
-```text
+```
 
 可以看到 cookie 的：
 
@@ -909,7 +909,7 @@ Cookies 常用于：
 用户追踪
 服务端读取身份
 偏好设置
-```text
+```
 
 相比 localStorage，cookies 会随请求发送到服务器，所以更适合服务端认证场景。
 
@@ -956,7 +956,7 @@ Chrome DevTools 在实际开发中常见用途包括：
 如果要看网站整体质量，我会用 Lighthouse 跑性能、可访问性、最佳实践和 SEO 报告。
 
 所以 DevTools 对我来说不只是改 CSS 的工具，而是前端定位问题、分析性能和验证用户体验的核心工具。
-```text
+```
 
 ---
 
@@ -989,7 +989,7 @@ Network：看请求和资源加载
 Application：看存储、cookies、cache
 Security：看 HTTPS 和证书
 Lighthouse：跑性能和 SEO 审计
-```text
+```
 
 真正熟练使用 DevTools，会让你定位问题的速度快很多。
 它不仅能帮助你修 bug，也能帮助你优化性能、改善用户体验、理解浏览器到底在做什么。

@@ -28,7 +28,7 @@ if (todos.length >= 3 && !isAuthenticated) {
   alert("You need to sign in to add more than 3 todos");
   return;
 }
-```text
+```
 
 这段代码能跑，但问题是 `3` 被硬编码在组件内部了。
 
@@ -49,7 +49,7 @@ if (todos.length >= MAX_FREE_TODOS && !isAuthenticated) {
   alert(`You need to sign in to add more than ${MAX_FREE_TODOS} todos`);
   return;
 }
-```text
+```
 
 这样做有两个好处。
 
@@ -68,7 +68,7 @@ export const SENSITIVE_WORDS = ["password", "credit card"];
 
 ```tsx
 const hasSensitiveWord = SENSITIVE_WORDS.some((word) => content.includes(word));
-```text
+```
 
 组件应该关注 UI 和交互，而不是堆满各种散乱的业务常量。
 
@@ -105,7 +105,7 @@ hooks.ts：放自定义 Hooks
 types.ts：放 TypeScript 类型
 components：放组件
 contexts / stores：放状态管理相关代码
-```text
+```
 
 目录结构没有唯一标准，不同团队可以有不同习惯。
 
@@ -148,7 +148,7 @@ React 的核心思想就是组件化。
 
 ```tsx
 <h1 className="...">Todo App</h1>
-```tsx
+```
 
 你可以把它拆成：
 
@@ -172,7 +172,7 @@ function App() {
     </>
   );
 }
-```tsx
+```
 
 这样一眼就能看出页面由哪些部分组成。
 
@@ -208,7 +208,7 @@ function Button() {
 function Button() {
   return <button>Click me</button>;
 }
-```tsx
+```
 
 React 组件不要求必须返回 `div`，它可以直接返回任意合法元素。
 
@@ -240,7 +240,7 @@ React 组件不要求必须返回 `div`，它可以直接返回任意合法元�
     </>
   );
 }
-```tsx
+```
 
 不必要的 `div` 会带来两个问题。
 
@@ -271,7 +271,7 @@ function H1({ children }: { children: React.ReactNode }) {
 function H1({ children }: { children: React.ReactNode }) {
   return <h1 className="text-4xl font-bold mb-28">{children}</h1>;
 }
-```tsx
+```
 
 这样当前页面看起来好了，但其他所有使用 H1 的地方都会受到影响。
 
@@ -297,7 +297,7 @@ function H1({
 
 ```tsx
 <H1 className="mb-28">Events in Austin</H1>
-```tsx
+```
 
 这样只影响当前实例，不影响其他地方。
 
@@ -331,7 +331,7 @@ type ButtonProps = {
 function Button({ buttonType = "primary", onClick, children }: ButtonProps) {
   return <button onClick={onClick}>{children}</button>;
 }
-```tsx
+```
 
 这里 `buttonType` 只能是 `'primary'` 或 `'secondary'`。
 
@@ -353,7 +353,7 @@ useState 状态类型
 接口返回数据类型
 工具函数参数和返回值
 Context / Store 类型
-```tsx
+```
 
 不一定要一开始就成为 TypeScript 高手，但至少应该掌握组件 props、状态、接口数据这些常见类型写法。
 
@@ -384,7 +384,7 @@ function StatusBar({ todos }: { todos: Todo[] }) {
 function StatusBar({ progress }: { progress: number }) {
   return <div style={{ width: `${progress}%` }} />;
 }
-```tsx
+```
 
 至于 Todo 完成百分比，应该在更上层计算：
 
@@ -413,7 +413,7 @@ Prop Drilling 指的是一个 prop 从父组件传给子组件，再传给孙组
 <App>
   <Sidebar setTodos={setTodos} />
 </App>
-```tsx
+```
 
 然后 Sidebar 再传给 AddTodoForm：
 
@@ -437,7 +437,7 @@ Sidebar 自己并不需要 `setTodos`，它只是中转。这会让组件变复�
   <Button>Login</Button>
   <Button>Register</Button>
 </Sidebar>
-```tsx
+```
 
 Sidebar 只负责布局：
 
@@ -459,7 +459,7 @@ function Sidebar({ children }: { children: React.ReactNode }) {
 
 ```tsx
 <AddTodoForm setTodos={setTodos} />
-```text
+```
 
 然后在子组件里写具体更新逻辑：
 
@@ -485,7 +485,7 @@ setTodos((prev) => [
 记录埋点
 触发 Toast
 更新其他状态
-```text
+```
 
 如果这些逻辑都放在 AddTodoForm 里，这个表单组件就会知道太多业务细节。
 
@@ -510,7 +510,7 @@ function handleAddTodo(content: string) {
 
 ```tsx
 <AddTodoForm onAddTodo={handleAddTodo} />
-```tsx
+```
 
 子组件只负责在表单提交时通知外部：
 
@@ -534,7 +534,7 @@ function AddTodoForm({ onAddTodo }: { onAddTodo: (content: string) => void }) {
 ```tsx
 <button onClick={handleClick}>Click</button>
 <input onChange={handleChange} />
-```tsx
+```
 
 自定义组件也可以遵循这种命名习惯：
 
@@ -555,7 +555,7 @@ React 的 `setState` 有两种常见写法。
 
 ```tsx
 setCount(count + 1);
-```text
+```
 
 第二种：
 
@@ -576,7 +576,7 @@ setTodos((prev) => [
     isCompleted: false,
   },
 ]);
-```text
+```
 
 这样不需要依赖外部的 `todos` 变量，也可以避免闭包、批量更新等场景下的潜在问题。
 
@@ -603,7 +603,7 @@ setTimeout / setInterval 中更新状态
 const [isLoading, setIsLoading] = useState(false);
 const [isError, setIsError] = useState(false);
 const [isSuccess, setIsSuccess] = useState(false);
-```tsx
+```
 
 这很容易出现矛盾状态。
 
@@ -623,7 +623,7 @@ const [status, setStatus] = useState<Status>("idle");
 setStatus("loading");
 setStatus("success");
 setStatus("error");
-```text
+```
 
 这样状态之间是互斥的，更符合真实业务流程。
 
@@ -650,7 +650,7 @@ setStatus("error");
 
 ```tsx
 const [selectedTodo, setSelectedTodo] = useState<Todo | null>(null);
-```text
+```
 
 然后把整个对象存进去：
 
@@ -665,7 +665,7 @@ setSelectedTodo(todo);
 ```text
 todos 里的 todo
 selectedTodo 里的 todo
-```tsx
+```
 
 一旦其中一个更新，另一个可能变旧。
 
@@ -679,7 +679,7 @@ const [selectedTodoId, setSelectedTodoId] = useState<number | null>(null);
 
 ```tsx
 const selectedTodo = todos.find((todo) => todo.id === selectedTodoId);
-```tsx
+```
 
 这样 `todos` 始终是唯一数据源，选中状态只是指向某个 ID。
 
@@ -712,7 +712,7 @@ const selectedTodo = todos.find((todo) => todo.id === selectedTodoId);
 
 ```tsx
 const [selectedColor, setSelectedColor] = useState("black");
-```text
+```
 
 刷新页面后这个状态可能丢失，别人也无法通过链接看到相同选择。
 
@@ -736,7 +736,7 @@ Tab 选中项
 hover 状态
 临时表单值
 组件内部交互状态
-```tsx
+```
 
 一个简单判断标准是：
 这个状态是否值得分享、收藏、刷新后保留？
@@ -766,7 +766,7 @@ WebSocket
 useEffect(() => {
   localStorage.setItem("todos", JSON.stringify(todos));
 }, [todos]);
-```tsx
+```
 
 这没问题，因为 localStorage 是 React 外部的东西。
 
@@ -793,7 +793,7 @@ useEffect(() => {
 ```text
 同步 localStorage
 监听键盘事件
-```tsx
+```
 
 而且因为依赖了 `todos`，每次 todos 变化都会重新添加事件监听，这明显不合理。
 
@@ -819,7 +819,7 @@ useEffect(() => {
     document.removeEventListener("keydown", handleKeyDown);
   };
 }, []);
-```tsx
+```
 
 一个 useEffect 最好只负责一个同步任务。
 
@@ -859,7 +859,7 @@ error 状态
 分页
 乐观更新
 窗口聚焦后刷新
-```tsx
+```
 
 比如用户点击某个列表项，请求详情；再点击另一个；再点回第一个。
 
@@ -888,7 +888,7 @@ const { data, isLoading, error } = useQuery({
 Next.js 项目：优先理解 Next.js 自身的数据获取与缓存机制
 小型练习项目：useEffect + fetch 可以接受
 正式项目：不建议大量手写 useEffect 请求
-```tsx
+```
 
 ---
 
@@ -912,7 +912,7 @@ const completedPercentage =
 const completedPercentage = useMemo(() => {
   return (todos.filter((todo) => todo.isCompleted).length / todos.length) * 100;
 }, [todos]);
-```tsx
+```
 
 `useMemo` 适合缓存：
 
@@ -936,7 +936,7 @@ const handleAddTodo = useCallback((content: string) => {
     },
   ]);
 }, []);
-```tsx
+```
 
 `React.memo` 用来避免组件在 props 没变时重复渲染：
 
@@ -961,7 +961,7 @@ const AddTodoForm = memo(function AddTodoForm({ onAddTodo }: Props) {
 子组件被 React.memo 包裹
 函数或对象作为依赖导致 useEffect 频繁触发
 性能分析后发现瓶颈
-```tsx
+```
 
 先写清晰，再针对瓶颈优化。
 
@@ -989,7 +989,7 @@ function Button({ children, onClick }: Props) {
 export function capitalizeFirstLetter(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
-```tsx
+```
 
 使用时：
 
@@ -1014,7 +1014,7 @@ function useLocalStorage<T>(key: string, initialValue: T) {
 
   return [value, setValue] as const;
 }
-```tsx
+```
 
 使用时：
 
@@ -1030,7 +1030,7 @@ const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
 复用 UI：组件
 复用普通逻辑：utils / helper function
 复用 Hook 逻辑：custom hook
-```tsx
+```
 
 这是 React 代码变清爽的关键。
 
@@ -1077,7 +1077,7 @@ const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
 {
   todos.length === 0 && <p className="...">Start by adding your first todo.</p>;
 }
-```tsx
+```
 
 可以拆成：
 
@@ -1089,7 +1089,7 @@ const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
 
 ```tsx
 <TodoItem todo={todo} />
-```tsx
+```
 
 删除按钮重复，可以拆成：
 
@@ -1101,7 +1101,7 @@ const [todos, setTodos] = useLocalStorage<Todo[]>("todos", []);
 
 ```tsx
 capitalizeFirstLetter(todo.content);
-```text
+```
 
 本地存储逻辑，可以抽成：
 

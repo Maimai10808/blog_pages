@@ -6,7 +6,7 @@
 
 ```ts id="0g5o41"
 const API_KEY = "abc123";
-```text
+```
 
 这种写法非常危险。因为一旦代码被提交到 GitHub，或者被打包到客户端，敏感信息就可能被别人看到。
 
@@ -40,7 +40,7 @@ OAuth Client Secret
 第三方服务 Token
 不同环境下的接口地址
 站点配置
-```text
+```
 
 它的核心价值是：配置和代码分离。
 
@@ -60,7 +60,7 @@ OAuth Client Secret
 
 ```env id="ak0fzg"
 API_KEY=abc123
-```text
+```
 
 注意，环境变量通常不需要加引号。
 
@@ -82,7 +82,7 @@ npm run dev
 
 ```bash id="2lpq6i"
 pnpm dev
-```text
+```
 
 如果是在生产环境修改环境变量，通常需要重新部署项目。
 
@@ -104,7 +104,7 @@ process.env.API_KEY;
 
 ```ts id="k37tt8"
 console.log(process.env.API_KEY);
-```text
+```
 
 例如 API Route：
 
@@ -130,7 +130,7 @@ export async function getData() {
 
   return res.json();
 }
-```text
+```
 
 服务端环境变量适合保存真正敏感的信息，比如：
 
@@ -152,7 +152,7 @@ GITHUB_CLIENT_SECRET
 
 ```tsx id="dn2j3q"
 console.log(process.env.API_KEY);
-```text
+```
 
 你通常会得到：
 
@@ -181,7 +181,7 @@ Google Analytics ID
 公开的站点 URL
 公开的第三方项目 ID
 前端可见的 API Base URL
-```text
+```
 
 这些变量可以暴露给客户端。
 
@@ -196,7 +196,7 @@ NEXT_PUBLIC_
 ```env id="aa9axi"
 NEXT_PUBLIC_ANALYTICS_ID=G-XXXXXXX
 NEXT_PUBLIC_SITE_URL=https://example.com
-```text
+```
 
 然后在客户端代码中读取：
 
@@ -213,7 +213,7 @@ console.log(process.env.NEXT_PUBLIC_ANALYTICS_ID);
 ```env id="qz4tke"
 NEXT_PUBLIC_SECRET_KEY=super_secret
 NEXT_PUBLIC_STRIPE_SECRET_KEY=sk_live_xxx
-```text
+```
 
 这是错误的。
 
@@ -235,7 +235,7 @@ NEXT_PUBLIC_API_KEY：客户端可以拿到，不适合敏感信息
 ```env id="9gkbnv"
 API_KEY=abc123
 NEXT_PUBLIC_PUBLIC_KEY=public_abc123
-```text
+```
 
 服务端代码：
 
@@ -249,7 +249,7 @@ console.log(process.env.NEXT_PUBLIC_PUBLIC_KEY);
 ```tsx id="4dbpi2"
 console.log(process.env.API_KEY); // undefined
 console.log(process.env.NEXT_PUBLIC_PUBLIC_KEY); // public_abc123
-```text
+```
 
 核心规则是：
 
@@ -268,7 +268,7 @@ Next.js 创建项目时一般已经默认忽略了 `.env*.local`，但你还是�
 
 ```gitignore id="reqvyv"
 .env*.local
-```text
+```
 
 原因很简单：`.env.local` 里通常包含敏感信息。
 
@@ -288,7 +288,7 @@ Next.js 创建项目时一般已经默认忽略了 `.env*.local`，但你还是�
 API_KEY=
 DATABASE_URL=
 NEXT_PUBLIC_SITE_URL=
-```text
+```
 
 这个文件可以提交到仓库，告诉团队成员需要配置哪些变量，但不要写真实值。
 
@@ -316,7 +316,7 @@ Project Settings
 Name: API_KEY
 Value: abc123
 Environment: Production / Preview / Development
-```text
+```
 
 配置完成后，通常需要重新部署项目。
 
@@ -338,7 +338,7 @@ process.env.API_KEY;
 
 ```env id="b77qpi"
 API_BASE_URL=http://localhost:3000/api
-```text
+```
 
 生产环境：
 
@@ -350,7 +350,7 @@ API_BASE_URL=https://api.example.com
 
 ```ts id="t1atd6"
 const apiBaseUrl = process.env.API_BASE_URL;
-```text
+```
 
 不需要在代码里判断当前是开发环境还是生产环境。
 
@@ -372,7 +372,7 @@ Production
 
 ```ts id="imionu"
 process.env.NODE_ENV;
-```text
+```
 
 它通常有这些值：
 
@@ -386,7 +386,7 @@ test
 
 ```text id="0whlzp"
 development
-```text
+```
 
 生产构建时通常是：
 
@@ -402,7 +402,7 @@ if (process.env.NODE_ENV === "development") {
 } else {
   console.log("Production mode");
 }
-```text
+```
 
 不过不要滥用 `NODE_ENV` 写大量分支逻辑。
 很多配置更适合直接通过环境变量区分，而不是在代码里写复杂判断。
@@ -420,7 +420,7 @@ const apiUrl =
 
 ```ts id="zlu3gq"
 const apiUrl = process.env.API_BASE_URL;
-```text
+```
 
 然后在不同环境里配置不同的 `API_BASE_URL`。
 
@@ -440,7 +440,7 @@ VITE_API_URL=https://api.example.com
 
 ```ts id="5bxxd7"
 import.meta.env.VITE_API_URL;
-```text
+```
 
 Create React App 中通常需要：
 
@@ -452,7 +452,7 @@ REACT_APP_API_URL=https://api.example.com
 
 ```ts id="7grkwu"
 process.env.REACT_APP_API_URL;
-```text
+```
 
 Next.js 中则是：
 
@@ -464,7 +464,7 @@ NEXT_PUBLIC_API_URL=https://api.example.com
 
 ```ts id="idzv3j"
 process.env.NEXT_PUBLIC_API_URL;
-```text
+```
 
 但是有一点必须明确：普通 React SPA 没有真正的服务端保护层。只要变量被打包到前端，用户就能看到。
 
@@ -488,7 +488,7 @@ const API_KEY = "abc123";
 
 ```text id="3xlqz5"
 .env.local 被 push 到 GitHub
-```text
+```
 
 这可能导致密钥泄露。
 
@@ -504,7 +504,7 @@ NEXT_PUBLIC_API_SECRET=super_secret
 
 ```text id="8dn8p4"
 改了 .env.local，但页面一直读不到新值
-```text
+```
 
 通常需要重启 dev server。
 
@@ -551,7 +551,7 @@ const apiKey = process.env.API_KEY;
 
 ```tsx id="8qjbd4"
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL;
-```text
+```
 
 ---
 

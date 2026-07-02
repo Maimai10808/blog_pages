@@ -13,7 +13,7 @@ try {
     message: "Unexpected error",
   };
 }
-```text
+```
 
 这看起来没有问题，至少比完全不处理错误要好。
 但在真实项目里，这种写法很快会暴露问题：
@@ -46,7 +46,7 @@ TypeScript 无法强制你处理所有错误类型
 写入数据库
 成功后跳转到项目详情页
 失败后展示错误信息或重定向
-```text
+```
 
 一种常见写法是直接在 Server Action 中处理所有逻辑：
 
@@ -89,7 +89,7 @@ export async function createProjectAction(data: ProjectFormValues) {
 
 ```text id="wvttco"
 POST /api/projects
-```text
+```
 
 给移动端、小程序或第三方系统调用，那么同样的逻辑又要写一遍：
 
@@ -130,7 +130,7 @@ export async function POST(req: Request) {
 ```text id="ptk8m3"
 Server Action：redirect / return message / revalidatePath
 API Route：NextResponse.json / status code
-```text
+```
 
 真正应该复用的是业务逻辑，不应该把业务逻辑和响应逻辑绑死在一起。
 
@@ -154,7 +154,7 @@ Service 负责：
 数据校验
 调用数据库
 返回成功或失败结果
-```text
+```
 
 Action 和 API 负责：
 
@@ -188,7 +188,7 @@ export async function createProjectService(data: ProjectFormValues) {
     throw new Error("Unexpected error");
   }
 }
-```text
+```
 
 然后 Server Action 调用它：
 
@@ -225,7 +225,7 @@ export async function POST(req: Request) {
     );
   }
 }
-```text
+```
 
 这一步已经比复制粘贴好很多。
 核心业务逻辑只有一份，不同入口只负责各自的响应。
@@ -260,7 +260,7 @@ export class AuthorizationError extends Error {
     this.name = "AuthorizationError";
   }
 }
-```text
+```
 
 Service 中：
 
@@ -301,7 +301,7 @@ try {
     message: "Unexpected error",
   };
 }
-```text
+```
 
 API 中：
 
@@ -330,7 +330,7 @@ Action 可以用 redirect，API 可以用 HTTP status code，同一个 service �
 
 ```text id="8crhff"
 TypeScript 不知道这个函数到底会 throw 哪些错误。
-```text
+```
 
 如果 service 新增一个错误：
 
@@ -353,7 +353,7 @@ throw new RandomError();
 
 ```ts id="tziadr"
 async function createProjectService(data: ProjectFormValues): Promise<Project>;
-```text
+```
 
 它没有告诉你：
 
@@ -372,7 +372,7 @@ async function createProjectService(data: ProjectFormValues): Promise<Project>;
 新增错误时，调用方不会强制处理
 删除错误时，调用方不会发现死代码
 调用方只能靠经验和文档知道要 catch 什么
-```text
+```
 
 如果想让错误处理真正类型安全，就需要把错误也变成返回值的一部分。
 
@@ -396,7 +396,7 @@ Result Pattern 的核心思想是：
 type Result<Success, Error> =
   | [error: Error, data: null]
   | [error: null, data: Success];
-```text
+```
 
 成功时：
 
@@ -408,7 +408,7 @@ type Result<Success, Error> =
 
 ```ts id="8akfbv"
 [{ reason: "unauthorized" }, null];
-```tsx
+```
 
 我们可以写两个辅助函数：
 
@@ -467,7 +467,7 @@ export async function createProjectService(data: ProjectFormValues) {
     });
   }
 }
-```text
+```
 
 现在这个函数不会抛出业务错误。
 它永远返回一个明确的结果。
@@ -489,7 +489,7 @@ if (error === null) {
   revalidatePath("/projects");
   redirect(`/projects/${project.id}`);
 }
-```text
+```
 
 否则就根据 `error.reason` 处理不同错误：
 
@@ -527,7 +527,7 @@ switch (error.reason) {
 
 ```ts id="p71bmk"
 error.reason satisfies never;
-```text
+```
 
 这会让 TypeScript 检查你是否处理了所有可能的错误类型。
 
@@ -561,7 +561,7 @@ Result Pattern 相比 try-catch 有几个明显优势。
 
 ```ts id="or34gr"
 const [error, project] = await createProjectService(data);
-```text
+```
 
 你必须决定如何处理 error。
 
@@ -593,7 +593,7 @@ unauthenticated → 401
 unauthorized → 403
 invalid_data → 400
 unexpected → 500
-```text
+```
 
 Service 不关心怎么响应，只关心业务结果。
 
@@ -671,7 +671,7 @@ try {
     message: "Unexpected error",
   };
 }
-```text
+```
 
 这样 `redirect()` 可能会被 catch 捕获，导致出现奇怪的 redirect error。
 
@@ -701,7 +701,7 @@ Result Pattern 的一个额外好处是：
 
 ```bash id="w97jw1"
 npm install neverthrow
-```text
+```
 
 基础用法：
 
@@ -779,7 +779,7 @@ return result.match(
     }
   },
 );
-```text
+```
 
 `neverthrow` 还支持链式处理，比如 `andThen`：
 
@@ -807,7 +807,7 @@ return createProjectService(data).andThen((project) => {
 return errAsync({
   reason: "unauthorized",
 });
-```text
+```
 
 TypeScript 可能把 `reason` 推断成：
 
@@ -819,7 +819,7 @@ string;
 
 ```ts id="c1az48"
 "unauthorized";
-```text
+```
 
 这样 switch 就无法获得精确类型。
 
@@ -837,7 +837,7 @@ return errAsync({
 
 ```text id="2t0qxo"
 这个 reason 就是固定字符串，不是任意 string。
-```text
+```
 
 这对 discriminated union 非常关键。
 
@@ -862,7 +862,7 @@ unwrapOr
 map
 mapErr
 andThen
-```text
+```
 
 这样可以避免“返回了错误，但调用方忘记处理”的问题。
 
@@ -895,7 +895,7 @@ Result Pattern 很强，但不是说所有地方都禁止 throw。
 重复提交
 状态不允许变更
 第三方服务返回可预期失败
-```text
+```
 
 这些错误是业务流程的一部分，调用方通常需要根据不同错误展示不同响应。
 
@@ -916,7 +916,7 @@ Result Pattern 很强，但不是说所有地方都禁止 throw。
 {
   reason: "unexpected";
 }
-```text
+```
 
 这样调用方能统一处理。
 
@@ -955,7 +955,7 @@ DB 层：只做数据库读写
 Schema 层：校验输入结构
 Permission 层：判断用户是否有权限
 Result/Error 层：定义统一错误结果
-```text
+```
 
 核心原则是：
 
@@ -986,7 +986,7 @@ Service 只返回成功结果或业务错误。
 更类型安全的做法是 Result Pattern。service 不直接 throw 业务错误，而是返回一个结果：成功时返回 project，失败时返回带 reason 的 error，比如 unauthenticated、unauthorized、invalid_data、unexpected。调用方通过 switch error.reason 处理，并用 satisfies never 确保所有错误分支都被覆盖。
 
 这样如果 service 新增一个错误类型，Action 和 API 层会立刻有 TypeScript 报错，提醒我处理这个错误。这样错误处理就从运行时约定变成了编译期约束。
-```text
+```
 
 ---
 
@@ -1014,7 +1014,7 @@ Service 只返回成功结果或业务错误。
 删除错误时能发现死代码
 异常不会意外打崩应用
 TypeScript 能参与错误处理约束
-```text
+```
 
 一句话总结：
 

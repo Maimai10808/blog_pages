@@ -8,7 +8,7 @@
 窗口缩小时内容挤在一起
 不知道怎么水平垂直居中
 响应式布局写得很痛苦
-```text
+```
 
 那 Flexbox 是你必须掌握的核心布局技术之一。
 
@@ -32,7 +32,7 @@ Flexbox，全称是 Flexible Box Layout，也就是弹性盒布局。
 
 ```css id="mv4gao"
 display: flex;
-```tsx
+```
 
 这个父元素就变成了 flex container，也就是弹性容器。
 
@@ -56,7 +56,7 @@ display: flex;
 body {
   display: flex;
 }
-```css
+```
 
 原本从上到下排列的 div，会变成从左到右排列。
 
@@ -80,7 +80,7 @@ body {
 
 ```css id="ljeczc"
 display: flex;
-```text
+```
 
 它的子元素就进入 Flexbox 布局系统。此时它们默认会沿着主轴排列，也就是从左到右排成一行。
 
@@ -100,7 +100,7 @@ display: flex;
 ```text id="z075mr"
 主轴：从左到右
 交叉轴：从上到下
-```text
+```
 
 也就是说，默认 `flex-direction: row` 时：
 
@@ -128,7 +128,7 @@ flex-end
 space-between
 space-around
 space-evenly
-```css
+```
 
 ---
 
@@ -154,7 +154,7 @@ body {
   display: flex;
   justify-content: flex-end;
 }
-```css
+```
 
 元素会排列在主轴终点，也就是右侧。
 
@@ -188,7 +188,7 @@ body {
   min-height: 800px;
   display: flex;
 }
-```text
+```
 
 然后使用：
 
@@ -200,7 +200,7 @@ align-items: flex-start;
 
 ```css id="0z7j6k"
 align-items: flex-end;
-```text
+```
 
 元素会在交叉轴终点，也就是底部。
 
@@ -218,7 +218,7 @@ align-items: center;
 
 ```text id="ly88r0"
 如何水平垂直居中一个 div？
-```css
+```
 
 用 Flexbox，只需要三行核心代码：
 
@@ -234,7 +234,7 @@ body {
 
 ```css id="60x9h0"
 min-height: 100vh;
-```css
+```
 
 完整写法：
 
@@ -256,7 +256,7 @@ body {
 可读性强
 响应式自然
 父容器大小变化后仍然保持居中
-```text
+```
 
 ---
 
@@ -278,7 +278,7 @@ justify-content: space-between;
 第一个元素贴左边
 最后一个元素贴右边
 中间元素平均分布
-```text
+```
 
 适合导航栏等布局。
 
@@ -299,7 +299,7 @@ justify-content: space-around;
 ```text id="svriii"
 两端空间较小
 元素之间空间较大
-```text
+```
 
 ---
 
@@ -317,7 +317,7 @@ justify-content: space-evenly;
 左边缘到第一个元素
 元素与元素之间
 最后一个元素到右边缘
-```text
+```
 
 如果你想要视觉上完全均匀的间距，`space-evenly` 通常更舒服。
 
@@ -337,7 +337,7 @@ flex-direction: row;
 
 ```css id="9cuzcj"
 flex-direction: row-reverse;
-```text
+```
 
 这样主轴从右到左，元素顺序也会反过来。
 
@@ -359,7 +359,7 @@ flex-direction: column;
 
 ```css id="gojga9"
 flex-direction: row;
-```text
+```
 
 主轴是横向：
 
@@ -372,7 +372,7 @@ align-items 控制垂直
 
 ```css id="7fxp4q"
 flex-direction: column;
-```text
+```
 
 主轴变成纵向：
 
@@ -387,7 +387,7 @@ align-items 控制水平
 
 ```text id="nl2ds9"
 主轴方向
-```text
+```
 
 `align-items` 也不永远等于“垂直居中”。
 
@@ -413,7 +413,7 @@ body {
   flex-direction: column;
   align-items: center;
 }
-```text
+```
 
 解释一下：
 
@@ -434,7 +434,7 @@ align-items: center：在交叉轴上居中，也就是水平居中
 
 ```css id="51f8j5"
 gap: 20px;
-```css
+```
 
 例如：
 
@@ -461,7 +461,7 @@ gap: 20px;
 
 ```css id="g1y5iy"
 flex-wrap: wrap;
-```css
+```
 
 这样当一行放不下时，元素会自动换到下一行。
 
@@ -488,7 +488,7 @@ flex-wrap: wrap;
 ```text id="nrz9th"
 每一行内部怎么对齐？
 所有行整体又怎么对齐？
-```text
+```
 
 这时候要区分两个属性：
 
@@ -503,7 +503,7 @@ align-content：控制多行整体，在交叉轴上的分布
 
 ```css id="0282b9"
 flex-wrap: wrap;
-```css
+```
 
 并且出现多行时，`align-content` 才有意义。
 
@@ -528,7 +528,7 @@ flex-wrap: wrap;
 ```text id="fskkus"
 align-items：管每一行里的项目
 align-content：管多行整体
-```text
+```
 
 比如有三行卡片：
 
@@ -552,7 +552,7 @@ align-content：管多行整体
   align-items: center;
   align-content: center;
 }
-```text
+```
 
 ---
 
@@ -576,7 +576,7 @@ column-gap: 10px;
   row-gap: 20px;
   column-gap: 10px;
 }
-```text
+```
 
 这表示：
 
@@ -597,7 +597,7 @@ column-gap: 10px;
 
 ```html id="yq6tg0"
 <div class="box">1</div>
-```css
+```
 
 如果想让数字在 box 内部水平垂直居中，可以给 `.box` 自己设置 flex：
 
@@ -614,7 +614,7 @@ column-gap: 10px;
 ```text id="pzii5k"
 一个元素可以是父级 flex container
 它自己也可以是另一个 flex container 里的 flex item
-```text
+```
 
 Flexbox 可以层层嵌套使用。
 
@@ -638,7 +638,7 @@ flex-shrink: 1;
 
 ```css id="k28wxw"
 flex-shrink: 0;
-```text
+```
 
 例如：
 
@@ -660,7 +660,7 @@ flex-shrink: 0;
 
 ```text id="4evxhv"
 [checkbox]  Todo text goes here...  [delete button]
-```text
+```
 
 你希望：
 
@@ -681,7 +681,7 @@ delete button 不缩小
 .todo-text {
   flex-shrink: 1;
 }
-```text
+```
 
 这样窗口变窄时，被压缩的是文本区域，而不是图标或按钮。
 
@@ -703,7 +703,7 @@ flex-grow: 0;
 
 ```css id="8o1s1s"
 flex-grow: 1;
-```text
+```
 
 元素就会尝试占据父容器中剩余的空间。
 
@@ -735,7 +735,7 @@ flex-grow: 1;
 .box-1 {
   flex-grow: 5;
 }
-```text
+```
 
 这表示当有剩余空间时，`.box-1` 会比其他元素获得更多空间。
 
@@ -765,7 +765,7 @@ flex-grow: 1;
 .box-1 {
   flex-shrink: 5;
 }
-```text
+```
 
 表示空间不足时，`.box-1` 会比其他元素缩得更快。
 
@@ -782,7 +782,7 @@ flex-shrink: 1
 .avatar {
   flex-shrink: 0;
 }
-```text
+```
 
 防止头像被压缩。
 
@@ -806,7 +806,7 @@ Flexbox 的伸缩能力配合 `min-width` 和 `max-width` 会更实用。
 ```text id="z5vbc4"
 有空间时卡片可以变大
 但最大不能超过 300px
-```text
+```
 
 如果你希望卡片可以缩小，但不能小于 100px：
 
@@ -822,7 +822,7 @@ Flexbox 的伸缩能力配合 `min-width` 和 `max-width` 会更实用。
 ```text id="sp9jrn"
 空间不够时卡片可以缩小
 但最小不能小于 100px
-```css
+```
 
 如果小于这个宽度会影响内容可读性，就应该设置最小宽度。
 
@@ -852,7 +852,7 @@ Flexbox 的伸缩能力配合 `min-width` 和 `max-width` 会更实用。
 空间变窄时，卡片缩小
 缩小到 240px 后，不再继续压缩
 如果一行放不下，就自动换行
-```text
+```
 
 这就是 Flexbox 做响应式布局非常经典的方式。
 
@@ -879,7 +879,7 @@ align-self: center;
 .box-1 {
   align-self: flex-end;
 }
-```text
+```
 
 这样其他元素仍然在顶部，但 `.box-1` 会单独移动到底部。
 
@@ -900,7 +900,7 @@ stretch
 
 ```css id="jrqclw"
 justify-self: flex-start;
-```text
+```
 
 但在 Flexbox 里，`justify-self` 基本不起作用。
 
@@ -928,7 +928,7 @@ HTML：
   <a href="#">About</a>
   <button>Login</button>
 </nav>
-```css
+```
 
 CSS：
 
@@ -962,7 +962,7 @@ Flexbox 最适合解决一维布局问题。
 横向排列
 纵向排列
 局部组件内部布局
-```text
+```
 
 常见场景包括：
 
@@ -992,7 +992,7 @@ Flexbox 很强，但不是所有布局都应该用 Flexbox。
 ```text id="xef7gn"
 Flexbox：更适合一维布局
 Grid：更适合二维布局
-```text
+```
 
 Flexbox 适合：
 
@@ -1011,7 +1011,7 @@ Grid 适合：
 仪表盘布局
 图片区块
 多区域页面结构
-```css
+```
 
 比如居中一个 div，Flexbox 写法是：
 
@@ -1030,7 +1030,7 @@ Grid 写法可以更短：
   display: grid;
   place-content: center;
 }
-```css
+```
 
 不过这不代表 Grid 一定更好。实际项目里，Flexbox 和 Grid 经常搭配使用。
 
@@ -1051,7 +1051,7 @@ display: flex;
 ```css id="73y1et"
 flex-direction: row;
 flex-direction: column;
-```text
+```
 
 ### 主轴对齐
 
@@ -1070,7 +1070,7 @@ justify-content: space-evenly;
 align-items: flex-start;
 align-items: center;
 align-items: flex-end;
-```text
+```
 
 ### 多行整体对齐
 
@@ -1082,7 +1082,7 @@ align-content: center;
 
 ```css id="iej9ms"
 flex-wrap: wrap;
-```text
+```
 
 ### 元素间距
 
@@ -1094,7 +1094,7 @@ gap: 20px;
 
 ```css id="ph5bto"
 flex-grow: 1;
-```text
+```
 
 ### 子元素缩小
 
@@ -1106,7 +1106,7 @@ flex-shrink: 0;
 
 ```css id="u4l4tw"
 align-self: center;
-```text
+```
 
 ### 主轴推开元素
 
@@ -1126,7 +1126,7 @@ margin-right: auto;
   justify-content: center;
   align-items: center;
 }
-```css
+```
 
 ---
 
@@ -1154,7 +1154,7 @@ margin-right: auto;
 .logo {
   margin-right: auto;
 }
-```css
+```
 
 ---
 
@@ -1188,7 +1188,7 @@ margin-right: auto;
 .icon {
   flex-shrink: 0;
 }
-```text
+```
 
 ---
 
@@ -1212,7 +1212,7 @@ Flexbox 是现代 CSS 布局中最重要的基础之一。
 响应式换行
 元素溢出
 局部组件排版
-```text
+```
 
 学习 Flexbox 最重要的是理解：
 

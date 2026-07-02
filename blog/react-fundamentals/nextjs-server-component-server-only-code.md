@@ -17,7 +17,7 @@ Server Component 适合处理服务端逻辑，比如读取数据库、访问环
 2. 敏感逻辑可能暴露到浏览器
 3. 数据库查询、密钥读取等服务端代码可能在浏览器中报错
 4. 业务规则可能被用户直接看到或分析
-```text
+```
 
 所以，在 Next.js 项目中，我们需要明确区分：
 
@@ -43,7 +43,7 @@ Server-only Code 指的是只能在服务端执行的代码。
 处理密钥、Token、权限
 执行敏感业务计算
 使用只支持 Node.js 环境的 npm 包
-```text
+```
 
 例如下面这个函数：
 
@@ -65,7 +65,7 @@ export async function getUserFromDatabase(userId: string) {
     },
   });
 }
-```text
+```
 
 或者：
 
@@ -97,7 +97,7 @@ export const serverSideFunction = () => {
 
   return "server result";
 };
-```tsx
+```
 
 然后在 Server Component 中使用：
 
@@ -122,7 +122,7 @@ export default function ServerRoutePage() {
 
 ```text
 Server Route: server result
-```tsx
+```
 
 并且 `console.log` 会出现在终端里，因为这段代码是在服务端执行的。
 
@@ -150,7 +150,7 @@ export default function ClientRoutePage() {
 
 ```tsx
 "use client";
-```text
+```
 
 所以它是 Client Component。
 
@@ -207,7 +207,7 @@ Next.js 推荐使用一个包：
 
 ```bash
 npm install server-only
-```text
+```
 
 安装后，在只允许服务端使用的模块顶部加上：
 
@@ -227,7 +227,7 @@ export const serverSideFunction = () => {
 
   return "server result";
 };
-```tsx
+```
 
 这行代码的作用是：
 
@@ -269,7 +269,7 @@ export default function ClientRoutePage() {
 ```text
 这个文件只能在服务端用。
 如果客户端组件 import 它，就立刻报错。
-```text
+```
 
 它相当于给服务端模块加了一个“禁止客户端引入”的安全门。
 
@@ -290,7 +290,7 @@ Node.js 专属代码在浏览器中运行时报错
 
 ```ts
 import "server-only";
-```text
+```
 
 适合使用的场景包括：
 
@@ -313,7 +313,7 @@ import "server-only";
 import { PrismaClient } from "@prisma/client";
 
 export const prisma = new PrismaClient();
-```text
+```
 
 或者：
 
@@ -341,7 +341,7 @@ import "server-only";
 export function getJwtSecret() {
   return process.env.JWT_SECRET;
 }
-```text
+```
 
 这些文件都不应该被 Client Component 直接 import。
 
@@ -371,7 +371,7 @@ src/utils/server-utils.ts
 
 ```ts
 import "server-only";
-```text
+```
 
 明确告诉 Next.js：
 这个模块只能服务端使用。
@@ -404,7 +404,7 @@ src/
     order-service.ts
   utils/
     server-utils.ts
-```text
+```
 
 这些文件如果只给服务端用，就在顶部写：
 
@@ -418,7 +418,7 @@ import "server-only";
 src/
   utils/
     client-utils.ts
-```text
+```
 
 如果某个工具函数是纯函数，不依赖服务端，也不依赖浏览器，那么可以放在 shared 类型的文件里。
 
@@ -439,7 +439,7 @@ src/
 server-only：只能服务端用
 client-only：只能客户端用
 shared：服务端和客户端都能用
-```text
+```
 
 这样项目越大，越不容易混乱。
 

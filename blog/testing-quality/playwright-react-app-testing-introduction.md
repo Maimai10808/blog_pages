@@ -36,7 +36,7 @@ await page.goto("http://localhost:3000");
 await page.getByRole("link", { name: "Form" }).click();
 await page.getByPlaceholder("Enter item").fill("item one");
 await page.getByRole("button", { name: "Add" }).click();
-```text
+```
 
 也就是说，Playwright 不是只测试某个函数，也不是只测试某个 React 组件，而是测试整个应用。
 
@@ -72,7 +72,7 @@ function add(a: number, b: number) {
 
 ```ts
 expect(add(1, 2)).toBe(3);
-```text
+```
 
 它只关心这个函数本身是否正确。
 
@@ -121,7 +121,7 @@ Form
 
 ```text
 /form
-```text
+```
 
 表单页长这样：
 
@@ -145,7 +145,7 @@ Form
 
 ```bash
 pnpm create playwright
-```text
+```
 
 如果你使用 npm，也可以：
 
@@ -159,7 +159,7 @@ npm init playwright@latest
 Where to put your end-to-end tests?
 Add a GitHub Actions workflow?
 Install Playwright browsers?
-```text
+```
 
 新手可以先使用默认配置。
 
@@ -185,7 +185,7 @@ playwright.config.ts
 
 ```bash
 npx playwright test
-```text
+```
 
 打开 Playwright UI Mode：
 
@@ -197,7 +197,7 @@ npx playwright test --ui
 
 ```bash
 npx playwright show-report
-```text
+```
 
 如果你是新手，强烈建议多用 UI Mode。
 
@@ -262,7 +262,7 @@ tests/example.spec.ts
 
 ```ts
 import { test, expect } from "@playwright/test";
-```ts
+```
 
 其中：
 
@@ -299,7 +299,7 @@ test.describe("Form page", () => {
 
 ```ts
 await page.goto("http://localhost:3000");
-```ts
+```
 
 然后检查页面标题：
 
@@ -313,7 +313,7 @@ await expect(page).toHaveTitle("Cosden Solutions");
 await expect(
   page.getByRole("heading", { name: "Homepage" })
 ).toBeVisible();
-```ts
+```
 
 检查 Form 链接：
 
@@ -343,7 +343,7 @@ test.describe("Home page", () => {
     ).toBeVisible();
   });
 });
-```text
+```
 
 这里推荐使用 `getByRole`，因为它更接近用户视角。
 
@@ -365,7 +365,7 @@ page.getByRole("heading", { name: "Homepage" })
 
 ```ts
 await page.goto("http://localhost:3000");
-```ts
+```
 
 就会很重复。
 
@@ -409,7 +409,7 @@ test("should redirect to form page on click", async ({ page }) => {
 
   await expect(page).toHaveTitle("Form");
 });
-```ts
+```
 
 完整首页测试：
 
@@ -445,7 +445,7 @@ test.describe("Home page", () => {
 
 ```text
 看到链接 -> 点击链接 -> 页面跳转
-```text
+```
 
 ---
 
@@ -479,7 +479,7 @@ test("should have correct metadata and elements", async ({ page }) => {
     page.getByRole("button", { name: "Add" })
   ).toBeVisible();
 });
-```text
+```
 
 这里用到了：
 
@@ -508,7 +508,7 @@ Playwright 推荐优先使用用户视角的定位方式，比如：
     <li>{item}</li>
   ))}
 </ul>
-```tsx
+```
 
 这个时候可以加：
 
@@ -527,7 +527,7 @@ Playwright 推荐优先使用用户视角的定位方式，比如：
 ```ts
 page.getByTestId("items-list");
 page.getByTestId("item");
-```ts
+```
 
 `data-testid` 不是给用户看的，而是专门给测试定位元素用的。
 
@@ -579,7 +579,7 @@ test("should add item to list", async ({ page }) => {
 
   await expect(input).toBeEmpty();
 });
-```text
+```
 
 这里有几个关键点。
 
@@ -595,7 +595,7 @@ await input.fill("item one");
 
 ```ts
 await page.getByRole("button", { name: "Add" }).click();
-```text
+```
 
 ### 3. 获取列表第一项
 
@@ -609,7 +609,7 @@ const item = page.getByTestId("item").nth(0);
 
 ```ts
 await expect(item).toHaveText("item one");
-```ts
+```
 
 ### 5. 校验输入框清空
 
@@ -691,7 +691,7 @@ test.describe("Form page", () => {
     await expect(input).toBeEmpty();
   });
 });
-```text
+```
 
 ---
 
@@ -737,7 +737,7 @@ Playwright 更适合测试行为，不适合测试实现细节。
 某个 useState 是否被调用
 某个函数内部变量是什么
 某个组件内部 className 是否存在
-```text
+```
 
 更建议测试：
 
@@ -758,7 +758,7 @@ Playwright 更适合测试行为，不适合测试实现细节。
 
 ```bash
 npx playwright test --ui
-```text
+```
 
 你可以看到：
 
@@ -804,7 +804,7 @@ tests/
   user/
     profile.spec.ts
     assets.spec.ts
-```text
+```
 
 这样更容易维护。
 

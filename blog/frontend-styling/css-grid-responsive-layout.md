@@ -17,7 +17,7 @@ CSS Grid 是现代 CSS 布局中非常重要的一部分。
 ```text id="fujyge"
 父元素：grid container
 子元素：grid items
-```tsx
+```
 
 例如：
 
@@ -41,7 +41,7 @@ CSS Grid 是现代 CSS 布局中非常重要的一部分。
 .grid-container {
   display: grid;
 }
-```css
+```
 
 这个父元素就变成了 grid container，里面的直接子元素就变成了 grid items。
 
@@ -63,7 +63,7 @@ CSS Grid 是现代 CSS 布局中非常重要的一部分。
 
 ```text id="dvajpr"
 1 列，多行
-```css
+```
 
 比如 9 个子元素，就会形成 1 列 9 行。
 
@@ -92,7 +92,7 @@ CSS Grid 是现代 CSS 布局中非常重要的一部分。
 第一个 200px：第一列
 第二个 200px：第二列
 第三个 200px：第三列
-```css
+```
 
 如果你想让其中一列更宽，也可以这样写：
 
@@ -109,7 +109,7 @@ Grid 的核心就是：
 
 ```text id="fgbfr3"
 通过定义列和行，控制子元素在二维空间里的排列。
-```css
+```
 
 ---
 
@@ -131,7 +131,7 @@ Grid 的核心就是：
 
 ```text id="th2yr0"
 3 列 × 3 行
-```css
+```
 
 不过在实际项目里，`grid-template-rows` 不一定经常手动写。
 
@@ -157,7 +157,7 @@ grid-template-columns: ...;
   grid-template-columns: 200px 200px 200px;
   gap: 16px;
 }
-```text
+```
 
 这会同时给行和列之间添加 16px 的间距。
 
@@ -182,7 +182,7 @@ grid-template-columns: ...;
 
 ```css id="9wfukg"
 grid-template-columns: 200px 200px 200px;
-```text
+```
 
 在大屏上可能空间浪费，在小屏上可能溢出。
 
@@ -201,7 +201,7 @@ fr
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-```text
+```
 
 表示三列平分父容器的可用宽度。
 
@@ -229,7 +229,7 @@ fr
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
 }
-```text
+```
 
 这表示：
 
@@ -256,7 +256,7 @@ Grid 很适合处理“一个区域固定，一个区域自适应”的布局。
   <aside>Sidebar</aside>
   <main>Main Content</main>
 </div>
-```css
+```
 
 CSS：
 
@@ -272,7 +272,7 @@ CSS：
 ```text id="7xwj5e"
 侧边栏固定 240px
 主内容占据剩余空间
-```text
+```
 
 这类布局非常常见：
 
@@ -292,7 +292,7 @@ CSS：
 
 ```text id="tmo62u"
 fr 是相对于 grid container 的可用空间计算的，不是相对于 viewport。
-```css
+```
 
 比如：
 
@@ -317,7 +317,7 @@ Grid 里的对齐属性容易混淆。
 ```text id="ccu2p0"
 justify-items / align-items
 justify-content / align-content
-```text
+```
 
 它们不是一回事。
 
@@ -338,7 +338,7 @@ item 在自己的 cell 里面放在哪里？
 ```css id="pqyv2v"
 justify-items
 align-items
-```text
+```
 
 控制。
 
@@ -354,7 +354,7 @@ align-items
 
 ```css id="ixl970"
 justify-items: center;
-```text
+```
 
 表示水平居中。
 
@@ -372,7 +372,7 @@ justify-items: end;
 .grid-container {
   align-items: start;
 }
-```text
+```
 
 表示 item 在自己的 cell 内垂直靠上。
 
@@ -384,7 +384,7 @@ align-items: center;
 
 ```css id="rjw7yr"
 align-items: end;
-```text
+```
 
 表示垂直靠下。
 
@@ -405,7 +405,7 @@ align-items: end;
 .grid-container {
   place-items: center;
 }
-```text
+```
 
 ---
 
@@ -428,7 +428,7 @@ align-content
 .grid-container {
   justify-content: center;
 }
-```text
+```
 
 ### align-content
 
@@ -445,7 +445,7 @@ align-content
 ```text id="wffilb"
 justify-items / align-items：控制 item 在 cell 内的位置
 justify-content / align-content：控制整个 grid 在 container 内的位置
-```text
+```
 
 这是 Grid 对齐中最重要的区别。
 
@@ -483,7 +483,7 @@ justify-content / align-content：控制整个 grid 在 container 内的位置
 
 ```css id="dj2esi"
 grid-auto-rows: 300px;
-```css
+```
 
 控制自动生成的每一行高度。
 
@@ -504,7 +504,7 @@ grid-auto-rows: 300px;
 
 ```css id="wkuvff"
 grid-auto-rows: 300px;
-```text
+```
 
 让所有行自动生成。
 
@@ -524,7 +524,7 @@ grid-auto-flow: row;
 
 ```css id="vop8gj"
 grid-auto-flow: column;
-```text
+```
 
 这时通常配合：
 
@@ -542,7 +542,7 @@ grid-auto-columns: 300px;
   gap: 16px;
   overflow-x: auto;
 }
-```text
+```
 
 这很适合横向滚动布局，比如：
 
@@ -568,7 +568,7 @@ box2 占中间上方两列
 box3 占右上
 box4 占中下
 box5 占右下两列
-```tsx
+```
 
 这种布局用 Flexbox 会非常困难，但用 Grid 很自然。
 
@@ -592,7 +592,7 @@ box5 占右下两列
 .box1 {
   grid-area: box1;
 }
-```css
+```
 
 用内联 style 只是为了演示方便。正式项目中，通常建议放在 CSS 或组件 class 中。
 
@@ -623,7 +623,7 @@ box5 占右下两列
 
 ```text id="x3digy"
 box1 box2 box2 box3
-```text
+```
 
 第二行：
 
@@ -639,7 +639,7 @@ box2 占第一行中间两列
 box3 在右上角
 box4 在第二行第二列
 box5 占第二行右侧两列
-```css
+```
 
 这就是 Bento Grid 的核心。
 
@@ -673,7 +673,7 @@ box5 占第二行右侧两列
       "box5 box5 box5";
   }
 }
-```css
+```
 
 移动端改成 2 列：
 
@@ -704,7 +704,7 @@ box5 占第二行右侧两列
 ```css id="orlxkd"
 grid-template-columns
 grid-template-rows
-```text
+```
 
 也可以使用：
 
@@ -722,7 +722,7 @@ grid-auto-rows
   grid-auto-rows: 200px;
   gap: 1rem;
 }
-```css
+```
 
 然后只写：
 
@@ -751,7 +751,7 @@ Bento Grid 很适合展示图片、图表、产品特性、可视化模块。
 ```text id="rhzx9r"
 是让内容溢出隐藏？
 还是让 grid 自动被内容撑开？
-```text
+```
 
 如果你希望网格保持整齐，可以写：
 
@@ -765,7 +765,7 @@ Bento Grid 很适合展示图片、图表、产品特性、可视化模块。
 
 ```css id="76t6lb"
 grid-auto-rows: auto;
-```text
+```
 
 不过 `auto` 会让每一行根据内容高度变化，有时会导致布局不够平衡。
 
@@ -781,7 +781,7 @@ grid-auto-rows: 1fr;
 
 ```text id="hebi9p"
 Bento Grid 更适合图片、图表、短文案和视觉模块，不适合放大量正文。
-```text
+```
 
 ---
 
@@ -808,7 +808,7 @@ Grid 不只是用来做卡片排列，也可以用来实现元素叠放。
 .content {
   position: absolute;
 }
-```css
+```
 
 这种方式可以用，但有时候内容高度变化会带来 overflow 或定位问题。
 
@@ -838,7 +838,7 @@ Grid Stacking 提供了另一种思路。
   grid-row: 1 / 2;
   grid-column: 1 / 2;
 }
-```tsx
+```
 
 两个元素占据同一个 cell，就会重叠。
 
@@ -889,7 +889,7 @@ CSS：
   text-align: center;
   color: white;
 }
-```text
+```
 
 这里：
 
@@ -912,7 +912,7 @@ video 和 content 都属于 stack 区域
 可以直接使用 place-items
 内容高度变化时更自然
 不用手动 top/left/transform
-```text
+```
 
 比如居中内容，只需要：
 
@@ -926,7 +926,7 @@ place-items: center;
 top: 50%;
 left: 50%;
 transform: translate(-50%, -50%);
-```tsx
+```
 
 ---
 
@@ -953,7 +953,7 @@ transform: translate(-50%, -50%);
   grid-template-columns: 300px 300px 300px;
   gap: 1rem;
 }
-```text
+```
 
 问题是：
 
@@ -973,7 +973,7 @@ transform: translate(-50%, -50%);
 
 ```css id="n46xyo"
 grid-template-columns: 300px 300px 300px;
-```css
+```
 
 可以写成：
 
@@ -985,7 +985,7 @@ grid-template-columns: repeat(3, 300px);
 
 ```text id="dpj0i5"
 重复 3 次，每列 300px。
-```css
+```
 
 如果改成：
 
@@ -1003,7 +1003,7 @@ grid-template-columns: repeat(4, 300px);
 
 ```text id="vh6hjo"
 auto-fit
-```css
+```
 
 例如：
 
@@ -1019,7 +1019,7 @@ auto-fit
 
 ```text id="tdtk9k"
 浏览器自动计算当前宽度能放下几个 300px 列。
-```css
+```
 
 屏幕宽时，放更多列。
 屏幕窄时，减少列。
@@ -1055,7 +1055,7 @@ auto-fit
 每列最小 300px；
 最大可以增长到 1fr；
 剩余空间由现有列平均分配。
-```css
+```
 
 这样当放不下新列时，已有列会稍微变宽，填满剩余空间。
 
@@ -1083,7 +1083,7 @@ auto-fit
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1rem;
 }
-```text
+```
 
 这是一行非常实用的响应式布局代码。
 
@@ -1107,7 +1107,7 @@ auto-fit
 
 ```text id="ycinul"
 什么时候用 Grid，什么时候用 Flexbox？
-```text
+```
 
 简单说：
 
@@ -1124,7 +1124,7 @@ Flexbox 适合：
 头像 + 文本
 卡片内部排列
 局部组件布局
-```text
+```
 
 Grid 适合：
 
@@ -1147,7 +1147,7 @@ Bento Grid
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
-```css
+```
 
 每个商品卡片内部用 Flexbox：
 
@@ -1168,7 +1168,7 @@ Bento Grid
 
 ```css id="jz9p6a"
 display: grid;
-```css
+```
 
 ### 定义列
 
@@ -1180,7 +1180,7 @@ grid-template-columns: 1fr 1fr 1fr;
 
 ```css id="6eu5ba"
 grid-template-rows: 200px 200px;
-```text
+```
 
 ### 设置间距
 
@@ -1192,7 +1192,7 @@ gap: 1rem;
 
 ```css id="yq5xmh"
 grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-```text
+```
 
 ### 自动行高
 
@@ -1205,7 +1205,7 @@ grid-auto-rows: 300px;
 ```css id="3315u8"
 grid-auto-flow: column;
 grid-auto-columns: 300px;
-```text
+```
 
 ### 单元格内居中
 
@@ -1217,7 +1217,7 @@ place-items: center;
 
 ```css id="4dpm2g"
 place-content: center;
-```css
+```
 
 ### Bento Grid
 
@@ -1239,7 +1239,7 @@ grid-template-areas:
 .content {
   grid-area: stack;
 }
-```text
+```
 
 ---
 
@@ -1272,7 +1272,7 @@ justify-content / align-content
 grid-template-areas
 repeat(auto-fit, minmax())
 grid stacking
-```css
+```
 
 如果只记一段最实用的代码，那就是：
 

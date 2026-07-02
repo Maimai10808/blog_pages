@@ -19,7 +19,7 @@
 上面有标题和描述
 文字需要清晰可读
 图片最好有一点渐变或暗色遮罩
-```tsx
+```
 
 如果直接把白色文字放到一张明亮图片上，文字很可能看不清。
 
@@ -42,7 +42,7 @@
 让图片像 background-size: cover 一样显示
 加一层渐变遮罩
 让文字浮在最上层
-```text
+```
 
 ---
 
@@ -68,7 +68,7 @@
 可以配合图片组件
 可以更灵活地做层级和混合模式
 可以用 object-cover 模拟背景图效果
-```tsx
+```
 
 所以这篇文章采用 `<img>` 标签来实现类似背景图的效果。
 
@@ -108,7 +108,7 @@ img 设置 absolute
 img 设置 h-full w-full
 img 设置 object-cover
 内容区域设置 relative
-```tsx
+```
 
 接下来逐个解释。
 
@@ -128,7 +128,7 @@ className="h-full w-full"
 
 ```html id="4e3wwg"
 <img className="h-full w-full" />
-```text
+```
 
 图片可能会被强行拉伸变形。
 
@@ -142,7 +142,7 @@ object-cover
 
 ```html id="cmj99s"
 <img className="h-full w-full object-cover" />
-```text
+```
 
 `object-cover` 对应 CSS 中的：
 
@@ -154,7 +154,7 @@ object-fit: cover;
 
 ```css id="ki1nd0"
 background-size: cover;
-```text
+```
 
 也就是说，图片会保持自身比例，同时铺满整个容器，多出来的部分会被裁切。
 
@@ -172,7 +172,7 @@ absolute
 
 ```html id="zl0nhx"
 absolute inset-0 h-full w-full object-cover
-```text
+```
 
 其中：
 
@@ -190,7 +190,7 @@ object-cover：保持比例并铺满容器
 
 ```html id="e5hjbl"
 relative
-```tsx
+```
 
 完整结构是：
 
@@ -220,7 +220,7 @@ relative
 
 ```html id="gg9d6e"
 relative
-```tsx
+```
 
 比如：
 
@@ -239,7 +239,7 @@ relative
 
 ```jsx id="bxazw2"
 <div className="relative z-10 p-24 text-white">...</div>
-```text
+```
 
 ---
 
@@ -259,7 +259,7 @@ bg-gradient-to-tr from-purple-600 to-green-900
 bg-gradient-to-tr：渐变方向到右上角
 from-purple-600：起始颜色是紫色
 to-green-900：结束颜色是绿色
-```tsx
+```
 
 通常我们会单独放一个遮罩层：
 
@@ -286,7 +286,7 @@ to-green-900：结束颜色是绿色
     </p>
   </div>
 </section>
-```text
+```
 
 这样图片上方就有一层半透明渐变，文字可读性会明显提升。
 
@@ -306,7 +306,7 @@ mix-blend-overlay
 
 ```css id="g8ba0j"
 mix-blend-mode: overlay;
-```tsx
+```
 
 可以把它加到渐变遮罩上：
 
@@ -335,7 +335,7 @@ mix-blend-hue
 mix-blend-saturation
 mix-blend-color
 mix-blend-luminosity
-```text
+```
 
 你可以根据图片和设计风格尝试不同模式。
 
@@ -349,7 +349,7 @@ mix-blend-multiply
 
 ```html id="9nfc3t"
 mix-blend-screen
-```text
+```
 
 会让整体更亮。
 
@@ -396,7 +396,7 @@ export default function Hero() {
     </section>
   );
 }
-```text
+```
 
 这里用了三层视觉结构：
 
@@ -411,7 +411,7 @@ export default function Hero() {
 
 ```html id="nv0l7c"
 bg-black/30
-```text
+```
 
 因为有时候 `mix-blend-overlay` 的效果比较强烈，文字可读性不一定稳定。额外加一点黑色透明层，可以让白色文字更清楚。
 
@@ -429,7 +429,7 @@ bg-black/30 text-white/80 border-white/20
 
 ```html id="5lyyxa"
 <div className="bg-black/40"></div>
-```tsx
+```
 
 表示黑色背景，透明度约 40%。
 
@@ -453,7 +453,7 @@ bg-black/30 text-white/80 border-white/20
 
 ```jsx id="n6lp7x"
 <h1 className="text-slate-400">Build something beautiful</h1>
-```text
+```
 
 如果它和图片、渐变层处在同一个混合上下文中，就可能产生意想不到的视觉效果。
 
@@ -469,7 +469,7 @@ relative z-10
 <div className="relative z-10 text-white">
   <h1>Build something beautiful</h1>
 </div>
-```tsx
+```
 
 这样文字会在混合层上方，避免被图片或遮罩影响。
 
@@ -493,7 +493,7 @@ relative z-10
 
 ```html id="znq57s"
 relative z-10
-```tsx
+```
 
 比如：
 
@@ -507,7 +507,7 @@ relative z-10
 
 ```html id="ra7w1e"
 pointer-events-none
-```tsx
+```
 
 避免遮罩拦截鼠标事件：
 
@@ -525,7 +525,7 @@ pointer-events-none
 
 ```jsx id="4awlxv"
 className = "";
-```text
+```
 
 而不是：
 
@@ -537,7 +537,7 @@ class=""
 
 ```jsx id="mjdnyy"
 <div className="relative min-h-screen">...</div>
-```tsx
+```
 
 如果你写普通 HTML，则使用：
 
@@ -557,7 +557,7 @@ Tailwind 也支持在 class 中写任意值。
 
 ```html id="nbis3v"
 <div className="bg-[url('/hero.jpg')]">...</div>
-```tsx
+```
 
 也可以写外部图片地址：
 
@@ -579,7 +579,7 @@ alt 文本
 图片组件
 响应式裁切
 加载优先级
-```tsx
+```
 
 ---
 
@@ -628,7 +628,7 @@ img: absolute inset-0 h-full w-full object-cover
 overlay: absolute inset-0
 content: relative z-10
 overlay: pointer-events-none
-```text
+```
 
 ---
 
@@ -652,7 +652,7 @@ overlay: pointer-events-none
 
 ```html id="1qfz4h"
 absolute inset-0 h-full w-full object-cover
-```text
+```
 
 配合：
 

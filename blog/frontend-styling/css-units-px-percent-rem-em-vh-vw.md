@@ -4,7 +4,7 @@
 
 ```text
 px、%、rem、em、vh、vw
-```text
+```
 
 如果你使用 Elementor、Webflow、WordPress，或者直接写 CSS，这些单位都会经常出现。它们不是 Elementor 独有的单位，而是 CSS 中通用的尺寸单位。
 
@@ -28,7 +28,7 @@ px、%、rem、em、vh、vw
 
 ```css
 font-size: 20px;
-```text
+```
 
 那么无论用户是在电脑屏幕、平板还是手机上看，这个字体大小都会是 20px。
 
@@ -60,7 +60,7 @@ font-size: 20px;
   width: 24px;
   height: 24px;
 }
-```text
+```
 
 再比如网站整体内容区域的最大宽度，也经常用 px 控制：
 
@@ -81,7 +81,7 @@ font-size: 20px;
 ```text
 需要绝对稳定的细节，用 px。
 需要响应式变化的布局，不要优先用 px。
-```text
+```
 
 ---
 
@@ -100,7 +100,7 @@ font-size: 20px;
 ```css
 padding-left: 10%;
 padding-right: 10%;
-```text
+```
 
 这个 `10%` 不是基于整个屏幕，而是基于它的父元素宽度。
 
@@ -114,7 +114,7 @@ padding-right: 10%;
 
 ```text
 10% = 50px
-```tsx
+```
 
 这就是百分比的关键：**它会随着父元素尺寸变化而变化。**
 
@@ -139,7 +139,7 @@ padding-right: 10%;
 ```text
 Container 是父元素
 里面的 Heading、Image、Text Editor、Button 是子元素
-```text
+```
 
 如果一个 Container 里面再放一个 Container，那么外层 Container 就是内层 Container 的父元素。
 
@@ -171,7 +171,7 @@ padding-right: 5%;
 桌面端：左右 padding 5%
 平板端：左右 padding 5%
 移动端：左右 padding 5%
-```text
+```
 
 这样同一套规则就可以适配不同屏幕。
 
@@ -195,7 +195,7 @@ padding-right: 5%;
 大容器左右 padding：非常适合用 %
 响应式留白：适合用 %
 元素之间的间距：也可以用 %
-```text
+```
 
 但要记住：
 
@@ -215,7 +215,7 @@ padding-right: 5%;
 
 ```text
 用户当前能看到网页内容的区域。
-```text
+```
 
 注意，视口不一定等于整个屏幕。浏览器地址栏、书签栏、系统栏等，都不属于网页视口。
 
@@ -232,7 +232,7 @@ padding-right: 5%;
 
 ```css
 min-height: 100vh;
-```text
+```
 
 意思就是这个区域至少占满整个视口高度。
 
@@ -255,7 +255,7 @@ min-height: 100vh;
 ```text
 100vw = 视口宽度的 100%
 80vw = 视口宽度的 80%
-```text
+```
 
 比如：
 
@@ -278,7 +278,7 @@ min-height: 100vh;
 ```text
 %：基于父元素
 vw / vh：基于视口
-```text
+```
 
 比如：
 
@@ -292,7 +292,7 @@ width: 80%;
 
 ```css
 width: 80vw;
-```text
+```
 
 这个 80vw 是视口宽度的 80%。
 
@@ -320,7 +320,7 @@ width: 80vw;
 .hero {
   min-height: 100vh;
 }
-```text
+```
 
 或者：
 
@@ -339,7 +339,7 @@ width: 80vw;
 ```text
 想让某个区域和视口高度/宽度绑定时，用 vh / vw。
 普通内容布局，不必强行使用 vh / vw。
-```text
+```
 
 ---
 
@@ -361,7 +361,7 @@ width: 80vw;
 1rem = 16px
 2rem = 32px
 0.5rem = 8px
-```text
+```
 
 如果你把根字体大小改成 10px，那么：
 
@@ -399,7 +399,7 @@ width: 80vw;
 1rem = 正文字号
 2rem = 正文字号的 2 倍
 3rem = 正文字号的 3 倍
-```text
+```
 
 这比一直计算像素更舒服。
 
@@ -424,7 +424,7 @@ h2 {
 ```text
 h1 是正文的 3 倍
 h2 是正文的 2 倍
-```text
+```
 
 如果全部用 px，就需要不断换算：
 
@@ -445,7 +445,7 @@ h2 是正文的 2 倍
 部分 padding
 部分 margin
 元素间距 gap
-```text
+```
 
 例如：
 
@@ -477,7 +477,7 @@ h1 {
 ```text
 rem 基于 HTML 根字体大小
 em 基于当前元素或父元素的字体大小
-```text
+```
 
 在很多情况下，`em` 会受到父级字体大小影响，所以层级一多就容易变复杂。
 
@@ -498,7 +498,7 @@ button padding
 
 ```text
 行高约等于字体大小的 1.5 倍
-```text
+```
 
 也就是 150%。
 
@@ -512,7 +512,7 @@ font-size: 1rem;
 
 ```css
 line-height: 1.5em;
-```text
+```
 
 这里的 `1.5em` 可以理解成：
 
@@ -532,7 +532,7 @@ p {
   font-size: 1rem;
   line-height: 1.5em;
 }
-```text
+```
 
 如果你之后把字体改成：
 
@@ -555,7 +555,7 @@ h1 {
   font-size: 4rem;
   line-height: 1.2em;
 }
-```text
+```
 
 这里 `1.2em` 的意思就是：
 
@@ -567,7 +567,7 @@ h1 {
 
 ```css
 font-size: 3rem;
-```text
+```
 
 行高仍然保持 1.2 倍。
 
@@ -592,7 +592,7 @@ p {
   font-size: 1rem;
   line-height: 1.5em;
 }
-```text
+```
 
 这是一种很稳定的排版方式。
 
@@ -629,7 +629,7 @@ p {
   font-size: 1rem;
   padding: 1em 1.5em;
 }
-```text
+```
 
 按钮会随着字号自然变大。
 
@@ -664,7 +664,7 @@ p {
 .child {
   font-size: 2em;
 }
-```text
+```
 
 这里 `.child` 的字体大小就是 40px。
 
@@ -696,7 +696,7 @@ p {
 细节级 margin / padding
 负 margin
 网站最大宽度
-```text
+```
 
 不适合：
 
@@ -717,7 +717,7 @@ p {
 响应式左右留白
 父元素内的相对宽度
 元素间距
-```text
+```
 
 注意：
 
@@ -737,7 +737,7 @@ Hero Section
 全屏弹窗
 固定视口比例区域
 视口宽度相关布局
-```text
+```
 
 注意：
 
@@ -759,7 +759,7 @@ vw 基于视口宽度
 部分 padding
 部分 margin
 gap
-```text
+```
 
 推荐：
 
@@ -779,7 +779,7 @@ body {
 line-height
 按钮 padding
 需要跟随当前字体大小变化的局部尺寸
-```text
+```
 
 推荐：
 
@@ -811,7 +811,7 @@ p {
 图标大小：用 px
 需要全屏高度：用 vh
 需要基于视口宽度：用 vw
-```text
+```
 
 比如一个页面可以这样设计：
 
@@ -873,7 +873,7 @@ p {
 高分屏
 浏览器缩放
 系统字体设置
-```text
+```
 
 如果你要求页面在所有设备上都一模一样，开发和维护成本会非常高。
 
@@ -900,7 +900,7 @@ px：适合固定尺寸和精细控制
 vh / vw：适合基于视口的全屏或比例布局
 rem：适合字体大小和统一比例系统
 em：适合行高和按钮 padding
-```text
+```
 
 最推荐的组合是：
 

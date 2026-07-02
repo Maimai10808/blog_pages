@@ -7,7 +7,7 @@
 ```text
 1. 从 API 获取数据时
 2. try...catch 捕获错误时
-```text
+```
 
 很多初学者看到 `unknown` 会觉得麻烦，因为它不像 `any` 那样“想怎么用就怎么用”。
 
@@ -37,7 +37,7 @@ const data = await res.json();
 data.name;
 data.age;
 data.profile.avatar;
-```text
+```
 
 TypeScript 不会拦你。
 
@@ -61,7 +61,7 @@ TypeScript 不会拦你。
 
 ```ts
 const data: unknown = await res.json();
-```text
+```
 
 这样 TypeScript 会提醒你：
 
@@ -89,7 +89,7 @@ console.log(data.user.profile.avatar.url);
 
 ```text
 别管了，我自己知道。
-```text
+```
 
 但在真实项目中，很多 bug 就是这样来的。
 
@@ -116,7 +116,7 @@ console.log(data.user);
 ```text
 unknown 类型的值，不能直接使用。
 必须先缩小类型，才能访问属性或调用方法。
-```text
+```
 
 例如：
 
@@ -128,7 +128,7 @@ const value: unknown = "hello";
 
 ```ts
 value.toUpperCase();
-```text
+```
 
 因为 TypeScript 不知道 `value` 是不是字符串。
 
@@ -144,7 +144,7 @@ if (typeof value === "string") {
 
 ```ts
 typeof value === "string";
-```text
+```
 
 TypeScript 就知道在这个 if 代码块里，`value` 是字符串。
 
@@ -170,7 +170,7 @@ try {
 
 ```text
 'error' is of type 'unknown'.
-```text
+```
 
 原因是：JavaScript 里可以 throw 任何东西。
 
@@ -184,7 +184,7 @@ throw new Error("Something went wrong");
 
 ```ts
 throw "Something went wrong";
-```text
+```
 
 也可以 throw 数字：
 
@@ -199,7 +199,7 @@ throw {
   statusCode: 404,
   message: "Not found",
 };
-```text
+```
 
 所以 TypeScript 不能默认认为 `error` 一定有 `message` 属性。
 
@@ -223,7 +223,7 @@ try {
 
 ```ts
 throw 5;
-```text
+```
 
 那你访问的就是：
 
@@ -237,7 +237,7 @@ throw 5;
 
 ```ts
 throw "Some problem";
-```text
+```
 
 那你访问的就是：
 
@@ -253,7 +253,7 @@ throw "Some problem";
 throw {
   statusCode: 404,
 };
-```text
+```
 
 这个对象没有 `message` 属性。
 
@@ -277,7 +277,7 @@ throw new Error("Something went wrong");
 if (error instanceof Error) {
   console.log(error.message);
 }
-```text
+```
 
 完整示例：
 
@@ -295,7 +295,7 @@ try {
 
 ```text
 如果 error 是 Error 的实例，那么它一定有 message 属性。
-```text
+```
 
 所以在这个 if 代码块里，访问 `error.message` 是安全的。
 
@@ -322,7 +322,7 @@ throw {
 if (error && typeof error === "object" && "message" in error) {
   console.log(String(error.message));
 }
-```text
+```
 
 这里有三个判断。
 
@@ -338,7 +338,7 @@ error;
 
 ```ts
 typeof null;
-```text
+```
 
 结果是：
 
@@ -352,7 +352,7 @@ object
 
 ```ts
 typeof error === "object";
-```text
+```
 
 还不够，因为 `error` 可能是 `null`。
 
@@ -368,7 +368,7 @@ typeof error === "object";
 
 ```ts
 "message" in error;
-```text
+```
 
 确认这个对象里有 `message` 属性。
 
@@ -386,7 +386,7 @@ String(error.message);
 throw {
   message: 500,
 };
-```text
+```
 
 所以用 `String()` 可以把它安全转成字符串。
 
@@ -408,7 +408,7 @@ throw "Some problem";
 if (typeof error === "string") {
   console.log(error);
 }
-```text
+```
 
 ---
 
@@ -450,7 +450,7 @@ export function getErrorMessage(error: unknown): string {
 
   return message;
 }
-```text
+```
 
 这个函数的参数是：
 
@@ -467,7 +467,7 @@ error: unknown;
 
 ```ts
 : string
-```text
+```
 
 也很重要。
 
@@ -487,7 +487,7 @@ message = String(error.message);
 
 ```ts
 message = error.message;
-```text
+```
 
 因为即使我们确认了：
 
@@ -505,7 +505,7 @@ message = error.message;
 const error = {
   message: 404,
 };
-```text
+```
 
 它满足：
 
@@ -521,7 +521,7 @@ const error = {
 
 ```ts
 String(error.message);
-```text
+```
 
 更稳妥。
 
@@ -565,7 +565,7 @@ export async function sendContactEmail(formData: FormData) {
 安全提取错误消息
 把可展示的信息返回给客户端
 客户端根据返回值显示 toast 或表单错误提示
-```text
+```
 
 客户端可以这样处理：
 
@@ -595,7 +595,7 @@ API 请求
 邮件发送
 支付接口
 第三方服务调用
-```text
+```
 
 每个地方都可能 catch 到 `unknown` 类型的错误。
 
@@ -609,7 +609,7 @@ src/utils/get-error-message.ts
 
 ```text
 src/lib/get-error-message.ts
-```text
+```
 
 然后复用：
 
@@ -633,7 +633,7 @@ import { getErrorMessage } from "@/utils/get-error-message";
 const value: any = getValue();
 
 value.foo.bar.baz();
-```text
+```
 
 `any` 的意思是：
 
@@ -649,7 +649,7 @@ value.foo.bar.baz();
 const value: unknown = getValue();
 
 value.foo;
-```text
+```
 
 TypeScript 会报错。
 
@@ -664,7 +664,7 @@ TypeScript 会报错。
 ```text
 any 是放弃检查。
 unknown 是要求检查。
-```text
+```
 
 所以在不确定数据类型时，优先使用 `unknown`。
 
@@ -715,7 +715,7 @@ const UserSchema = z.object({
 const data: unknown = await res.json();
 
 const user = UserSchema.parse(data);
-```text
+```
 
 这样 `data` 一开始是 `unknown`。
 
@@ -744,7 +744,7 @@ const user = (await res.json()) as User;
 JSON 解析结果
 try...catch 的错误对象
 第三方库返回值
-```text
+```
 
 和 `any` 相比，`unknown` 不允许你直接使用它。
 

@@ -9,7 +9,7 @@
 ```text
 用户怎么向后端证明：
 “这个钱包地址确实是我控制的”
-```text
+```
 
 在实际项目中，SIWE 不只是“连接钱包”这么简单。连接钱包只能拿到地址，但拿到地址并不等于完成登录。真正的登录流程还包括 nonce 获取、message 构造、钱包签名、后端验签、token 下发、前端保存登录态、后续请求自动带认证信息。
 
@@ -53,7 +53,7 @@
 → 构造并签名 SIWE message
 → 后端验签并下发登录态
 → 前端保存 session 并用于后续接口鉴权
-```text
+```
 
 ---
 
@@ -74,7 +74,7 @@ useAppKit().open();
 ```text
 wallet address
 chainId
-```text
+```
 
 例如：
 
@@ -104,7 +104,7 @@ chainId = 1
 getNonce
 createMessage
 verifyMessage
-```text
+```
 
 它们分别对应 SIWE 中最关键的三个动作：
 
@@ -130,7 +130,7 @@ siweConfig.getNonce(address)
 → getCsrfToken(address)
 → POST /user/login/v1/nonce
 → 后端返回 nonce
-```text
+```
 
 nonce 是后端生成的一次性随机数。
 它的核心作用是：**防止重放攻击。**
@@ -157,7 +157,7 @@ nonce 是后端生成的一次性随机数。
 有过期时间
 一次性使用
 验证成功后失效
-```text
+```
 
 这也是为什么 nonce 不能只由前端自己生成。
 如果 nonce 完全由前端生成，后端就无法确认这个 nonce 是否可信，也无法可靠地防止重放。
@@ -187,7 +187,7 @@ chainId：当前链 ID
 nonce：后端返回的一次性随机数
 issuedAt：签发时间
 expirationTime：过期时间，可选
-```text
+```
 
 它的大致含义是：
 
@@ -211,7 +211,7 @@ domain
 uri
 chainId
 issuedAt / expirationTime
-```text
+```
 
 如果前端构造的 message 和后端预期不一致，验签就会失败。
 
@@ -232,7 +232,7 @@ signature
 ```text
 message
 signature
-```text
+```
 
 这两个东西要一起发给后端。
 
@@ -248,7 +248,7 @@ signature
 
 ```text
 这个用户确实控制这个钱包地址。
-```text
+```
 
 注意：
 签名不是把私钥发给后端。私钥永远不会离开钱包。
@@ -280,7 +280,7 @@ domain 是否匹配当前站点
 uri 是否匹配当前应用
 chainId 是否符合项目允许的链
 issuedAt / expirationTime 是否有效
-```text
+```
 
 这一步才是真正的“登录认证”。
 
@@ -304,7 +304,7 @@ issuedAt / expirationTime 是否有效
 access_token
 sign_secret
 expire
-```text
+```
 
 这些字段说明用户已经通过钱包签名认证，后端认可这次登录。
 
@@ -329,7 +329,7 @@ expire：登录态过期时间
 ```text
 SIWE 负责建立身份
 token/session 负责维持登录态
-```text
+```
 
 这是 Web3 项目里很常见的认证模式。
 
@@ -347,7 +347,7 @@ saveSession()
 
 ```text
 accessDataAtom
-```text
+```
 
 并持久化到：
 
@@ -359,7 +359,7 @@ localStorage
 
 ```text
 isClientLoginAtom 变为 true
-```text
+```
 
 这表示客户端已经进入登录状态。
 
@@ -375,7 +375,7 @@ isClientLoginAtom：保存当前是否登录的派生状态
 ```text
 页面刷新后可以恢复登录态
 用户不需要每次刷新都重新连接钱包和签名
-```text
+```
 
 但 localStorage 也有安全风险。
 如果站点存在 XSS，攻击者可能读取 localStorage 里的 token。
@@ -407,7 +407,7 @@ isClientLoginAtom：保存当前是否登录的派生状态
 添加认证请求头
 处理 token 过期
 处理未登录状态
-```text
+```
 
 这样做的好处是：
 
@@ -430,7 +430,7 @@ SIWE 项目里很容易混淆两个概念：
 ```text
 钱包连接状态
 应用登录状态
-```text
+```
 
 钱包连接状态来自 AppKit / wagmi：
 
@@ -446,7 +446,7 @@ SIWE 项目里很容易混淆两个概念：
 access_token 是否存在
 token 是否过期
 后端是否认可当前用户身份
-```text
+```
 
 两者不是一回事。
 
@@ -463,7 +463,7 @@ token 是否过期
 ```text
 可能还有 access_token
 但当前不能发起链上交互
-```text
+```
 
 用户切换了钱包账号：
 
@@ -480,7 +480,7 @@ address 变化
 切换 address 后清理旧登录态或重新登录
 token 过期后要求重新签名
 断开钱包后是否退出登录由业务安全策略决定
-```text
+```
 
 面试时可以重点强调这一点：
 **连接钱包只是拿到地址，SIWE 登录才是建立后端认证状态。**
@@ -509,7 +509,7 @@ SIWE 的核心价值就是加入签名证明：
 address：我声称我是这个地址
 signature：我证明我真的控制这个地址
 nonce：我证明这是本次登录，不是旧签名重放
-```text
+```
 
 所以完整登录必须是：
 
@@ -537,7 +537,7 @@ address + message + signature + nonce 校验
 9. 更新登录状态
 10. 后续接口通过 middleware 自动携带认证信息
 11. 处理切换钱包、断开连接、token 过期等边界情况
-```text
+```
 
 前端不是只写一个 `connect wallet` 按钮，而是要把钱包状态、签名认证、后端登录态、请求鉴权串起来。
 
@@ -643,7 +643,7 @@ nonce 是后端生成的一次性随机数，主要用来防止重放攻击。
 所以每次登录前，前端都会先向后端请求 nonce。后端保存这个 nonce，并设置过期时间。用户签名时 message 中会包含这个 nonce。后端验签时不仅校验签名地址，也会校验 nonce 是否存在、是否过期、是否已经使用过。验证成功后，这个 nonce 应该立即失效。
 
 所以 nonce 不能只在前端生成，必须由后端生成并保存。
-```text
+```
 
 ---
 
@@ -673,7 +673,7 @@ nonce 是后端生成的一次性随机数，主要用来防止重放攻击。
 具体包括：用户点击登录后打开 AppKit 钱包弹窗；连接成功后获取 address 和 chainId；请求后端 nonce；根据 nonce、address、domain、chainId 等字段构造 SIWE message；调用钱包签名；把 message、signature 和 device_uuid 提交给后端；登录成功后保存 access_token、sign_secret 和 expire；更新客户端登录状态；并通过请求中间件给后续私有接口自动加认证头。
 
 后端负责最终验签和签发登录态，前端负责流程编排、状态保存和请求层鉴权接入。
-```text
+```
 
 ---
 
@@ -707,7 +707,7 @@ nonce 用来防止重放攻击
 domain / chainId 用来限制签名适用范围
 token/session 用来维持后续登录态
 middleware 用来统一处理私有接口鉴权
-```text
+```
 
 真正理解 SIWE，不是只知道“钱包签名登录”，而是要理解它在工程里如何连接：
 

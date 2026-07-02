@@ -20,7 +20,7 @@ Tailwind CSS 是一个 utility-first 的 CSS 框架。
 <div class="container">
   <h1 class="container-heading">Hello World</h1>
 </div>
-```css
+```
 
 然后在 CSS 文件里写：
 
@@ -43,7 +43,7 @@ Tailwind CSS 是一个 utility-first 的 CSS 框架。
 <div class="flex justify-center items-center">
   <h1 class="text-lg text-blue-400">Hello World</h1>
 </div>
-```text
+```
 
 这里的：
 
@@ -64,7 +64,7 @@ flex => display: flex;
 justify-center => justify-content: center;
 items-center => align-items: center;
 text-center => text-align: center;
-```tsx
+```
 
 这就是 Tailwind 的核心思想：不用先想类名，不用维护巨大 CSS 文件，而是直接用工具类组合样式。
 
@@ -88,7 +88,7 @@ inline style 是这样：
 
 ```html id="v2bxh0"
 <h1 style="color: blue; margin-top: 10px;">Hello World</h1>
-```text
+```
 
 它有几个明显问题：
 
@@ -108,7 +108,7 @@ Tailwind 工具类则不同。它们本质上是预定义的 CSS class，可以�
 <button class="bg-blue-500 hover:bg-blue-600 md:text-lg dark:bg-slate-800">
   Click me
 </button>
-```text
+```
 
 这里同时包含：
 
@@ -133,7 +133,7 @@ Tailwind 的每个工具类最终都会生成对应的 CSS。
 
 ```html id="hq1jck"
 <h1 class="text-center text-lg text-cyan-400 mt-2">Hello World</h1>
-```text
+```
 
 Tailwind 会生成类似这样的 CSS：
 
@@ -175,7 +175,7 @@ Tailwind 的 JIT，也就是 Just-In-Time 编译器，会按需生成样式。
 开发时生成速度更快
 支持任意值 arbitrary values
 开发体验更灵活
-```tsx
+```
 
 例如 Tailwind 默认可能没有 `13px` 这个字号工具类，但你可以直接写：
 
@@ -187,7 +187,7 @@ Tailwind 的 JIT，也就是 Just-In-Time 编译器，会按需生成样式。
 
 ```html id="lgxujg"
 <div class="w-[320px] bg-[#10172a]">Custom Box</div>
-```tsx
+```
 
 方括号里的值就是 arbitrary value。
 
@@ -215,7 +215,7 @@ Tailwind 的类名看似很多，但大部分都有规律。
 
 ```html id="yv6bth"
 <div class="w-full h-10"></div>
-```text
+```
 
 含义：
 
@@ -228,7 +228,7 @@ h-10 => height: 2.5rem;
 
 ```html id="tlq8wy"
 <div class="bg-violet-200"></div>
-```text
+```
 
 含义：
 
@@ -240,7 +240,7 @@ bg-violet-200 => background-color: violet 的 200 色阶
 
 ```html id="lu0rei"
 <div class="border-2 border-violet-600 rounded-md"></div>
-```text
+```
 
 含义：
 
@@ -254,7 +254,7 @@ rounded-md => medium border-radius
 
 ```html id="e64yx0"
 <div class="my-4 p-2"></div>
-```text
+```
 
 含义：
 
@@ -274,7 +274,7 @@ b => bottom
 l => left
 x => left + right
 y => top + bottom
-```tsx
+```
 
 例如：
 
@@ -292,7 +292,7 @@ y => top + bottom
 <h1 class="text-center text-lg font-mono font-extrabold text-cyan-400">
   Hello World
 </h1>
-```text
+```
 
 含义：
 
@@ -318,7 +318,7 @@ Flexbox 写法非常直观：
   <div>Item 2</div>
   <div>Item 3</div>
 </div>
-```css
+```
 
 含义：
 
@@ -336,7 +336,7 @@ items-center => 交叉轴居中
   <div class="h-16 w-16 rounded-full bg-orange-500"></div>
   <div class="h-16 w-16 rounded-full bg-green-500"></div>
 </div>
-```tsx
+```
 
 如果想改成纵向排列：
 
@@ -367,7 +367,7 @@ items-stretch
 gap-4
 space-x-4
 space-y-4
-```tsx
+```
 
 如果你经常不知道怎么居中，记住这句：
 
@@ -391,7 +391,7 @@ Flexbox 更适合一维布局，Grid 更适合二维布局。
   <div class="h-16 bg-orange-500"></div>
   <div class="h-16 bg-green-500"></div>
 </div>
-```css
+```
 
 含义：
 
@@ -405,7 +405,7 @@ gap-2 => 网格间距
 
 ```html id="a2r6br"
 <div class="grid grid-cols-5 gap-2">...</div>
-```text
+```
 
 常用 Grid 类：
 
@@ -431,7 +431,7 @@ Flexbox 和 Grid 没有谁更高级，关键看场景。
 复杂二维布局：优先 Grid
 卡片列表、多列布局：Grid 很方便
 导航栏、按钮组、居中：Flex 很方便
-```tsx
+```
 
 ---
 
@@ -455,7 +455,7 @@ Tailwind 的断点不是“只在某个尺寸生效”，而是“从某个尺�
 默认：text-sm，适用于所有屏幕
 md:text-lg：屏幕宽度 >= md 时生效
 lg:text-2xl：屏幕宽度 >= lg 时生效
-```text
+```
 
 不是说 `md:` 只在中等屏幕生效，而是中等屏幕及以上生效。
 
@@ -473,7 +473,7 @@ xl
 
 ```html id="or8yur"
 <div class="hidden md:block">I appear on screens wider than md.</div>
-```text
+```
 
 含义：
 
@@ -491,7 +491,7 @@ md 及以上变成 block
   <div>Left</div>
   <div>Right</div>
 </div>
-```text
+```
 
 含义：
 
@@ -510,7 +510,7 @@ md 及以上：flex-row
 
 ```html id="m9ltqm"
 <p class="sm:text-center">Text</p>
-```tsx
+```
 
 表示“在小屏幕居中”。
 
@@ -529,7 +529,7 @@ md 及以上：flex-row
 ```text id="y0mph9"
 移动端默认居中
 md 及以上左对齐
-```text
+```
 
 Tailwind 文档里也强调：不要把 `sm:` 理解成“手机端”，而要理解成“sm breakpoint and above”。
 
@@ -550,7 +550,7 @@ Tailwind 默认是 min-width 逻辑，但也支持 max 逻辑。
 
 ```html id="c0wiuz"
 <div class="max-md:hidden">Hidden below md</div>
-```tsx
+```
 
 `max-md:` 表示在 md 以下生效。
 
@@ -575,7 +575,7 @@ Tailwind 原生支持暗黑模式。
 ```text id="b28opk"
 默认：白底黑字
 dark 模式：黑底白字
-```text
+```
 
 如果使用系统偏好，Tailwind 可以根据用户操作系统的 light / dark 设置自动应用。
 
@@ -599,7 +599,7 @@ function ThemeToggle() {
 
   return <button onClick={toggleDarkMode}>Toggle theme</button>;
 }
-```tsx
+```
 
 配合样式：
 
@@ -620,7 +620,7 @@ Tailwind 有默认颜色系统，比如：
 ```html id="ut78rl"
 <p class="text-blue-500">Blue Text</p>
 <p class="bg-slate-900">Dark Background</p>
-```tsx
+```
 
 但真实项目通常会有品牌色。
 
@@ -640,7 +640,7 @@ Tailwind 有默认颜色系统，比如：
 @theme {
   --color-chestnut: #954535;
 }
-```tsx
+```
 
 然后就可以这样使用：
 
@@ -659,7 +659,7 @@ Tailwind 有默认颜色系统，比如：
   --font-display: "Inter", sans-serif;
   --color-brand: #635bff;
 }
-```tsx
+```
 
 使用：
 
@@ -675,7 +675,7 @@ Tailwind 支持任意值：
 
 ```html id="f4xi80"
 <div class="w-[372px] bg-[#10172a] text-[13px]"></div>
-```text
+```
 
 但这不代表所有样式都应该这样写。
 
@@ -692,7 +692,7 @@ Tailwind 支持任意值：
 
 ```html id="5m4ypr"
 text-[#954535] bg-[#954535] border-[#954535]
-```text
+```
 
 更好的方式是：
 
@@ -706,7 +706,7 @@ text-[#954535] bg-[#954535] border-[#954535]
 
 ```html id="0ifsnu"
 text-chestnut bg-chestnut border-chestnut
-```tsx
+```
 
 这才是更可维护的写法。
 
@@ -743,7 +743,7 @@ function Button({ children }: { children: React.ReactNode }) {
     </button>
   );
 }
-```tsx
+```
 
 使用时：
 
@@ -765,7 +765,7 @@ Tailwind 也支持 `@apply`，可以把多个工具类合成一个自定义 clas
     @apply rounded-lg bg-blue-500 px-4 py-2 font-semibold text-white shadow-md transition hover:bg-blue-600 active:scale-95;
   }
 }
-```tsx
+```
 
 使用：
 
@@ -797,7 +797,7 @@ Tailwind 中可以用不同 layer 来组织样式。
     @apply text-slate-600 dark:text-slate-300;
   }
 }
-```css
+```
 
 这样页面里的 `h1` 默认就会有统一样式。
 
@@ -817,7 +817,7 @@ Tailwind 中可以用不同 layer 来组织样式。
 
 ```html id="ph2f1n"
 <div class="card">Card content</div>
-```text
+```
 
 ### 3. utilities
 
@@ -833,7 +833,7 @@ Tailwind 中可以用不同 layer 来组织样式。
 
 ```html id="1tiipa"
 <div class="flex-center">Centered content</div>
-```text
+```
 
 例如 `flex-center` 就是非常常见的自定义工具类。它把：
 
@@ -857,7 +857,7 @@ Tailwind 不等于必须所有东西都从零写。
 Tailwind UI
 Headless UI
 shadcn/ui
-```tsx
+```
 
 其中 shadcn/ui 非常受欢迎。它提供一批基础组件，比如 Button、Dialog、Card、Dropdown、Avatar 等。
 
@@ -885,7 +885,7 @@ shadcn/ui
 
 ```html id="j8zwf9"
 <input type="checkbox" class="accent-pink-500" />
-```tsx
+```
 
 这样浏览器默认控件也能和你的主题风格更一致。
 
@@ -903,7 +903,7 @@ shadcn/ui
 
 ```html id="g5bq43"
 <h1 class="text-[clamp(2rem,10vw,70px)]">Fluid Heading</h1>
-```text
+```
 
 含义是：
 
@@ -924,7 +924,7 @@ shadcn/ui
   type="file"
   class="file:rounded-md file:border-0 file:bg-blue-500 file:px-4 file:py-2 file:text-white"
 />
-```tsx
+```
 
 这样可以直接控制文件上传按钮的样式。
 
@@ -942,7 +942,7 @@ shadcn/ui
 
 ```html id="rdv9vk"
 <input class="caret-pink-500" />
-```tsx
+```
 
 输入框中的光标颜色就会变成粉色。
 
@@ -983,7 +983,7 @@ even:
 dark:
 group-hover:
 peer-checked:
-```tsx
+```
 
 例如：
 
@@ -1001,7 +1001,7 @@ peer-checked:
 <div class="group">
   <h3 class="text-slate-900 group-hover:text-blue-500">Card Title</h3>
 </div>
-```tsx
+```
 
 当父元素 hover 时，子元素样式变化。
 
@@ -1037,7 +1037,7 @@ w-* 控制 width
 h-* 控制 height
 flex-* 控制 flex
 grid-* 控制 grid
-```text
+```
 
 写多了以后会形成肌肉记忆。
 
@@ -1064,7 +1064,7 @@ Tailwind 很灵活，但也需要一些使用原则。
 
 ```html id="8e4jwy"
 <div class="flex flex-col md:flex-row">...</div>
-```tsx
+```
 
 不要一开始就只盯着桌面端。
 
@@ -1086,7 +1086,7 @@ Tailwind 很灵活，但也需要一些使用原则。
 
 ```html id="t3xyzz"
 <div class="w-[372px]"></div>
-```text
+```
 
 但不要滥用。
 

@@ -9,7 +9,7 @@ type UserProps = {
   name: string;
   age: number;
 };
-```text
+```
 
 也可以用 `interface` 写：
 
@@ -45,7 +45,7 @@ type UserProps = {
   name: string;
   age: number;
 };
-```text
+```
 
 使用 `interface`：
 
@@ -63,7 +63,7 @@ const user: UserProps = {
   name: "Tom",
   age: 20,
 };
-```text
+```
 
 在这个场景下，`type` 和 `interface` 的效果几乎一样。
 
@@ -89,7 +89,7 @@ type UserProps = {
   name: string;
   age: number;
 };
-```text
+```
 
 管理员也有 `name` 和 `age`，但额外有一个 `role`：
 
@@ -112,7 +112,7 @@ interface UserProps {
 interface AdminProps extends UserProps {
   role: string;
 }
-```text
+```
 
 这两种写法都可以。
 
@@ -130,7 +130,7 @@ type AdminProps = UserProps & {
 interface AdminProps extends UserProps {
   role: string;
 }
-```text
+```
 
 在简单对象扩展上，两者差别不大。
 
@@ -159,7 +159,7 @@ type UserId = string;
 type OrderId = string;
 type Timestamp = number;
 type IsActive = boolean;
-```text
+```
 
 这些类型虽然底层是 `string`、`number`、`boolean`，但通过类型别名，可以增强语义。
 
@@ -181,7 +181,7 @@ function getUserById(id: UserId) {
 
 ```ts
 interface Address = string;
-```text
+```
 
 这是错误的。
 
@@ -213,7 +213,7 @@ type Address = string | string[];
 const address1: Address = "123 Main Street";
 
 const address2: Address = ["123 Main Street", "456 Park Avenue"];
-```text
+```
 
 这表示：
 
@@ -232,7 +232,7 @@ type Status = "pending" | "success" | "failed";
 type Theme = "light" | "dark";
 
 type Size = "sm" | "md" | "lg";
-```text
+```
 
 这种写法非常适合限制固定取值。
 
@@ -250,7 +250,7 @@ function Button(props: { variant: ButtonVariant }) {
 
 ```ts
 interface Status = "pending" | "success" | "failed";
-```text
+```
 
 这是错误的。
 
@@ -285,7 +285,7 @@ type UserProps = {
   age: number;
   createdAt: Date;
 };
-```tsx
+```
 
 现在有一个游客组件，它不需要 `name` 和 `age`，只需要 `createdAt`。
 
@@ -301,7 +301,7 @@ type GuestProps = Omit<UserProps, "name" | "age">;
 type GuestProps = {
   createdAt: Date;
 };
-```tsx
+```
 
 这种写法非常简洁。
 
@@ -319,7 +319,7 @@ interface GuestProps extends Omit<UserProps, "name" | "age"> {}
 extends
 Omit
 空的 {}
-```tsx
+```
 
 语法不够自然。
 
@@ -346,7 +346,7 @@ tuple 可以理解为固定结构的数组。
 ```text
 第一个元素：编号
 第二个元素：地址字符串
-```text
+```
 
 可以这样写：
 
@@ -361,7 +361,7 @@ const address: Address = [1, "123 Main Street"];
 ```text
 第一个元素必须是 number
 第二个元素必须是 string
-```text
+```
 
 如果写错：
 
@@ -377,7 +377,7 @@ TypeScript 就会报错。
 type Coordinate = [number, number];
 
 const point: Coordinate = [120.5, 30.2];
-```tsx
+```
 
 如果用 `interface` 也可以勉强描述，但语法会很别扭：
 
@@ -392,7 +392,7 @@ interface Address extends Array<number | string> {
 
 ```ts
 type Address = [number, string];
-```text
+```
 
 所以第四个理由是：
 
@@ -425,7 +425,7 @@ type UserProps = {
 };
 
 type GuestProps = Omit<UserProps, "id">;
-```text
+```
 
 也就是说，你的项目里几乎一定会用到 `type`。
 
@@ -457,7 +457,7 @@ const project = {
     rooms: 3,
   },
 };
-```text
+```
 
 现在我们想单独拿到 `specification` 的类型。
 
@@ -474,7 +474,7 @@ type Specification = {
   areaSize: number;
   rooms: number;
 };
-```text
+```
 
 这在真实项目中非常有用。
 
@@ -494,7 +494,7 @@ type RouteKey = keyof typeof routes;
 
 ```ts
 type RouteKey = "home" | "dashboard" | "settings";
-```text
+```
 
 这种能力用 `type` 写起来非常自然。
 
@@ -523,7 +523,7 @@ TypeScript 默认会把 `areaSize` 推导成 `number`，把 `rooms` 推导成 `n
 ```ts
 areaSize: number;
 rooms: number;
-```text
+```
 
 但有时候我们希望它更精确。
 
@@ -546,7 +546,7 @@ const project = {
 ```ts
 areaSize: 100;
 rooms: 3;
-```text
+```
 
 而不是泛泛的 `number`。
 
@@ -564,7 +564,7 @@ type Status = (typeof STATUS)[number];
 
 ```ts
 type Status = "pending" | "success" | "failed";
-```text
+```
 
 这也是 `type` 非常适合的场景。
 
@@ -595,7 +595,7 @@ interface User {
   age: number;
   role: string;
 }
-```text
+```
 
 于是：
 
@@ -624,7 +624,7 @@ interface User {
   name: string;
   age: number;
 }
-```text
+```
 
 但别人可能在另一个地方又写了：
 
@@ -655,7 +655,7 @@ type User = {
 type User = {
   role: string;
 };
-```text
+```
 
 TypeScript 会直接报错：
 
@@ -676,7 +676,7 @@ type User = {
 type AdminUser = User & {
   role: string;
 };
-```text
+```
 
 这种写法更清晰。
 
@@ -693,7 +693,7 @@ AdminUser = User + role
 ```text
 interface 是开放的，可能被合并。
 type 是封闭的，更可预测。
-```text
+```
 
 对于大多数业务项目来说，可预测性比自动合并更重要。
 
@@ -737,7 +737,7 @@ class User implements TUser {
     public age: number,
   ) {}
 }
-```text
+```
 
 一样可以正常工作。
 
@@ -757,7 +757,7 @@ type;
 
 ```ts
 interface;
-```tsx
+```
 
 有 9 个字符。
 
@@ -814,7 +814,7 @@ TypeScript 官方文档中也提到过，有时使用 `interface` 的错误提�
 ```text
 对象结构用 interface
 联合类型、工具类型用 type
-```text
+```
 
 那也可以遵守团队规范。
 
@@ -837,7 +837,7 @@ TypeScript 官方文档中也提到过，有时使用 `interface` 的错误提�
 默认使用 type。
 需要声明合并时，使用 interface。
 团队已有规范时，遵守团队规范。
-```tsx
+```
 
 在 React / Next.js 项目中，尤其推荐这样写：
 
@@ -863,7 +863,7 @@ type Coordinate = [number, number];
 tuple
 类型提取
 props 类型
-```text
+```
 
 代码风格更统一。
 
@@ -900,7 +900,7 @@ interface User {
 tuple
 工具类型结果
 从变量中提取出的类型
-```text
+```
 
 而 `interface` 更适合描述对象，并且支持声明合并。
 

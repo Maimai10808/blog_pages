@@ -4,7 +4,7 @@
 
 ```text
 Hydration failed because the server rendered HTML did not match the client.
-```text
+```
 
 这个错误看起来很复杂，但它的本质其实只有一句话：
 
@@ -29,7 +29,7 @@ Hydration failed because the server rendered HTML did not match the client.
 
 ```text
 Hydration
-```text
+```
 
 可以简单理解为：
 
@@ -47,7 +47,7 @@ Hydration
 ```text
 服务端第一次渲染出来的内容
 必须和客户端第一次渲染出来的内容一致。
-```text
+```
 
 如果不一致，就会出现 Hydration Error。
 
@@ -75,7 +75,7 @@ export default function Comments() {
 
   return <div>500 comments client</div>;
 }
-```text
+```
 
 这段代码在服务端运行时：
 
@@ -87,7 +87,7 @@ typeof window === 'undefined'
 
 ```html
 <div>500 comments server</div>
-```tsx
+```
 
 但是在浏览器里，`window` 是存在的，所以客户端第一次渲染会生成：
 
@@ -103,7 +103,7 @@ React 会发现：
 服务端给我的 HTML 是 server
 客户端第一次渲染出来的是 client
 这两个不一致
-```text
+```
 
 于是就会报 Hydration Error。
 
@@ -130,7 +130,7 @@ React 会发现：
 
 ```text
 500 comments client
-```text
+```
 
 用户看到的就是：
 
@@ -147,7 +147,7 @@ React 会发现：
 
 ```text
 用户看到的首屏内容不稳定。
-```text
+```
 
 ---
 
@@ -173,7 +173,7 @@ React 会发现：
 关闭会修改页面 DOM 的插件
 换一个干净浏览器测试
 运行 production build 再验证
-```tsx
+```
 
 如果只在某个装了插件的浏览器开发环境出现，而干净环境没有出现，问题很可能来自插件。
 
@@ -207,7 +207,7 @@ export default function Component() {
 export default function RandomNumber() {
   return <div>{Math.random()}</div>;
 }
-```tsx
+```
 
 服务端执行一次 `Math.random()`，客户端 hydration 时又执行一次。
 
@@ -246,7 +246,7 @@ export default function Theme() {
 
   return <div>{theme}</div>;
 }
-```tsx
+```
 
 服务端没有 `localStorage`。
 如果直接读，可能报 `localStorage is not defined`。
@@ -276,7 +276,7 @@ export default function Theme() {
 
 ```text
 这段 JSX 在服务端第一次渲染和客户端第一次渲染时，输出是否完全一致？
-```tsx
+```
 
 如果答案是否定的，就有风险。
 
@@ -290,7 +290,7 @@ export default function Theme() {
 
 ```tsx
 <div>{Date.now()}</div>
-```tsx
+```
 
 服务端和客户端不一致，有风险。
 
@@ -304,7 +304,7 @@ export default function Theme() {
 
 ```tsx
 <div>{Date.now() ? 5 : 6}</div>
-```text
+```
 
 虽然用了 `Date.now()`，但如果最终服务端和客户端都渲染 `5`，就不会出现 Hydration Error。
 
@@ -330,7 +330,7 @@ export default function RandomCounter() {
 
   return <div>{counter}</div>;
 }
-```tsx
+```
 
 这里 `useState(Math.random())` 会导致服务端和客户端初始值不一致。
 
@@ -357,7 +357,7 @@ export default function RandomCounter() {
 ```text
 服务端：0
 客户端第一次渲染：0
-```tsx
+```
 
 两边一致，不会 Hydration Error。
 
@@ -380,7 +380,7 @@ document
 
 ```text
 首屏保持一致，客户端挂载后再更新。
-```tsx
+```
 
 ---
 
@@ -418,7 +418,7 @@ export default function ClientOnlyComponent() {
 ```text
 服务端：Loading...
 客户端第一次渲染：Loading...
-```text
+```
 
 两边一致。
 
@@ -437,7 +437,7 @@ isLoaded = true
 依赖浏览器 API 的组件
 无法轻易改内部逻辑的组件
 页面中某块必须等客户端加载后再显示的内容
-```tsx
+```
 
 缺点是用户会先看到 loading。
 但这通常比 Hydration Error 和页面闪烁更好。
@@ -470,7 +470,7 @@ export default function Page() {
 ```text
 这个组件不要在服务端渲染。
 只在客户端加载并渲染。
-```text
+```
 
 既然服务端根本不生成这个组件的 HTML，就不存在服务端 HTML 和客户端 HTML 不一致的问题。
 
@@ -493,7 +493,7 @@ const Map = dynamic(() => import("./Map"), {
   ssr: false,
   loading: () => <div>Loading map...</div>,
 });
-```tsx
+```
 
 这种方式非常实用，尤其是第三方库内部使用了 `window`、`document` 或随机值，而你又无法修改它的源码时。
 
@@ -519,7 +519,7 @@ const [value, setValue] = useState("");
 useEffect(() => {
   setValue(localStorage.getItem("key") ?? "");
 }, []);
-```text
+```
 
 ---
 
@@ -536,7 +536,7 @@ useEffect(() => {
 ```tsx
 if (!isLoaded) return <Loading />;
 return <RealComponent />;
-```text
+```
 
 ---
 
@@ -554,7 +554,7 @@ return <RealComponent />;
 const Editor = dynamic(() => import("./Editor"), {
   ssr: false,
 });
-```text
+```
 
 ---
 
@@ -580,7 +580,7 @@ SEO 可能受影响
 小范围差异用 useEffect。
 复杂客户端逻辑用 isLoaded。
 确实不适合 SSR 的组件再用 dynamic ssr:false。
-```text
+```
 
 ---
 
@@ -598,7 +598,7 @@ Server Content
 
 ```text
 Client Content
-```text
+```
 
 用户会看到内容闪烁。
 
@@ -627,7 +627,7 @@ Client Content
 无痕模式打开
 关闭翻译插件、广告插件、密码插件
 换干净浏览器测试
-```text
+```
 
 如果无痕模式正常，可能是插件修改 DOM。
 
@@ -662,7 +662,7 @@ document
 navigator
 Intl 时区格式化
 根据浏览器环境分支渲染
-```text
+```
 
 ---
 
@@ -688,7 +688,7 @@ ul 下面不是 li
 复杂组件：isLoaded
 第三方客户端库：dynamic ssr:false
 插件导致：换干净环境验证
-```tsx
+```
 
 ---
 
@@ -719,7 +719,7 @@ Hydration Error 并不是 Next.js 的神秘问题。
 
 ```text
 服务端 HTML 和客户端第一次渲染结果不一致。
-```text
+```
 
 常见触发方式：
 
@@ -740,7 +740,7 @@ localStorage
 useEffect：客户端挂载后再更新不稳定值
 isLoaded：先显示统一 loading，再显示客户端内容
 dynamic ssr:false：完全禁用某个组件的服务端渲染
-```text
+```
 
 可以记住这句话：
 

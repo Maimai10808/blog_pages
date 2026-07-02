@@ -12,7 +12,7 @@
 1. 服务端必须等所有数据都获取完成，才能开始生成 HTML。
 2. 客户端必须等所有 JavaScript 都加载完成，才能开始 hydration。
 3. 页面必须整体 hydration 完成，用户才能真正交互。
-```text
+```
 
 这三个问题会形成一种 “All or Nothing” 的瀑布效应。
 
@@ -40,7 +40,7 @@ React 18 引入的 Suspense SSR 架构，就是为了解决传统 SSR 的这些�
 → 浏览器下载完整 JavaScript
 → React 对整个页面进行 hydration
 → 页面变得可交互
-```text
+```
 
 这个流程最大的问题是：每一步都在等前一步。
 
@@ -70,7 +70,7 @@ React 18 引入了新的 Suspense SSR 架构。
 <Suspense fallback={<Loading />}>
   <MainContent />
 </Suspense>
-```text
+```
 
 这段代码的意思是：
 
@@ -99,7 +99,7 @@ React 18 Suspense SSR 是：
 先发送已经准备好的 HTML
 → 慢的部分先显示 fallback
 → 等慢的部分准备好后，再把对应 HTML 继续发送过去
-```tsx
+```
 
 比如一个页面有 Header、Sidebar 和 MainContent。
 
@@ -133,7 +133,7 @@ HTML Streaming 主要解决的是传统 SSR 的第一个问题：
 
 ```text
 必须等所有数据获取完成，才能开始返回 HTML。
-```text
+```
 
 有了 Streaming 之后，变成：
 
@@ -151,7 +151,7 @@ HTML Streaming 主要解决的是传统 SSR 的第一个问题：
 用户信息可能稍慢
 推荐列表可能更慢
 评论区可能最慢
-```tsx
+```
 
 如果每个区域都要等最慢的那个区域一起返回，用户体验就会很差。
 
@@ -185,7 +185,7 @@ hydration 指的是：
 
 ```text
 必须等所有 JavaScript 都加载完成，才能开始整体 hydration。
-```tsx
+```
 
 如果页面里某个组件的 JavaScript 很大，它就会拖慢整个页面的可交互时间。
 
@@ -210,7 +210,7 @@ const MainContent = React.lazy(() => import("./MainContent"));
 ```text
 MainContent 这部分可以晚点加载。
 页面其他部分可以先处理。
-```text
+```
 
 这为 Selective Hydration 提供了基础。
 
@@ -235,7 +235,7 @@ Selective Hydration 是：
 ```text
 哪个部分准备好了，就先 hydration 哪个部分。
 哪个部分用户想交互，就优先 hydration 哪个部分。
-```text
+```
 
 比如页面中 Header 和 Sidebar 的代码已经加载好了，但 MainContent 的代码还在下载。
 
@@ -262,7 +262,7 @@ Selective Hydration 主要解决传统 SSR 的第二和第三个问题：
 部分 JavaScript 加载完成
 → 对应区域先 hydration
 → 对应区域先变得可交互
-```text
+```
 
 这意味着，一个很重的组件不会拖住整个页面。
 
@@ -345,7 +345,7 @@ React 18 Suspense SSR 的核心意义是：
 → 全部加载
 → 全部 hydration
 → 全部可交互
-```text
+```
 
 React 18 Suspense SSR 更像这样：
 
@@ -377,7 +377,7 @@ React 18 Suspense SSR 更像这样：
 
 ```text
 用户真的需要下载这么多 JavaScript 吗？
-```text
+```
 
 ---
 
@@ -411,7 +411,7 @@ React 18 Suspense SSR 更像这样：
 
 ```text
 我们是不是应该让服务器承担更多工作？
-```text
+```
 
 ---
 
@@ -443,7 +443,7 @@ React Server Components 的思路是：
 传统 SSR：解决首屏 HTML 问题
 Suspense SSR：解决 SSR 的阻塞和 hydration 瀑布问题
 React Server Components：进一步减少客户端 JavaScript 和不必要 hydration
-```text
+```
 
 ---
 

@@ -18,7 +18,7 @@
 
 ```tsx
 const todos = await prisma.todo.findMany();
-```tsx
+```
 
 拿到数据之后，可以直接在 JSX 中渲染：
 
@@ -54,7 +54,7 @@ function handleSubmit(event) {
     },
   });
 }
-```text
+```
 
 然后后端还要创建对应的 API Route：
 
@@ -104,7 +104,7 @@ async function addTodo(formData: FormData) {
     },
   });
 }
-```tsx
+```
 
 然后在表单中使用：
 
@@ -133,7 +133,7 @@ Server Action 接收到的是一个 `FormData` 对象。
 
 ```tsx
 <input name="content" required />
-```text
+```
 
 那么在 Server Action 中就可以这样取值：
 
@@ -147,7 +147,7 @@ const content = formData.get("content") as string;
 
 ```tsx
 const content = formData.get("content") as string;
-```text
+```
 
 即使前端写了 `required`，TypeScript 也不会自动知道这个值一定存在，所以这里需要我们自己处理类型。
 
@@ -195,7 +195,7 @@ Server Actions 看起来像是“前端直接调用服务端函数”，但它�
 
 ```text
 content: test
-```text
+```
 
 同时还会包含 Next.js 内部生成的一些 action 标识，用来匹配当前表单对应的 Server Action。
 
@@ -226,7 +226,7 @@ Server Actions 最大的好处是减少样板代码。
 → Server Action
 → 调用数据库
 → revalidatePath 刷新页面数据
-```text
+```
 
 代码明显更集中，数据获取和数据修改都可以围绕服务端逻辑展开。
 
@@ -273,7 +273,7 @@ export async function addTodo(formData: FormData) {
 
   revalidatePath("/todos");
 }
-```tsx
+```
 
 然后在 Client Component 中导入：
 
@@ -327,7 +327,7 @@ export function TodoForm() {
     </form>
   );
 }
-```text
+```
 
 这里表单的 `action` 不再直接绑定 `addTodo`，而是先执行客户端函数：
 
@@ -366,7 +366,7 @@ export function SubmitButton() {
     </button>
   );
 }
-```tsx
+```
 
 然后在表单里使用：
 
@@ -409,7 +409,7 @@ export async function addTodo(formData: FormData) {
     };
   }
 }
-```text
+```
 
 在客户端调用时，可以接收返回值：
 
@@ -446,7 +446,7 @@ const [optimisticTodos, addOptimisticTodo] = useOptimistic(
   todos,
   (state, newTodo) => [...state, newTodo],
 );
-```tsx
+```
 
 渲染列表时，不再使用原始的 `todos`，而是使用 `optimisticTodos`：
 
@@ -473,7 +473,7 @@ async function action(formData: FormData) {
 
   await addTodo(formData);
 }
-```tsx
+```
 
 这样用户一点击提交，新的 Todo 会立刻显示出来。服务端完成数据库写入后，再通过 `revalidatePath` 同步真实数据。
 
@@ -498,7 +498,7 @@ async function action(formData: FormData) {
 ```tsx
 <button formAction={saveDraft}>Save Draft</button>
 <button formAction={publishPost}>Publish</button>
-```text
+```
 
 这样就可以让同一个表单根据不同按钮触发不同的 Server Action。
 

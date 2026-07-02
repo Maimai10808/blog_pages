@@ -16,7 +16,7 @@
 7. ComponentPropsWithoutRef
 8. as const、Omit、unknown、泛型
 9. 类型文件与 tsconfig
-```text
+```
 
 ---
 
@@ -32,7 +32,7 @@ Button.jsx
 
 ```text
 Button.tsx
-```tsx
+```
 
 `.tsx` 表示这个文件既支持 TypeScript，又支持 JSX。
 
@@ -54,7 +54,7 @@ React 组件里有 JSX，所以不能只用 `.ts`，而要用 `.tsx`。
 
 ```ts
 const url: string = "https://example.com";
-```text
+```
 
 这里的 `: string` 就是在告诉 TypeScript：
 `url` 是字符串。
@@ -73,7 +73,7 @@ TypeScript 会报错，因为你把字符串赋值给了 `number` 类型。
 
 ```ts
 const url = "https://example.com";
-```text
+```
 
 TypeScript 会自动推导出：
 
@@ -91,7 +91,7 @@ const url: string;
 const name = "Kyle";
 const age = 30;
 const isActive = true;
-```text
+```
 
 不推荐：
 
@@ -115,7 +115,7 @@ TypeScript 的价值在于，当你后续写错代码时，它会提前提醒你
 let url = "https://example.com";
 
 url = 123;
-```text
+```
 
 TypeScript 会报错：
 
@@ -141,7 +141,7 @@ Type 'number' is not assignable to type 'string'.
 function convertCurrency(amount, currency) {
   // ...
 }
-```text
+```
 
 这里 `amount` 和 `currency` 没有类型，TypeScript 通常会把它们当成 `any`。
 
@@ -161,7 +161,7 @@ function convertCurrency(amount: number, currency: string) {
 
 ```ts
 convertCurrency(100, "USD");
-```text
+```
 
 是正确的。
 
@@ -183,7 +183,7 @@ TypeScript 会提醒你：第一个参数应该是 `number`，不是 `string`。
 function convertCurrency(amount: number, currency: string): string {
   return `${amount} ${currency}`;
 }
-```text
+```
 
 这里的 `: string` 表示这个函数必须返回字符串。
 
@@ -204,7 +204,7 @@ function convertCurrency(amount: number, currency: string) {
 ```text
 函数参数：通常要写类型
 函数返回值：一般让 TypeScript 推导，重要场景再显式写
-```tsx
+```
 
 ---
 
@@ -238,7 +238,7 @@ export default function Button(props) {
 const Button: React.FC<ButtonProps> = (props) => {
   return <button>Click me</button>;
 };
-```tsx
+```
 
 这种写法现在已经没那么推荐了。
 
@@ -260,7 +260,7 @@ type ButtonProps = {
 export default function Button({ backgroundColor }: ButtonProps) {
   return <button style={{ backgroundColor }}>Click me</button>;
 }
-```tsx
+```
 
 ---
 
@@ -282,7 +282,7 @@ export default function Button(props: { backgroundColor: string }) {
 {
   backgroundColor: string;
 }
-```tsx
+```
 
 表示这个组件必须接收一个 `backgroundColor` 字符串。
 
@@ -296,7 +296,7 @@ export default function Button(props: { backgroundColor: string }) {
 
 ```tsx
 <Button backgroundColor={5} />
-```tsx
+```
 
 TypeScript 会报错，因为 `backgroundColor` 需要字符串。
 
@@ -330,7 +330,7 @@ export default function Button({
 }) {
   return <button>Click me</button>;
 }
-```tsx
+```
 
 所以通常会把 props 类型单独提取出来。
 
@@ -362,7 +362,7 @@ export default function Button({
 
 ```text
 组件名 + Props
-```text
+```
 
 比如：
 
@@ -387,7 +387,7 @@ type ButtonProps = {
   fontSize: number;
   pillShape: boolean;
 };
-```tsx
+```
 
 使用时必须都传：
 
@@ -405,7 +405,7 @@ type ButtonProps = {
   fontSize: number;
   pillShape?: boolean;
 };
-```tsx
+```
 
 这样 `pillShape` 就可以不传：
 
@@ -425,7 +425,7 @@ type ButtonProps = {
   count: number;
   disabled: boolean;
 };
-```text
+```
 
 分别对应：
 
@@ -439,7 +439,7 @@ boolean：true / false
 
 ```tsx
 <Button text="Submit" count={3} disabled={false} />
-```text
+```
 
 ---
 
@@ -457,7 +457,7 @@ red / blue / green
 
 ```ts
 type Color = "red" | "blue" | "green";
-```text
+```
 
 然后使用：
 
@@ -472,7 +472,7 @@ type ButtonProps = {
 
 ```tsx
 <Button backgroundColor="red" textColor="blue" />
-```tsx
+```
 
 是正确的。
 
@@ -492,7 +492,7 @@ type ButtonVariant = "primary" | "secondary" | "danger";
 type Size = "sm" | "md" | "lg";
 
 type Status = "idle" | "loading" | "success" | "error";
-```text
+```
 
 ---
 
@@ -512,7 +512,7 @@ type ButtonProps = {
 
 ```tsx
 <Button padding={[5, 10, 20, 50]} />
-```tsx
+```
 
 如果写成字符串数组：
 
@@ -530,7 +530,7 @@ type Color = "red" | "blue" | "green";
 type ButtonProps = {
   colors: Color[];
 };
-```text
+```
 
 ---
 
@@ -550,7 +550,7 @@ type ButtonProps = {
 
 ```tsx
 <Button padding={[5, 10, 20, 50, 100]} />
-```text
+```
 
 如果你想明确规定只能有四个值，可以用 tuple：
 
@@ -564,7 +564,7 @@ type ButtonProps = {
 
 ```tsx
 <Button padding={[5, 10, 20, 50]} />
-```text
+```
 
 如果多一个或少一个都会报错。
 
@@ -594,7 +594,7 @@ type ButtonProps = {
 export default function Button({ style }: ButtonProps) {
   return <button style={style}>Click me</button>;
 }
-```tsx
+```
 
 使用：
 
@@ -615,7 +615,7 @@ export default function Button({ style }: ButtonProps) {
 
 ```tsx
 <Button style={{ textColor: "red" }} />
-```tsx
+```
 
 会提示错误，因为 CSS 里应该是 `color`，不是 `textColor`。
 
@@ -644,7 +644,7 @@ export default function Button({ style }: ButtonProps) {
 type ButtonProps = {
   borderRadius: Record<string, number>;
 };
-```tsx
+```
 
 `Record<string, number>` 的意思是：
 
@@ -660,7 +660,7 @@ type Corner = "topLeft" | "topRight" | "bottomRight" | "bottomLeft";
 type ButtonProps = {
   borderRadius: Record<Corner, number>;
 };
-```tsx
+```
 
 这样四个角都必须写，少一个也会报错。
 
@@ -682,7 +682,7 @@ React 中经常把函数作为 prop 传递。
 type ButtonProps = {
   onClick: () => void;
 };
-```text
+```
 
 表示：
 
@@ -698,7 +698,7 @@ onClick 是一个函数
 type ButtonProps = {
   onClick: (value: string) => number;
 };
-```text
+```
 
 其中：
 
@@ -717,7 +717,7 @@ type ButtonProps = {
 
 ```tsx
 <Button>Click me</Button>
-```tsx
+```
 
 那么 `children` 也是一个 prop。
 
@@ -743,7 +743,7 @@ JSX 元素
 null
 undefined
 boolean
-```tsx
+```
 
 大多数情况下，children 用 `React.ReactNode` 就够了。
 
@@ -761,7 +761,7 @@ type ButtonProps = {
 
 ```tsx
 <Button>Click me</Button>
-```tsx
+```
 
 可能会报错，因为文本不是 JSX.Element。
 
@@ -781,7 +781,7 @@ children: React.ReactNode;
 
 ```tsx
 const [count, setCount] = useState(0);
-```text
+```
 
 TypeScript 会推导：
 
@@ -793,7 +793,7 @@ count: number;
 
 ```tsx
 const [text, setText] = useState("");
-```text
+```
 
 推导为：
 
@@ -805,7 +805,7 @@ text: string;
 
 ```tsx
 const [isOpen, setIsOpen] = useState(false);
-```text
+```
 
 推导为：
 
@@ -817,7 +817,7 @@ isOpen: boolean;
 
 ```tsx
 useState<number>(0);
-```tsx
+```
 
 虽然写了也没错，但通常没必要。
 
@@ -843,7 +843,7 @@ const [user, setUser] = useState<User | null>(null);
 ```text
 user 初始是 null
 后面可能是 User 对象
-```text
+```
 
 如果访问：
 
@@ -857,7 +857,7 @@ TypeScript 会报错，因为 `user` 可能是 `null`。
 
 ```tsx
 user?.name;
-```text
+```
 
 或者：
 
@@ -881,7 +881,7 @@ if (user) {
 const [count, setCount] = useState(0);
 
 <Button setCount={setCount} />;
-```tsx
+```
 
 子组件 props 类型可以这样写：
 
@@ -901,7 +901,7 @@ type ButtonProps = {
 export default function Button({ setCount }: ButtonProps) {
   return <button onClick={() => setCount((prev) => prev + 1)}>Click me</button>;
 }
-```tsx
+```
 
 这个类型看起来比较长，不需要死记。
 
@@ -930,7 +930,7 @@ HTMLDivElement
 HTMLAnchorElement
 HTMLFormElement
 HTMLTextAreaElement
-```tsx
+```
 
 比如 input：
 
@@ -942,7 +942,7 @@ div：
 
 ```tsx
 const divRef = useRef<HTMLDivElement>(null);
-```tsx
+```
 
 ---
 
@@ -970,7 +970,7 @@ function handleClick(event) {
 }
 
 <button onClick={handleClick}>Click me</button>;
-```tsx
+```
 
 这时 `event` 可能需要手动写类型。
 
@@ -992,7 +992,7 @@ input change：
 function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
   console.log(event.target.value);
 }
-```tsx
+```
 
 form submit：
 
@@ -1009,7 +1009,7 @@ React.MouseEvent<HTMLButtonElement>
 React.ChangeEvent<HTMLInputElement>
 React.FormEvent<HTMLFormElement>
 React.KeyboardEvent<HTMLInputElement>
-```tsx
+```
 
 ---
 
@@ -1032,7 +1032,7 @@ type ButtonProps = {
   disabled?: boolean;
   // ...
 };
-```tsx
+```
 
 因为 button 原生属性很多。
 
@@ -1058,7 +1058,7 @@ type ButtonProps = React.ComponentPropsWithoutRef<"button"> & {
 export default function Button({ variant, ...rest }: ButtonProps) {
   return <button data-variant={variant} {...rest} />;
 }
-```tsx
+```
 
 这里的 `&` 表示交叉类型，也就是把两个类型合并。
 
@@ -1072,7 +1072,7 @@ React.ComponentPropsWithRef<"button">;
 
 ```ts
 React.ComponentPropsWithoutRef<"button">;
-```text
+```
 
 ---
 
@@ -1096,7 +1096,7 @@ interface ButtonProps {
   text: string;
   count: number;
 }
-```text
+```
 
 对于简单对象，这两种都可以。
 
@@ -1129,7 +1129,7 @@ type Padding = [number, number, number, number];
 type ButtonProps = {
   color: "red" | "blue" | "green";
 };
-```text
+```
 
 另一个 SuperButton 想复用 ButtonProps，并额外加 size：
 
@@ -1143,7 +1143,7 @@ type SuperButtonProps = ButtonProps & {
 
 ```text
 ButtonProps + size
-```text
+```
 
 如果用 interface，通常写成：
 
@@ -1162,7 +1162,7 @@ interface SuperButtonProps extends ButtonProps {
 ```text
 type 用 &
 interface 用 extends
-```text
+```
 
 ---
 
@@ -1182,7 +1182,7 @@ TypeScript 默认会推导成：
 
 ```ts
 string[]
-```text
+```
 
 也就是说，它只知道这是字符串数组，不知道里面具体有哪些字符串。
 
@@ -1200,7 +1200,7 @@ TypeScript 会推导得更精确：
 
 ```ts
 readonly[("Click me", "Click me again", "Click me one more time")];
-```text
+```
 
 好处是：
 
@@ -1216,7 +1216,7 @@ readonly[("Click me", "Click me again", "Click me one more time")];
 const COLORS = ["red", "blue", "green"] as const;
 
 type Color = (typeof COLORS)[number];
-```text
+```
 
 得到：
 
@@ -1235,7 +1235,7 @@ type User = {
   name: string;
   sessionId: string;
 };
-```tsx
+```
 
 游客 Guest 和 User 很像，但没有 name：
 
@@ -1249,7 +1249,7 @@ type Guest = Omit<User, "name">;
 type Guest = {
   sessionId: string;
 };
-```text
+```
 
 `Omit` 的意思是：
 
@@ -1264,7 +1264,7 @@ React 项目中常用于：
 更新类型
 组件 props 派生
 去掉不需要暴露的字段
-```text
+```
 
 ---
 
@@ -1280,7 +1280,7 @@ string | null;
 
 ```ts
 const previousButtonColor = localStorage.getItem("buttonColor");
-```text
+```
 
 如果你的项目里已经有类型：
 
@@ -1292,7 +1292,7 @@ type ButtonColor = "red" | "blue" | "green";
 
 ```ts
 const previousButtonColor = localStorage.getItem("buttonColor") as ButtonColor;
-```text
+```
 
 这里的 `as ButtonColor` 是类型断言。
 
@@ -1322,7 +1322,7 @@ const previousButtonColor: ButtonColor | null = COLORS.includes(
 )
   ? (value as ButtonColor)
   : null;
-```text
+```
 
 ---
 
@@ -1339,7 +1339,7 @@ const data = await res.json();
 
 ```ts
 data.name.toUpperCase();
-```text
+```
 
 即使真实数据里没有 `name`，TypeScript 也不会报错。
 
@@ -1353,7 +1353,7 @@ const data: unknown = await res.json();
 
 ```text
 我不知道它是什么，使用前必须先检查。
-```text
+```
 
 你不能直接写：
 
@@ -1376,7 +1376,7 @@ const UserSchema = z.object({
 const data: unknown = await res.json();
 
 const user = UserSchema.parse(data);
-```text
+```
 
 这样只有数据真的符合结构，才会得到可靠的 `user` 类型。
 
@@ -1399,7 +1399,7 @@ unknown 是要求检查。
 function convertToArray(value) {
   return [value];
 }
-```text
+```
 
 如果不给 `value` 写类型，它就是 `any`，不安全。
 
@@ -1419,7 +1419,7 @@ function convertToArray(value: string): string[] {
 function convertToArray<T>(value: T): T[] {
   return [value];
 }
-```text
+```
 
 这里的 `T` 是类型参数。
 
@@ -1440,7 +1440,7 @@ const b = convertToArray(5);
 
 const c = convertToArray(true);
 // boolean[]
-```text
+```
 
 泛型的核心不是“复杂语法”，而是：
 
@@ -1461,7 +1461,7 @@ countHistory
 
 ```text
 countValue 是什么类型，countHistory 就必须是什么类型的数组。
-```tsx
+```
 
 可以用泛型：
 
@@ -1483,7 +1483,7 @@ export default function Button<T>({
 
 ```tsx
 <Button countValue={5} countHistory={[1, 2, 3]} />
-```tsx
+```
 
 正确。
 
@@ -1497,7 +1497,7 @@ export default function Button<T>({
 
 ```tsx
 <Button countValue="5" countHistory={[1, 2, 3]} />
-```tsx
+```
 
 会报错，因为 `countValue` 是字符串，`countHistory` 却是数字数组。
 
@@ -1523,7 +1523,7 @@ const convertToArray = <T>(value: T): T[] => {
 const convertToArray = <T,>(value: T): T[] => {
   return [value];
 };
-```tsx
+```
 
 不过很多人更喜欢用普通函数写泛型：
 
@@ -1545,7 +1545,7 @@ function convertToArray<T>(value: T): T[] {
 
 ```ts
 type Color = "red" | "blue" | "green";
-```text
+```
 
 可以放到：
 
@@ -1557,7 +1557,7 @@ src/lib/types.ts
 
 ```text
 src/types.ts
-```text
+```
 
 然后导出：
 
@@ -1569,7 +1569,7 @@ export type Color = "red" | "blue" | "green";
 
 ```ts
 import type { Color } from "@/lib/types";
-```text
+```
 
 这里的 `import type` 表示：
 
@@ -1587,7 +1587,7 @@ import type { Color } from "@/lib/types";
 
 ```text
 index.d.ts
-```text
+```
 
 然后把项目类型都放进去。
 
@@ -1605,7 +1605,7 @@ index.d.ts
 
 ```text
 types.ts
-```text
+```
 
 例如：
 
@@ -1622,7 +1622,7 @@ export type Color = "red" | "blue" | "green";
 ```text
 @types/react
 @types/node
-```tsx
+```
 
 这是很多第三方库的类型声明。
 
@@ -1648,7 +1648,7 @@ TypeScript 项目通常会有：
 
 ```text
 tsconfig.json
-```text
+```
 
 它是 TypeScript 的配置文件。
 
@@ -1671,7 +1671,7 @@ JSX 如何处理
     "strict": true
   }
 }
-```tsx
+```
 
 `strict: true` 表示开启严格模式。
 
@@ -1689,7 +1689,7 @@ console.log(user.name);
 
 ```tsx
 console.log(user?.name);
-```text
+```
 
 不建议为了少报错就关闭严格模式。
 
@@ -1709,7 +1709,7 @@ Next.js 项目中通常会有一个文件：
 
 ```text
 next-env.d.ts
-```text
+```
 
 这个文件会引用 Next.js 自己的类型声明。
 
@@ -1749,7 +1749,7 @@ await fetch("https://example.com", {
 11. 少用 any。
 12. 可复用类型放 types.ts，用 import type 导入。
 13. tsconfig 保持 strict: true。
-```tsx
+```
 
 ---
 

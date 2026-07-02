@@ -9,7 +9,7 @@
 用户能知道发生了什么。
 开发者能追踪错误来源。
 可恢复的错误可以让用户重新尝试。
-```text
+```
 
 React 中的错误大致可以分成两类：
 
@@ -35,7 +35,7 @@ React 中的错误大致可以分成两类：
 用户未登录
 用户没有权限
 接口返回校验失败
-```text
+```
 
 这些错误虽然也是“错误”，但它们不是程序崩溃，而是正常业务流程的一部分。
 
@@ -69,7 +69,7 @@ return {
   status: "error",
   message: "请输入有效的邮箱地址",
 };
-```text
+```
 
 然后 UI 层根据这个返回值展示错误提示。
 
@@ -97,7 +97,7 @@ try {
 ```text
 预期错误 = 返回值
 非预期错误 = throw / Error Boundary
-```tsx
+```
 
 例如：
 
@@ -135,7 +135,7 @@ async function submitFormAction(formData: FormData): Promise<SubmitResult> {
 函数正常执行完成。
 只是业务结果是失败。
 UI 根据 status 展示对应信息。
-```text
+```
 
 这比把业务校验失败当成异常更自然。
 
@@ -162,7 +162,7 @@ JSON 解析失败
 function UserProfile({ user }: { user?: { name: string } }) {
   return <div>{user.name}</div>;
 }
-```text
+```
 
 如果 `user` 是 `undefined`，组件会直接报错。
 
@@ -191,7 +191,7 @@ function UserProfile({ user }: { user?: { name: string } }) {
 统计图表区域显示“出错了，请重试”
 邮箱表单仍然可以使用
 页面其他部分仍然正常
-```tsx
+```
 
 而不是整个页面白屏。
 
@@ -226,7 +226,7 @@ Error Boundary 会渲染 fallback UI，而不是让整个应用崩溃。
 ```text
 Error Boundary 是组件树中的错误隔离层。
 哪里可能出错，就可以在哪里包一层。
-```tsx
+```
 
 例如：
 
@@ -281,7 +281,7 @@ class ErrorBoundary extends React.Component<
     return this.props.children;
   }
 }
-```text
+```
 
 这是 React 中少数 class component 仍然有用的场景。
 
@@ -305,7 +305,7 @@ Error Boundary 就是一个典型保留场景。
 
 ```bash
 npm install react-error-boundary
-```tsx
+```
 
 它提供了更方便的 API。
 
@@ -355,7 +355,7 @@ onError：错误发生时执行回调
 onReset：重置错误状态时执行回调
 resetErrorBoundary：让用户点击按钮重新尝试
 useErrorBoundary：在异步逻辑中手动触发边界错误
-```tsx
+```
 
 这让错误处理更工程化。
 
@@ -394,7 +394,7 @@ Error Boundary 不一定只放在应用最外层。
     <AnalyticsChart />
   </ErrorBoundary>
 </Layout>
-```text
+```
 
 这样错误可以局部隔离。
 
@@ -415,7 +415,7 @@ Error Boundary 不一定只放在应用最外层。
 低代码画布
 用户可配置模块
 插件系统
-```text
+```
 
 ---
 
@@ -438,7 +438,7 @@ Error Boundary 很强，但不是万能的。
 异步请求中的错误
 setTimeout / Promise 中的错误
 服务端错误
-```tsx
+```
 
 例如：
 
@@ -487,7 +487,7 @@ function FetchExample() {
 
   return <button onClick={fetchData}>Trigger Fetch Error</button>;
 }
-```text
+```
 
 这里的关键是：
 
@@ -504,7 +504,7 @@ showBoundary(error);
 ```text
 同步渲染错误：Error Boundary 自动捕获
 异步请求错误：catch 后手动 showBoundary
-```text
+```
 
 ---
 
@@ -533,7 +533,7 @@ function ErrorFallback({
     </div>
   );
 }
-```text
+```
 
 当用户点击“重试”时：
 
@@ -557,7 +557,7 @@ Error Boundary 会清除错误状态，重新渲染被包裹的组件。
 >
   <ProblemComponent />
 </ErrorBoundary>
-```text
+```
 
 ---
 
@@ -588,7 +588,7 @@ Bugsnag
 >
   <ProblemComponent />
 </ErrorBoundary>
-```text
+```
 
 `onError` 适合做：
 
@@ -608,7 +608,7 @@ Bugsnag
 影响了多少用户
 什么操作触发了错误
 是否是某个版本引入的问题
-```text
+```
 
 ---
 
@@ -630,7 +630,7 @@ if (!email.includes("@")) {
     message: "邮箱格式不正确",
   };
 }
-```tsx
+```
 
 这是预期错误。
 
@@ -667,7 +667,7 @@ function SubmitForm() {
 
   return <div>...</div>;
 }
-```text
+```
 
 邮箱格式不正确，是业务预期内的错误。
 不应该让它进入 Error Boundary。
@@ -685,7 +685,7 @@ Error Boundary 主要处理的是：
 
 ```text
 不应该发生，但确实发生了的错误。
-```text
+```
 
 如果把所有业务错误都 throw 给 Error Boundary，用户体验会变得很粗糙，代码语义也会混乱。
 
@@ -732,7 +732,7 @@ Error Boundary 主要处理的是：
     </ErrorBoundary>
   </PageLayout>
 </ErrorBoundary>
-```text
+```
 
 这样既有全局兜底，也有局部隔离。
 
@@ -767,7 +767,7 @@ React 错误处理的核心不是到处写 try-catch，而是先区分错误类�
 非预期错误：程序异常，用 Error Boundary 隔离。
 异步非预期错误：try-catch 后用 showBoundary 交给 Error Boundary。
 线上错误：通过 onError 上报监控系统。
-```text
+```
 
 可以记住这句话：
 

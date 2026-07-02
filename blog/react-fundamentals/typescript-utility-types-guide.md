@@ -29,7 +29,7 @@ Lowercase
 Uppercase
 Capitalize
 Uncapitalize
-```text
+```
 
 ---
 
@@ -57,7 +57,7 @@ function createUser(user: User) {}
 function updateUser(user: User) {}
 
 function renderUserDetails(user: User) {}
-```text
+```
 
 表面上看没有问题，但真实业务里并不是每个函数都需要完整的 `User`。
 
@@ -78,7 +78,7 @@ type UserDetails = {
   name: string;
   age: number;
 };
-```tsx
+```
 
 但问题是，如果以后 `User.name` 的类型改了，比如从 `string` 改成了其他类型，你还要手动同步修改 `UserDetails`。
 
@@ -104,7 +104,7 @@ function renderUserDetails(user: Pick<User, "name" | "age">) {
 
 ```text
 从 User 类型中，只挑选 name 和 age 两个属性。
-```text
+```
 
 等价于：
 
@@ -122,7 +122,7 @@ renderUserDetails({
   name: "Kyle",
   age: 30,
 });
-```tsx
+```
 
 这样就不需要传 `id` 和 `address`。
 
@@ -154,7 +154,7 @@ renderUserDetails({
 function createUser(user: Omit<User, "id">) {
   // create user
 }
-```text
+```
 
 这表示：
 
@@ -173,7 +173,7 @@ createUser({
     street: "Main Street",
   },
 });
-```text
+```
 
 不需要传 `id`。
 
@@ -195,7 +195,7 @@ type User = {
 
 ```ts
 type CreateUserInput = Omit<User, "id" | "createdAt" | "updatedAt">;
-```text
+```
 
 适合场景：
 
@@ -218,7 +218,7 @@ type CreateUserInput = Omit<User, "id" | "createdAt" | "updatedAt">;
 function updateUser(user: Partial<User>) {
   // update user
 }
-```text
+```
 
 这时可以这样调用：
 
@@ -234,7 +234,7 @@ updateUser({
 updateUser({
   age: 20,
 });
-```text
+```
 
 甚至可以同时更新多个字段：
 
@@ -257,7 +257,7 @@ type PartialUser = {
     street: string;
   };
 };
-```text
+```
 
 注意：`Partial` 只会处理第一层属性，不会默认把嵌套对象里的属性也变成可选。
 
@@ -290,7 +290,7 @@ type User = {
     street: string;
   };
 };
-```tsx
+```
 
 这里 `address` 是可选的。
 
@@ -314,7 +314,7 @@ createUserWithAddress({
     street: "Main Street",
   },
 });
-```text
+```
 
 适合场景：
 
@@ -336,7 +336,7 @@ type User = {
 };
 
 type FullUser = Required<User>;
-```text
+```
 
 得到的是：
 
@@ -358,7 +358,7 @@ type FullUser = {
 
 ```ts
 type ReadonlyUser = Readonly<User>;
-```text
+```
 
 等价于：
 
@@ -388,7 +388,7 @@ const user: ReadonlyUser = {
 };
 
 user.name = "Sally";
-```text
+```
 
 这里会报错，因为 `name` 是只读属性。
 
@@ -411,7 +411,7 @@ user.address = {
 
 ```ts
 user.address.city = "Los Angeles";
-```text
+```
 
 默认可能仍然允许，因为 `Readonly` 不会自动深度递归到嵌套对象。
 
@@ -434,7 +434,7 @@ user.address.city = "Los Angeles";
 
 ```ts
 Record<Keys, Type>;
-```text
+```
 
 意思是：
 
@@ -446,7 +446,7 @@ Record<Keys, Type>;
 
 ```ts
 type UserMap = Record<string, User>;
-```text
+```
 
 表示：
 
@@ -468,7 +468,7 @@ const users: UserMap = {
     },
   },
 };
-```text
+```
 
 更常见、更强大的用法是配合联合类型。
 
@@ -482,7 +482,7 @@ type Role = "admin" | "user" | "moderator";
 
 ```ts
 type RoleConfig = Record<Role, { label: string }>;
-```text
+```
 
 使用：
 
@@ -513,7 +513,7 @@ const roleConfig: RoleConfig = {
 字典对象
 权限配置
 主题配置
-```tsx
+```
 
 例如：
 
@@ -541,7 +541,7 @@ const statusText: Record<Status, string> = {
 type Role = "admin" | "user" | "moderator";
 
 type PowerfulRole = Extract<Role, "admin" | "moderator">;
-```text
+```
 
 得到：
 
@@ -553,7 +553,7 @@ type PowerfulRole = "admin" | "moderator";
 
 ```text
 从 Role 中提取也存在于 "admin" | "moderator" 里的成员。
-```tsx
+```
 
 也可以用于两个联合类型之间取交集：
 
@@ -569,7 +569,7 @@ type SharedRole = Extract<Role, OtherRole>;
 
 ```ts
 type SharedRole = "admin" | "user";
-```text
+```
 
 适合场景：
 
@@ -593,7 +593,7 @@ type SharedRole = "admin" | "user";
 type Role = "admin" | "user" | "moderator";
 
 type PowerfulRole = Exclude<Role, "user">;
-```text
+```
 
 得到：
 
@@ -605,7 +605,7 @@ type PowerfulRole = "admin" | "moderator";
 
 ```ts
 type AdminOnly = Exclude<Role, "user" | "moderator">;
-```text
+```
 
 得到：
 
@@ -621,7 +621,7 @@ type Role = "admin" | "user" | "moderator";
 type OtherRole = "admin" | "user" | "security";
 
 type OnlyRole = Exclude<Role, OtherRole>;
-```text
+```
 
 得到：
 
@@ -633,7 +633,7 @@ type OnlyRole = "moderator";
 
 ```text
 从 Role 中移除 OtherRole 里也有的成员。
-```text
+```
 
 适合场景：
 
@@ -650,7 +650,7 @@ type OnlyRole = "moderator";
 type ButtonVariant = "primary" | "secondary" | "danger";
 
 type SafeVariant = Exclude<ButtonVariant, "danger">;
-```text
+```
 
 ---
 
@@ -674,7 +674,7 @@ function getUser(id: string) {
 
 ```ts
 type UserResult = ReturnType<typeof getUser>;
-```text
+```
 
 得到：
 
@@ -690,7 +690,7 @@ type UserResult = {
 
 ```ts
 typeof getUser;
-```text
+```
 
 因为 `getUser` 是一个运行时函数，而 `ReturnType` 需要的是函数类型。
 
@@ -708,7 +708,7 @@ typeof getUser;
 const user = getUser("1");
 
 type UserResult = ReturnType<typeof getUser>;
-```tsx
+```
 
 这样如果 `getUser` 以后多返回一个字段，`UserResult` 会自动更新。
 
@@ -737,7 +737,7 @@ type GetUserParams = Parameters<typeof getUser>;
 
 ```ts
 type GetUserParams = [id: string, age: number];
-```text
+```
 
 也就是：
 
@@ -749,7 +749,7 @@ type GetUserParams = [id: string, age: number];
 
 ```ts
 const params: GetUserParams = ["1", 30];
-```text
+```
 
 如果写成：
 
@@ -778,7 +778,7 @@ function getUserWrapper(id: Parameters<typeof getUser>[0], shouldLog: boolean) {
 
   return getUser(id);
 }
-```text
+```
 
 这里：
 
@@ -797,7 +797,7 @@ Parameters < typeof getUser > [0];
 高阶函数
 复用第三方函数参数类型
 避免手动同步参数类型
-```text
+```
 
 ---
 
@@ -823,7 +823,7 @@ class User {
 
 ```ts
 type UserConstructorParams = ConstructorParameters<typeof User>;
-```text
+```
 
 得到：
 
@@ -835,7 +835,7 @@ type UserConstructorParams = [name: string];
 
 ```ts
 const params: UserConstructorParams = ["Kyle"];
-```text
+```
 
 适合场景：
 
@@ -864,7 +864,7 @@ class User {
 }
 
 type UserInstance = InstanceType<typeof User>;
-```text
+```
 
 得到的 `UserInstance` 本质上就是：
 
@@ -876,7 +876,7 @@ User;
 
 ```ts
 type UserInstance = User;
-```tsx
+```
 
 也能达到一样效果。
 
@@ -897,7 +897,7 @@ type Instance = InstanceType<ClassType>;
 工厂模式
 依赖注入
 从 class constructor 中推导实例类型
-```tsx
+```
 
 ---
 
@@ -917,7 +917,7 @@ type B = NonNullable<A>;
 
 ```ts
 type B = string;
-```tsx
+```
 
 它和 `Required` 不一样。
 
@@ -940,7 +940,7 @@ type RequiredUser = Required<User>;
 type RequiredUser = {
   name: string | null;
 };
-```tsx
+```
 
 可以看到，`Required` 去掉了 `?`，但没有去掉 `null`。
 
@@ -954,7 +954,7 @@ type Name = NonNullable<User["name"]>;
 
 ```ts
 type Name = string;
-```text
+```
 
 适合场景：
 
@@ -979,7 +979,7 @@ async function getUser() {
     name: "Kyle",
   };
 }
-```tsx
+```
 
 如果直接用 `ReturnType`：
 
@@ -994,7 +994,7 @@ Promise<{
   id: string;
   name: string;
 }>;
-```tsx
+```
 
 但很多时候我们真正想要的是 Promise 里面的数据类型。
 
@@ -1011,7 +1011,7 @@ type UserResult = {
   id: string;
   name: string;
 };
-```tsx
+```
 
 `Awaited` 会递归解开 Promise。
 
@@ -1025,7 +1025,7 @@ type A = Awaited<Promise<Promise<string>>>;
 
 ```ts
 type A = string;
-```text
+```
 
 适合场景：
 
@@ -1039,7 +1039,7 @@ type A = string;
 
 ```ts
 type User = Awaited<ReturnType<typeof getUser>>;
-```tsx
+```
 
 ---
 
@@ -1057,7 +1057,7 @@ type T = Lowercase<S>;
 
 ```ts
 type T = "hello world";
-```text
+```
 
 注意：它作用于类型层面的字符串字面量，不是运行时字符串。
 
@@ -1079,7 +1079,7 @@ type T = "hello world";
 type S = "hello world";
 
 type T = Uppercase<S>;
-```text
+```
 
 得到：
 
@@ -1099,7 +1099,7 @@ type T = "HELLO WORLD";
 type S = "hello";
 
 type T = Capitalize<S>;
-```text
+```
 
 得到：
 
@@ -1113,7 +1113,7 @@ type T = "Hello";
 type Field = "name";
 
 type GetterName = `get${Capitalize<Field>}`;
-```text
+```
 
 得到：
 
@@ -1131,7 +1131,7 @@ type GetterName = "getName";
 type S = "Hello";
 
 type T = Uncapitalize<S>;
-```text
+```
 
 得到：
 
@@ -1145,7 +1145,7 @@ type T = "hello";
 PascalCase 转 camelCase
 生成对象 key
 类型层面的命名转换
-```tsx
+```
 
 比如：
 
@@ -1159,7 +1159,7 @@ type VariableName = Uncapitalize<ComponentName>;
 
 ```ts
 type VariableName = "userCard";
-```tsx
+```
 
 ---
 
@@ -1217,7 +1217,7 @@ type ButtonProps = {
 };
 
 type SafeButtonVariant = Exclude<ButtonProps["variant"], "danger">;
-```tsx
+```
 
 或者：
 
@@ -1229,7 +1229,7 @@ type User = Awaited<ReturnType<typeof getUser>>;
 
 ```ts
 type CreateUserInput = Omit<User, "id" | "createdAt" | "updatedAt">;
-```tsx
+```
 
 更新接口类型：
 
@@ -1241,7 +1241,7 @@ type UpdateUserInput = Partial<CreateUserInput>;
 
 ```ts
 type UserCardProps = Pick<User, "name" | "age">;
-```text
+```
 
 这些写法都可以避免重复定义类型。
 
@@ -1272,7 +1272,7 @@ type User = {
   createdAt: Date;
   updatedAt: Date;
 };
-```tsx
+```
 
 然后派生：
 
@@ -1296,7 +1296,7 @@ type UserResult = Awaited<ReturnType<typeof getUser>>;
 减少重复代码
 降低维护成本
 类型语义更清晰
-```text
+```
 
 ---
 

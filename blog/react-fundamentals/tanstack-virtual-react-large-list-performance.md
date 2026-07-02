@@ -21,7 +21,7 @@ const cardData = new Array(5000).fill(null).map((_, index) => ({
   id: index,
   title: `Card ${index}`,
 }));
-```tsx
+```
 
 最直接的写法是：
 
@@ -67,7 +67,7 @@ const cardData = new Array(5000).fill(null).map((_, index) => ({
 
 ```text
 一次性渲染 5000 个 DOM 节点
-```text
+```
 
 虚拟列表：
 
@@ -87,7 +87,7 @@ TanStack Virtual 是 TanStack 团队推出的虚拟化库。TanStack 团队更�
 
 ```bash
 npm install @tanstack/react-virtual
-```text
+```
 
 如果你使用 pnpm：
 
@@ -99,7 +99,7 @@ pnpm add @tanstack/react-virtual
 
 ```bash
 yarn add @tanstack/react-virtual
-```tsx
+```
 
 安装完成后，就可以在 React 项目中使用它。
 
@@ -135,7 +135,7 @@ TanStack Virtual 的核心是 `virtualizer` 对象。
 
 ```tsx
 import { useVirtualizer } from "@tanstack/react-virtual";
-```text
+```
 
 然后在组件中创建 virtualizer：
 
@@ -159,7 +159,7 @@ const virtualizer = useVirtualizer({
 
 ```tsx
 count: cardData.length;
-```text
+```
 
 如果数组里有 5000 条数据，那么 `count` 就是 5000。
 
@@ -185,7 +185,7 @@ estimateSize: () => 100;
 
 ```tsx
 estimateSize: () => 80;
-```text
+```
 
 如果实际卡片高度接近 100px，那么 80 就偏小，可能导致卡片重叠。
 
@@ -209,7 +209,7 @@ estimateSize: () => 100;
 import { useRef } from "react";
 
 const scrollRef = useRef<HTMLDivElement | null>(null);
-```text
+```
 
 然后传给 `getScrollElement`：
 
@@ -221,7 +221,7 @@ getScrollElement: () => scrollRef.current;
 
 ```tsx
 <div ref={scrollRef}>...</div>
-```text
+```
 
 这样 virtualizer 才知道用户滚动的是哪个区域，并根据滚动位置计算当前应该渲染哪些列表项。
 
@@ -256,7 +256,7 @@ getScrollElement: () => scrollRef.current;
 <div ref={scrollRef} className="h-[90dvh] w-full overflow-auto">
   ...
 </div>
-```tsx
+```
 
 为什么必须有固定高度？
 
@@ -287,7 +287,7 @@ getScrollElement: () => scrollRef.current;
 
 ```tsx
 virtualizer.getTotalSize();
-```text
+```
 
 它会返回整个虚拟列表的总高度。
 
@@ -303,7 +303,7 @@ virtualizer.getTotalSize();
 
 ```css
 position: relative;
-```text
+```
 
 因为下一层的每个虚拟项会使用 `position: absolute` 进行定位，需要一个相对定位的父级。
 
@@ -341,7 +341,7 @@ const virtualItems = virtualizer.getVirtualItems();
     );
   });
 }
-```text
+```
 
 这里有几个重点。
 
@@ -361,7 +361,7 @@ const card = cardData[virtualItem.index];
 
 ```tsx
 transform: `translateY(${virtualItem.start}px)`;
-```tsx
+```
 
 把它移动到正确的位置。
 
@@ -423,7 +423,7 @@ function VirtualList({ cardData }: { cardData: CardData[] }) {
 
 ```tsx
 cardData.map(...)
-```text
+```
 
 虚拟列表是只渲染当前可见区域：
 
@@ -448,7 +448,7 @@ virtualizer.getVirtualItems().map(...)
 第 2 个卡片：start = 100
 第 3 个卡片：start = 200
 第 4 个卡片：start = 300
-```text
+```
 
 virtualizer 会告诉我们每个虚拟项应该出现在什么位置。
 
@@ -469,7 +469,7 @@ transform: translateY(...)
 滚动容器：负责滚动
 relative 容器：撑开总高度，作为定位上下文
 absolute 子项：根据 virtualizer 计算的位置渲染真实内容
-```text
+```
 
 ---
 
@@ -500,7 +500,7 @@ data-index="462"
 data-index="463"
 data-index="464"
 ...
-```text
+```
 
 这说明索引靠前的节点已经不在 DOM 里了，页面只保留当前可见区域附近的节点。
 
@@ -528,7 +528,7 @@ style={{
   width: `${virtualItem.size}px`,
   transform: `translateX(${virtualItem.start}px)`,
 }}
-```text
+```
 
 横向虚拟列表的核心变化是：
 
@@ -551,7 +551,7 @@ horizontal: translateX
 
 ```tsx
 import { useWindowVirtualizer } from "@tanstack/react-virtual";
-```text
+```
 
 示例：
 
@@ -566,7 +566,7 @@ const virtualizer = useWindowVirtualizer({
 
 ```tsx
 getScrollElement;
-```text
+```
 
 因为它默认使用整个 window 作为滚动容器。
 
@@ -599,7 +599,7 @@ useWindowVirtualizer：适合整个页面窗口滚动
 
 ```tsx
 estimateSize: () => 100;
-```tsx
+```
 
 就可能出现问题。
 
@@ -633,7 +633,7 @@ TanStack Virtual 提供了 `measureElement`，可以让 virtualizer 实时测量
 
 ```tsx
 ref={virtualizer.measureElement}
-```text
+```
 
 用于测量当前元素的真实尺寸。
 
@@ -688,7 +688,7 @@ return (
     </div>
   </div>
 );
-```text
+```
 
 这段代码的重点是：
 
@@ -702,7 +702,7 @@ transform: `translateY(${virtualItems[0]?.start ?? 0}px)`;
 
 ```tsx
 ref={virtualizer.measureElement}
-```text
+```
 
 让 virtualizer 测量真实高度。
 
@@ -755,7 +755,7 @@ ref={virtualizer.measureElement}
 ```text
 数据少 + 组件简单：普通 map
 数据多 + 组件复杂：虚拟列表
-```text
+```
 
 ---
 
@@ -791,7 +791,7 @@ virtualizer.getVirtualItems();
 
 ```tsx
 cardData.map(...)
-```text
+```
 
 否则还是会渲染所有数据，虚拟化就失去了意义。
 

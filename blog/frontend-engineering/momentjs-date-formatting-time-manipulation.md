@@ -11,7 +11,7 @@ Moment.js 是一个经典的 JavaScript 日期时间处理库。虽然现在很�
 4. Getter 和 Setter 方法
 5. add() 与 subtract() 时间加减
 6. startOf()、endOf()、utc()、unix() 等常用方法
-```tsx
+```
 
 ---
 
@@ -34,7 +34,7 @@ Moment.js 有两种常见使用方式。
 
 ```bash
 npm install moment
-```text
+```
 
 如果你的项目使用 CommonJS，可以这样引入：
 
@@ -48,7 +48,7 @@ const moment = require("moment");
 {
   "type": "module"
 }
-```text
+```
 
 然后使用：
 
@@ -72,7 +72,7 @@ import moment from "moment";
 const now = moment();
 
 console.log(now);
-```text
+```
 
 如果想把 Moment 对象转成可读的字符串，可以使用 `format()` 方法：
 
@@ -94,7 +94,7 @@ console.log(moment().format());
 
 ```js
 console.log(moment().format("YYYY-MM-DD"));
-```text
+```
 
 输出类似：
 
@@ -114,7 +114,7 @@ console.log(moment().format("YYYY-MM-DD"));
 
 ```js
 moment().format("MMMM");
-```text
+```
 
 输出示例：
 
@@ -126,7 +126,7 @@ July
 
 ```js
 moment().format("MMM");
-```text
+```
 
 输出示例：
 
@@ -138,7 +138,7 @@ Jul
 
 ```js
 moment().format("MM");
-```text
+```
 
 输出示例：
 
@@ -150,7 +150,7 @@ moment().format("MM");
 
 ```js
 moment().format("M");
-```text
+```
 
 输出示例：
 
@@ -162,7 +162,7 @@ moment().format("M");
 
 ```js
 moment().format("Mo");
-```text
+```
 
 输出示例：
 
@@ -178,7 +178,7 @@ MM     07
 MMM    Jul
 MMMM   July
 Mo     7th
-```text
+```
 
 一般来说，`M` 最多用到四个。超过四个时，Moment 会按照已有规则进行拼接，实际开发中很少这样写。
 
@@ -198,7 +198,7 @@ moment().format("D");
 
 ```text
 1
-```text
+```
 
 ### 2. `DD`：两位日期
 
@@ -210,7 +210,7 @@ moment().format("DD");
 
 ```text
 01
-```text
+```
 
 ### 3. `Do`：带序数的日期
 
@@ -222,7 +222,7 @@ moment().format("Do");
 
 ```text
 1st
-```text
+```
 
 ### 4. `DDD`：一年中的第几天
 
@@ -234,7 +234,7 @@ moment().format("DDD");
 
 ```text
 182
-```text
+```
 
 ### 5. `DDDD`：一年中的第几天，三位格式
 
@@ -246,7 +246,7 @@ moment().format("DDDD");
 
 ```text
 182
-```text
+```
 
 可以简单记：
 
@@ -268,7 +268,7 @@ DDDD   一年中的第几天，通常补足三位
 
 ```js
 moment().format("d");
-```text
+```
 
 返回范围是：
 
@@ -281,7 +281,7 @@ moment().format("d");
 ```text
 0 表示 Sunday
 6 表示 Saturday
-```text
+```
 
 ### 2. `dd`：两字符星期缩写
 
@@ -293,7 +293,7 @@ moment().format("dd");
 
 ```text
 We
-```text
+```
 
 ### 3. `ddd`：三字符星期缩写
 
@@ -305,7 +305,7 @@ moment().format("ddd");
 
 ```text
 Wed
-```text
+```
 
 ### 4. `dddd`：完整星期名称
 
@@ -317,7 +317,7 @@ moment().format("dddd");
 
 ```text
 Wednesday
-```text
+```
 
 可以简单记：
 
@@ -338,7 +338,7 @@ dddd    Wednesday
 
 ```js
 moment().format("YY");
-```text
+```
 
 输出示例：
 
@@ -350,7 +350,7 @@ moment().format("YY");
 
 ```js
 moment().format("YYYY");
-```text
+```
 
 输出示例：
 
@@ -362,7 +362,7 @@ moment().format("YYYY");
 
 ```js
 moment().format("YYYY-MM-DD");
-```text
+```
 
 ---
 
@@ -384,7 +384,7 @@ moment().format("HH");
 ```text
 9
 09
-```text
+```
 
 ### 2. `h` / `hh`：12 小时制
 
@@ -402,7 +402,7 @@ moment().format("hh");
 ```js
 moment().format("m");
 moment().format("mm");
-```text
+```
 
 ### 4. `s` / `ss`：秒
 
@@ -415,7 +415,7 @@ moment().format("ss");
 
 ```js
 moment().format("SSS");
-```text
+```
 
 ### 6. `a` / `A`：上午下午
 
@@ -429,7 +429,7 @@ moment().format("A");
 ```text
 am
 AM
-```text
+```
 
 常见完整时间格式：
 
@@ -441,7 +441,7 @@ moment().format("YYYY-MM-DD HH:mm:ss");
 
 ```text
 2026-07-01 14:35:08
-```text
+```
 
 如果要 12 小时制：
 
@@ -453,7 +453,7 @@ moment().format("YYYY-MM-DD hh:mm:ss A");
 
 ```text
 2026-07-01 02:35:08 PM
-```text
+```
 
 ---
 
@@ -469,7 +469,7 @@ moment().format("YYYY-MM-DD");
 
 ```text
 2026-07-01
-```text
+```
 
 也可以换成斜杠：
 
@@ -481,7 +481,7 @@ moment().format("YYYY/MM/DD");
 
 ```text
 2026/07/01
-```text
+```
 
 或者使用下划线：
 
@@ -493,7 +493,7 @@ moment().format("YYYY_MM_DD");
 
 ```text
 2026_07_01
-```text
+```
 
 分隔符可以根据需求自定义。
 
@@ -509,7 +509,7 @@ moment().format("MMMM Do, YYYY");
 
 ```text
 July 1st, 2026
-```text
+```
 
 这里：
 
@@ -525,7 +525,7 @@ YYYY 表示四位年份
 
 ```js
 moment().format("dddd, MMMM Do, YYYY");
-```text
+```
 
 输出示例：
 
@@ -539,7 +539,7 @@ Wednesday, July 1st, 2026
 
 ```js
 moment().format("YYYY-MM-DD HH:mm:ss.SSS");
-```text
+```
 
 输出示例：
 
@@ -555,7 +555,7 @@ moment().format("YYYY-MM-DD HH:mm:ss.SSS");
 
 ```text
 1st of July
-```text
+```
 
 你可能会写：
 
@@ -573,7 +573,7 @@ moment().format("Do of MMMM");
 H 表示小时
 d 表示星期
 e 表示本地星期编号
-```text
+```
 
 如果普通文本里刚好包含这些字符，就可能被 Moment.js 误解析。
 
@@ -587,7 +587,7 @@ moment().format("Do [of] MMMM");
 
 ```text
 1st of July
-```text
+```
 
 也就是说：
 
@@ -607,7 +607,7 @@ Moment.js 也提供了一些本地化格式。
 
 ```js
 moment().format("LT");
-```text
+```
 
 输出示例：
 
@@ -619,7 +619,7 @@ moment().format("LT");
 
 ```js
 moment().format("LTS");
-```text
+```
 
 输出示例：
 
@@ -631,7 +631,7 @@ moment().format("LTS");
 
 ```js
 moment().format("L");
-```text
+```
 
 输出示例：
 
@@ -643,7 +643,7 @@ moment().format("L");
 
 ```js
 moment().format("LL");
-```text
+```
 
 输出示例：
 
@@ -655,7 +655,7 @@ July 1, 2026
 
 ```js
 moment().format("LLL");
-```text
+```
 
 输出示例：
 
@@ -667,7 +667,7 @@ July 1, 2026 2:35 PM
 
 ```js
 moment().format("LLLL");
-```text
+```
 
 输出示例：
 
@@ -681,7 +681,7 @@ Wednesday, July 1, 2026 2:35 PM
 
 ```js
 moment().format("llll");
-```text
+```
 
 可能输出：
 
@@ -704,7 +704,7 @@ Moment.js 中有很多 Getter / Setter 方法。
 const time = moment();
 
 console.log(time.second());
-```text
+```
 
 这里是获取当前秒数。
 
@@ -728,7 +728,7 @@ console.log(time.format("HH:mm:ss"));
 
 ```js
 moment().millisecond();
-```text
+```
 
 设置毫秒：
 
@@ -740,7 +740,7 @@ moment().millisecond(500);
 
 ```text
 0 - 999
-```text
+```
 
 如果超过 `999`，Moment.js 会自动进位到秒。
 
@@ -762,7 +762,7 @@ moment().millisecond(1000);
 
 ```js
 moment().second();
-```text
+```
 
 设置秒：
 
@@ -774,7 +774,7 @@ moment().second(45);
 
 ```text
 0 - 59
-```text
+```
 
 如果超过 `59`，会向分钟进位。
 
@@ -792,7 +792,7 @@ moment().minute();
 
 ```js
 moment().minute(30);
-```text
+```
 
 参数范围：
 
@@ -810,7 +810,7 @@ moment().minute(30);
 
 ```js
 moment().hour();
-```text
+```
 
 设置小时：
 
@@ -822,7 +822,7 @@ moment().hour(20);
 
 ```text
 0 - 23
-```text
+```
 
 超过范围会向天进位。
 
@@ -844,7 +844,7 @@ moment().date();
 
 ```js
 moment().date(15);
-```text
+```
 
 参数通常是：
 
@@ -864,7 +864,7 @@ moment().date(15);
 
 ```js
 moment().day();
-```text
+```
 
 返回范围是：
 
@@ -877,7 +877,7 @@ moment().day();
 ```text
 0 表示 Sunday
 6 表示 Saturday
-```text
+```
 
 设置：
 
@@ -899,7 +899,7 @@ moment().day(3);
 
 ```js
 moment().weekday(0);
-```text
+```
 
 表示周一。
 
@@ -921,7 +921,7 @@ moment().weekday(0);
 
 ```js
 moment().isoWeekday();
-```text
+```
 
 返回范围是：
 
@@ -934,7 +934,7 @@ moment().isoWeekday();
 ```text
 1 表示 Monday
 7 表示 Sunday
-```text
+```
 
 它也可以接收字符串：
 
@@ -952,7 +952,7 @@ moment().isoWeekday("Monday");
 
 ```js
 moment().month();
-```text
+```
 
 注意：Moment.js 中 `month()` 返回的是 `0 - 11`。
 
@@ -965,7 +965,7 @@ moment().month();
 
 ```js
 moment().month(11);
-```text
+```
 
 表示设置为 12 月。
 
@@ -985,7 +985,7 @@ moment().quarter();
 
 ```js
 moment().quarter(2);
-```text
+```
 
 表示第二季度。
 
@@ -1003,7 +1003,7 @@ moment().year();
 
 ```js
 moment().year(2030);
-```text
+```
 
 ---
 
@@ -1037,7 +1037,7 @@ moment().get("h");
 moment().get("m");
 moment().get("s");
 moment().get("ms");
-```text
+```
 
 所以如果你不想记太多单独方法，可以优先记住 `get()`。
 
@@ -1059,7 +1059,7 @@ moment().set("year", 2030);
 
 ```js
 moment().set("year", 2030).set("month", 11).set("date", 25);
-```text
+```
 
 也可以直接传对象，一次设置多个值：
 
@@ -1081,7 +1081,7 @@ moment().set({
 ```text
 month 的值仍然是 0 - 11。
 0 是 January，11 是 December。
-```text
+```
 
 例如：
 
@@ -1105,7 +1105,7 @@ moment().set({
 
 ```js
 moment().add(数量, "单位");
-```text
+```
 
 例如增加 7 天：
 
@@ -1117,7 +1117,7 @@ moment().add(7, "days");
 
 ```text
 2026-07-08
-```text
+```
 
 也可以增加月份、年份、小时、分钟等：
 
@@ -1132,7 +1132,7 @@ moment().add(30, "minutes");
 
 ```js
 moment("08-12-2022", "DD-MM-YYYY").add(7, "days");
-```text
+```
 
 表示在 2022 年 12 月 8 日基础上增加 7 天。
 
@@ -1155,7 +1155,7 @@ moment().subtract(1, "year");
 moment().subtract(2, "months");
 moment().subtract(3, "hours");
 moment().subtract(30, "minutes");
-```text
+```
 
 对指定日期减少时间：
 
@@ -1167,7 +1167,7 @@ moment("08-12-2022", "DD-MM-YYYY").subtract(7, "days");
 
 ```text
 2022-12-01
-```text
+```
 
 ---
 
@@ -1185,7 +1185,7 @@ moment().startOf("year");
 
 ```text
 1 月 1 日 00:00:00.000
-```text
+```
 
 获取本月开始：
 
@@ -1197,7 +1197,7 @@ moment().startOf("month");
 
 ```text
 00:00:00.000
-```text
+```
 
 获取今天开始：
 
@@ -1209,7 +1209,7 @@ moment().startOf("day");
 
 ```text
 00:00:00.000
-```text
+```
 
 常见单位包括：
 
@@ -1234,7 +1234,7 @@ second
 
 ```js
 moment().endOf("day");
-```text
+```
 
 结果是：
 
@@ -1246,7 +1246,7 @@ moment().endOf("day");
 
 ```js
 moment().endOf("month");
-```text
+```
 
 获取今年结束：
 
@@ -1261,7 +1261,7 @@ moment().endOf("year");
 ```js
 const start = moment().startOf("day").toDate();
 const end = moment().endOf("day").toDate();
-```text
+```
 
 ---
 
@@ -1281,7 +1281,7 @@ moment.utc().format();
 
 ```text
 2026-07-01 16:00:00
-```text
+```
 
 那么 UTC 时间大约是：
 
@@ -1299,7 +1299,7 @@ moment.utc().format();
 
 ```js
 moment().utcOffset();
-```text
+```
 
 如果你在 UTC+8 时区，返回值通常是：
 
@@ -1311,7 +1311,7 @@ moment().utcOffset();
 
 ```text
 8 小时 × 60 分钟 = 480 分钟
-```text
+```
 
 如果在印度 UTC+5:30，则返回：
 
@@ -1327,7 +1327,7 @@ moment().utcOffset();
 
 ```js
 moment().unix();
-```text
+```
 
 输出示例：
 
@@ -1347,7 +1347,7 @@ Unix 时间戳表示从 1970 年 1 月 1 日 00:00:00 UTC 到当前时间经过�
 
 ```js
 moment().valueOf();
-```text
+```
 
 输出示例：
 
@@ -1359,7 +1359,7 @@ moment().valueOf();
 
 ```js
 Date.now();
-```text
+```
 
 返回单位一致，都是毫秒。
 
@@ -1382,7 +1382,7 @@ Moment.js 的核心用法可以概括为四类。
 moment();
 moment("2026-07-01");
 moment("01-07-2026", "DD-MM-YYYY");
-```text
+```
 
 第二类是格式化时间：
 
@@ -1404,7 +1404,7 @@ moment().set({
   month: 11,
   date: 25,
 });
-```text
+```
 
 第四类是时间计算：
 
@@ -1428,7 +1428,7 @@ startOf()
 endOf()
 unix()
 valueOf()
-```text
+```
 
 ---
 
@@ -1467,7 +1467,7 @@ moment().format("YYYY-MM-DD");
 moment().format("YYYY-MM-DD HH:mm:ss");
 moment().format("YYYY/MM/DD");
 moment().format("MMMM Do, YYYY");
-```text
+```
 
 需要注意的是：
 

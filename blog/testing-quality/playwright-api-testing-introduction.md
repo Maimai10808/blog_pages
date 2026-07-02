@@ -24,7 +24,7 @@ Playwright 最常见的用法是浏览器自动化，比如：
 ```ts
 await page.goto("https://example.com");
 await page.click("button");
-```text
+```
 
 但 Playwright 还提供了一个非常重要的能力：`APIRequestContext`。
 
@@ -50,7 +50,7 @@ await request.delete(url);
 ```bash
 mkdir playwright-api-testing
 cd playwright-api-testing
-```text
+```
 
 然后执行：
 
@@ -65,7 +65,7 @@ Do you want to use TypeScript or JavaScript?
 Where to put your end-to-end tests?
 Add a GitHub Actions workflow?
 Install Playwright browsers?
-```text
+```
 
 如果你是新手，可以先选择默认配置。
 
@@ -92,7 +92,7 @@ tests/
 
 ```bash
 npx playwright test
-```text
+```
 
 如果测试通过，说明 Playwright 项目已经可以正常运行。
 
@@ -118,7 +118,7 @@ Playwright 还有一个非常好用的调试模式：
 
 ```bash
 npx playwright test --ui
-```text
+```
 
 UI Mode 会打开一个可视化测试界面，你可以：
 
@@ -145,7 +145,7 @@ tests/api_tests.spec.js
 
 ```js
 import { test, expect } from "@playwright/test";
-```text
+```
 
 其中：
 
@@ -179,7 +179,7 @@ test("API GET request", async ({ request }) => {
 
   console.log(await response.json());
 });
-```text
+```
 
 这里的关键点是：
 
@@ -193,7 +193,7 @@ async ({ request }) => {}
 
 ```js
 const response = await request.get(url);
-```ts
+```
 
 然后校验状态码：
 
@@ -205,7 +205,7 @@ expect(response.status()).toBe(200);
 
 ```js
 expect(text).toContain("Janet");
-```text
+```
 
 如果你把 `"Janet"` 改成一个不存在的字符串，比如 `"John"`，测试就会失败。Playwright 会告诉你是哪一行断言失败。
 
@@ -228,7 +228,7 @@ https://reqres.in/api/users
   "name": "raghav",
   "job": "teacher"
 }
-```ts
+```
 
 测试代码：
 
@@ -259,7 +259,7 @@ POST 请求和 GET 请求最大的区别是这里：
     job: "teacher",
   },
 }
-```ts
+```
 
 Playwright 会自动把 `data` 作为请求 body 发送给接口。
 
@@ -279,7 +279,7 @@ PUT 通常用于更新资源。
 
 ```text
 https://reqres.in/api/users/2
-```ts
+```
 
 测试代码：
 
@@ -321,7 +321,7 @@ DELETE 用来删除资源。
 
 ```text
 https://reqres.in/api/users/2
-```ts
+```
 
 测试代码：
 
@@ -339,7 +339,7 @@ DELETE 请求通常不需要 body。
 
 ```text
 204 No Content
-```ts
+```
 
 也就是说，接口成功了，但是响应 body 为空。
 
@@ -359,7 +359,7 @@ Playwright 也支持：
 
 ```js
 await expect(response).toBeOK();
-```ts
+```
 
 `toBeOK()` 会判断状态码是否在 `200-299` 范围内。
 
@@ -377,7 +377,7 @@ const body = await response.json();
 
 expect(body.data.first_name).toBe("Janet");
 expect(body.data.email).toContain("@reqres.in");
-```ts
+```
 
 这种写法比 `text().toContain()` 更精确，更适合真实项目。
 
@@ -448,7 +448,7 @@ test("API DELETE request", async ({ request }) => {
 
 ```bash
 npx playwright test
-```text
+```
 
 运行某个测试文件：
 
@@ -460,7 +460,7 @@ npx playwright test tests/api_tests.spec.js
 
 ```bash
 npx playwright test --ui
-```text
+```
 
 查看 HTML 报告：
 

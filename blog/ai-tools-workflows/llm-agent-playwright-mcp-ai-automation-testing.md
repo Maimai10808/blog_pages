@@ -22,7 +22,7 @@ AI 生成 Playwright 测试代码
 AI 执行测试
 测试失败后 AI 自动修复
 最终保存测试文件
-```text
+```
 
 这背后涉及几个重要概念：
 
@@ -58,7 +58,7 @@ AI 可以根据已有知识生成一段测试用例。
 
 ```text
 帮我写一封邮件
-```text
+```
 
 AI 也可以根据上下文生成邮件内容。
 
@@ -88,7 +88,7 @@ Prompt 可以理解为你给 AI 的指令。
 2. 输入用户名和密码
 3. 点击登录按钮
 4. 验证跳转到首页
-```text
+```
 
 Prompt 写得越清楚，AI 生成的结果通常越接近你的预期。
 
@@ -139,7 +139,7 @@ test("home page title", async ({ page }) => {
   await page.goto("http://localhost:3000");
   await expect(page).toHaveTitle(/Home/);
 });
-```text
+```
 
 这就是 LLM 的能力：根据上下文生成内容。
 
@@ -163,7 +163,7 @@ LLM 很强，但它也有明显限制。
 
 ```sql
 SELECT * FROM users;
-```text
+```
 
 但它自己不能直接连接你的数据库执行查询。
 
@@ -180,7 +180,7 @@ await request.get("/api/users");
 ```text
 LLM 可以思考和生成内容
 但 LLM 不能直接执行真实世界的动作
-```text
+```
 
 它不能独立完成这些事情：
 
@@ -219,7 +219,7 @@ Agent 可以理解为“执行者”或者“智能代理”。
 
 ```text
 帮我生成一个 Playwright 测试，并运行它。
-```text
+```
 
 LLM 会先理解你的需求，然后 Agent 会负责：
 
@@ -256,7 +256,7 @@ MCP，全称是 Model Context Protocol，中文可以理解为模型上下文协
 LLM 负责理解需求
 Agent 负责协调任务
 MCP 负责连接真实工具
-```text
+```
 
 MCP 可以让 AI 工具访问不同能力，比如：
 
@@ -303,7 +303,7 @@ LLM = 大脑
 Agent = 项目经理
 MCP = 工具和工人
 浏览器 / 数据库 / API = 真实工作现场
-```text
+```
 
 如果你只用 LLM，它可以告诉你：
 
@@ -322,7 +322,7 @@ MCP = 工具和工人
 运行测试
 修复失败
 保存文件
-```text
+```
 
 ---
 
@@ -437,7 +437,7 @@ Playwright 原本就有一个工具叫 Codegen。
 
 ```bash
 npx playwright codegen
-```text
+```
 
 它会打开浏览器，你手动点击页面、输入内容，它会根据你的操作生成测试代码。
 
@@ -457,7 +457,7 @@ AI 操作浏览器
 AI 生成代码
 AI 运行测试
 AI 修复失败
-```text
+```
 
 区别很明显：
 
@@ -486,7 +486,7 @@ MCP 是 AI 自动化执行工具
 打开网站
 搜索 t-shirts
 验证结果列表中显示 Faded Short Sleeve T-shirts
-```text
+```
 
 你可以给 Copilot Agent 这样的 prompt：
 
@@ -525,7 +525,7 @@ test("search t-shirts", async ({ page }) => {
     page.getByText("Faded Short Sleeve T-shirts")
   ).toBeVisible();
 });
-```text
+```
 
 实际生成结果可能不同，因为 AI 会根据页面结构选择 locator。
 
@@ -547,7 +547,7 @@ Agent 可以读取这些错误，然后重新分析页面结构。
 
 ```ts
 page.getByRole("button", { name: "Search" })
-```text
+```
 
 但页面按钮没有 accessible name，它就可能改成：
 
@@ -564,7 +564,7 @@ page.locator("#searchbox button").click();
 修改代码
 再次运行
 直到通过
-```text
+```
 
 当然，这不代表 AI 一定每次都能修好。LLM 也会犯错，所以人工 review 仍然非常重要。
 
@@ -586,7 +586,7 @@ POM 的核心思想是：
 ```text
 HomePage
 SearchResultsPage
-```text
+```
 
 你可以给 AI 这样的 prompt：
 
@@ -613,7 +613,7 @@ tests/
 pages/
   home-page.ts
   search-results-page.ts
-```ts
+```
 
 示例代码：
 
@@ -646,7 +646,7 @@ export class SearchResultsPage {
     await expect(this.page.getByText(productName)).toBeVisible();
   }
 }
-```ts
+```
 
 ```ts
 // tests/search.spec.ts
@@ -676,7 +676,7 @@ Playwright 不只能做浏览器测试，也可以做 API 测试。
 
 ```text
 GET https://fakestoreapi.com/products/1
-```text
+```
 
 你可以给 AI 这样的 prompt：
 
@@ -753,7 +753,7 @@ test("get product detail", async ({ request }) => {
   console.log("Product title:", body.title);
   console.log("Product price:", body.price);
 });
-```text
+```
 
 如果项目里没有安装 `ajv`，Agent 可能会请求执行：
 
@@ -777,7 +777,7 @@ Vibe Coding 可以理解为：
 
 ```text
 帮我用 Playwright 写一个搜索商品的测试
-```text
+```
 
 或者：
 
@@ -789,7 +789,7 @@ Vibe Coding 可以理解为：
 
 ```text
 给这个 API 测试加上 schema 校验
-```text
+```
 
 这种方式就是一种 Vibe Coding。
 
@@ -831,7 +831,7 @@ AI 可以提高效率，但不能替代工程判断。
 要求：
 - 使用 getByRole / getByLabel 优先定位
 - 测试失败后请修复并重新运行
-```text
+```
 
 ### 2. 先让 AI 生成，再人工 review
 
@@ -872,7 +872,7 @@ LLM 可能会生成错误代码。
 测试文件放到 tests/e2e/ 目录
 使用已有的 BasePage
 不要创建重复工具函数
-```text
+```
 
 否则 AI 可能会自己乱建目录。
 
@@ -908,7 +908,7 @@ process.env.TEST_PASSWORD
 
 ```text
 我知道测试步骤，但不想从 0 手写测试代码
-```text
+```
 
 ---
 
@@ -945,7 +945,7 @@ AI 负责提高测试开发效率
 手动运行
 手动排查失败
 手动修复
-```text
+```
 
 AI + MCP 写法：
 
@@ -968,7 +968,7 @@ AI 根据失败信息修复
 Prompt 编写者
 测试质量审核者
 自动化架构把关者
-```text
+```
 
 这对测试工程师和前端工程师都是新的能力要求。
 
