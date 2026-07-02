@@ -1,9 +1,18 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-07-02T07:55:49.799Z",
+  "updatedAt": "2026-07-02T08:49:18.733Z",
   "total": 192,
   "posts": [
+    {
+      "title": "Vite 入门指南：更快启动、更快更新的现代前端构建工具",
+      "description": "在现代前端开发中，构建工具已经成为项目不可缺少的一部分。无论你使用 React、Vue、Svelte，还是原生 JavaScript，都需要一个工具来帮你启动开发服务器、处理模块、加载静态资源、读取环境变量、支持 TypeScript，并最终打包生产环境代码。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T16:48:58+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md",
+      "path": "blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md"
+    },
     {
       "title": "10 个值得早点掌握的 Tailwind CSS 实用技巧",
       "description": "Tailwind CSS 的优势不只是“把 CSS 写在 className 里”，更重要的是它提供了一整套高效的样式组织方式。",
@@ -237,15 +246,6 @@
       "category": "react-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/typescript-unknown-vs-any.md",
       "path": "blog/react-fundamentals/typescript-unknown-vs-any.md"
-    },
-    {
-      "title": "Vite 入门指南：更快启动、更快更新的现代前端构建工具",
-      "description": "在现代前端开发中，构建工具已经成为项目不可缺少的一部分。无论你使用 React、Vue、Svelte，还是原生 JavaScript，都需要一个工具来帮你启动开发服务器、处理模块、加载静态资源、读取环境变量、支持 TypeScript，并最终打包生产环境代码。",
-      "date": "2026-07-02",
-      "updatedAt": "2026-07-02T15:55:26+08:00",
-      "category": "frontend-engineering",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md",
-      "path": "blog/frontend-engineering/vite-modern-frontend-build-tool-introduction.md"
     },
     {
       "title": "从 LLM 到 Agent，再到 Playwright MCP：AI 自动化测试到底是怎么工作的？",
