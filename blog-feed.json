@@ -1,9 +1,18 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-07-02T09:02:37.049Z",
+  "updatedAt": "2026-07-02T09:17:44.454Z",
   "total": 192,
   "posts": [
+    {
+      "title": "浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解",
+      "description": "在前端开发中，我们经常需要把一些数据临时或长期保存在用户浏览器中。比如保存用户偏好设置、主题模式、登录状态、表单草稿、购物车信息等。",
+      "date": "2026-07-02",
+      "updatedAt": "2026-07-02T17:17:23+08:00",
+      "category": "web-security",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md",
+      "path": "blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md"
+    },
     {
       "title": "10 个值得早点掌握的 Tailwind CSS 实用技巧",
       "description": "Tailwind CSS 的优势不只是“把 CSS 写在 className 里”，更重要的是它提供了一整套高效的样式组织方式。",
@@ -570,15 +579,6 @@
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/bitcoin-ownership-meaning.md",
       "path": "blog/blockchain-web3-fundamentals/bitcoin-ownership-meaning.md"
-    },
-    {
-      "title": "浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解",
-      "description": "在前端开发中，我们经常需要把一些数据临时或长期保存在用户浏览器中。比如保存用户偏好设置、主题模式、登录状态、表单草稿、购物车信息等。",
-      "date": "2026-06-29",
-      "updatedAt": "2026-06-29T10:43:51+08:00",
-      "category": "web-security",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md",
-      "path": "blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md"
     },
     {
       "title": "浏览器同源策略详解：它到底限制了什么？",

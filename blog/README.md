@@ -6,6 +6,7 @@ Total posts: **192**
 
 ## Latest Posts
 
+- [浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md) · `web-security` · 2026-07-02
 - [10 个值得早点掌握的 Tailwind CSS 实用技巧](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-practical-tips.md) · `frontend-styling` · 2026-07-02
 - [10 个我希望早点知道的 Tailwind CSS 实用工具类](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/tailwind-css-useful-utilities.md) · `frontend-styling` · 2026-07-02
 - [Chrome DevTools 使用指南：前端开发必须掌握的调试工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/chrome-devtools-frontend-debugging-guide.md) · `frontend-engineering` · 2026-07-02
@@ -15,7 +16,6 @@ Total posts: **192**
 - [Moment.js 入门教程：安装、格式化、时间修改与常用方法](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/momentjs-date-formatting-time-manipulation.md) · `frontend-engineering` · 2026-07-02
 - [Next.js App Router 常见错误总结：Server Components、Server Actions、缓存与渲染模式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-app-router-common-errors.md) · `react-fundamentals` · 2026-07-02
 - [Next.js Hydration Error 详解：为什么会出现，以及 3 种常见修复方式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-hydration-error-common-fixes.md) · `react-fundamentals` · 2026-07-02
-- [Next.js Server Actions：它真的会替代 API Routes 吗？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-server-actions-vs-api-routes.md) · `react-fundamentals` · 2026-07-02
 
 ## Categories
 
@@ -283,8 +283,8 @@ Total posts: **192**
 <details>
 <summary><strong>web-security</strong> (5)</summary>
 
+- [浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md) · 2026-07-02
 - [Cookie 详解：创建方式、属性、类型与安全风险](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/cookie-attributes-types-security-risks.md) · 2026-06-29
-- [浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-storage-localstorage-sessionstorage-cookie.md) · 2026-06-29
 - [浏览器同源策略详解：它到底限制了什么？](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/browser-same-origin-policy.md) · 2026-06-29
 - [前端安全入门：从 XSS 到 dangerouslySetInnerHTML，再到 DOMPurify](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/frontend-xss-dangerouslysetinnerhtml-dompurify.md) · 2026-06-24
 - [Web 安全基础：同源策略、SameSite Cookie 与 CORS 详解](https://github.com/Maimai10808/blog_pages/blob/main/blog/web-security/web-security-same-origin-samesite-cors.md) · 2026-06-12
