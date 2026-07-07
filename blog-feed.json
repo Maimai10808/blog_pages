@@ -1,20 +1,14 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-<<<<<<< HEAD
-  "updatedAt": "2026-07-02T09:17:44.454Z",
-  "total": 192,
-  "posts": [
-    {
-=======
-  "updatedAt": "2026-07-03T13:33:09.735Z",
+  "updatedAt": "2026-07-07T15:39:51.800Z",
   "total": 201,
   "posts": [
     {
       "title": "BIP39 是什么？为什么你的助记词能恢复整个钱包？",
       "description": "如果你用过加密钱包，大概率见过一组 12 个或 24 个英文单词。",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/bip39-mnemonic-wallet-recovery.md",
       "path": "blog/blockchain-web3-fundamentals/bip39-mnemonic-wallet-recovery.md"
@@ -22,8 +16,8 @@
     {
       "title": "Bitcoin Mempool 是什么？为什么你的比特币交易会卡住？",
       "description": "在使用比特币时，你可能遇到过这种情况：",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/bitcoin-mempool-pending-transaction.md",
       "path": "blog/blockchain-web3-fundamentals/bitcoin-mempool-pending-transaction.md"
@@ -31,17 +25,26 @@
     {
       "title": "MPC 钱包是什么？为什么它比传统助记词钱包更安全？",
       "description": "加密钱包是进入 Web3 世界的入口。无论你是持有 BTC、ETH、稳定币，还是参与 DeFi、NFT、链游，都离不开钱包。",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/mpc-wallet-vs-mnemonic-wallet-security.md",
       "path": "blog/blockchain-web3-fundamentals/mpc-wallet-vs-mnemonic-wallet-security.md"
     },
     {
+      "title": "PoW 和 PoS 到底有什么区别？从挖矿到质押的共识机制演进",
+      "description": "在区块链系统里，有一个非常核心的问题：",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
+      "category": "blockchain-web3-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/pow-pos-consensus-mechanism.md",
+      "path": "blog/blockchain-web3-fundamentals/pow-pos-consensus-mechanism.md"
+    },
+    {
       "title": "Web3 前端工程师应当具备哪些能力",
       "description": "Web3 前端工程师不是简单的“会写页面 + 会连接钱包”。真正合格的 Web3 前端，需要同时具备 传统前端工程能力、钱包连接能力、链上交互能力、交易状态处理能力、资产展示能力、实时行情能力、业务理解能力和安全意识。",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "web3-frontend",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-frontend-core-skills.md",
       "path": "blog/web3-frontend/web3-frontend-core-skills.md"
@@ -49,8 +52,8 @@
     {
       "title": "Web3 开发为什么一定要懂 RPC？",
       "description": "如果你写过 Web3 前端，大概率见过这样的代码：",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/web3-rpc-node-provider-introduction.md",
       "path": "blog/blockchain-web3-fundamentals/web3-rpc-node-provider-introduction.md"
@@ -58,8 +61,8 @@
     {
       "title": "区块链节点是什么？全节点、轻节点、归档节点、验证节点一次讲清楚",
       "description": "我们经常听到一句话：",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/blockchain-node-full-light-archive-validator.md",
       "path": "blog/blockchain-web3-fundamentals/blockchain-node-full-light-archive-validator.md"
@@ -67,8 +70,8 @@
     {
       "title": "多方计算 MPC 是什么？用“计算平均工资”讲清楚",
       "description": "在隐私计算领域，有一个非常重要的概念叫 **多方计算**，英文是 **Multi-Party Computation**，简称 **MPC**。",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/multiparty-computation-mpc-average-salary.md",
       "path": "blog/blockchain-web3-fundamentals/multiparty-computation-mpc-average-salary.md"
@@ -76,8 +79,8 @@
     {
       "title": "多签钱包是什么？为什么它比普通钱包更安全？",
       "description": "在加密货币世界里，有一句非常经典的话：",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/multisig-wallet-security-introduction.md",
       "path": "blog/blockchain-web3-fundamentals/multisig-wallet-security-introduction.md"
@@ -85,14 +88,13 @@
     {
       "title": "智能合约钱包和普通钱包有什么区别？从私钥账户到合约账户",
       "description": "很多刚接触区块链的人都会有一个疑问：**智能合约钱包和普通加密钱包到底有什么区别？**",
-      "date": "2026-07-03",
-      "updatedAt": "2026-07-03T00:00:00.000Z",
+      "date": "2026-07-07",
+      "updatedAt": "2026-07-07T23:39:24+08:00",
       "category": "blockchain-web3-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/smart-contract-wallet-vs-regular-wallet.md",
       "path": "blog/blockchain-web3-fundamentals/smart-contract-wallet-vs-regular-wallet.md"
     },
     {
->>>>>>> b28e518 (upload some blogs)
       "title": "浏览器中的三种数据存储方式：LocalStorage、SessionStorage 和 Cookie 详解",
       "description": "在前端开发中，我们经常需要把一些数据临时或长期保存在用户浏览器中。比如保存用户偏好设置、主题模式、登录状态、表单草稿、购物车信息等。",
       "date": "2026-07-02",
@@ -469,15 +471,6 @@
       "category": "react-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-lazy-loading-explained.md",
       "path": "blog/react-fundamentals/nextjs-lazy-loading-explained.md"
-    },
-    {
-      "title": "PoW 和 PoS 到底有什么区别？从挖矿到质押的共识机制演进",
-      "description": "在区块链系统里，有一个非常核心的问题：",
-      "date": "2026-06-29",
-      "updatedAt": "2026-06-29T10:43:51+08:00",
-      "category": "blockchain-web3-fundamentals",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/pow-pos-consensus-mechanism.md",
-      "path": "blog/blockchain-web3-fundamentals/pow-pos-consensus-mechanism.md"
     },
     {
       "title": "React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？",
