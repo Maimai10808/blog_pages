@@ -26,7 +26,7 @@ const handleSearch = (text) => {
 
   setUsers(filteredUsers);
 };
-```tsx
+```
 
 然后我们把这个函数作为 props 传给子组件：
 
@@ -49,7 +49,7 @@ function Search({ onChange }) {
 }
 
 export default memo(Search);
-```ts
+```
 
 这里有一个关键点：`Search` 组件被 `memo` 包裹了。
 
@@ -83,7 +83,7 @@ const handleSearch = (text) => {
 
 ```jsx
 previousHandleSearch === currentHandleSearch;
-```text
+```
 
 结果是：
 
@@ -121,7 +121,7 @@ const handleSearch = useCallback((text) => {
 
   setUsers(filteredUsers);
 }, []);
-```tsx
+```
 
 这里的 `useCallback` 接收两个参数：
 
@@ -141,7 +141,7 @@ previousOnChange === currentOnChange;
 
 ```jsx
 true;
-```tsx
+```
 
 既然 props 没变，`Search` 就不会重新渲染。
 
@@ -199,7 +199,7 @@ const handleSearch = useCallback((text) => {
 
 ```jsx
 [];
-```tsx
+```
 
 这意味着这个函数只会在组件第一次渲染时创建一次，之后一直复用最初的那个函数。
 
@@ -266,7 +266,7 @@ const handleChange = useCallback((value) => {
 }, []);
 
 return <Search onChange={handleChange} />;
-```tsx
+```
 
 如果 `Search` 使用了 `memo`，那么稳定的函数引用可以避免它因为 props 引用变化而重新渲染。
 
@@ -334,7 +334,7 @@ useEffect(() => {
 const handleClick = useCallback(() => {
   console.log("click");
 }, []);
-```tsx
+```
 
 `useMemo` 缓存的是计算结果：
 
@@ -354,7 +354,7 @@ const expensiveValue = useMemo(() => {
 
 ```jsx
 useCallback(fn, deps);
-```tsx
+```
 
 大致类似于：
 
