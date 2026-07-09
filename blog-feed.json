@@ -1,9 +1,36 @@
 {
   "title": "Maimai Blog",
   "description": "Frontend, Next.js, Web3, and on-chain development writings.",
-  "updatedAt": "2026-07-07T15:39:51.800Z",
-  "total": 201,
+  "updatedAt": "2026-07-09T05:09:39.298Z",
+  "total": 203,
   "posts": [
+    {
+      "title": "CSS 间距设计：什么时候用 Margin、Padding 和 Gap？",
+      "description": "在写 CSS 的时候，`margin`、`padding` 和 `gap` 看起来都在做同一件事：**创造空间**。",
+      "date": "2026-07-09",
+      "updatedAt": "2026-07-09T13:09:19+08:00",
+      "category": "frontend-styling",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/css-spacing-margin-padding-gap.md",
+      "path": "blog/frontend-styling/css-spacing-margin-padding-gap.md"
+    },
+    {
+      "title": "Node.js 基础学习笔记：从运行环境到 npm 与命令行能力",
+      "description": "最近继续系统学习 Node.js。作为一个主要写 React / Next.js 的前端开发者，我以前对 JavaScript 的理解更多集中在浏览器环境：组件渲染、状态管理、事件交互、接口请求和页面性能优化。",
+      "date": "2026-07-09",
+      "updatedAt": "2026-07-09T13:09:19+08:00",
+      "category": "frontend-engineering",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/nodejs-runtime-npm-cli-basics.md",
+      "path": "blog/frontend-engineering/nodejs-runtime-npm-cli-basics.md"
+    },
+    {
+      "title": "React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？",
+      "description": "在 React 中，`useCallback` 是一个经常被提到，但也经常被误用的 Hook。很多人一听到“性能优化”，就会下意识地把函数全部包一层 `useCallback`，但实际上，这并不是它的正确用法。",
+      "date": "2026-07-09",
+      "updatedAt": "2026-07-09T13:09:19+08:00",
+      "category": "react-fundamentals",
+      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md",
+      "path": "blog/react-fundamentals/react-usecallback-explained.md"
+    },
     {
       "title": "BIP39 是什么？为什么你的助记词能恢复整个钱包？",
       "description": "如果你用过加密钱包，大概率见过一组 12 个或 24 个英文单词。",
@@ -471,15 +498,6 @@
       "category": "react-fundamentals",
       "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-lazy-loading-explained.md",
       "path": "blog/react-fundamentals/nextjs-lazy-loading-explained.md"
-    },
-    {
-      "title": "React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？",
-      "description": "在 React 中，`useCallback` 是一个经常被提到，但也经常被误用的 Hook。很多人一听到“性能优化”，就会下意识地把函数全部包一层 `useCallback`，但实际上，这并不是它的正确用法。",
-      "date": "2026-06-29",
-      "updatedAt": "2026-06-29T10:43:51+08:00",
-      "category": "react-fundamentals",
-      "githubUrl": "https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md",
-      "path": "blog/react-fundamentals/react-usecallback-explained.md"
     },
     {
       "title": "React useRef 的理解与应用：跨渲染持久存在的值容器",

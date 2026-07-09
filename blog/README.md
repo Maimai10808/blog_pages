@@ -7,7 +7,8 @@ Total posts: **203**
 ## Latest Posts
 
 - [CSS 间距设计：什么时候用 Margin、Padding 和 Gap？](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-styling/css-spacing-margin-padding-gap.md) · `frontend-styling` · 2026-07-09
-- [Node.js 基础学习笔记：从运行环境到 npm 与命令行能力](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/nodejs-runtime-npm-cli-basics.md) · `frontend-engineering` · 2026-07-08
+- [Node.js 基础学习笔记：从运行环境到 npm 与命令行能力](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/nodejs-runtime-npm-cli-basics.md) · `frontend-engineering` · 2026-07-09
+- [React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md) · `react-fundamentals` · 2026-07-09
 - [BIP39 是什么？为什么你的助记词能恢复整个钱包？](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/bip39-mnemonic-wallet-recovery.md) · `blockchain-web3-fundamentals` · 2026-07-07
 - [Bitcoin Mempool 是什么？为什么你的比特币交易会卡住？](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/bitcoin-mempool-pending-transaction.md) · `blockchain-web3-fundamentals` · 2026-07-07
 - [MPC 钱包是什么？为什么它比传统助记词钱包更安全？](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/mpc-wallet-vs-mnemonic-wallet-security.md) · `blockchain-web3-fundamentals` · 2026-07-07
@@ -15,7 +16,6 @@ Total posts: **203**
 - [Web3 前端工程师应当具备哪些能力](https://github.com/Maimai10808/blog_pages/blob/main/blog/web3-frontend/web3-frontend-core-skills.md) · `web3-frontend` · 2026-07-07
 - [Web3 开发为什么一定要懂 RPC？](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/web3-rpc-node-provider-introduction.md) · `blockchain-web3-fundamentals` · 2026-07-07
 - [区块链节点是什么？全节点、轻节点、归档节点、验证节点一次讲清楚](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/blockchain-node-full-light-archive-validator.md) · `blockchain-web3-fundamentals` · 2026-07-07
-- [多方计算 MPC 是什么？用“计算平均工资”讲清楚](https://github.com/Maimai10808/blog_pages/blob/main/blog/blockchain-web3-fundamentals/multiparty-computation-mpc-average-salary.md) · `blockchain-web3-fundamentals` · 2026-07-07
 
 ## Categories
 
@@ -170,7 +170,7 @@ Total posts: **203**
 <details>
 <summary><strong>frontend-engineering</strong> (7)</summary>
 
-- [Node.js 基础学习笔记：从运行环境到 npm 与命令行能力](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/nodejs-runtime-npm-cli-basics.md) · 2026-07-08
+- [Node.js 基础学习笔记：从运行环境到 npm 与命令行能力](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/nodejs-runtime-npm-cli-basics.md) · 2026-07-09
 - [Chrome DevTools 使用指南：前端开发必须掌握的调试工具](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/chrome-devtools-frontend-debugging-guide.md) · 2026-07-02
 - [Moment.js 入门教程：安装、格式化、时间修改与常用方法](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/momentjs-date-formatting-time-manipulation.md) · 2026-07-02
 - [从普通 try-catch 到类型安全 Result Pattern：前端项目如何设计错误处理架构](https://github.com/Maimai10808/blog_pages/blob/main/blog/frontend-engineering/type-safe-result-pattern-error-handling.md) · 2026-07-02
@@ -197,6 +197,7 @@ Total posts: **203**
 <details>
 <summary><strong>react-fundamentals</strong> (57)</summary>
 
+- [React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md) · 2026-07-09
 - [Next.js App Router 常见错误总结：Server Components、Server Actions、缓存与渲染模式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-app-router-common-errors.md) · 2026-07-02
 - [Next.js Hydration Error 详解：为什么会出现，以及 3 种常见修复方式](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-hydration-error-common-fixes.md) · 2026-07-02
 - [Next.js Server Actions：它真的会替代 API Routes 吗？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-server-actions-vs-api-routes.md) · 2026-07-02
@@ -215,7 +216,6 @@ Total posts: **203**
 - [Next.js 最佳实践总结：从 App Router 到缓存、懒加载与 SEO 优化](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-app-router-cache-lazy-loading-seo-best-practices.md) · 2026-06-29
 - [Next.js 字体优化指南：next/font、Google Fonts、本地字体与 Tailwind CSS](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-font-optimization-guide.md) · 2026-06-29
 - [Next.js 懒加载详解：用 `next/dynamic` 优化首屏加载性能](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/nextjs-lazy-loading-explained.md) · 2026-06-29
-- [React `useCallback` 详解：什么时候用、为什么用、怎么避免踩坑？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-usecallback-explained.md) · 2026-06-29
 - [React useRef 的理解与应用：跨渲染持久存在的值容器](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-persistent-box.md) · 2026-06-29
 - [setInterval 和 requestAnimationFrame 有什么区别？为什么动画更推荐使用 rAF？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/setinterval-requestanimationframe-animation.md) · 2026-06-29
 - [一文讲清 React useRef：什么时候该用 ref，什么时候该用 state？](https://github.com/Maimai10808/blog_pages/blob/main/blog/react-fundamentals/react-useref-ref-vs-state.md) · 2026-06-29
